@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact · Symm</title>
+<meta name="description" content="Talk to a Symm rep to build your program, get a quote, or place an order. Tell us about your operation and we'll reach out.">
+<meta name="theme-color" content="#011F00">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact · Symm">
+<meta property="og:description" content="Talk to a Symm rep to build your program or place an order.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23011F00'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23A1D09A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --lime:#A1D09A; --lime-2:#70C77E; --lime-3:#B9FF94; --lime-ink:#08240A; --cloud:#FFFFFF;
+    --bg:#011F00; --surface:#071802; --ink:#FFFFFF; --ink-2:#FAFFFA; --hair:rgba(255,255,255,.14);
+    --maxw:1000px;
+    --display:"Hanken Grotesk",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--lime);color:var(--lime-ink)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  @media(max-width:600px){.wrap{padding:0 24px}}
+  h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.05;letter-spacing:-.02em}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--lime);outline-offset:2px;border-radius:6px}
+  .kicker{font-family:var(--body);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);margin-bottom:12px}
+  .mono{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+
+  .btn{font-weight:700;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;padding:14px 24px;border-radius:40px;border:1.5px solid transparent;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:transform .15s,background .2s,border-color .2s,color .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn .arw{transition:transform .18s}.btn:hover .arw{transform:translateX(4px)}
+  .btn.primary{background:var(--lime);color:var(--lime-ink);border-color:var(--lime)}
+  .btn.ghost{background:transparent;color:var(--ink);border-color:color-mix(in srgb,var(--ink) 40%,transparent)}
+  .btn.ghost:hover{border-color:var(--ink);background:color-mix(in srgb,var(--ink) 7%,transparent)}
+  .btn.big{padding:16px 30px;font-size:13px}
+  .btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+
+  header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(9px);border-bottom:1px solid var(--hair)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.04em;display:flex;align-items:center;gap:9px}
+  .logo .dot{width:11px;height:11px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px 2px var(--lime)}
+  .nav-links{display:flex;gap:24px;align-items:center}
+  .nav-links a.ml{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+  .nav-links a.ml:hover{color:var(--ink)}
+  @media(max-width:820px){.nav-links a.ml{display:none}}
+  .nav-links a.ml.here{color:var(--ink)}
+  .acrepill{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);border:1.5px solid var(--lime);border-radius:40px;padding:9px 14px;text-decoration:none}
+  .acrepill .dotc{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 7px 1px var(--lime)}
+  .acrepill .n{color:var(--lime);font-weight:700}
+  .acrepill[hidden]{display:none}
+
+  .intro{padding-top:60px;padding-bottom:34px}
+  .intro h1{font-size:clamp(34px,5.2vw,60px)}
+  .intro p{color:var(--ink-2);font-size:18px;max-width:56ch;margin-top:14px}
+
+  .layout{display:grid;grid-template-columns:1.35fr .65fr;gap:40px;align-items:start;padding-bottom:70px}
+  @media(max-width:860px){.layout{grid-template-columns:1fr;gap:26px}}
+
+  .form-card{background:var(--surface);border:1px solid var(--hair);border-radius:18px;padding:32px 30px}
+  @media(max-width:560px){.form-card{padding:24px 18px}}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+  @media(max-width:560px){.row2{grid-template-columns:1fr}}
+  label.field{display:block;margin-bottom:16px}
+  .lab{font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-bottom:7px;display:block}
+  .lab .req{color:var(--lime)}
+  .inp,select.inp,textarea.inp{width:100%;background:var(--bg);border:1.5px solid var(--hair);border-radius:10px;color:var(--ink);font-family:var(--body);font-size:15px;padding:12px 13px;transition:border-color .15s}
+  .inp:focus,select.inp:focus,textarea.inp:focus{border-color:var(--lime);outline:none}
+  .inp::placeholder,textarea.inp::placeholder{color:color-mix(in srgb,var(--ink-2) 60%,transparent)}
+  .inp.bad,select.inp.bad{border-color:#e8734f}
+  select.inp{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A1D09A' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:34px}
+  textarea.inp{min-height:130px;resize:vertical}
+  .chk{display:flex;gap:11px;align-items:flex-start;border:1.5px solid var(--hair);border-radius:11px;padding:13px 14px;cursor:pointer;transition:border-color .15s;margin-top:4px}
+  .chk:hover{border-color:var(--ink-2)}
+  .chk input{margin-top:2px;width:17px;height:17px;accent-color:var(--lime);flex:none}
+  .chk .ct{font-size:13.5px;color:var(--ink-2)}
+  .form-foot{display:flex;align-items:center;gap:16px;margin-top:22px;flex-wrap:wrap}
+  .err-msg{color:#f0a58a;font-size:13px;display:none}
+  .err-msg.show{display:block}
+
+  .aside .blk{border:1px solid var(--hair);border-radius:16px;padding:24px 22px;margin-bottom:16px;background:var(--surface)}
+  .aside .blk h3{font-family:var(--display);font-weight:700;font-size:17px;margin-bottom:12px}
+  .aside .blk p{color:var(--ink-2);font-size:14px;margin-bottom:6px}
+  .aside .blk a{color:var(--lime)}
+  .aside .blk .big{font-family:var(--display);font-weight:700;font-size:20px;color:var(--ink)}
+  .aside .steps{list-style:none;counter-reset:s}
+  .aside .steps li{counter-increment:s;position:relative;padding:9px 0 9px 34px;color:var(--ink-2);font-size:14px;border-top:1px solid var(--hair)}
+  .aside .steps li:first-child{border-top:0}
+  .aside .steps li::before{content:counter(s);position:absolute;left:0;top:8px;width:22px;height:22px;border-radius:50%;background:color-mix(in srgb,var(--lime) 18%,transparent);color:var(--lime);font-family:var(--display);font-weight:800;font-size:11px;display:grid;place-items:center}
+
+  /* result */
+  .result{display:none}
+  .result.show{display:block}
+  .form-flow.done{display:none}
+  .res-card{background:linear-gradient(150deg,color-mix(in srgb,var(--lime) 16%,var(--surface)),var(--surface));border:1px solid var(--hair);border-radius:20px;padding:44px 34px;max-width:640px}
+  .res-badge{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);border:1px solid color-mix(in srgb,var(--lime) 40%,transparent);border-radius:40px;padding:7px 14px;margin-bottom:20px}
+  .res-badge .ck{width:20px;height:20px;border-radius:50%;background:var(--lime);color:var(--lime-ink);display:grid;place-items:center;font-size:12px;font-weight:800}
+  .res-card h2{font-size:clamp(26px,3.6vw,38px);margin-bottom:12px}
+  .res-card p{color:var(--ink-2);font-size:16px;max-width:52ch}
+  .refbox{display:inline-flex;flex-direction:column;gap:2px;margin:22px 0;border:1px solid var(--hair);border-radius:12px;padding:12px 18px;background:var(--bg)}
+  .refbox .rl{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+  .refbox .rv{font-weight:700;font-family:var(--mono);font-size:18px;color:var(--lime)}
+
+  footer{border-top:1px solid var(--hair);padding:30px 0 46px}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .foot .fmeta{font-size:13px;color:var(--ink-2)}
+  .foot .logo{font-size:18px}
+.sitefoot{border-top:1px solid var(--hair);padding:0}
+  .sitefoot .sf-links{display:flex;flex-wrap:wrap;gap:14px 26px;padding:24px 0}
+  .sitefoot .sf-links a{font-weight:700;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);text-decoration:none}
+  .sitefoot .sf-links a:hover{color:var(--lime-2)}
+  .sitefoot .sf-meta{display:flex;justify-content:space-between;align-items:center;gap:14px 20px;flex-wrap:wrap;padding:24px 0 40px;border-top:1px solid var(--hair)}
+  .sitefoot .sf-logo{font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.04em;display:flex;align-items:center;gap:9px;color:var(--ink)}
+  .sitefoot .sf-logo .d{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px 2px var(--lime)}
+  .sitefoot .sf-m{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--ink-2);text-transform:none}
+  @media(max-width:600px){.sitefoot .sf-meta{flex-direction:column;align-items:flex-start;gap:10px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="index.html"><span class="dot"></span>symm</a>
+    <nav class="nav-links">
+      <a class="ml" href="symm-products.html">Program</a>
+      <a class="ml" href="symm-calculator.html">Analysis</a>
+      <a class="ml" href="symm-trial.html">Trial</a>
+      <a class="ml" href="symm-about.html">About</a>
+      <a class="ml here" href="symm-contact.html">Contact</a>
+      <a class="acrepill" id="navpill" href="symm-checkout.html" hidden><span class="dotc"></span><span class="n">0</span>&nbsp;acres</a>
+      <a class="btn primary" href="symm-products.html#buy">Order <span class="arw">&rarr;</span></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="intro wrap">
+    <p class="kicker">Contact a rep</p>
+    <h1>Let&rsquo;s build your program.</h1>
+    <p>Tell us about your operation and what you need. A Symm rep will reach out to build your program, put together a free quote or get an order started.</p>
+    <p style="margin-top:14px"><a href="symm-faq.html" style="color:var(--lime);font-weight:600">Have a question first? Read the FAQ &rarr;</a></p>
+  </section>
+
+  <div class="wrap layout" id="form">
+    <div class="form-flow">
+      <div class="form-card">
+        <form id="contact" novalidate>
+          <div class="row2">
+            <label class="field"><span class="lab">First name <span class="req">*</span></span><input class="inp" name="first" required autocomplete="given-name"></label>
+            <label class="field"><span class="lab">Last name <span class="req">*</span></span><input class="inp" name="last" required autocomplete="family-name"></label>
+          </div>
+          <div class="row2">
+            <label class="field"><span class="lab">Email <span class="req">*</span></span><input class="inp" name="email" type="email" required autocomplete="email" placeholder="you@farm.com"></label>
+            <label class="field"><span class="lab">Phone <span class="req">*</span></span><input class="inp" name="phone" type="tel" required autocomplete="tel" placeholder="(555) 555-5555"></label>
+          </div>
+          <div class="row2">
+            <label class="field"><span class="lab">Operation name</span><input class="inp" name="farm" placeholder="Your farm"></label>
+            <label class="field"><span class="lab">State</span>
+              <select class="inp" name="state" id="stateSel"></select></label>
+          </div>
+          <div class="row2">
+            <label class="field"><span class="lab">Primary crops</span><input class="inp" name="crops" placeholder="e.g. Tomatoes, Lettuce"></label>
+            <label class="field"><span class="lab">Total acreage</span><input class="inp" name="acreage" type="number" min="0" inputmode="numeric" placeholder="250"></label>
+          </div>
+          <label class="field"><span class="lab">How can we help? <span class="req">*</span></span>
+            <select class="inp" name="intent" required>
+              <option value="">Select&hellip;</option>
+              <option>Place an order</option>
+              <option>Get a quote / pricing</option>
+              <option>Build a program for my farm</option>
+              <option>Product questions</option>
+              <option>Apply for a trial</option>
+              <option>Something else</option>
+            </select></label>
+          <label class="field"><span class="lab">Message</span>
+            <textarea class="inp" name="message" placeholder="Tell us about your operation, the crops you grow, and what you're looking for."></textarea></label>
+          <label class="chk"><input type="checkbox" name="consent" required><span class="ct">Symm may contact me about my request.</span></label>
+          <div class="err-msg" id="errMsg">Please complete the highlighted fields.</div>
+          <div class="form-foot">
+            <button class="btn primary big" id="submitBtn" type="button">Send to a rep <span class="arw">&rarr;</span></button>
+            <span class="mono">Speak soon!</span>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <aside class="aside">
+      <div class="blk">
+        <h3>Prefer to reach out directly?</h3>
+        <p>Sales &amp; advisors</p>
+        <p><a href="mailto:advisors@symmbiotic.com">advisors@symmbiotic.com</a></p>
+        <p class="big">(845) 393-9539</p>
+      </div>
+      <div class="blk">
+        <h3>What happens next</h3>
+        <ol class="steps">
+          <li>A rep reviews your request and reaches out.</li>
+          <li>Together you build the program for your crops and acreage.</li>
+          <li>You get a quote and place your order for the season.</li>
+        </ol>
+      </div>
+      <div class="blk">
+        <h3>General questions</h3>
+        <p><a href="mailto:info@symmbiotic.com">info@symmbiotic.com</a></p>
+      </div>
+    </aside>
+
+    <!-- result -->
+    <div class="result" id="result" style="grid-column:1 / -1">
+      <div class="res-card">
+        <span class="res-badge"><span class="ck">&#10003;</span> Message sent</span>
+        <h2 id="resTitle">Thanks, we&rsquo;ll be in touch.</h2>
+        <p id="resLede">A Symm rep will reach out within one business day to help with your request.</p>
+        <div class="refbox"><span class="rl">Reference</span><span class="rv" id="resRef">SYMM-000000</span></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:6px">
+          <a class="btn primary" href="symm-products.html">Explore the products <span class="arw">&rarr;</span></a>
+          <a class="btn ghost" href="symm-calculator.html">Estimate your benefits <span class="arw">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="sitefoot">
+  <div class="wrap">
+    <nav class="sf-links">
+      <a href="symm-faq.html">FAQ</a>
+      <a href="symm-application-instructions.html">Application instructions</a>
+    </nav>
+    <div class="sf-meta">
+      <span class="sf-logo"><span class="d"></span>symm</span>
+      <span class="sf-m">info@symmbiotic.com &middot; (845) 393-9539</span>
+      <span class="sf-m">&copy; 2026 Symm</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var STATES=["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming","Other / outside the US"];
+  document.getElementById('stateSel').innerHTML='<option value="">Select (optional)&hellip;</option>'+STATES.map(function(s){return '<option>'+s+'</option>';}).join('');
+
+  var form=document.getElementById('contact'), errMsg=document.getElementById('errMsg');
+  form.querySelectorAll('.inp').forEach(function(el){el.addEventListener('input',function(){el.classList.remove('bad');});});
+
+  function validate(){
+    var ok=true, first=null;
+    form.querySelectorAll('input,select,textarea').forEach(function(el){
+      if(el.type==='checkbox')return;
+      if(el.hasAttribute('required')){
+        var good=el.value.trim()!=='' && !(el.type==='email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value));
+        el.classList.toggle('bad',!good); if(!good){ok=false; if(!first)first=el;}
+      }
+    });
+    var consent=form.querySelector('input[name=consent]');
+    var box=consent.closest('.chk'); box.style.borderColor=consent.checked?'':'#e8734f';
+    if(!consent.checked){ok=false; if(!first)first=consent;}
+    errMsg.classList.toggle('show',!ok);
+    if(!ok&&first&&first.focus)first.focus();
+    return ok;
+  }
+  function ref(){return 'SYMM-'+Date.now().toString(36).toUpperCase().slice(-6);}
+
+  document.getElementById('submitBtn').addEventListener('click',function(){
+    if(!validate())return;
+    var d={}; new FormData(form).forEach(function(v,k){d[k]=v;});
+    var r=ref();
+    /* Placeholder: a real deployment posts this to a backend / CRM and emails the rep team. */
+    try{localStorage.setItem('symm-contact-'+r,JSON.stringify(Object.assign({ref:r,at:new Date().toISOString()},d)));}catch(e){}
+    document.getElementById('resRef').textContent=r;
+    document.getElementById('resTitle').textContent='Thanks, '+(d.first||'there')+'. We’ll be in touch.';
+    var intent=(d.intent||'').toLowerCase();
+    var lede='A Symm rep will reach out within one business day to help with your request.';
+    if(intent.indexOf('order')>-1)lede='A Symm rep will reach out within one business day to confirm your program and get your order moving.';
+    else if(intent.indexOf('quote')>-1||intent.indexOf('pricing')>-1)lede='A Symm rep will reach out within one business day with pricing built around your crops and acreage.';
+    else if(intent.indexOf('trial')>-1)lede='A Symm rep will follow up about a grower trial for your operation. You can also apply directly on the trial page.';
+    document.getElementById('resLede').textContent=lede;
+    document.querySelector('.form-flow').classList.add('done');
+    document.querySelector('.aside').style.display='none';
+    document.getElementById('result').classList.add('show');
+    document.getElementById('form').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+</script>
+<script>
+/* Nav acre pill reflects an order in progress. */
+(function(){try{var o=JSON.parse(localStorage.getItem('symm_order')||'null');var p=document.getElementById('navpill');if(o&&o.acres&&p){p.hidden=false;p.querySelector('.n').textContent=o.acres;}}catch(e){}})();
+</script>
+</body>
+</html>

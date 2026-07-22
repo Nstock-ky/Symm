@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application Instructions · Symm</title>
+<meta name="description" content="How to apply Symm (Part 1 and Part 2): seed treatment, in-furrow, and foliar rates and timing, plus the seed treatment table and chemical compatibility.">
+<meta name="theme-color" content="#011F00">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23011F00'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23A1D09A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --lime:#A1D09A; --lime-2:#70C77E; --lime-3:#B9FF94; --lime-ink:#08240A;
+    --bg:#011F00; --surface:#071802; --ink:#FFFFFF; --ink-2:#FAFFFA; --hair:rgba(255,255,255,.14);
+    --display:"Hanken Grotesk",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 40px}
+  @media(max-width:600px){.wrap{padding:0 24px}}
+  .mono{font-weight:700;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase}
+  section[id]{scroll-margin-top:78px}
+
+  header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+  .topnav{display:flex;justify-content:space-between;align-items:center;height:62px}
+  .logo{font-family:var(--display);font-weight:800;font-size:21px;letter-spacing:-.045em;display:flex;align-items:center;gap:9px}
+  .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px 2px var(--lime)}
+  .topnav .tag{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2)}
+
+  .cover{padding:84px 0 52px;border-bottom:1px solid var(--hair)}
+  .cover .eyebrow{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--lime);margin-bottom:22px}
+  .cover h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,6.4vw,68px);letter-spacing:-.04em;line-height:1}
+  .cover .sub{color:var(--ink-2);font-size:clamp(16px,2vw,19px);margin-top:20px;max-width:64ch}
+
+  section.s{padding:52px 0;border-bottom:1px solid var(--hair)}
+  .s-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+  .s-head .num{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--lime)}
+  .s-head h2{font-family:var(--display);font-weight:800;font-size:clamp(24px,3.6vw,34px);letter-spacing:-.03em;line-height:1.06}
+
+  .method{background:var(--surface);border:1px solid var(--hair);border-radius:16px;padding:24px 22px;margin-top:18px}
+  .method h3{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.01em;margin-bottom:14px}
+  .row{display:grid;grid-template-columns:120px 1fr;gap:6px 18px;padding:9px 0;border-top:1px solid var(--hair);font-size:15.5px}
+  .row:first-of-type{border-top:0}
+  .row .lab{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--lime);padding-top:2px}
+  .row .val{color:var(--ink-2);max-width:82ch}
+  @media(max-width:560px){.row{grid-template-columns:1fr;gap:2px}}
+
+  ul.body{color:var(--ink-2);font-size:16px;max-width:70ch;margin:14px 0 0;padding-left:20px}
+  ul.body li{margin-bottom:9px}
+  b{color:var(--ink);font-weight:600}
+  i{font-style:italic}
+
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  th,td{text-align:left;padding:10px 14px;border-top:1px solid var(--hair)}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  thead th{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);background:var(--surface);border-top:0}
+  .tbl-wrap{border:1px solid var(--hair);border-radius:14px;overflow:hidden;margin-top:16px}
+  .tbl-scroll{overflow-x:auto}
+
+  .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:16px}
+  .lg{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--hair);border-radius:12px;padding:12px 14px}
+  .lg .k{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--lime);white-space:nowrap}
+  .lg .d{font-size:13px;color:var(--ink-2)}
+  .lg.no .k{color:#E9B7A6}
+
+  .note{background:var(--surface);border:1px solid var(--hair);border-left:3px solid var(--lime);border-radius:12px;padding:16px 18px;color:var(--ink-2);font-size:14.5px;margin-top:18px}
+  p.lead{color:var(--ink-2);font-size:17px;max-width:70ch;margin-top:14px}
+
+  footer{padding:40px 0 70px}
+  .foot-line{font-weight:700;font-family:var(--mono);font-size:13px;color:var(--ink-2);letter-spacing:.02em}
+  .backlink{display:inline-flex;gap:8px;font-weight:700;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--lime);margin-top:20px}
+  .ctable{width:100%;border-collapse:collapse;font-size:13px}
+  .ctable th,.ctable td{text-align:left;padding:9px 12px;border-top:1px solid var(--hair);vertical-align:top}
+  .ctable thead th{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-2);background:var(--surface);border-top:0;white-space:nowrap}
+  .cstat{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap;}
+  .cstat.cs-ok{color:var(--lime)} .cstat.cs-warn{color:#E0B15E} .cstat.cs-no{color:#E9B7A6}
+  .ct-title{font-family:var(--display);font-weight:700;font-size:18px;margin:30px 0 6px}
+  .ct-intro{color:var(--ink-2);font-size:14px;max-width:72ch;margin-bottom:4px}
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .nav .logo{font-family:var(--display);font-weight:800;font-size:23px;letter-spacing:-.045em;display:flex;align-items:center;gap:9px;color:var(--ink);text-decoration:none}
+  .nav .logo .dot{width:10px;height:10px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px 2px var(--lime)}
+  .nav-links{display:flex;gap:22px;align-items:center}
+  .nav-links a.mono{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);text-decoration:none}
+  .nav-links a.mono:hover{color:var(--ink)}
+  @media(max-width:820px){.nav-links a.mono{display:none}}
+  .acrepill{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);border:1.5px solid var(--lime);border-radius:40px;padding:9px 14px;text-decoration:none}
+  .acrepill .dotc{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 7px 1px var(--lime)}
+  .acrepill .n{color:var(--lime);font-weight:700}
+  .acrepill[hidden]{display:none}
+  .btn{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;padding:11px 20px;border-radius:40px;border:1.5px solid transparent;display:inline-flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none}
+  .btn.primary{background:var(--lime);border-color:var(--lime);color:var(--lime-ink)}
+  .btn .arw{transition:transform .18s}.btn:hover .arw{transform:translateX(4px)}
+  .sitefoot{border-top:1px solid var(--hair);padding:0;margin-top:26px}
+  .sitefoot .sf-links{display:flex;flex-wrap:wrap;gap:14px 26px;padding:24px 0}
+  .sitefoot .sf-links a{font-weight:700;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);text-decoration:none}
+  .sitefoot .sf-links a:hover{color:var(--lime-2)}
+  .sitefoot .sf-meta{display:flex;justify-content:space-between;align-items:center;gap:14px 20px;flex-wrap:wrap;padding:24px 0 44px;border-top:1px solid var(--hair)}
+  .sitefoot .sf-logo{font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.04em;display:flex;align-items:center;gap:9px;color:var(--ink)}
+  .sitefoot .sf-logo .d{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px 2px var(--lime)}
+  .sitefoot .sf-m{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--ink-2);text-transform:none}
+  @media(max-width:600px){.sitefoot .sf-meta{flex-direction:column;align-items:flex-start;gap:10px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="index.html"><span class="dot"></span>symm</a>
+    <nav class="nav-links">
+      <a class="mono" href="symm-products.html">Program</a>
+      <a class="mono" href="symm-calculator.html">Analysis</a>
+      <a class="mono" href="symm-trial.html">Trial</a>
+      <a class="mono" href="symm-about.html">About</a>
+      <a class="mono" href="symm-contact.html">Contact</a>
+      <a class="acrepill" id="navpill" href="symm-checkout.html" hidden><span class="dotc"></span><span class="n">0</span>&nbsp;acres</a>
+      <a class="btn primary" href="symm-products.html#buy">Order <span class="arw">&rarr;</span></a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="cover">
+    <h1>Application instructions.</h1>
+    <p class="eyebrow" style="margin:18px 0 0">Part 1 &middot; Part 2</p>
+    <p class="sub">Symm is one program with two parts, applied together. <b>Part 1</b> and <b>Part 2</b> can be applied at multiple crop stages, and by any of three methods: as a seed treatment, in-furrow, or as a foliar spray. Using them together maximizes the benefit of each for higher yields and healthier plants. Follow the instructions below to apply by your chosen method.</p>
+  </section>
+
+  <section class="s" id="methods">
+    <div class="s-head"><span class="num">01</span><h2>Application methods</h2></div>
+
+    <div class="method">
+      <h3>Seed treatment</h3>
+      <div class="row"><span class="lab">Rate</span><span class="val">See the seed treatment table below for quantities of Part 1 and Part 2 based on seed type.</span></div>
+      <div class="row"><span class="lab">Method</span><span class="val">Dilute Part 1 in clean water, using enough water so seeds are evenly coated. Add the appropriate rate of Part 2 to the water and mix well. Lightly coat seeds using a seed treater or a mixing drum with sprayer.</span></div>
+      <div class="row"><span class="lab">Timing</span><span class="val">Apply just before planting, or up to three weeks before planting. Allow seed to dry (out of direct sunlight) before storing or re-packaging.</span></div>
+      <div class="row"><span class="lab">Compatibility</span><span class="val">Part 1 and Part 2 can be used with most inoculants. Do not tank-mix with colorants, polymers, insecticides, nematicides, herbicides, or fungicides; use separate tanks where possible. See the chemical compatibility section below, or check with us for any product not listed.</span></div>
+    </div>
+
+    <div class="method">
+      <h3>In-furrow application</h3>
+      <div class="row"><span class="lab">Rate</span><span class="val">0.1 fl oz (3 mL) of Part 1 and/or 1 g of Part 2 in 5 to 15 gallons of clean water per acre.</span></div>
+      <div class="row"><span class="lab">Timing</span><span class="val">Apply during planting, directly into the seed trench.</span></div>
+    </div>
+
+    <div class="method">
+      <h3>Foliar spray</h3>
+      <div class="row"><span class="lab">Rate</span><span class="val">0.1 fl oz (3 mL) of Part 1 and/or 1 g of Part 2 in 5 to 15 gallons of clean water per acre.</span></div>
+      <div class="row"><span class="lab">Frequency</span><span class="val">Apply to above-ground plant tissues during vegetative or early reproductive growth, ideally before suspected heat or drought stress.</span></div>
+      <div class="row"><span class="lab">Timing</span><span class="val">Spray in early morning or early evening (avoid full sun). Application just after or before a light rain is optimal.</span></div>
+      <div class="row"><span class="lab">Irrigation</span><span class="val">Allow 4 hours of drying time before irrigation.</span></div>
+      <div class="row"><span class="lab">Equipment</span><span class="val">Use clean sprayers or misting systems, flushed of any remaining chemicals.</span></div>
+      <div class="row"><span class="lab">Compatibility</span><span class="val">Best to keep foliar applications simple, just Part 1 and Part 2. Some common foliar inputs are safe to tank-mix; see the compatibility section and run a quick jar test if uncertain.</span></div>
+    </div>
+  </section>
+
+  <section class="s" id="guidelines">
+    <div class="s-head"><span class="num">02</span><h2>General guidelines</h2></div>
+    <ul class="body">
+      <li>Shake or stir before use; mix only with clean water.</li>
+      <li>Use any tank mix within 4 hours of mixing.</li>
+      <li>Do not apply above 90&deg;F (32&deg;C) or when frost is a risk.</li>
+      <li>Store both parts refrigerated and out of direct sunlight.</li>
+      <li>Use within 12 months of the manufacture date on the bottle.</li>
+    </ul>
+  </section>
+
+  <section class="s" id="seed-table">
+    <div class="s-head"><span class="num">03</span><h2>Seed treatment table</h2></div>
+    <p class="lead">Find your crop for exact rates of Part 1 and Part 2 per pound of seed.</p>
+    <div class="tbl-wrap"><div class="tbl-scroll"><table>
+      <thead><tr><th>Crop</th><th class="num">Approx. seeds / lb</th><th class="num">mL Part 1 / lb seed</th><th class="num">g Part 2 / lb seed</th></tr></thead>
+      <tbody>
+        <tr><td>Lettuce</td><td class="num">400,000</td><td class="num">0.33</td><td class="num">0.25</td></tr>
+        <tr><td>Alfalfa</td><td class="num">200,000</td><td class="num">0.07</td><td class="num">0.05</td></tr>
+        <tr><td>Sorghum</td><td class="num">14,000</td><td class="num">0.07</td><td class="num">0.1</td></tr>
+        <tr><td>Peppers</td><td class="num">50,000</td><td class="num">0.06</td><td class="num">0.05</td></tr>
+        <tr><td>Corn</td><td class="num">1,600</td><td class="num">0.06</td><td class="num">0.05</td></tr>
+        <tr><td>Lentils</td><td class="num">13,000</td><td class="num">0.03</td><td class="num">0.02</td></tr>
+        <tr><td>Beets</td><td class="num">23,000</td><td class="num">0.02</td><td class="num">0.01</td></tr>
+        <tr><td>Squash</td><td class="num">1,920</td><td class="num">0.01</td><td class="num">0.01</td></tr>
+        <tr><td>Chickpeas</td><td class="num">1,500</td><td class="num">0.01</td><td class="num">0.01</td></tr>
+        <tr><td>Tomato</td><td class="num">120,000</td><td class="num">0.75</td><td class="num">0.56</td></tr>
+        <tr><td>Sunflower</td><td class="num">6,000</td><td class="num">0.3</td><td class="num">0.33</td></tr>
+        <tr><td>Canola</td><td class="num">140,000</td><td class="num">0.18</td><td class="num">0.2</td></tr>
+        <tr><td>Cotton</td><td class="num">4,600</td><td class="num">0.12</td><td class="num">0.09</td></tr>
+        <tr><td>Onion</td><td class="num">100,000</td><td class="num">0.08</td><td class="num">0.06</td></tr>
+        <tr><td>Spinach</td><td class="num">40,000</td><td class="num">0.08</td><td class="num">0.19</td></tr>
+        <tr><td>Cucumber</td><td class="num">12,000</td><td class="num">0.08</td><td class="num">0.06</td></tr>
+        <tr><td>Rice</td><td class="num">18,000</td><td class="num">0.07</td><td class="num">0.02</td></tr>
+        <tr><td>Barley</td><td class="num">14,000</td><td class="num">0.05</td><td class="num">0.01</td></tr>
+        <tr><td>Wheat</td><td class="num">11,340</td><td class="num">0.04</td><td class="num">0.01</td></tr>
+        <tr><td>Oat</td><td class="num">13,000</td><td class="num">0.03</td><td class="num">0.01</td></tr>
+        <tr><td>Mung bean</td><td class="num">9,000</td><td class="num">0.03</td><td class="num">0.05</td></tr>
+        <tr><td>Cowpea</td><td class="num">3,600</td><td class="num">0.03</td><td class="num">0.04</td></tr>
+        <tr><td>Dry bean</td><td class="num">3,100</td><td class="num">0.03</td><td class="num">0.03</td></tr>
+        <tr><td>Field peas</td><td class="num">3,000</td><td class="num">0.03</td><td class="num">0.03</td></tr>
+        <tr><td>Soybean</td><td class="num">2,800</td><td class="num">0.03</td><td class="num">0.02</td></tr>
+        <tr><td>Watermelon</td><td class="num">4,800</td><td class="num">0.01</td><td class="num">0.02</td></tr>
+        <tr><td>Peanut</td><td class="num">750</td><td class="num">0.01</td><td class="num">0.01</td></tr>
+      </tbody>
+    </table></div></div>
+  </section>
+
+  <section class="s" id="compatibility">
+    <div class="s-head"><span class="num">04</span><h2>Chemical compatibility</h2></div>
+    <p class="lead">How Part 1 and Part 2 behave when tank-mixed with common agricultural chemicals at the labeled usage rate. Use the compatibility status to plan your tank-mix timing, and when in doubt, run a quick jar test or contact us before applying.</p>
+    <div class="legend">
+      <div class="lg"><span class="k">24 hours &#10003;</span><span class="d">Compatible up to 24 hours after mixing.</span></div>
+      <div class="lg"><span class="k">8 hours &#10003;</span><span class="d">Compatible up to 8 hours after mixing.</span></div>
+      <div class="lg"><span class="k">4 hours &#9888;</span><span class="d">Apply tank mix within 4 hours of mixing.</span></div>
+      <div class="lg"><span class="k">2 hours &#9888;</span><span class="d">Apply within 2 hours; conditions apply.</span></div>
+      <div class="lg no"><span class="k">Not compatible &#10007;</span><span class="d">Do not tank mix. Apply separately.</span></div>
+    </div>
+    <h3 class="ct-title">A. Part 1 (in-jug) compatibility</h3>
+    <p class="ct-intro">Tank-mix compatibility for Symm Part 1 at the labeled usage rate. Shorter time windows mean the tank mix should be applied within the stated time of mixing. Last updated September 12, 2023.</p>
+    <div class="tbl-wrap"><div class="tbl-scroll"><table class="ctable">
+    <thead><tr><th>Compatibility</th><th>Chemical name</th><th>Manufacturer</th><th>Type</th><th>Active ingredient</th><th>% A.I.</th><th>Usage rate</th><th>Notes</th></tr></thead><tbody>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>10-34-0</td><td>Hefty</td><td>Fertilizer</td><td>Not Provided</td><td>N/A</td><td>3 gpa in 5 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>2000-01</td><td>Verdesian</td><td>Seed Treatment</td><td>Glutamate, Proline, and citric acid</td><td>N/A</td><td>1.36 mL / 100 lbs of seed</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>2000-07</td><td>Verdesian</td><td>Seed Treatment</td><td>Glutamate, Proline, and citric acid</td><td>N/A</td><td>1.36 mL / 100 lbs of seed</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>3-18-18</td><td>Hefty</td><td>Fertilizer</td><td>Not Provided</td><td>N/A</td><td>3 gpa in 5 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>9-18-9</td><td>Hefty</td><td>Fertilizer</td><td>Not Provided</td><td>N/A</td><td>3 gpa in 5 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>9-24-3</td><td>Hefty</td><td>Fertilizer</td><td>Not Provided</td><td>N/A</td><td>3 gpa in 5 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Abundit Edge Herbicide</td><td>DuPont</td><td>Herbicide</td><td>Potassium salt of glyphosate</td><td>48.70%</td><td>64 fl oz/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>AC-97 Micro Nexus for Row Crops 3-0-4</td><td>CH Biotech R&amp;D Co</td><td>Fertilizer</td><td>N, K2O, micronutrients</td><td>N/A</td><td>32 fl oz/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>AC-97 Micro Nexus for T&amp;V 2-0-4</td><td>CH Biotech R&amp;D Co</td><td>Fertilizer</td><td>N, K2O, S, B, Fe, Mn, Mo, Zn</td><td>0.1%-4%</td><td>.005 gal/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Allegiance FL</td><td>Bayer</td><td>Fungicide</td><td>Metalaxyl</td><td>28.35%</td><td>0.32 fl oz/100 lbs of seed</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Antier 240 EC</td><td>Winfield</td><td>Herbicide</td><td>Clethodim</td><td>24.90%</td><td>75 mL/acre 6 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Antier 360 Unpacked</td><td>Winfield</td><td>Herbicide</td><td>Clethodim</td><td>36.70%</td><td>75 mL/acre 6 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Arable 1</td><td>Arable</td><td>Fertilizer</td><td>Nitrogen, Phosphate, Iron, Manganese, Zinc</td><td>7%, 2%, 0.1%, 0.05%, 0.05%</td><td>64 fl oz/acre in 100 gallons</td><td></td></tr>
+    <tr><td><span class="cstat cs-no">Not compatible ✕</span></td><td>Asana XL</td><td>Valent</td><td>Insecticide</td><td>Esfenvalerate</td><td>8.40%</td><td>2.9-9.6 fl oz/acre in 3- 5 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Atrazine 4L</td><td>Loveland Products</td><td>Herbicide</td><td>Atrazine Technical</td><td>42.60%</td><td>4 pt/acre in 5 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>BioPrep</td><td>Hefty</td><td>Water Treatment</td><td>N/A</td><td>N/A</td><td>2 fl oz/100 gallons</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Black Magic 307</td><td>Gold&#x27;N Humates LLC</td><td>Micronutrients</td><td>Humic acid, fulvic acid</td><td>10.00%</td><td>1 pt/acre</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Boost</td><td>Precision Laboratories</td><td>Fertilizer</td><td>Alkyl Polyethoxy ether</td><td>N/A</td><td>0.4 pts/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Boost 10</td><td>Hefty</td><td>Fertilizer</td><td>4-0-0 vegetable protein hydrolysate amino acids</td><td>N/A</td><td>10 fl oz/acre</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Brigade 2EC</td><td>FMC Co</td><td>Insecticide</td><td>Bifenthrin</td><td>25.10%</td><td>2.1 fl oz/acre in 10 gpa</td><td>Also tested 6.4 fl oz/acre in 10 gpa, but lost 26% viability in 4 hours</td></tr>
+    <tr><td><span class="cstat cs-no">Not compatible ✕</span></td><td>Buccaneer Plus</td><td>Tenkoz</td><td>Herbicide</td><td>Isopropylamine salt of Glyphosate</td><td>41%</td><td>4 fl oz/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Callisto</td><td>Syngenta</td><td>Herbicide</td><td>Mesotrione</td><td>40%</td><td>6 fl oz/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Crimson</td><td>Winfield</td><td>Water Treatment</td><td>Ammonium Sulfate</td><td>34%</td><td>2.5% (v/v) 6 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-no">Not compatible ✕</span></td><td>Durango</td><td>DOW</td><td>Herbicide</td><td>Glyphosate DMA salt</td><td>50.20%</td><td>1.5 qt/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Dyna-Gro</td><td>BioAgronics</td><td>Fertilizer</td><td>Nitrogen, available phosphate, soluble potash, sulfur</td><td>7%, 7%, 5%, 2%</td><td>1 L/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Enlist One Herbicide</td><td>Corteva agriscience LLC</td><td>Herbicide</td><td>2,4-D choline salt</td><td>55.70%</td><td>2.0 pints/acre in 10 gpa</td><td>Compatible at 2 L/acre in 10 gpa up to 1 hour</td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Evergol Energy</td><td>Bayer</td><td>Fungicide</td><td>Trifloxystrobin, Penflufen, Metalaxyl</td><td>7.18%, 3.59%, 5.47%</td><td>1 fl oz/100 lbs of seed</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Evergol Prime</td><td>Bayer</td><td>Fungicide</td><td>Penflufen</td><td>21.43%</td><td>0.96 fl oz/100 lbs of seed</td><td></td></tr>
+    <tr><td><span class="cstat cs-no">Not compatible ✕</span></td><td>EvergreX</td><td>DuPont</td><td>Herbicide</td><td>S-Metolachlor</td><td>83.70%</td><td>2.5 pt/acre in 5 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Fertigold</td><td>Mesa Verde Humates</td><td>Fertilizer</td><td>0-0-0 Fulvic acids and humic acids</td><td>60%, 45%</td><td>75 lb-150 lbs/acre</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>FeXapan Herbicide plus VaporGrip</td><td>Corteva agriscience LLC</td><td>Herbicide</td><td>Dicamba</td><td>42.80%</td><td>1.71 L/ha in 100 L/Ha</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Flexstar</td><td>Syngenta</td><td>Herbicide</td><td>Fomesafen Sodium Salt</td><td>22.10%</td><td>1.5 pt/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Flo-Rite</td><td>McGregor</td><td>Seed Polymer</td><td>N/A</td><td>N/A</td><td>0.5 oz/100 lbs soy</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Fluoxastrobin FS 480</td><td>Bayer</td><td>Fungicide</td><td>Fluoxastrobin</td><td>41.90%</td><td>5.7 fl oz/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Free-Flo</td><td>McGregor</td><td>Seed Polymer</td><td>N/A</td><td>N/A</td><td>3 oz/100 lbs of corn</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">2 hours ⚠</span></td><td>Fultec Adjuvant</td><td>Spraytec</td><td>Adjuvant</td><td>Carboxylic Acids, Ethylenediaminetetraacetic acid and fatty alcohol ethoxylate</td><td>11.05%</td><td>2-4 oz/acre in 10 gpa</td><td>Compatible up to 2 hrs at 2 oz/acre in 5 gpa. Not compatible otherwise.</td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Glufosinate-Ammonium Soldado</td><td>Northern CropScience</td><td>Herbicide</td><td>glufosinate ammonium</td><td>15.00%</td><td>1.08-1.62 L/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Glyphosate 540 sL</td><td>Northern CropScience</td><td>Herbicide</td><td>Glyphosate Potassium Salt</td><td>48.70%</td><td>0.2-.94 L/acre in 10 gpa</td><td>Higher concentration + Go-pH adjuvant only compatible up to 4 hours.</td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Go-pH</td><td>Northern CropScience</td><td>Fertilizer (water conditioner)</td><td>Phosphoric Acid</td><td>33.00%</td><td>56 mL/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-no">Not compatible ✕</span></td><td>Harness</td><td>Bayer</td><td>Herbicide</td><td>Acetochlor, Furilazole</td><td>75.9%, 2.5%</td><td>3 pt/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Histosol OP-984</td><td>Organic Products Company</td><td>Fertilizer</td><td>Mixture of bacteria in liquid media</td><td>N/A</td><td>1 gal/acre</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Ilevo</td><td>Bayer</td><td>Fungicide</td><td>Fluopyram</td><td>48.58%</td><td>3.94 fl oz/100 lbs of seed</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>IMF Sativa Max</td><td>NuFarm</td><td>Fungicide</td><td>Imidacloprid, Metalaxyl, Tebuconazole, Fludioxonil</td><td>11.16%, 0.60%, 0.45%, 0.36%</td><td>5 fl oz/100 lbs of seed</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Impact</td><td>AMVAC</td><td>Herbicide</td><td>Topramezone</td><td>29.70%</td><td>2.0 fl oz/acre</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Impress</td><td>McGregor</td><td>Seed Polymer</td><td>N/A</td><td>N/A</td><td>2 oz/100 lbs wheat</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Induce</td><td>Helena Chemical Company</td><td>Adjuvant</td><td>Alkyl Aryl Polyoxylkane ethers, alkanolamides, dimethyl siloxane and free fatty acids</td><td>90.00%</td><td></td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Insist 90 Plus</td><td>Wilbur-Ellis</td><td>Adjuvant</td><td>Nonylphenol ethoxylated/ surfactant</td><td>10-20%</td><td>0.125% (v/v) 6 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-no">Not compatible ✕</span></td><td>Interline</td><td>UPL</td><td>Herbicide</td><td>glufosinate-ammonium</td><td>24.50%</td><td>43 fl oz/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Journey HSOC</td><td>Winfield</td><td>Surfactant</td><td>Methylated Soybean Oil</td><td>48%-25%</td><td>0.5% (v/v) 6 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>K7</td><td>Kannar</td><td>Seed Treatment</td><td>N/A</td><td>N/A</td><td>1 oz/cwt seed</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Lactofen</td><td>Sharda USA LLC</td><td>Herbicide</td><td>Lactofen, solvent naphtha</td><td>24%, 50- 80%</td><td>12.5-19 fl oz/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Laudis</td><td>Bayer</td><td>Herbicide</td><td>Tembotrione</td><td>34.50%</td><td>3 fl oz/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Liberty 280 SL</td><td>Bayer</td><td>Herbicide</td><td>Glufosinate ammonium, Alkylethersulfate sodium salt</td><td>24.5%, 22.1%</td><td>43 fl oz/acre in 15 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Lucento</td><td>FMC Co</td><td>Fungicide</td><td>flutriafol, bixafen</td><td>26.47%, 15.55%</td><td>3-5.5 fl oz/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-no">Not compatible ✕</span></td><td>Malathion 8 Aquamul</td><td>Viton</td><td>Insecticide</td><td>Malathion</td><td>81.80%</td><td>1.25 pt/acre in 7 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Maxim Quattro</td><td>Syngenta</td><td>Fungicide</td><td>Azoxystrobin, Mefenoxam, Fludioxonil, Thiabendazole</td><td>1.33%, 2.65%, 3.32%, 26.50%</td><td>0.53 fl oz/80,000 seeds</td><td></td></tr>
+    <tr><td><span class="cstat cs-no">Not compatible ✕</span></td><td>Mega Gro</td><td>Hefty</td><td>Fertilizer</td><td>Not Provided</td><td>N/A</td><td>3 gpa in 5 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>N-Force</td><td>Direct Enterprises</td><td>Seed Treatment</td><td>Rhizobia sp.</td><td>N/A</td><td>2 fl oz/cwt soybean</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>NuPro ST</td><td>AgNuBio</td><td>Fungicide</td><td>Chitosan</td><td>0.25%</td><td>30 mL/70 acres in 5 gallons</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Nutex EDA</td><td>Sipcam Agro</td><td>Fertilizer</td><td>Zinc EDTA</td><td>5.56%</td><td>8-12 fl oz/acre</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Outlook</td><td>BASF</td><td>Herbicide</td><td>dimethenamid-P</td><td>64%</td><td>21 fl oz/acre in 5 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Permeate</td><td>Winfield</td><td>Adjuvant</td><td>Diethylene Glycol</td><td>10-30%</td><td>0.125% (v/v)</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Polytex 550L</td><td>Northern Cropscience</td><td>Drift Management</td><td>Oil and Emulsifier</td><td>N/A</td><td>118 mL/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Poncho/Votivo</td><td>Bayer</td><td>Insecticide</td><td>Clothianidin</td><td>40.33%</td><td>2 fl oz/100 lbs of seed</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">8 hours ✓</span></td><td>PrimoMaxx</td><td>Syngenta</td><td>Plant Growth Regulator</td><td>Trinexapac-ethyl</td><td>11.30%</td><td>16 fl oz/0.8 gallons water</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Proline 480 SC</td><td>Bayer</td><td>Fungicide</td><td>Prothioconazole</td><td>41.10%</td><td>0.543 fl oz/acre in 20 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Prothioconazole 480 SC</td><td>Bayer</td><td>Fungicide</td><td>Prothioconazole</td><td>41.10%</td><td>5.7 fl oz/acre</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Prowl H2O</td><td>BASF</td><td>Herbicide</td><td>Pendimethalin, Isocyanic acid polymethylenepolyphenylene ester</td><td>38.70%, 3%</td><td>3 qt/acre in 7 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Quizalofop EC</td><td>Sharda USA LLC</td><td>Herbicide</td><td>Quizalofop</td><td>10.30%</td><td>15.5 fl oz/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Rainier EA</td><td>Wilbur-Ellis</td><td>Surfactant</td><td>polyoxyethylene polyol fatty acid ester, butyl lactate and alcohol ethoxylate phosphate ester</td><td>98.00%</td><td>2 pints/100 gal</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Rapido</td><td>Northern CropScience</td><td>Adjuvant</td><td>(trimethylsilyl)oxy)disiloxanyl) propoxy)</td><td>2.5-2.5%</td><td>56 mL/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Raxil 2.6F</td><td>Bayer</td><td>Fungicide</td><td>Tebuconazole</td><td>28.30%</td><td>0.74 fl oz/100 lbs of seed</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Raxil Pro MD</td><td>Bayer</td><td>Fungicide</td><td>Prothioconazole, Metalaxyl, Tebuconazole</td><td>1.47%, 0.59%, 0.29%</td><td>7.5 fl oz/100 lbs of seed</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Redox MainstaySI</td><td>Nutenare-Ag inc.</td><td>Fertilizer</td><td>Calcium, calcium silicate</td><td>10%</td><td>5 gal/acre</td><td></td></tr>
+    <tr><td><span class="cstat cs-no">Not compatible ✕</span></td><td>Round Up</td><td>Monsanto</td><td>Herbicide</td><td>Glyphosate</td><td>N/A</td><td>N/A</td><td></td></tr>
+    <tr><td><span class="cstat cs-no">Not compatible ✕</span></td><td>RoundUp PowerMAX 3</td><td>Monsanto</td><td>Herbicide</td><td>Potassium salt of glyphosate</td><td>51%</td><td>4 fl oz/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Saltro</td><td>Syngenta</td><td>Fungicide</td><td>Pydiflumetofen</td><td>41.70%</td><td>1.52 oz/cwt</td><td></td></tr>
+    <tr><td><span class="cstat cs-no">Not compatible ✕</span></td><td>Silencer</td><td>Adama Essentials</td><td>Insecticide</td><td>Lambda Cyhalothrin</td><td>12.70%</td><td>3.84 fl oz/acre in 7 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Sivanto</td><td>Bayer</td><td>Insecticide</td><td>Flupyradifurone</td><td>17%</td><td>14 fl oz/acre in 7 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Source Corn</td><td>Sound Agriculture</td><td>Fertilizer</td><td>Maltol Lactone</td><td>20.50%</td><td>0.7 fl oz/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Status</td><td>BASF</td><td>Herbicide</td><td>3-Pyridinecarboxylic acid, 2- monosodium salt, sodium salt of dicamba</td><td>17.1%, 44%</td><td>10 fl oz/acre in 3 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-no">Not compatible ✕</span></td><td>Steward</td><td>FMC Co</td><td>Insecticide</td><td>indoxacarb</td><td>15.84%</td><td>11.3 fl oz/acre in 7 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Stim-Gro</td><td>BioAgronics</td><td>Seed Treatment</td><td>N/A</td><td>N/A</td><td>1.25 oz in 10 oz water</td><td>1.25 oz Stim-Gro in 1.25 oz water is NOT compatible with Part 1.</td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Stinger</td><td>DOW</td><td>Herbicide</td><td>Clopyralid monoethanolamine salt</td><td>40.90%</td><td>1&amp;1/3 pt/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>SumaGrow</td><td>Bio Soil Enhancers LLC</td><td>Biological</td><td>Humic acid, beneficial Microbes</td><td>12%</td><td>1 gal/acre in 1:20</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>SureFire</td><td>Partner&#x27;s Brand</td><td>Herbicide</td><td>Paraquat Dichloride, Diuron</td><td>29.48%, 10.68%</td><td>5 oz/cwt</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>TapOut</td><td>Helena Chemical Company</td><td>Herbicide</td><td>Clethodim</td><td>13%</td><td>10 fl oz/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Thiram 42-S</td><td>Bayer</td><td>Fungicide</td><td>Thiram</td><td>42.00%</td><td>5 fl oz/100 lbs of seed</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Topguard</td><td>FMC Co</td><td>Fungicide</td><td>Flutriafol</td><td>11.60%</td><td>14 fl oz/acre in 5 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>UltraBlazer</td><td>UPL</td><td>Herbicide</td><td>Acifluorfen sodium salt</td><td>20.10%</td><td>1.5 pt/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Vortex</td><td>Bayer</td><td>Fungicide</td><td>Ipconazole</td><td>40.70%</td><td>0.045 fl oz/100 lbs of seed</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>WakeUp Spring</td><td>Renewable Farming LLC</td><td>Fertilizer</td><td>3.5-0-0 (Sodium, Sulfur, Zinc, Magnesium)</td><td>0.3%, 0.8%, 0.5%, 0.1%</td><td>1:256, in 2 gallons</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Warrant</td><td>Bayer</td><td>Herbicide</td><td>Acetochlor</td><td>33%</td><td>3 qt/acre in 10 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Water-Rite</td><td>Hefty</td><td>Water Treatment</td><td>N/A</td><td>N/A</td><td>8 fl oz/100 gallons water</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Willowwood Clethodim 2EC</td><td>Generic Crop Science</td><td>Herbicide</td><td>Clethodim</td><td>70-80%</td><td>16 fl oz/acre in 5 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>X-99 NIS 80</td><td>Heartland Ag</td><td>Adjuvant</td><td>N/A</td><td>100%</td><td>0.125% (v/v)</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Xywav LFR</td><td>FMC Co</td><td>Fungicide</td><td>flutriafol</td><td>20.90%</td><td>15.2 fl oz/acre</td><td></td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Zidua SC</td><td>BASF</td><td>Herbicide</td><td>Pyroxasulfone</td><td>41.47%</td><td>6.5 fl oz/acre in 3 gpa</td><td></td></tr>
+    <tr><td><span class="cstat cs-no">Not compatible ✕</span></td><td>Zinc Ammoniate</td><td>Hefty</td><td>Fertilizer</td><td>Zinc EDTA sodium Salt</td><td>N/A</td><td>1 qt/5 gallons</td><td></td></tr>
+    <tr><td><span class="cstat cs-no">Not compatible ✕</span></td><td>Zinc Chelate</td><td>Hefty</td><td>Fertilizer</td><td>Zinc Ammonium Complex, ammonium hydroxide</td><td>35-50%, 1- 5%</td><td>1 qt/5 gallons</td><td></td></tr>
+    <tr><td><span class="cstat cs-no">Not compatible ✕</span></td><td>Zinc Citrate</td><td>Hefty</td><td>Fertilizer</td><td>Zinc Ammonium Complex, ammonium hydroxide</td><td>43-58%, 0- 5%</td><td>1 qt/5 gallons</td><td></td></tr>
+    <tr><td><span class="cstat cs-warn">4 hours ⚠</span></td><td>Zinc Sulfate</td><td>Hefty</td><td>Fertilizer</td><td>N/A</td><td>N/A</td><td>1 lb/5 gallons</td><td></td></tr>
+    </tbody></table></div></div>
+    <h3 class="ct-title">B. Part 2 (on-seed) compatibility</h3>
+    <p class="ct-intro">Compatibility for Symm Part 2 when applied as a seed treatment slurry. Use the seed treatment slurry within 2 hours of mixing.</p>
+    <div class="tbl-wrap"><div class="tbl-scroll"><table class="ctable">
+    <thead><tr><th>Compatibility</th><th>Commercial name</th><th>Type</th><th>Active ingredient</th></tr></thead><tbody>
+    <tr><td><span class="cstat cs-no">Not compatible ✕</span></td><td>Thiram 42S</td><td>Fungicide</td><td>Thiram (42%)</td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>IMF Sativa Max</td><td>Fungicide / Insecticide</td><td>Tebuconazole (0.45%), Metalaxyl (0.60%), Fludioxonil (0.36%), Imidacloprid (11.16%)</td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Dynashield</td><td>Fungicide</td><td>Tebuconazole (0.94%)</td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Raxil 2.6F</td><td>Fungicide</td><td>Tebuconazole (28.30%)</td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Dividend Extreme</td><td>Fungicide</td><td>Difenoconazole (7.73%), Mefenoxam (1.93%)</td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Raxil PRO MD</td><td>Fungicide</td><td>Prothioconazole (1.47%), Tebuconazole (0.29%), Metalaxyl (0.59%)</td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Vortex 450FL</td><td>Fungicide</td><td>Trifloxystrobin (40.70%)</td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Aceleron DX-709</td><td>Fungicide</td><td>Ipconazole (22%)</td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Aceleron IDL-810</td><td>Fungicide / Insecticide</td><td>Difenoconazole (1.25%), Mefenoxam (0.40%), Fludioxonil (0.13%), Thiamethoxam (20.70%)</td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Proline 480 SC</td><td>Fungicide</td><td>Prothioconazole (41%)</td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Dynasty</td><td>Fungicide</td><td>Azoxystrobin (9.60%)</td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Vibrance</td><td>Fungicide</td><td>Sedaxane (43.70%)</td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Eagle 20EW</td><td>Fungicide</td><td>Myclobutanil (19.70%)</td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Evergol Energy</td><td>Fungicide</td><td>Prothioconazole (7.18%), Penflufen (3.59%), Metalaxyl (5.74%)</td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Maxim Quattro</td><td>Fungicide</td><td>Thiabendazole (26.50%), Fludioxonil (3.32%), Mefenoxam (2.65%), Azoxystrobin (1.33%)</td></tr>
+    <tr><td><span class="cstat cs-ok">24 hours ✓</span></td><td>Tachigaran 70 WP</td><td>Fungicide</td><td>Hymexazole (70%)</td></tr>
+    </tbody></table></div></div>
+    <p class="ct-intro" style="margin-top:16px">Don't see your chemical? Contact us and we will test the combination on request.</p>
+  </section>
+
+  <footer class="sitefoot">
+    <nav class="sf-links">
+      <a href="symm-faq.html">FAQ</a>
+      <a href="symm-application-instructions.html">Application instructions</a>
+    </nav>
+    <div class="sf-meta">
+      <span class="sf-logo"><span class="d"></span>symm</span>
+      <span class="sf-m">info@symmbiotic.com &middot; (845) 393-9539</span>
+      <span class="sf-m">&copy; 2026 Symm</span>
+    </div>
+  </footer>
+
+</div>
+<script>(function(){try{var o=JSON.parse(localStorage.getItem("symm_order")||"null");var p=document.getElementById("navpill");if(o&&o.acres&&p){p.hidden=false;p.querySelector(".n").textContent=o.acres;}}catch(e){}})();</script>
+</body>
+</html>

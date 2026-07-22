@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply for a Trial · Symm</title>
+<meta name="description" content="Apply to run a Symm field trial on your own farm. A limited number of grower trials are accepted each season, with dedicated advisor support.">
+<meta name="theme-color" content="#081A0E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Apply for a Trial · Symm">
+<meta property="og:description" content="Apply to run a Symm field trial on your own farm.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23081A0E'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%2380CB58'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --lime:#A1D09A; --lime-2:#70C77E; --lime-3:#B9FF94; --lime-ink:#08240A; --cloud:#FFFFFF;
+    --bg:#011F00; --surface:#071802; --ink:#FFFFFF; --ink-2:#FAFFFA; --hair:rgba(255,255,255,.14);
+    --maxw:1000px;
+    --display:"Hanken Grotesk",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--lime);color:var(--lime-ink)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  @media(max-width:600px){.wrap{padding:0 24px}}
+  h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.05;letter-spacing:-.02em}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--lime);outline-offset:2px;border-radius:6px}
+  .kicker{font-family:var(--body);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);margin-bottom:12px}
+  .mono{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+
+  .btn{font-weight:700;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;padding:13px 22px;border-radius:40px;border:1.5px solid transparent;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:transform .15s,background .2s,border-color .2s,color .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn .arw{transition:transform .18s}.btn:hover .arw{transform:translateX(4px)}
+  .btn.primary{background:var(--lime);border-color:var(--lime);color:var(--lime-ink)}
+  .btn.ghost{background:transparent;color:var(--ink);border-color:color-mix(in srgb,var(--ink) 40%,transparent)}
+  .btn.ghost:hover{border-color:var(--ink);background:color-mix(in srgb,var(--ink) 7%,transparent)}
+  .btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+  header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(9px);border-bottom:1px solid var(--hair)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.04em;display:flex;align-items:center;gap:9px}
+  .logo .dot{width:11px;height:11px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px 2px var(--lime)}
+  .nav-links{display:flex;gap:24px;align-items:center}
+  .nav-links a.ml{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+  .nav-links a.ml:hover{color:var(--ink)}
+  @media(max-width:820px){.nav-links a.ml{display:none}}
+  .acrepill{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);border:1.5px solid var(--lime);border-radius:40px;padding:9px 14px;text-decoration:none}
+  .acrepill .dotc{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 7px 1px var(--lime)}
+  .acrepill .n{color:var(--lime);font-weight:700}
+  .acrepill[hidden]{display:none}
+
+  .hero{padding-top:60px;padding-bottom:34px}
+  .hero .tagline{display:inline-block;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);margin-bottom:16px}
+  .hero h1{font-size:clamp(32px,5.4vw,58px)}
+  .hero p{color:var(--ink-2);font-size:18px;max-width:62ch;margin-top:16px}
+  .applylink{color:var(--lime);text-decoration:none;font-weight:600}
+  .applylink:hover{color:var(--lime-2)}
+
+  .band{padding-top:22px;padding-bottom:8px}
+  .band h2,.fit h2{font-size:15px;letter-spacing:.05em}
+  @media(max-width:600px){.band h2,.fit h2{text-align:center}}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:18px}
+  @media(max-width:760px){.steps{grid-template-columns:1fr 1fr}}
+  @media(max-width:460px){.steps{grid-template-columns:1fr}}
+  .step{background:var(--surface);border:1px solid var(--hair);border-radius:14px;padding:20px 18px}
+  .step .no{font-weight:700;font-family:var(--mono);font-size:11px;color:var(--lime);letter-spacing:.08em}
+  .step h3{font-size:17px;margin:10px 0 6px}
+  .step p{color:var(--ink-2);font-size:13.5px}
+
+  .fit{padding-top:40px;padding-bottom:10px}
+  .fit .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
+  @media(max-width:760px){.fit .grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:460px){.fit .grid{grid-template-columns:1fr}}
+  .fc{border:1px solid var(--hair);border-radius:14px;padding:20px 18px;background:color-mix(in srgb,var(--bg) 45%,var(--surface))}
+  .fc h3{font-size:15.5px;margin-bottom:6px}
+  .fc p{color:var(--ink-2);font-size:13px}
+  .fit .grid.solo{grid-template-columns:1fr}
+  .costcard{padding:24px 26px}
+  .costcard p{color:var(--ink-2);font-size:15.5px;line-height:1.62;max-width:80ch}
+  .costcard p b{color:var(--ink);font-weight:700}
+  @media(max-width:560px){.costcard{padding:20px 18px}.costcard p{font-size:14.5px}}
+
+  /* Application */
+  .apply{padding-top:44px;padding-bottom:60px;scroll-margin-top:84px}
+  .apply-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+  .apply-head h2{font-size:clamp(24px,3.2vw,34px)}
+  .apply-head p{color:var(--ink-2);font-size:14px;margin-top:4px}
+  .form-card{background:var(--surface);border:1px solid var(--hair);border-radius:18px;padding:30px 28px}
+  @media(max-width:560px){.form-card{padding:24px 18px}}
+
+  .prog{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+  .prog .bar{flex:1;height:5px;border-radius:4px;background:var(--hair);overflow:hidden}
+  .prog .bar i{display:block;height:100%;background:var(--lime);width:33%;transition:width .35s cubic-bezier(.2,.7,.2,1)}
+  .prog .lbl{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap}
+
+  fieldset{border:0}
+  .fs-title{font-family:var(--display);font-weight:700;font-size:19px;margin-bottom:4px}
+  .fs-sub{color:var(--ink-2);font-size:13.5px;margin-bottom:20px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+  @media(max-width:560px){.row2{grid-template-columns:1fr}}
+  label.field{display:block;margin-bottom:16px}
+  .lab{font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-bottom:7px;display:block}
+  .lab .req{color:var(--lime)}
+  .inp,select.inp,textarea.inp{width:100%;background:var(--bg);border:1.5px solid var(--hair);border-radius:10px;color:var(--ink);font-family:var(--body);font-size:15px;padding:12px 13px;transition:border-color .15s}
+  .inp:focus,select.inp:focus,textarea.inp:focus{border-color:var(--lime);outline:none}
+  .inp::placeholder{color:color-mix(in srgb,var(--ink-2) 75%,transparent)}
+  .inp.bad,select.inp.bad{border-color:#e8734f}
+  .hint{font-size:12px;color:var(--ink-2);margin-top:6px}
+
+  /* custom dropdown (matches the calculator crop menu) */
+  .combo-list{position:absolute;z-index:40;left:0;right:0;top:calc(100% + 6px);max-height:244px;overflow-y:auto;background:var(--surface);border:1px solid var(--hair);border-radius:12px;box-shadow:0 22px 50px -18px rgba(0,0,0,.65);padding:6px;display:none;scrollbar-width:thin}
+  .combo-list.open{display:block}
+  .combo-opt{padding:9px 12px;border-radius:8px;font-size:14px;cursor:pointer}
+  .combo-opt:hover,.combo-opt.active{background:color-mix(in srgb,var(--lime) 16%,transparent)}
+  .combo-opt.sel-cur{color:var(--lime);font-weight:600}
+  .combo-empty{padding:9px 12px;color:var(--ink-2);font-size:13px}
+  .selbox{position:relative}
+  .sel-native{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;padding:0!important;border:0!important;margin:0;clip:rect(0 0 0 0)}
+  .sel-btn{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;text-align:left}
+  .sel-btn .chev{color:var(--ink-2);font-size:11px;flex:none;transition:transform .18s}
+  .selbox.open .sel-btn{border-color:var(--lime)}
+  .selbox.open .sel-btn .chev{transform:rotate(180deg)}
+  .sel-btn.placeholder .sel-val{color:color-mix(in srgb,var(--ink-2) 80%,transparent)}
+  .sel-native.bad ~ .sel-btn{border-color:#e8734f}
+
+  .checks{display:grid;gap:10px}
+  .chk{display:flex;gap:11px;align-items:flex-start;border:1.5px solid var(--hair);border-radius:11px;padding:13px 14px;cursor:pointer;transition:border-color .15s,background .15s}
+  .chk:hover{border-color:var(--ink-2)}
+  .chk input{margin-top:2px;width:17px;height:17px;accent-color:var(--lime);flex:none}
+  .chk .ct{font-size:14px}
+  .chk .ct small{display:block;color:var(--ink-2);font-size:12px;margin-top:2px}
+  .chk.on{border-color:var(--lime);background:color-mix(in srgb,var(--lime) 10%,transparent)}
+  .pillset{display:flex;flex-wrap:wrap;gap:9px}
+  .pillset .chk{border-radius:40px;padding:9px 15px}
+  .pillset .chk .ct{font-size:13.5px}
+
+  .form-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:26px;padding-top:22px;border-top:1px solid var(--hair)}
+  .err-msg{color:#f0a58a;font-size:13px;margin-top:14px;display:none}
+  .err-msg.show{display:block}
+
+  /* Result */
+  .result{display:none}
+  .result.show{display:block}
+  .apply.done .form-flow{display:none}
+  .res-card{background:linear-gradient(160deg,color-mix(in srgb,var(--lime) 16%,var(--surface)),var(--surface));border:1px solid var(--hair);border-radius:20px;padding:40px 34px}
+  @media(max-width:560px){.res-card{padding:30px 20px}}
+  .res-badge{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);border:1px solid color-mix(in srgb,var(--lime) 40%,transparent);border-radius:40px;padding:7px 14px;margin-bottom:20px}
+  .res-check{width:20px;height:20px;border-radius:50%;background:var(--lime);color:var(--lime-ink);display:grid;place-items:center;font-size:12px;font-weight:800}
+  .res-card h2{font-size:clamp(26px,3.6vw,38px);margin-bottom:12px}
+  .res-card .lede{color:var(--ink-2);font-size:16px;max-width:60ch}
+  .refbox{display:inline-flex;flex-direction:column;gap:2px;margin:22px 0;border:1px solid var(--hair);border-radius:12px;padding:12px 18px;background:var(--bg)}
+  .refbox .rl{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+  .refbox .rv{font-weight:700;font-family:var(--mono);font-size:18px;color:var(--lime);letter-spacing:.04em}
+  .next{list-style:none;counter-reset:n;margin:6px 0 8px}
+  .next li{counter-increment:n;position:relative;padding:11px 0 11px 42px;border-top:1px solid var(--hair);color:var(--ink-2);font-size:14.5px}
+  .next li:first-child{border-top:0}
+  .next li::before{content:counter(n);position:absolute;left:0;top:9px;width:26px;height:26px;border-radius:50%;background:color-mix(in srgb,var(--lime) 16%,transparent);color:var(--lime);font-family:var(--display);font-weight:800;font-size:13px;display:grid;place-items:center}
+  .next li b{color:var(--ink);font-weight:600}
+  .res-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+  .res-fine{color:var(--ink-2);font-size:12.5px;margin-top:20px;max-width:70ch;line-height:1.6}
+
+  footer{border-top:1px solid var(--hair);padding:30px 0 46px;margin-top:10px}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .foot .fmeta{font-size:13px;color:var(--ink-2)}
+.sitefoot{border-top:1px solid var(--hair);padding:0}
+  .sitefoot .sf-links{display:flex;flex-wrap:wrap;gap:14px 26px;padding:24px 0}
+  .sitefoot .sf-links a{font-weight:700;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);text-decoration:none}
+  .sitefoot .sf-links a:hover{color:var(--lime-2)}
+  .sitefoot .sf-meta{display:flex;justify-content:space-between;align-items:center;gap:14px 20px;flex-wrap:wrap;padding:24px 0 40px;border-top:1px solid var(--hair)}
+  .sitefoot .sf-logo{font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.04em;display:flex;align-items:center;gap:9px;color:var(--ink)}
+  .sitefoot .sf-logo .d{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px 2px var(--lime)}
+  .sitefoot .sf-m{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--ink-2);text-transform:none}
+  @media(max-width:600px){.sitefoot .sf-meta{flex-direction:column;align-items:flex-start;gap:10px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="index.html"><span class="dot"></span>symm</a>
+    <nav class="nav-links">
+      <a class="ml" href="symm-products.html">Program</a>
+      <a class="ml" href="symm-calculator.html">Analysis</a>
+      <a class="ml here" href="symm-trial.html">Trial</a>
+      <a class="ml" href="symm-about.html">About</a>
+      <a class="ml" href="symm-contact.html">Contact</a>
+      <a class="acrepill" id="navpill" href="symm-checkout.html" hidden><span class="dotc"></span><span class="n">0</span>&nbsp;acres</a>
+      <a class="btn primary" href="symm-products.html#buy">Order <span class="arw">&rarr;</span></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <span class="tagline">First Field &middot; Limited each season</span>
+    <h1>Prove it on your own ground.</h1>
+    <p>Each season we partner with a select group of growers to run First Field trials, with a dedicated advisor from start to harvest. Approved farms follow the Symm protocol to measure yield and nitrogen use, on their own acres, against their own baseline. <a href="#apply" class="applylink">Apply below</a>.</p>
+  </section>
+
+  <section class="band wrap">
+    <h2 class="mono">How it works</h2>
+    <div class="steps">
+      <div class="step"><div class="no">01</div><h3>Apply</h3><p>Tell us about your operation. It takes a few minutes and helps us match you to the right trial.</p></div>
+      <div class="step"><div class="no">02</div><h3>Review</h3><p>Our team reviews every application against the season's trial criteria and confirms your fit.</p></div>
+      <div class="step"><div class="no">03</div><h3>Onboard</h3><p>Approved growers are paired with a dedicated advisor who walks you through everything, including any trial details, and receive the Symm protocol and trial plan.</p></div>
+      <div class="step"><div class="no">04</div><h3>Measure</h3><p>Run a simple side-by-side trial and document yield and nitrogen results across the season.</p></div>
+    </div>
+  </section>
+
+  <section class="fit wrap">
+    <h2 class="mono">What we look for</h2>
+    <div class="grid">
+      <div class="fc"><h3>An active operation</h3><p>You grow specialty or row crops and can commit acreage to a side-by-side trial this season or next.</p></div>
+      <div class="fc"><h3>A decision-maker</h3><p>You own or help run the operation and can authorize a trial on your fields.</p></div>
+      <div class="fc"><h3>A measurement mindset</h3><p>You are willing to follow the protocol and document yield and nitrogen data.</p></div>
+      <div class="fc"><h3>Representative ground</h3><p>Fields that reflect your real growing conditions, so results translate to the rest of your farm.</p></div>
+    </div>
+  </section>
+
+  <section class="fit wrap">
+    <h2 class="mono">What a First Field trial includes</h2>
+    <div class="grid">
+      <div class="fc"><h3>Part 1 and Part 2</h3><p>Your trial supply of both Symm inputs, resilience and nutrition, for the treated acres.</p></div>
+      <div class="fc"><h3>A dedicated advisor</h3><p>Guides your trial from planning through harvest, with the protocol and a plan built around your fields.</p></div>
+      <div class="fc"><h3>A profitability report</h3><p>After harvest, your results on your own acres, in dollars.</p></div>
+      <div class="fc"><h3>County exclusivity</h3><p>A limited number of First Field trials are accepted per county each season.</p></div>
+    </div>
+  </section>
+
+  <section class="fit wrap">
+    <h2 class="mono">What it costs</h2>
+    <div class="grid solo">
+      <div class="fc costcard">
+        <p>Standard 10-acre trials cost <b>$500</b>. That&rsquo;s roughly <b>$1,000 below full price</b>. Each season we also fully sponsor a small number of trials, free to the farms we select.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="apply wrap" id="apply">
+    <div class="form-flow">
+      <div class="apply-head">
+        <div><h2>Apply for a trial</h2><p>A limited number of grower trials are accepted each season.</p></div>
+      </div>
+
+      <div class="form-card">
+        <div class="prog">
+          <span class="lbl" id="progLbl">Step 1 of 3</span>
+          <div class="bar"><i id="progBar"></i></div>
+        </div>
+
+        <form id="app" novalidate>
+          <!-- STEP 1 -->
+          <fieldset data-step="1">
+            <div class="fs-title">About you</div>
+            <div class="fs-sub">So we know who we are working with and how to reach you.</div>
+            <div class="row2">
+              <label class="field"><span class="lab">First name <span class="req">*</span></span><input class="inp" name="first" required autocomplete="given-name"></label>
+              <label class="field"><span class="lab">Last name <span class="req">*</span></span><input class="inp" name="last" required autocomplete="family-name"></label>
+            </div>
+            <div class="row2">
+              <label class="field"><span class="lab">Email <span class="req">*</span></span><input class="inp" name="email" type="email" required autocomplete="email" placeholder="you@farm.com"></label>
+              <label class="field"><span class="lab">Phone <span class="req">*</span></span><input class="inp" name="phone" type="tel" required autocomplete="tel" placeholder="(555) 555-5555"></label>
+            </div>
+            <div class="row2">
+              <label class="field"><span class="lab">Operation name <span class="req">*</span></span><input class="inp" name="farm" required placeholder="Your farm"></label>
+              <label class="field"><span class="lab">Your role <span class="req">*</span></span>
+                <select class="inp" name="role" required>
+                  <option value="">Select&hellip;</option>
+                  <option>Owner / operator</option>
+                  <option>Farm manager</option>
+                  <option>Agronomist / advisor</option>
+                  <option>Other</option>
+                </select></label>
+            </div>
+          </fieldset>
+
+          <!-- STEP 2 -->
+          <fieldset data-step="2" hidden>
+            <div class="fs-title">Your operation</div>
+            <div class="fs-sub">A picture of what you grow and where.</div>
+            <div class="row2">
+              <label class="field"><span class="lab">State <span class="req">*</span></span><select class="inp" name="state" required id="stateSel"></select></label>
+              <label class="field"><span class="lab">Operation type <span class="req">*</span></span>
+                <select class="inp" name="optype" required>
+                  <option value="">Select&hellip;</option>
+                  <option>Conventional</option>
+                  <option>Organic</option>
+                  <option>Transitioning to organic</option>
+                  <option>Mixed</option>
+                </select></label>
+            </div>
+            <label class="field"><span class="lab">Primary crops <span class="req">*</span></span>
+              <input class="inp" name="crops" list="cropList" required placeholder="e.g. Tomatoes, Lettuce, Wine grapes">
+              <span class="hint">Separate multiple crops with commas.</span></label>
+            <div class="row2">
+              <label class="field"><span class="lab">Total acreage <span class="req">*</span></span><input class="inp" name="acreage" type="number" min="0" step="any" inputmode="numeric" required placeholder="250"></label>
+              <label class="field"><span class="lab">Acres you could dedicate to a trial <span class="req">*</span></span><input class="inp" name="trialAcres" type="number" min="0" step="any" inputmode="numeric" required placeholder="20"></label>
+            </div>
+            <label class="field"><span class="lab">Irrigation</span>
+              <select class="inp" name="irrigation">
+                <option value="">Select (optional)&hellip;</option>
+                <option>Drip</option><option>Sprinkler / pivot</option><option>Flood / furrow</option><option>Dryland</option><option>Other</option>
+              </select></label>
+          </fieldset>
+
+          <!-- STEP 3 -->
+          <fieldset data-step="3" hidden>
+            <div class="fs-title">Your goals</div>
+            <div class="fs-sub">What you want from a trial, and confirming a few essentials.</div>
+            <label class="field"><span class="lab">What are you hoping to improve? <span class="req">*</span></span>
+              <div class="pillset" data-group="goals">
+                <label class="chk"><input type="checkbox" name="goals" value="Increase yield"><span class="ct">Increase yield</span></label>
+                <label class="chk"><input type="checkbox" name="goals" value="Reduce input use"><span class="ct">Reduce input use</span></label>
+                <label class="chk"><input type="checkbox" name="goals" value="Stress tolerance"><span class="ct">Stress tolerance</span></label>
+                <label class="chk"><input type="checkbox" name="goals" value="Soil health"><span class="ct">Soil health</span></label>
+              </div>
+            </label>
+            <div class="row2">
+              <label class="field"><span class="lab">Timeframe <span class="req">*</span></span>
+                <select class="inp" name="timeframe" required>
+                  <option value="">Select&hellip;</option>
+                  <option>This season</option><option>Next season</option><option>Just exploring</option>
+                </select></label>
+              <label class="field"><span class="lab">How did you hear about us?</span>
+                <select class="inp" name="source">
+                  <option value="">Select (optional)&hellip;</option>
+                  <option>A Symm advisor or rep</option><option>Referral from another grower</option><option>Search</option><option>Social media</option><option>An event or trade show</option><option>Other</option>
+                </select></label>
+            </div>
+
+            <label class="field"><span class="lab">Anything you'd like us to know about your farm?</span>
+              <textarea class="inp" name="about" rows="4" placeholder="Optional. A few words about your farm and why you&rsquo;d be a good fit for a trial."></textarea>
+              <span class="hint">Completely optional, and there&rsquo;s no wrong answer. Anything that helps us get to know you, for example your goals for the season, your situation, or how you&rsquo;d share what you learn.</span></label>
+
+            <div class="checks" style="margin-top:6px">
+              <label class="chk"><input type="checkbox" name="protocol" required><span class="ct">I am willing to follow the Symm trial protocol and document my yield and nitrogen data.<small>This is how we measure your results accurately.</small></span></label>
+              <label class="chk"><input type="checkbox" name="authorize" required><span class="ct">I can authorize a trial on this operation.</span></label>
+              <label class="chk"><input type="checkbox" name="consent" required><span class="ct">Symm may contact me about this application.</span></label>
+            </div>
+          </fieldset>
+
+          <div class="err-msg" id="errMsg">Please complete the highlighted fields to continue.</div>
+
+          <div class="form-nav">
+            <button type="button" class="btn ghost" id="backBtn" style="visibility:hidden">&larr; Back</button>
+            <button type="button" class="btn primary" id="nextBtn">Continue <span class="arw">&rarr;</span></button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div class="result" id="result">
+      <div class="res-card">
+        <span class="res-badge" id="resBadge"><span class="res-check">&#10003;</span> <span id="resBadgeTxt">Provisionally approved</span></span>
+        <h2 id="resTitle"></h2>
+        <p class="lede" id="resLede"></p>
+        <div class="refbox"><span class="rl">Application reference</span><span class="rv" id="resRef">SYMM-000000</span></div>
+        <ol class="next" id="resNext"></ol>
+        <div class="res-actions">
+          <a class="btn primary" href="symm-products.html">Explore the products <span class="arw">&rarr;</span></a>
+          <a class="btn ghost" href="symm-calculator.html">Estimate your farm's benefits <span class="arw">&rarr;</span></a>
+        </div>
+        <p class="res-fine" id="resFine"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="sitefoot">
+  <div class="wrap">
+    <nav class="sf-links">
+      <a href="symm-faq.html">FAQ</a>
+      <a href="symm-application-instructions.html">Application instructions</a>
+    </nav>
+    <div class="sf-meta">
+      <span class="sf-logo"><span class="d"></span>symm</span>
+      <span class="sf-m">info@symmbiotic.com &middot; (845) 393-9539</span>
+      <span class="sf-m">&copy; 2026 Symm</span>
+    </div>
+  </div>
+</footer>
+
+<datalist id="cropList"></datalist>
+
+<script>
+(function(){
+  const CROPS=["Almonds","Apples","Apricots","Avocado","Cherries","Citrus","Lemons","Peaches","Pistachios","Plums","Bananas","Blueberries","Raspberries","Strawberries","Artichokes","Asparagus","Broccoli","Carrots","Cauliflower","Celery","Eggplant","Garlic","Onions","Peppers","Potatoes","Sweet corn","Sweet potatoes","Tomatoes","Cabbage","Kale","Lettuce","Spinach","Cantaloupe","Cucumbers","Wine grapes","Pumpkins","Squash","Watermelon","Barley","Canola","Field corn","Cotton","Dry beans","Hemp","Peanuts","Rice","Sorghum","Soybeans","Sugar beets","Wheat"];
+  document.getElementById('cropList').innerHTML=CROPS.map(c=>'<option value="'+c+'">').join('');
+  const STATES=["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming","Other / outside the US"];
+  document.getElementById('stateSel').innerHTML='<option value="">Select&hellip;</option>'+STATES.map(s=>'<option>'+s+'</option>').join('');
+
+  const form=document.getElementById('app');
+  const steps=[...form.querySelectorAll('fieldset')];
+  const TOTAL=steps.length;
+  let step=1;
+  const backBtn=document.getElementById('backBtn'), nextBtn=document.getElementById('nextBtn');
+  const errMsg=document.getElementById('errMsg');
+  const progBar=document.getElementById('progBar'), progLbl=document.getElementById('progLbl');
+
+  // toggle .on styling for checkable pills/checks
+  form.querySelectorAll('.chk input').forEach(cb=>{
+    const sync=()=>cb.closest('.chk').classList.toggle('on',cb.checked);
+    cb.addEventListener('change',sync);sync();
+  });
+  // clear error styling on edit
+  form.querySelectorAll('.inp').forEach(el=>el.addEventListener('input',()=>el.classList.remove('bad')));
+
+  function show(n,noScroll){
+    steps.forEach(fs=>fs.hidden = (+fs.dataset.step!==n));
+    progBar.style.width=Math.round(n/TOTAL*100)+'%';
+    progLbl.textContent='Step '+n+' of '+TOTAL;
+    backBtn.style.visibility = n>1?'visible':'hidden';
+    nextBtn.innerHTML = n<TOTAL ? 'Continue <span class="arw">&rarr;</span>' : 'Submit application <span class="arw">&rarr;</span>';
+    errMsg.classList.remove('show');
+    if(!noScroll) document.getElementById('apply').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  function validate(n){
+    const fs=steps.find(f=>+f.dataset.step===n);
+    let ok=true, firstBad=null;
+    fs.querySelectorAll('input,select,textarea').forEach(el=>{
+      if(el.type==='checkbox') return;
+      if(el.hasAttribute('required')){
+        const good = el.value.trim()!=='' && !(el.type==='email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value));
+        el.classList.toggle('bad',!good);
+        if(!good){ok=false; if(!firstBad)firstBad=el;}
+      }
+    });
+    // goals group (step 3): at least one
+    const goalGroup=fs.querySelector('[data-group="goals"]');
+    if(goalGroup){
+      const any=[...goalGroup.querySelectorAll('input')].some(c=>c.checked);
+      goalGroup.style.outline = any?'':'1.5px solid #e8734f';
+      goalGroup.style.borderRadius='11px'; goalGroup.style.padding=any?'':'6px';
+      if(!any){ok=false; if(!firstBad)firstBad=goalGroup;}
+    }
+    // required checkboxes (step 3)
+    fs.querySelectorAll('input[type=checkbox][required]').forEach(cb=>{
+      const box=cb.closest('.chk');
+      box.style.borderColor = cb.checked?'':'#e8734f';
+      if(!cb.checked){ok=false; if(!firstBad)firstBad=cb;}
+    });
+    if(!ok){errMsg.classList.add('show'); if(firstBad&&firstBad.focus)firstBad.focus();}
+    else errMsg.classList.remove('show');
+    return ok;
+  }
+
+  backBtn.onclick=()=>{ if(step>1){step--;show(step);} };
+  nextBtn.onclick=()=>{
+    if(!validate(step)) return;
+    if(step<TOTAL){ step++; show(step); }
+    else submit();
+  };
+
+  function data(){
+    const d={}; new FormData(form).forEach((v,k)=>{ if(k==='goals'){(d.goals=d.goals||[]).push(v);} else d[k]=v; });
+    return d;
+  }
+
+  function review(d){
+    // Automated eligibility review (client-side prerequisites).
+    const acreage=parseFloat(d.acreage)||0, trial=parseFloat(d.trialAcres)||0;
+    const decisionMaker = d.role && d.role!=='Other';
+    const readyNow = d.timeframe==='This season' || d.timeframe==='Next season';
+    const hasCrops = (d.crops||'').trim().length>0;
+    const approved = decisionMaker && acreage>=20 && trial>=1 && hasCrops && readyNow
+      && d.protocol==='on' && d.authorize==='on' && d.consent==='on';
+    return approved;
+  }
+
+  function ref(){
+    const t=Date.now().toString(36).toUpperCase().slice(-6);
+    return 'SYMM-'+t;
+  }
+
+  function submit(){
+    const d=data();
+    const approved=review(d);
+    const r=ref();
+    // Placeholder for data collection: a real deployment posts this to a backend / CRM.
+    try{ localStorage.setItem('symm-trial-'+r, JSON.stringify(Object.assign({ref:r,approved:approved,submitted:new Date().toISOString()},d))); }catch(e){}
+
+    const season = d.timeframe==='Next season' ? 'next season' : 'this season';
+    document.getElementById('resRef').textContent=r;
+    const badge=document.getElementById('resBadge'), badgeTxt=document.getElementById('resBadgeTxt');
+    const title=document.getElementById('resTitle'), lede=document.getElementById('resLede'), next=document.getElementById('resNext'), fine=document.getElementById('resFine');
+
+    if(approved){
+      badge.style.borderColor='';
+      badgeTxt.textContent='Provisionally approved';
+      title.textContent='You are in, '+d.first+'.';
+      lede.innerHTML=d.farm+' is provisionally approved for a First Field trial '+season+'. Here is what happens next.';
+      next.innerHTML=
+        '<li>A dedicated <b>Symm advisor</b> will reach out within two business days to confirm your details.</li>'+
+        '<li>Together you will <b>map your trial fields</b> and choose the crops to run.</li>'+
+        '<li>You will receive your <b>trial kit and the Symm protocol</b>.</li>'+
+        '<li>Run a <b>side-by-side trial</b> and document yield and nitrogen results through harvest.</li>';
+      fine.textContent='This is a provisional approval based on the information you provided. Your advisor will confirm the trial plan and details with you directly, including the program cost or, for the few farms we sponsor each season, full sponsorship.';
+    } else {
+      badge.querySelector('.res-check').innerHTML='&bull;';
+      badge.style.borderColor='var(--hair)'; badge.style.color='var(--ink-2)';
+      badge.querySelector('.res-check').style.background='var(--ink-2)';
+      badgeTxt.textContent='Application received';
+      title.textContent='Thank you, '+d.first+'.';
+      lede.innerHTML='We have received your application for '+d.farm+'. Our team reviews every application, and a Symm advisor will follow up with you soon about next steps.';
+      next.innerHTML=
+        '<li>Our team <b>reviews your application</b> against the season’s trial criteria.</li>'+
+        '<li>A <b>Symm advisor</b> follows up to learn more about your operation.</li>'+
+        '<li>If it is a fit, you are <b>matched to an upcoming trial</b>.</li>';
+      fine.textContent='Every application is reviewed by our team. We will be in touch about the best next step for your operation.';
+    }
+    document.querySelector('.apply').classList.add('done');
+    document.getElementById('result').classList.add('show');
+    document.getElementById('apply').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  show(1,true);
+})();
+</script>
+<script>
+/* ===== reusable custom dropdown (matches the calculator crop menu), applied to all native selects ===== */
+(function(){
+  function closeOpen(except){
+    document.querySelectorAll('.selbox.open').forEach(function(b){
+      if(b===except)return;
+      b.classList.remove('open');
+      var l=b.querySelector('.combo-list'); if(l)l.classList.remove('open');
+      var bt=b.querySelector('.sel-btn'); if(bt)bt.setAttribute('aria-expanded','false');
+    });
+  }
+  document.addEventListener('mousedown',function(e){ if(!e.target.closest('.selbox')) closeOpen(null); });
+
+  function enhance(sel){
+    if(sel.dataset.enh) return; sel.dataset.enh='1';
+    sel.tabIndex=-1; sel.classList.add('sel-native');
+    var box=document.createElement('div'); box.className='selbox';
+    sel.parentNode.insertBefore(box,sel); box.appendChild(sel);
+    var btn=document.createElement('button'); btn.type='button'; btn.className='inp sel-btn';
+    btn.setAttribute('aria-haspopup','listbox'); btn.setAttribute('aria-expanded','false');
+    btn.innerHTML='<span class="sel-val"></span><span class="chev" aria-hidden="true">&#9662;</span>';
+    var list=document.createElement('div'); list.className='combo-list'; list.setAttribute('role','listbox');
+    box.appendChild(btn); box.appendChild(list);
+    var valEl=btn.querySelector('.sel-val');
+    var opts=[].slice.call(sel.options).filter(function(o){return o.value!=='';});
+    list.innerHTML=opts.map(function(o){return '<div class="combo-opt" role="option" data-val="'+String(o.value).replace(/"/g,'&quot;')+'">'+o.text+'</div>';}).join('');
+    var active=null;
+    function setActive(el){ if(active)active.classList.remove('active'); active=el; if(active){active.classList.add('active'); active.scrollIntoView({block:'nearest'});} }
+    function sync(){
+      var o=sel.options[sel.selectedIndex]; var has=o&&o.value!=='';
+      valEl.textContent=has?o.text:(sel.options[0]?sel.options[0].text:'Select');
+      btn.classList.toggle('placeholder',!has);
+      [].forEach.call(list.children,function(c){c.classList.toggle('sel-cur',c.dataset.val===sel.value);});
+    }
+    function open(){ closeOpen(box); list.classList.add('open'); box.classList.add('open'); btn.setAttribute('aria-expanded','true'); setActive(list.querySelector('.sel-cur')||list.firstElementChild); }
+    function close(){ list.classList.remove('open'); box.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+    function choose(o){ if(!o)return; sel.value=o.dataset.val; sel.dispatchEvent(new Event('input',{bubbles:true})); sel.dispatchEvent(new Event('change',{bubbles:true})); sync(); close(); btn.focus(); }
+    btn.addEventListener('click',function(e){ e.preventDefault(); box.classList.contains('open')?close():open(); });
+    box.addEventListener('keydown',function(e){
+      var isOpen=box.classList.contains('open');
+      if(e.key==='ArrowDown'){e.preventDefault(); if(!isOpen)open(); else setActive((active&&active.nextElementSibling)||list.firstElementChild);}
+      else if(e.key==='ArrowUp'){e.preventDefault(); if(isOpen)setActive((active&&active.previousElementSibling)||list.lastElementChild);}
+      else if(e.key==='Enter'||e.key===' '){ if(!isOpen){e.preventDefault();open();} else if(active){e.preventDefault();choose(active);} }
+      else if(e.key==='Escape'){ if(isOpen){e.preventDefault();close();} }
+    });
+    list.addEventListener('mousemove',function(e){var o=e.target.closest('.combo-opt'); if(o)setActive(o);});
+    list.addEventListener('click',function(e){e.preventDefault(); var o=e.target.closest('.combo-opt'); if(o)choose(o);});
+    sel.addEventListener('change',sync);
+    sync();
+  }
+  window.symmEnhanceSelect=enhance;
+  [].forEach.call(document.querySelectorAll('select'),enhance);
+})();
+</script>
+<script>
+/* Nav acre pill reflects an order in progress. */
+(function(){try{var o=JSON.parse(localStorage.getItem('symm_order')||'null');var p=document.getElementById('navpill');if(o&&o.acres&&p){p.hidden=false;p.querySelector('.n').textContent=o.acres;}}catch(e){}})();
+</script>
+</body>
+</html>

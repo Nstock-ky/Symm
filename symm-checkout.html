@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout · Symm</title>
+<meta name="theme-color" content="#011F00">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23011F00'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23A1D09A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --lime:#A1D09A; --lime-2:#70C77E; --lime-3:#B9FF94; --lime-ink:#08240A;
+    --bg:#011F00; --surface:#071802; --ink:#FFFFFF; --ink-2:#FAFFFA; --hair:rgba(255,255,255,.14);
+    --display:"Hanken Grotesk",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 40px}
+  @media(max-width:600px){.wrap{padding:0 24px}}
+  .arw{transition:transform .18s}
+  .btn{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;padding:14px 22px;border-radius:40px;border:1.5px solid transparent;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:.18s}
+  .btn:hover .arw{transform:translateX(4px)}
+  .btn.primary{background:var(--lime);border-color:var(--lime);color:var(--lime-ink)}
+  .btn.primary:hover{background:var(--lime-2);border-color:var(--lime-2)}
+  .btn.ghost{color:var(--ink);border-color:color-mix(in srgb,var(--ink) 40%,transparent)}
+  .btn.ghost:hover{background:color-mix(in srgb,var(--ink) 7%,transparent)}
+
+  header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+  .nav{display:flex;justify-content:space-between;align-items:center;height:64px}
+  .logo{font-family:var(--display);font-weight:800;font-size:21px;letter-spacing:-.045em;display:flex;align-items:center;gap:9px}
+  .logo .dot{width:10px;height:10px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px 2px var(--lime)}
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .nav-right a.lnk{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-2)}
+  .nav-right a.lnk:hover{color:var(--ink)}
+  @media(max-width:600px){.nav-right a.lnk{display:none}}
+  .acrepill{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);border:1.5px solid var(--lime);border-radius:40px;padding:9px 14px}
+  .acrepill .dotc{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 7px 1px var(--lime)}
+  .acrepill .n{color:var(--lime);font-weight:700}
+  .acrepill[hidden]{display:none}
+
+  .head{padding:44px 0 8px}
+  .head .kicker{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);margin-bottom:12px}
+  .head h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,5vw,48px);letter-spacing:-.03em;line-height:1}
+  .head p{color:var(--ink-2);font-size:16px;margin-top:12px;max-width:56ch}
+  @media(max-width:600px){.head{text-align:center}.head p{margin-left:auto;margin-right:auto}}
+
+  .layout{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:start;padding:26px 0 70px}
+  @media(max-width:860px){.layout{grid-template-columns:1fr;gap:22px}}
+
+  .card{background:var(--surface);border:1px solid var(--hair);border-radius:18px;padding:26px 24px}
+  .card h2{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.01em;margin-bottom:4px}
+  .card .cdesc{color:var(--ink-2);font-size:13.5px;margin-bottom:18px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);margin-bottom:7px}
+  .field input,.field select,.field textarea{width:100%;background:var(--bg);border:1px solid var(--hair);border-radius:10px;color:var(--ink);font-family:var(--body);font-size:15px;padding:12px 14px}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--lime)}
+  .field textarea{min-height:84px;resize:vertical}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:480px){.row2{grid-template-columns:1fr}}
+  .sec-label{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);margin:22px 0 12px;padding-top:18px;border-top:1px solid var(--hair)}
+  .sec-label:first-of-type{border-top:0;padding-top:0;margin-top:0}
+
+  /* order summary */
+  .summary{position:sticky;top:84px}
+  @media(max-width:860px){.summary{position:static}}
+  .sum-line{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid var(--hair)}
+  .sum-line .nm{font-family:var(--display);font-weight:700;font-size:16px}
+  .sum-line .mt{font-size:12.5px;color:var(--ink-2);margin-top:3px;line-height:1.45}
+  .sum-line .vv{font-family:var(--display);font-weight:700;font-size:15px;white-space:nowrap}
+  .parts{display:flex;gap:8px;margin-top:10px}
+  .parts .pp{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--lime);border:1px solid var(--hair);border-radius:30px;padding:5px 10px}
+  .promo{display:flex;gap:8px;margin:16px 0 6px}
+  .promo input{flex:1;background:var(--bg);border:1px solid var(--hair);border-radius:10px;color:var(--ink);font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:11px 12px}
+  .promo input:focus{outline:none;border-color:var(--lime)}
+  .promo button{flex:none;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;background:transparent;border:1.5px solid var(--hair);border-radius:10px;color:var(--ink);padding:0 14px;cursor:pointer}
+  .promo button:hover{border-color:var(--lime);color:var(--lime)}
+  .promo-msg{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;min-height:14px}
+  .promo-msg.ok{color:var(--lime)}
+  .promo-msg.bad{color:#E9B7A6}
+  .totals{margin-top:8px}
+  .totals .r{display:flex;justify-content:space-between;font-size:14px;color:var(--ink-2);padding:6px 0}
+  .totals .r.disc{color:var(--lime)}
+  .totals .r.grand{border-top:1px solid var(--hair);margin-top:6px;padding-top:12px;align-items:baseline}
+  .totals .r.grand .k{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+  .totals .r.grand .v{font-family:var(--display);font-weight:800;font-size:24px;color:var(--ink)}
+  .placeBtn{width:100%;justify-content:center;margin-top:16px}
+  .safenote{font-size:11.5px;color:var(--ink-2);line-height:1.5;margin-top:14px;padding:12px 14px;border:1px solid var(--hair);border-radius:10px;background:color-mix(in srgb,var(--bg) 40%,var(--surface))}
+  .safenote b{color:var(--ink);font-weight:600}
+  .illus{display:inline-block;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#E9B7A6;border:1px solid color-mix(in srgb,#E9B7A6 40%,var(--hair));border-radius:8px;padding:5px 9px;margin-top:12px}
+  .attribution{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-2);margin-top:12px}
+  .attribution b{color:var(--lime)}
+
+  /* empty + confirmation */
+  .empty,.confirm{display:none}
+  .empty.show,.confirm.show{display:block}
+  .empty{text-align:center;padding:60px 0 90px}
+  .empty h1{font-family:var(--display);font-weight:800;font-size:32px;letter-spacing:-.03em;margin-bottom:12px}
+  .empty p{color:var(--ink-2);margin-bottom:24px}
+  .confirm{padding:50px 0 90px;max-width:640px}
+  .confirm .tick{width:56px;height:56px;border-radius:50%;background:var(--lime);color:var(--lime-ink);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;margin-bottom:22px}
+  .confirm h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,4.4vw,42px);letter-spacing:-.03em;line-height:1.05}
+  .confirm p{color:var(--ink-2);font-size:16px;margin-top:14px;max-width:56ch}
+  .confirm .refbox{display:flex;gap:26px;flex-wrap:wrap;margin:26px 0;padding:20px 22px;border:1px solid var(--hair);border-radius:14px;background:var(--surface)}
+  .confirm .refbox .b .l{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+  .confirm .refbox .b .v{font-family:var(--display);font-weight:800;font-size:20px;margin-top:4px}
+  .confirm ol{color:var(--ink-2);font-size:15px;margin:8px 0 24px;padding-left:20px}
+  .confirm ol li{margin-bottom:8px}
+
+  footer{border-top:1px solid var(--hair)}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:26px 0}
+  .foot .fmeta{font-size:13px;color:var(--ink-2)}
+  @media(max-width:600px){.foot{flex-direction:column;justify-content:center;text-align:center;gap:9px}}
+.sitefoot{border-top:1px solid var(--hair);padding:0}
+  .sitefoot .sf-links{display:flex;flex-wrap:wrap;gap:14px 26px;padding:24px 0}
+  .sitefoot .sf-links a{font-weight:700;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);text-decoration:none}
+  .sitefoot .sf-links a:hover{color:var(--lime-2)}
+  .sitefoot .sf-meta{display:flex;justify-content:space-between;align-items:center;gap:14px 20px;flex-wrap:wrap;padding:24px 0 40px;border-top:1px solid var(--hair)}
+  .sitefoot .sf-logo{font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.04em;display:flex;align-items:center;gap:9px;color:var(--ink)}
+  .sitefoot .sf-logo .d{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px 2px var(--lime)}
+  .sitefoot .sf-m{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--ink-2);text-transform:none}
+  @media(max-width:600px){.sitefoot .sf-meta{flex-direction:column;align-items:flex-start;gap:10px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="index.html"><span class="dot"></span>symm</a>
+    <div class="nav-right">
+      <a class="lnk" href="symm-products.html">&larr; Back to program</a>
+      <span class="acrepill" id="navpill" hidden><span class="dotc"></span><span class="n">0</span>&nbsp;acres</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- EMPTY STATE -->
+  <section class="empty" id="empty">
+    <h1>Your order is empty.</h1>
+    <p>Set your acreage on the program page to start an order.</p>
+    <a class="btn primary" href="symm-products.html#buy">Go to the program <span class="arw">&rarr;</span></a>
+  </section>
+
+  <!-- CHECKOUT -->
+  <div id="checkout">
+    <section class="head">
+      <p class="kicker">Checkout</p>
+      <h1>Complete your order.</h1>
+      <p>One program, both inputs, shipped together. Confirm your details and place the order. No payment is taken here.</p>
+    </section>
+
+    <form class="layout" id="orderForm" novalidate>
+      <div>
+        <div class="card">
+          <div class="sec-label">Your details</div>
+          <div class="row2">
+            <div class="field"><label>First name</label><input name="first" required></div>
+            <div class="field"><label>Last name</label><input name="last" required></div>
+          </div>
+          <div class="field"><label>Operation / farm name</label><input name="farm"></div>
+          <div class="row2">
+            <div class="field"><label>Email</label><input type="email" name="email" required></div>
+            <div class="field"><label>Phone</label><input type="tel" name="phone" required></div>
+          </div>
+
+          <div class="sec-label">Shipping</div>
+          <div class="field"><label>Street address</label><input name="street" required></div>
+          <div class="row2">
+            <div class="field"><label>City</label><input name="city" required></div>
+            <div class="field"><label>State</label>
+              <select name="state" required>
+                <option value="">Select</option>
+                <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option>
+              </select>
+            </div>
+          </div>
+          <div class="row2">
+            <div class="field"><label>ZIP</label><input name="zip" required></div>
+            <div class="field"><label>Primary crop (optional)</label><input name="crop"></div>
+          </div>
+          <div class="field"><label>Notes for your advisor (optional)</label><textarea name="notes" placeholder="Application timing, questions, delivery preferences"></textarea></div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card summary">
+          <h2>Your order</h2>
+          <div class="cdesc">Priced by the acre. Both inputs included.</div>
+          <div class="sum-line">
+            <div>
+              <div class="nm">The Symm program</div>
+              <div class="mt"><span id="sumAcres">0</span> acres &middot; <span id="sumRate">$0</span>/acre</div>
+              <div class="parts"><span class="pp">Part 1</span><span class="pp">+ Part 2</span></div>
+            </div>
+            <div class="vv" id="sumSub">$0</div>
+          </div>
+
+          <div class="promo">
+            <input id="promo" placeholder="Promo / advisor code" spellcheck="false" autocomplete="off">
+            <button type="button" id="applyPromo">Apply</button>
+          </div>
+          <div class="promo-msg" id="promoMsg"></div>
+
+          <div class="totals">
+            <div class="r"><span>Subtotal</span><span id="tSub">$0</span></div>
+            <div class="r disc" id="volRow" hidden><span id="volLabel">Volume discount</span><span id="tVol">-$0</span></div>
+            <div class="r disc" id="discRow" hidden><span id="discLabel">Code</span><span id="tDisc">-$0</span></div>
+            <div class="r grand"><span class="k">Estimated total</span><span class="v" id="tGrand">$0</span></div>
+          </div>
+
+          <button class="btn primary placeBtn" type="submit">Place order <span class="arw">&rarr;</span></button>
+          <div class="safenote"><b>No card is entered here.</b> Placing the order reserves your program and sends a secure payment link. An advisor confirms shipping timing for your acreage.</div>
+          <div class="attribution" id="attr" hidden></div>
+        </div>
+      </aside>
+    </form>
+  </div>
+
+  <!-- CONFIRMATION -->
+  <section class="confirm" id="confirm">
+    <div class="tick">&#10003;</div>
+    <h1>Order received.</h1>
+    <p>Thank you. Your Symm program is reserved. A secure payment link and shipping confirmation are on their way to your email.</p>
+    <div class="refbox">
+      <div class="b"><div class="l">Reference</div><div class="v" id="cRef">&ndash;</div></div>
+      <div class="b"><div class="l">Coverage</div><div class="v" id="cAcres">&ndash;</div></div>
+      <div class="b"><div class="l">Total</div><div class="v" id="cTotal">&ndash;</div></div>
+    </div>
+    <p style="margin-top:0">What happens next:</p>
+    <ol>
+      <li>A secure payment link arrives by email to complete your purchase.</li>
+      <li>Your advisor confirms application timing for your crops and acreage.</li>
+      <li>Part 1 and Part 2 ship together as one program.</li>
+    </ol>
+    <p style="margin:0 0 20px"><a href="symm-application-instructions.html" style="color:var(--lime);font-weight:600">Read the application instructions &rarr;</a></p>
+    <a class="btn ghost" href="index.html">Back to home <span class="arw">&rarr;</span></a>
+  </section>
+
+</main>
+
+<footer class="sitefoot">
+  <div class="wrap">
+    <nav class="sf-links">
+      <a href="symm-faq.html">FAQ</a>
+      <a href="symm-application-instructions.html">Application instructions</a>
+    </nav>
+    <div class="sf-meta">
+      <span class="sf-logo"><span class="d"></span>symm</span>
+      <span class="sf-m">info@symmbiotic.com &middot; (845) 393-9539</span>
+      <span class="sf-m">&copy; 2026 Symm</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var fmt=function(n){return '$'+Math.round(n).toLocaleString('en-US');};
+  /* Pricing: base rate is real ($150/acre before discounts, carried in order.rate).
+     VOL = automatic volume discount by acreage, applied to every order (10/15/18/20 by tier).
+     CAP = 20% hard ceiling; advisor/partner codes can lift the total up to 20%, never beyond.
+     Tiers auto-apply in the cart; the schedule is internal and not published.
+     100+ac: 10%. 500+: 15%. 1000+: 18%. 5000+: 20%. None under 100. */
+  var CODES={ADVISOR:{pct:99,kind:'Advisor'},PARTNER:{pct:5,kind:'Partner'},HARVEST:{pct:5,kind:'Promo'}};
+  var VOL=[{min:5000,pct:20},{min:1000,pct:18},{min:500,pct:15},{min:100,pct:10}];
+  var CAP=[{min:100,pct:20}]; /* 20% hard ceiling from 100 acres up */
+  function ladder(L,a){for(var i=0;i<L.length;i++){if(a>=L[i].min)return L[i].pct;}return 0;}
+
+  var order=null;
+  try{order=JSON.parse(localStorage.getItem('symm_order')||'null');}catch(e){}
+  var ref='',code='';
+  try{ref=localStorage.getItem('symm_ref')||'';code=localStorage.getItem('symm_code')||'';}catch(e){}
+
+  if(!order||!order.acres){document.getElementById('empty').classList.add('show');document.getElementById('checkout').style.display='none';return;}
+
+  /* nav pill */
+  var pill=document.getElementById('navpill');if(pill){pill.hidden=false;pill.querySelector('.n').textContent=order.acres;}
+
+  var applied=null;
+  function subtotal(){return order.subtotal;}
+  function volPct(){return ladder(VOL,order.acres);}
+  function capPct(){return ladder(CAP,order.acres);}
+  /* extra % a code adds, on top of auto volume, never past the policy cap */
+  function codePct(){return applied?Math.max(0,Math.min(applied.pct,capPct()-volPct())):0;}
+  function volAmt(){return Math.round(subtotal()*volPct()/100);}
+  function codeAmt(){return Math.round(subtotal()*codePct()/100);}
+  function discount(){return volAmt()+codeAmt();}
+
+  function render(){
+    document.getElementById('sumAcres').textContent=order.acres;
+    document.getElementById('sumRate').textContent='$'+order.rate;
+    document.getElementById('sumSub').textContent=fmt(subtotal());
+    document.getElementById('tSub').textContent=fmt(subtotal());
+    var vRow=document.getElementById('volRow');
+    if(volPct()>0){vRow.hidden=false;document.getElementById('volLabel').textContent='Volume discount ('+volPct()+'%)';document.getElementById('tVol').textContent='-'+fmt(volAmt());}
+    else vRow.hidden=true;
+    var dRow=document.getElementById('discRow');
+    if(applied&&codePct()>0){dRow.hidden=false;document.getElementById('discLabel').textContent=applied.kind+' code (+'+codePct()+'%)';document.getElementById('tDisc').textContent='-'+fmt(codeAmt());}
+    else dRow.hidden=true;
+    document.getElementById('tGrand').textContent=fmt(subtotal()-discount());
+  }
+
+  /* attribution display */
+  var attrEl=document.getElementById('attr'),bits=[];
+  if(ref)bits.push('Referred by <b>'+ref+'</b>');
+  if(bits.length){attrEl.hidden=false;attrEl.innerHTML=bits.join(' · ');}
+
+  /* prefill code from link */
+  if(code){document.getElementById('promo').value=code;}
+
+  function applyCode(){
+    var v=(document.getElementById('promo').value||'').trim().toUpperCase();
+    var msg=document.getElementById('promoMsg');
+    if(!v){applied=null;msg.textContent='';msg.className='promo-msg';render();return;}
+    if(CODES[v]){
+      applied=Object.assign({code:v},CODES[v]);
+      var cp=codePct();
+      if(cp<=0){msg.textContent='Valid code · volume pricing starts at 100 acres';msg.className='promo-msg bad';}
+      else{msg.textContent='Code applied · '+applied.kind+' adds '+cp+'%';msg.className='promo-msg ok';}
+    }
+    else{applied=null;msg.textContent='That code was not recognized';msg.className='promo-msg bad';}
+    render();
+  }
+  document.getElementById('applyPromo').addEventListener('click',applyCode);
+  document.getElementById('promo').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();applyCode();}});
+  if(code)applyCode();
+  render();
+
+  /* place order -> confirmation (no payment captured here) */
+  document.getElementById('orderForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=e.target;
+    if(!f.checkValidity()){f.reportValidity();return;}
+    var data=Object.fromEntries(new FormData(f).entries());
+    var refnum='SYM-'+Date.now().toString(36).toUpperCase().slice(-6);
+    var record={ref:refnum,acres:order.acres,rate:order.rate,subtotal:subtotal(),volumePct:volPct(),codePct:codePct(),discount:discount(),
+      total:subtotal()-discount(),promo:applied?applied.code:'',attribution:ref,contact:data};
+    /* placeholder store: the CRM/backend consumes this later */
+    try{var all=JSON.parse(localStorage.getItem('symm_orders')||'[]');all.push(record);localStorage.setItem('symm_orders',JSON.stringify(all));localStorage.removeItem('symm_order');}catch(err){}
+    document.getElementById('cRef').textContent=refnum;
+    document.getElementById('cAcres').textContent=order.acres+' acres';
+    document.getElementById('cTotal').textContent=fmt(record.total);
+    document.getElementById('checkout').style.display='none';
+    var c=document.getElementById('confirm');c.classList.add('show');
+    if(pill)pill.hidden=true;
+    window.scrollTo(0,0);
+  });
+})();
+</script>
+</body>
+</html>

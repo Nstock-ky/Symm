@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About · Symm</title>
+<meta name="description" content="The story behind Symm: from environmental crisis to a two-input biological program supporting crop yield and soil health.">
+<meta name="theme-color" content="#081A0E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About · Symm">
+<meta property="og:description" content="Working with Mother Nature to protect and enrich our farmlands.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23081A0E'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%2380CB58'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Palette: Deep Forest (locked 2026-07-14, pending team review) */
+    --lime:#A1D09A; --lime-2:#70C77E; --lime-3:#B9FF94; --lime-ink:#08240A;
+    --bg:#011F00; --surface:#071802; --ink:#FFFFFF; --ink-2:#FAFFFA; --hair:rgba(255,255,255,.14);
+    --display:"Hanken Grotesk",sans-serif; --body:"Inter",sans-serif; --mono:"Space Mono",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;line-height:1.5}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:940px;margin:0 auto;padding:0 40px}
+  @media(max-width:600px){.wrap{padding:0 24px}}
+  .mono{font-weight:700;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase}
+  .kicker{font-family:var(--body);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);margin-bottom:14px}
+  .btn{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;padding:12px 20px;border-radius:40px;border:1.5px solid transparent;display:inline-flex;gap:8px;align-items:center;transition:.15s}
+  .btn.primary{background:var(--lime);border-color:var(--lime);color:var(--lime-ink)}
+  .btn.primary:hover{background:var(--lime-2);border-color:var(--lime-2)}
+  .btn.ghost{color:var(--ink);border-color:color-mix(in srgb,var(--ink) 40%,transparent)}
+  .btn.ghost:hover{background:color-mix(in srgb,var(--ink) 7%,transparent)}
+
+  header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+  .nav{display:flex;justify-content:space-between;align-items:center;height:66px}
+  .logo{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.045em;display:flex;align-items:center;gap:9px}
+  .logo .dot{width:10px;height:10px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px 2px var(--lime)}
+  .nav-links{display:flex;align-items:center;gap:26px}
+  .nav-links a.mono{font-size:11px;color:var(--ink-2)}
+  .nav-links a.mono:hover{color:var(--ink)}
+  .nav-links a.mono.here{color:var(--ink)}
+  @media(max-width:640px){.nav-links a.mono{display:none}}
+  .acrepill{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);border:1.5px solid var(--lime);border-radius:40px;padding:9px 14px;text-decoration:none}
+  .acrepill .dotc{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 7px 1px var(--lime)}
+  .acrepill .n{color:var(--lime);font-weight:700}
+  .acrepill[hidden]{display:none}
+
+  .intro{padding:104px 0 58px;text-align:center;border-bottom:1px solid var(--hair)}
+  .intro h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,4.4vw,46px);letter-spacing:-.03em;line-height:1.14;max-width:32ch;margin:0 auto;text-wrap:balance}
+  .journey{padding:64px 0 8px}
+  .journey h2{font-family:var(--display);font-weight:700;font-size:clamp(24px,3.4vw,34px);letter-spacing:-.02em;max-width:34ch}
+
+  .timeline{position:relative;margin-top:46px}
+  .tl-item{display:grid;grid-template-columns:150px 1fr;gap:0 46px;position:relative;padding-bottom:46px}
+  .tl-item:last-child{padding-bottom:8px}
+  .timeline::before{content:"";position:absolute;left:173px;top:9px;bottom:30px;width:2px;background:var(--hair);transform:translateX(-50%)}
+  .tl-item::after{content:"";position:absolute;left:173px;top:5px;width:13px;height:13px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px 1px var(--lime);transform:translateX(-50%)}
+  /* scroll reveal: only when JS is on, so content still shows if scripts fail */
+  .js .tl-item{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+  .js .tl-item.in{opacity:1;transform:none}
+  .js .tl-item::after{background:color-mix(in srgb,var(--lime) 26%,var(--surface));box-shadow:none;transition:background .5s ease,box-shadow .5s ease}
+  .js .tl-item.in::after{background:var(--lime);box-shadow:0 0 11px 2px var(--lime)}
+  @media(prefers-reduced-motion:reduce){.js .tl-item{opacity:1;transform:none}.js .tl-item::after,.js .tl-item.in::after{background:var(--lime);box-shadow:0 0 9px 1px var(--lime)}}
+  .tl-year{grid-column:1;text-align:right;font-family:var(--display);font-weight:800;font-size:16px;color:var(--lime);letter-spacing:.01em;padding-top:2px;white-space:nowrap}
+  .tl-body{grid-column:2}
+  .tl-body h3{font-family:var(--display);font-weight:700;font-size:23px;letter-spacing:-.01em;margin-bottom:7px}
+  .tl-body p{color:var(--ink-2);font-size:16.5px;max-width:64ch}
+  @media(max-width:680px){
+    .tl-item{display:block;padding-left:26px;padding-bottom:34px}
+    .timeline::before{left:5px;top:8px;bottom:26px;transform:none}
+    .tl-item::after{left:5px;top:6px;transform:none}
+    .tl-year{text-align:left;font-size:13px;letter-spacing:.02em;margin-bottom:6px}
+    .tl-body h3{font-size:21px}
+    .tl-body p{font-size:15.5px;max-width:none}
+  }
+
+  .cta{padding:36px 0 92px}
+  .cta-actions{display:flex;gap:12px;flex-wrap:wrap;border-top:1px solid var(--hair);padding-top:40px}
+
+  footer{border-top:1px solid var(--hair)}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:26px 0}
+  .foot .logo{font-size:18px}
+  .foot .fmeta{font-family:var(--body);font-size:13px;color:var(--ink-2)}
+  @media(max-width:600px){.foot{flex-direction:column;justify-content:center;text-align:center;gap:9px}}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--lime);outline-offset:3px;border-radius:6px}
+
+  .define{padding:66px 0;border-bottom:1px solid var(--hair);text-align:center;overflow:hidden}
+  .def-head{display:inline-flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center}
+  .def-word{font-family:var(--display);font-weight:800;font-size:clamp(40px,8vw,88px);letter-spacing:-.05em;line-height:1}
+  .def-pron{font-weight:700;font-family:var(--mono);font-size:17px;color:var(--ink-2)}
+  .def-pos{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--lime-ink);background:var(--lime);padding:6px 11px;border-radius:2px}
+  .def-lead{display:inline-flex;align-items:center;gap:14px}
+  .def-rest{display:inline-flex;align-items:center;gap:14px}
+  /* entrance animation (JS-driven; content shows normally without JS) */
+  .js .define .def-head{visibility:hidden}
+  .js .define .def-rest{opacity:0}
+  .js .define .def-pos{background:transparent;color:var(--ink);transition:background .5s ease,color .5s ease}
+  .define .def-pos.boxed{background:var(--lime);color:var(--lime-ink)}
+  .def-char{opacity:0;transition:opacity .16s ease}
+  .def-char.on{opacity:1}
+  @media(prefers-reduced-motion:reduce){
+    .js .define .def-head{visibility:visible}
+    .js .define .def-rest{opacity:1}
+    .js .define .def-pos{background:var(--lime);color:var(--lime-ink)}
+    .def-char{opacity:1}
+  }
+  .def-text{font-family:var(--display);font-weight:600;font-size:clamp(22px,3vw,34px);letter-spacing:-.015em;line-height:1.25;margin:28px auto 0;max-width:22ch}
+  .def-ety{color:var(--ink-2);font-size:15.5px;line-height:1.6;margin:16px auto 0;max-width:52ch}
+  .def-ety b{color:var(--ink);font-weight:600}
+.sitefoot{border-top:1px solid var(--hair);padding:0}
+  .sitefoot .sf-links{display:flex;flex-wrap:wrap;gap:14px 26px;padding:24px 0}
+  .sitefoot .sf-links a{font-weight:700;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);text-decoration:none}
+  .sitefoot .sf-links a:hover{color:var(--lime-2)}
+  .sitefoot .sf-meta{display:flex;justify-content:space-between;align-items:center;gap:14px 20px;flex-wrap:wrap;padding:24px 0 40px;border-top:1px solid var(--hair)}
+  .sitefoot .sf-logo{font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.04em;display:flex;align-items:center;gap:9px;color:var(--ink)}
+  .sitefoot .sf-logo .d{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px 2px var(--lime)}
+  .sitefoot .sf-m{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--ink-2);text-transform:none}
+  @media(max-width:600px){.sitefoot .sf-meta{flex-direction:column;align-items:flex-start;gap:10px}}
+</style>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="index.html"><span class="dot"></span>symm</a>
+    <nav class="nav-links">
+      <a class="mono" href="symm-products.html">Program</a>
+      <a class="mono" href="symm-calculator.html">Analysis</a>
+      <a class="mono" href="symm-trial.html">Trial</a>
+      <a class="mono here" href="symm-about.html">About</a>
+      <a class="mono" href="symm-contact.html">Contact</a>
+      <a class="acrepill" id="navpill" href="symm-checkout.html" hidden><span class="dotc"></span><span class="n">0</span>&nbsp;acres</a>
+      <a class="btn primary" href="symm-products.html#buy">Order <span>&rarr;</span></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="intro">
+    <div class="wrap">
+      <p class="kicker">About Symm</p>
+      <h1>Working with Mother Nature to protect and enrich our farmlands.</h1>
+    </div>
+  </section>
+
+  <section class="define">
+    <div class="wrap">
+      <div class="def-head" id="defHead">
+        <span class="def-lead"><span class="def-word">symm</span></span>
+        <span class="def-rest"><span class="def-pron">/sɪm/</span><span class="def-pos">noun · biological input</span></span>
+      </div>
+      <p class="def-text">Symbiotic microbes</p>
+      <p class="def-ety">Living inputs that partner with the plant, supporting yield, resistance to stress, and nutrient uptake efficiency.</p>
+    </div>
+  </section>
+
+  <section class="journey">
+    <div class="wrap">
+      <p class="kicker">The Journey of Discovery</p>
+      <h2>From crisis to breakthrough, the story behind Symm.</h2>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">2000-Present</div>
+          <div class="tl-body"><h3>Environmental crisis</h3><p>Shifting weather patterns subject farms to increasing drought and heat stress.</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2002</div>
+          <div class="tl-body"><h3>Discovery</h3><p>Breakthrough research reveals how symbiotic microbes help plants stay resilient under environmental stress.</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2003-Present</div>
+          <div class="tl-body"><h3>Trials &amp; studies</h3><p>Rigorous testing explores the relationship between microbes and plant life, across more than 50 crop types.</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2021</div>
+          <div class="tl-body"><h3>Formulation</h3><p>Proprietary formulations are developed, pairing the most effective symbiotic microbes into a simple two-input program.</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2022</div>
+          <div class="tl-body"><h3>Commercialization</h3><p>Symm is founded and the inputs move to commercial-scale production.</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">Present</div>
+          <div class="tl-body"><h3>A global solution</h3><p>Symm supports farms worldwide.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <div class="cta-actions">
+        <a class="btn primary" href="symm-products.html">See the program <span>&rarr;</span></a>
+        <a class="btn ghost" href="symm-contact.html">Speak to an advisor <span>&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="sitefoot">
+  <div class="wrap">
+    <nav class="sf-links">
+      <a href="symm-faq.html">FAQ</a>
+      <a href="symm-application-instructions.html">Application instructions</a>
+    </nav>
+    <div class="sf-meta">
+      <span class="sf-logo"><span class="d"></span>symm</span>
+      <span class="sf-m">info@symmbiotic.com &middot; (845) 393-9539</span>
+      <span class="sf-m">&copy; 2026 Symm</span>
+    </div>
+  </div>
+</footer>
+<script>
+/* Nav acre pill reflects an order in progress. */
+(function(){try{var o=JSON.parse(localStorage.getItem('symm_order')||'null');var p=document.getElementById('navpill');if(o&&o.acres&&p){p.hidden=false;p.querySelector('.n').textContent=o.acres;}}catch(e){}})();
+/* Timeline: reveal each milestone when it actually scrolls into view, but never faster than
+   a minimum gap, so a fast scroll still loads them one-by-one in consecutive order. */
+(function(){
+  var items=[].slice.call(document.querySelectorAll('.tl-item'));
+  if(!items.length)return;
+  var minGap=350, pending=[], timer=null;
+  function revealNext(){
+    if(!pending.length){timer=null;return;}
+    pending.sort(function(a,b){return items.indexOf(a)-items.indexOf(b);});
+    pending.shift().classList.add('in');
+    timer=setTimeout(revealNext,minGap);
+  }
+  function queue(it){
+    if(it.classList.contains('in')||pending.indexOf(it)>-1)return;
+    pending.push(it);
+    if(!timer)revealNext();
+  }
+  if(!('IntersectionObserver' in window)){items.forEach(function(i){i.classList.add('in');});return;}
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){queue(e.target);io.unobserve(e.target);}});
+  },{threshold:0.4,rootMargin:'0px 0px -10% 0px'});
+  items.forEach(function(i){io.observe(i);});
+})();
+/* Definition entrance: symm starts centered, glides left, then /sɪm/ + "noun · biological input"
+   type out letter by letter; the lime box fades in once the letters finish. */
+(function(){
+  var define=document.querySelector('.define'); if(!define)return;
+  var head=document.getElementById('defHead');
+  var lead=define.querySelector('.def-lead'), rest=define.querySelector('.def-rest');
+  var pron=define.querySelector('.def-pron'), pos=define.querySelector('.def-pos');
+  if(!head||!lead||!rest||!pron||!pos)return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return; /* CSS shows final state */
+
+  function split(el){
+    var t=el.textContent; el.textContent=''; var spans=[];
+    for(var i=0;i<t.length;i++){var s=document.createElement('span');s.className='def-char';s.textContent=(t.charAt(i)===' '?' ':t.charAt(i));el.appendChild(s);spans.push(s);}
+    el.style.opacity='1'; return spans;
+  }
+  var played=false;
+  function play(){
+    if(played)return; played=true;
+    var chars=split(pron).concat(split(pos));
+    var singleLine=rest.getBoundingClientRect().left>=lead.getBoundingClientRect().right-6;
+    var tx=0;
+    if(singleLine){tx=(head.getBoundingClientRect().width-lead.getBoundingClientRect().width)/2; head.style.transform='translateX('+tx+'px)';}
+    head.style.visibility='visible';
+    rest.style.opacity='1';
+    void head.offsetWidth;
+    var slideMs=0;
+    if(singleLine&&Math.abs(tx)>1){
+      head.style.transition='transform .85s cubic-bezier(.2,.7,.2,1)';
+      var HOLD=1000; /* stay centered ~1s before gliding left */
+      setTimeout(function(){head.style.transform='translateX(0)';},HOLD);
+      slideMs=HOLD+950;
+    }
+    var per=84;
+    chars.forEach(function(s,i){setTimeout(function(){s.classList.add('on');},slideMs+i*per);});
+    setTimeout(function(){pos.classList.add('boxed');},slideMs+chars.length*per+140);
+  }
+  function inView(el){var r=el.getBoundingClientRect();return r.top<(window.innerHeight||document.documentElement.clientHeight)*0.9 && r.bottom>0;}
+  function start(){
+    if(inView(define)){play();return;}
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){play();io.disconnect();}});},{threshold:0.35});
+      io.observe(define);
+    } else { play(); }
+  }
+  if(document.fonts&&document.fonts.ready){document.fonts.ready.then(start);} else { start(); }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ · Symm</title>
+<meta name="description" content="Answers to common questions about Symm: the two-part biological program (Part 1 and Part 2), how to use it, performance, quality, and safety.">
+<meta name="theme-color" content="#011F00">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23011F00'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23A1D09A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --lime:#A1D09A; --lime-2:#70C77E; --lime-3:#B9FF94; --lime-ink:#08240A;
+    --bg:#011F00; --surface:#071802; --ink:#FFFFFF; --ink-2:#FAFFFA; --hair:rgba(255,255,255,.14);
+    --display:"Hanken Grotesk",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 40px}
+  @media(max-width:600px){.wrap{padding:0 24px}}
+  .mono{font-weight:700;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase}
+  section[id]{scroll-margin-top:78px}
+
+  header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+  .topnav{display:flex;justify-content:space-between;align-items:center;height:62px}
+  .logo{font-family:var(--display);font-weight:800;font-size:21px;letter-spacing:-.045em;display:flex;align-items:center;gap:9px}
+  .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px 2px var(--lime)}
+  .topnav .tag{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2)}
+
+  .cover{padding:84px 0 56px;border-bottom:1px solid var(--hair)}
+  .cover .eyebrow{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--lime);margin-bottom:22px}
+  .cover h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,8vw,84px);letter-spacing:-.04em;line-height:.98}
+  .cover .sub{color:var(--ink-2);font-size:clamp(17px,2vw,20px);margin-top:20px;max-width:56ch}
+
+  .toc{padding:28px 0;border-bottom:1px solid var(--hair)}
+  .toc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px 26px}
+  @media(max-width:520px){.toc-grid{grid-template-columns:1fr}}
+  .toc a{display:flex;gap:12px;align-items:baseline;padding:8px 0;text-decoration:none;color:var(--ink-2);transition:.15s}
+  .toc a:hover{color:var(--ink)}
+  .toc a .n{font-weight:700;font-family:var(--mono);font-size:11px;color:var(--lime)}
+  .toc a .t{font-family:var(--display);font-weight:600;font-size:15px}
+
+  section.s{padding:56px 0;border-bottom:1px solid var(--hair)}
+  .s-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px}
+  .s-head .num{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--lime)}
+  .s-head h2{font-family:var(--display);font-weight:800;font-size:clamp(24px,3.6vw,34px);letter-spacing:-.03em;line-height:1.06}
+  .qa{margin-bottom:26px}
+  .qa:last-child{margin-bottom:0}
+  .qa h3{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em;margin-bottom:8px}
+  .qa p{color:var(--ink-2);font-size:16px;max-width:70ch;margin-bottom:10px}
+  .qa p:last-child{margin-bottom:0}
+  .qa ul{color:var(--ink-2);font-size:16px;max-width:70ch;margin:8px 0 10px;padding-left:20px}
+  .qa li{margin-bottom:7px}
+  .qa b{color:var(--ink);font-weight:600}
+  i{font-style:italic}
+
+  table{width:100%;border-collapse:collapse;margin-top:12px;font-size:15px}
+  th,td{text-align:left;padding:11px 14px;border-top:1px solid var(--hair);vertical-align:top}
+  thead th{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);background:var(--surface);border-top:0}
+  td b{color:var(--ink)}
+  .tbl-wrap{border:1px solid var(--hair);border-radius:14px;overflow:hidden;margin-top:14px}
+
+  .note{background:var(--surface);border:1px solid var(--hair);border-left:3px solid var(--lime);border-radius:12px;padding:16px 18px;color:var(--ink-2);font-size:14.5px;margin-top:18px}
+
+  footer{padding:44px 0 70px}
+  .contact h2{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.02em;margin-bottom:12px}
+  .contact p{color:var(--ink-2);font-size:16px}
+  .contact .line{font-weight:700;font-family:var(--mono);font-size:13px;color:var(--ink-2);margin-top:14px;letter-spacing:.02em}
+  .backlink{display:inline-flex;gap:8px;font-weight:700;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--lime);margin-top:24px}
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .nav .logo{font-family:var(--display);font-weight:800;font-size:23px;letter-spacing:-.045em;display:flex;align-items:center;gap:9px;color:var(--ink);text-decoration:none}
+  .nav .logo .dot{width:10px;height:10px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px 2px var(--lime)}
+  .nav-links{display:flex;gap:22px;align-items:center}
+  .nav-links a.mono{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);text-decoration:none}
+  .nav-links a.mono:hover{color:var(--ink)}
+  @media(max-width:820px){.nav-links a.mono{display:none}}
+  .acrepill{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);border:1.5px solid var(--lime);border-radius:40px;padding:9px 14px;text-decoration:none}
+  .acrepill .dotc{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 7px 1px var(--lime)}
+  .acrepill .n{color:var(--lime);font-weight:700}
+  .acrepill[hidden]{display:none}
+  .btn{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;padding:11px 20px;border-radius:40px;border:1.5px solid transparent;display:inline-flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none}
+  .btn.primary{background:var(--lime);border-color:var(--lime);color:var(--lime-ink)}
+  .btn .arw{transition:transform .18s}.btn:hover .arw{transform:translateX(4px)}
+  .sitefoot{border-top:1px solid var(--hair);padding:0;margin-top:26px}
+  .sitefoot .sf-links{display:flex;flex-wrap:wrap;gap:14px 26px;padding:24px 0}
+  .sitefoot .sf-links a{font-weight:700;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);text-decoration:none}
+  .sitefoot .sf-links a:hover{color:var(--lime-2)}
+  .sitefoot .sf-meta{display:flex;justify-content:space-between;align-items:center;gap:14px 20px;flex-wrap:wrap;padding:24px 0 44px;border-top:1px solid var(--hair)}
+  .sitefoot .sf-logo{font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.04em;display:flex;align-items:center;gap:9px;color:var(--ink)}
+  .sitefoot .sf-logo .d{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px 2px var(--lime)}
+  .sitefoot .sf-m{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--ink-2);text-transform:none}
+  @media(max-width:600px){.sitefoot .sf-meta{flex-direction:column;align-items:flex-start;gap:10px}}
+  @media(max-width:560px){
+    table.active thead{display:none}
+    table.active,table.active tbody,table.active tr,table.active td{display:block;width:100%}
+    table.active tr{border-top:1px solid var(--hair);padding:8px 0}
+    table.active tr:first-child{border-top:0}
+    table.active td{border-top:0;padding:6px 14px}
+    table.active td::before{content:attr(data-label);display:block;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);margin-bottom:3px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="index.html"><span class="dot"></span>symm</a>
+    <nav class="nav-links">
+      <a class="mono" href="symm-products.html">Program</a>
+      <a class="mono" href="symm-calculator.html">Analysis</a>
+      <a class="mono" href="symm-trial.html">Trial</a>
+      <a class="mono" href="symm-about.html">About</a>
+      <a class="mono" href="symm-contact.html">Contact</a>
+      <a class="acrepill" id="navpill" href="symm-checkout.html" hidden><span class="dotc"></span><span class="n">0</span>&nbsp;acres</a>
+      <a class="btn primary" href="symm-products.html#buy">Order <span class="arw">&rarr;</span></a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="cover">
+    <p class="eyebrow">Symbiotic microbes</p>
+    <h1>Frequently asked questions.</h1>
+    <p class="sub">Symm is one program with two parts, applied together: <b>Part 1</b> for resilience and <b>Part 2</b> for nutrition. Here is how it works, how to use it, and what to expect.</p>
+  </section>
+
+  <nav class="toc"><div class="toc-grid">
+    <a href="#basics"><span class="n">01</span><span class="t">Product basics</span></a>
+    <a href="#usage"><span class="n">02</span><span class="t">Application &amp; usage</span></a>
+    <a href="#performance"><span class="n">03</span><span class="t">Performance &amp; results</span></a>
+    <a href="#different"><span class="n">04</span><span class="t">What makes Symm different</span></a>
+    <a href="#storage"><span class="n">05</span><span class="t">Storage &amp; handling</span></a>
+    <a href="#quality"><span class="n">06</span><span class="t">Quality &amp; safety</span></a>
+    <a href="#research"><span class="n">07</span><span class="t">Research &amp; validation</span></a>
+    <a href="#technical"><span class="n">08</span><span class="t">Technical information</span></a>
+  </div></nav>
+
+  <!-- 01 -->
+  <section class="s" id="basics">
+    <div class="s-head"><span class="num">01</span><h2>Product basics</h2></div>
+    <div class="qa">
+      <h3>What is the difference between Part 1 and Part 2?</h3>
+      <p><b>Part 1</b> is an endophytic biological that works inside the plant to improve stress tolerance and support yield. It strengthens the crop's natural ability to handle environmental challenges through the season.</p>
+      <p><b>Part 2</b> is a microbial input that works in the soil to improve nutrient availability, converting soil-bound nutrients into forms the plant can readily absorb.</p>
+    </div>
+    <div class="qa">
+      <h3>Do Part 1 and Part 2 have to be used together?</h3>
+      <p>Yes. Symm is sold and applied as one program, never as separate products. Each part works on its own, but they are designed to complement each other: Part 1 strengthens the plant from within while Part 2 unlocks nutrients in the soil. Used together, they connect plant metabolism with soil biology for more consistent performance and a better overall crop response.</p>
+    </div>
+    <div class="qa">
+      <h3>Why does such a small amount treat large areas?</h3>
+      <p>Symm is a concentrated living input. Once applied, the microbes establish themselves and multiply naturally in your field, which is why a small amount can effectively cover acres.</p>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section class="s" id="usage">
+    <div class="s-head"><span class="num">02</span><h2>Application &amp; usage</h2></div>
+    <div class="qa">
+      <h3>How many applications do I need per season?</h3>
+      <p>Meaningful improvements are often seen with a single application, and field data shows that 2 to 3 applications per season deliver more consistent results across different conditions. Recommended timing:</p>
+      <ul>
+        <li><b>Early application (preferred):</b> treat seed before planting to establish the system early and support development through the growth cycle.</li>
+        <li><b>Second application:</b> foliar application during stress periods (high heat forecasts) or at critical growth stages such as reproductive development.</li>
+        <li><b>Third application (optional):</b> a later-season foliar application if crops experience environmental stress, especially useful for tall or long-season crops such as corn.</li>
+      </ul>
+      <p>For perennial crops such as alfalfa, multiple applications per growing season add benefits in plant health, vigor, and yield consistency.</p>
+    </div>
+    <div class="qa">
+      <h3>What are the recommended application rates?</h3>
+      <ul>
+        <li><b>Seed treatment:</b> 0.10 to 0.60 oz per 100 lbs of seed (see the seed treatment table in the Application Instructions for exact rates by crop).</li>
+        <li><b>Foliar and in-furrow:</b> 1.0 oz per 10 acres.</li>
+      </ul>
+    </div>
+    <div class="qa">
+      <h3>Can I use standard farm equipment to apply Symm?</h3>
+      <p>Yes. Symm works effectively with standard agricultural equipment, including atomizers and high-impact application systems. When used according to label recommendations, application equipment does not negatively affect efficacy.</p>
+    </div>
+    <div class="qa">
+      <h3>Can I tank-mix Symm with my other agrochemicals?</h3>
+      <p>In most cases, yes. Our isolates were selected for resistance to many common agricultural chemicals, including widely used fungicides, giving you flexibility to integrate Symm into your existing program. Refer to the Symm Chemical Compatibility list for specific guidance, and contact us before tank-mixing with any chemistry not listed. We are happy to assess compatibility of Part 1 and Part 2 with new agrochemicals on request.</p>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section class="s" id="performance">
+    <div class="s-head"><span class="num">03</span><h2>Performance &amp; results</h2></div>
+    <div class="qa">
+      <h3>What kind of results can I expect?</h3>
+      <ul>
+        <li><b>Yield:</b> a typical increase of 8 to 10% in a normal season, often greater under drought, heat, or salinity stress. We state this as a range rather than a single number.</li>
+        <li><b>Nitrogen:</b> a 30 to 50% reduction in nitrogen inputs through better nutrient-use efficiency, while maintaining or improving yield.</li>
+        <li><b>Nutrient composition:</b> beyond yield, growers often see improvements in the nutrient composition of the harvested crop, supporting both farm economics and end-product quality.</li>
+      </ul>
+      <p>Results vary with soil conditions, weather, crop variety, and management. The greater the environmental stress, the more pronounced the advantage tends to be.</p>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section class="s" id="different">
+    <div class="s-head"><span class="num">04</span><h2>What makes Symm different</h2></div>
+    <div class="qa">
+      <h3>How is Part 1 different from other <i>Trichoderma</i> products?</h3>
+      <p>Most <i>Trichoderma</i> products work primarily in the soil around the roots. Part 1 works inside the plant, moving into roots, stems, and leaves to form a natural partnership with the crop. Because it works from inside, it helps crops handle heat, drought, salinity, and other stresses more effectively, leading to healthier plants and improved yield.</p>
+    </div>
+    <div class="qa">
+      <h3>Why multiple isolates rather than a single strain?</h3>
+      <p>Many products formulate around a single strain of <i>Trichoderma harzianum</i>. Part 1 combines multiple hand-selected isolates, chosen for efficacy, shelf-life, and function, because the root zone is a community, and communities perform better with diversity than with a single actor. We pair this fungal consortium with root-zone-competent bacteria in Part 2 rather than relying on bacteria or fungi alone. The result is a more resilient, more productive system than any single strain or single class of organism can deliver on its own.</p>
+    </div>
+    <div class="qa">
+      <h3>Why living microbes instead of microbial extracts or peptides?</h3>
+      <p>Extracts and peptides deliver a single molecule and expect it to do the work of a living system. Symm takes a different path. Living microbes produce a wide range of active compounds on their own, and they keep communicating with the plant and with each other through the season. The partnerships behind plant resilience took hundreds of millions of years to evolve, and they cannot be reduced to one molecule or one strain. By delivering whole, living microbes, Symm lets that biology work the way it already does in nature, with consistency and at scale.</p>
+    </div>
+    <div class="qa">
+      <h3>What specific stress conditions does Symm address?</h3>
+      <ul>
+        <li><b>Heat stress:</b> effective at high temperatures, including above 100&deg;F (38&deg;C).</li>
+        <li><b>Drought stress:</b> maintains performance under water-limited conditions.</li>
+        <li><b>Salinity stress:</b> helps plants manage salt-affected soils and water.</li>
+        <li><b>Cold stress:</b> supports the plant through temperature fluctuations.</li>
+        <li><b>Nutrient stress:</b> increases nutrient-use efficiency even with reduced fertilizer inputs.</li>
+      </ul>
+    </div>
+    <div class="qa">
+      <h3>What sets Symm microbes apart?</h3>
+      <ul>
+        <li><b>Sourced from tough environments:</b> our microbes come from plants that naturally thrive under heat, drought, and other stresses.</li>
+        <li><b>Naturally occurring biology:</b> all microbes are non-GMO and work with plants, not against them.</li>
+        <li><b>Proven performance:</b> field-tested across many crops and growing conditions.</li>
+        <li><b>Designed to work together:</b> Part 1 and Part 2 are selected to perform well alone and better combined.</li>
+        <li><b>Complete quality control:</b> every step, from strain selection to packaging, is managed to a single standard.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section class="s" id="storage">
+    <div class="s-head"><span class="num">05</span><h2>Storage &amp; handling</h2></div>
+    <div class="qa">
+      <h3>How should I store Symm?</h3>
+      <ul>
+        <li><b>In-bottle:</b> 1 year at temperatures below 75&deg;F (24&deg;C).</li>
+        <li><b>On-seed:</b> 1 year at temperatures below 100&deg;F (38&deg;C).</li>
+        <li><b>Light:</b> keep out of prolonged sunlight.</li>
+        <li><b>Viability:</b> the product stays effective when stored as recommended.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section class="s" id="quality">
+    <div class="s-head"><span class="num">06</span><h2>Quality &amp; safety</h2></div>
+    <div class="qa">
+      <h3>How do you ensure product quality?</h3>
+      <p>When the product is a living organism, purity, potency, and viability define success. Symm is grown and handled under cGMP-like conditions, mirroring FDA-style guidelines even where they are not legally required for agricultural biologicals, because that is what consistent field performance demands.</p>
+      <p>Many microbial products reach growers contaminated or no longer viable. Every Symm batch, and every individual bottle, undergoes rigorous testing and independent verification before it ships. With Symm you get exactly what the label promises.</p>
+      <ul>
+        <li>Viable CFU/g confirmed before any batch ships.</li>
+        <li>Assessment of contaminating microbes: aerobic bacteria, filamentous fungi, and yeasts.</li>
+        <li>Independent laboratory testing for heavy metals and fecal-coliform bacterial contamination.</li>
+        <li>Each bottle is hand-filled, labeled, and checked before shipping.</li>
+        <li>Robust batch tracking and auditing.</li>
+      </ul>
+      <p>Our microbial consortium also carries resistance to many common agricultural chemicals, including widely used fungicides, through a proprietary process that selects for strains with greater chemical tolerance. This gives growers more flexibility to integrate Symm alongside an existing crop-protection program.</p>
+    </div>
+    <div class="qa">
+      <h3>Is Symm safe for the environment?</h3>
+      <p>Yes. Symm poses no risk of environmental persistence or invasiveness.</p>
+      <p><b>Part 1</b> contains endophytes that require living plants to survive. They do not persist in soil independently and naturally decline after harvest.</p>
+      <p><b>Part 2</b> uses microbial species commonly found in agricultural soils worldwide. The product temporarily increases activity during key growth stages, then populations return to natural levels.</p>
+      <p>Both parts are OMRI listed and backed by years of field use with no evidence of invasiveness or negative ecological impact.</p>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section class="s" id="research">
+    <div class="s-head"><span class="num">07</span><h2>Research &amp; validation</h2></div>
+    <div class="qa">
+      <h3>Do you have research backing the product?</h3>
+      <p>Yes. Symm has been evaluated through independent field studies and farm trials across diverse crops, soils, and growing conditions. Studies consistently show the complementary performance of Part 1 and Part 2 when used together, with measurable improvements in plant resilience, nutrient availability, and overall crop performance in both controlled trials and real-world farm applications. Contact your advisor for results specific to your crops.</p>
+    </div>
+  </section>
+
+  <!-- 08 -->
+  <section class="s" id="technical">
+    <div class="s-head"><span class="num">08</span><h2>Technical information</h2></div>
+    <div class="qa">
+      <h3>Active ingredients</h3>
+      <div class="tbl-wrap"><table class="active">
+        <thead><tr><th>Part</th><th>Active ingredient</th><th>Primary function</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Part"><b>Part 1</b></td><td data-label="Active ingredient"><i>Trichoderma harzianum</i> (multi-isolate consortium)</td><td data-label="Primary function">Confers abiotic stress tolerance and increased nutrient-use efficiency</td></tr>
+          <tr><td data-label="Part"><b>Part 2</b></td><td data-label="Active ingredient"><i>Bacillus licheniformis</i><br><i>Bacillus megaterium</i><br><i>Bacillus pumilus</i><br><i>Bacillus amyloliquefaciens</i><br><i>Bacillus subtilis</i></td><td data-label="Primary function">Nitrogen fixation<br>Soil phosphorus solubilization<br>Soil nutrient cycling<br>Soil nutrient cycling<br>Nitrogen fixation and cytokinin production</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <footer class="sitefoot">
+    <nav class="sf-links">
+      <a href="symm-faq.html">FAQ</a>
+      <a href="symm-application-instructions.html">Application instructions</a>
+    </nav>
+    <div class="sf-meta">
+      <span class="sf-logo"><span class="d"></span>symm</span>
+      <span class="sf-m">info@symmbiotic.com &middot; (845) 393-9539</span>
+      <span class="sf-m">&copy; 2026 Symm</span>
+    </div>
+  </footer>
+
+</div>
+<script>(function(){try{var o=JSON.parse(localStorage.getItem("symm_order")||"null");var p=document.getElementById("navpill");if(o&&o.acres&&p){p.hidden=false;p.querySelector(".n").textContent=o.acres;}}catch(e){}})();</script>
+</body>
+</html>
