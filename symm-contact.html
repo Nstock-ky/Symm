@@ -149,43 +149,7 @@
   <div class="wrap layout" id="form">
     <div class="form-flow">
       <div class="form-card">
-        <form id="contact" novalidate>
-          <div class="row2">
-            <label class="field"><span class="lab">First name <span class="req">*</span></span><input class="inp" name="first" required autocomplete="given-name"></label>
-            <label class="field"><span class="lab">Last name <span class="req">*</span></span><input class="inp" name="last" required autocomplete="family-name"></label>
-          </div>
-          <div class="row2">
-            <label class="field"><span class="lab">Email <span class="req">*</span></span><input class="inp" name="email" type="email" required autocomplete="email" placeholder="you@farm.com"></label>
-            <label class="field"><span class="lab">Phone <span class="req">*</span></span><input class="inp" name="phone" type="tel" required autocomplete="tel" placeholder="(555) 555-5555"></label>
-          </div>
-          <div class="row2">
-            <label class="field"><span class="lab">Operation name</span><input class="inp" name="farm" placeholder="Your farm"></label>
-            <label class="field"><span class="lab">State</span>
-              <select class="inp" name="state" id="stateSel"></select></label>
-          </div>
-          <div class="row2">
-            <label class="field"><span class="lab">Primary crops</span><input class="inp" name="crops" placeholder="e.g. Tomatoes, Lettuce"></label>
-            <label class="field"><span class="lab">Total acreage</span><input class="inp" name="acreage" type="number" min="0" inputmode="numeric" placeholder="250"></label>
-          </div>
-          <label class="field"><span class="lab">How can we help? <span class="req">*</span></span>
-            <select class="inp" name="intent" required>
-              <option value="">Select&hellip;</option>
-              <option>Place an order</option>
-              <option>Get a quote / pricing</option>
-              <option>Build a program for my farm</option>
-              <option>Product questions</option>
-              <option>Apply for a trial</option>
-              <option>Something else</option>
-            </select></label>
-          <label class="field"><span class="lab">Message</span>
-            <textarea class="inp" name="message" placeholder="Tell us about your operation, the crops you grow, and what you're looking for."></textarea></label>
-          <label class="chk"><input type="checkbox" name="consent" required><span class="ct">Symm may contact me about my request.</span></label>
-          <div class="err-msg" id="errMsg">Please complete the highlighted fields.</div>
-          <div class="form-foot">
-            <button class="btn primary big" id="submitBtn" type="button">Send to a rep <span class="arw">&rarr;</span></button>
-            <span class="mono">Speak soon!</span>
-          </div>
-        </form>
+        <iframe aria-label="Symm Contact Form" frameborder="0" style="height:900px;width:100%;border:none;" src="https://forms.zohopublic.com/cropdefense1/form/SymmContact/formperma/1hrbP4thHbSxXEX3-FV7AlaGVgvzE0DqhXMBYhuHSJw"></iframe>
       </div>
     </div>
 
@@ -210,19 +174,6 @@
       </div>
     </aside>
 
-    <!-- result -->
-    <div class="result" id="result" style="grid-column:1 / -1">
-      <div class="res-card">
-        <span class="res-badge"><span class="ck">&#10003;</span> Message sent</span>
-        <h2 id="resTitle">Thanks, we&rsquo;ll be in touch.</h2>
-        <p id="resLede">A Symm rep will reach out within one business day to help with your request.</p>
-        <div class="refbox"><span class="rl">Reference</span><span class="rv" id="resRef">SYMM-000000</span></div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:6px">
-          <a class="btn primary" href="symm-products.html">Explore the products <span class="arw">&rarr;</span></a>
-          <a class="btn ghost" href="symm-calculator.html">Estimate your benefits <span class="arw">&rarr;</span></a>
-        </div>
-      </div>
-    </div>
   </div>
 </main>
 
@@ -234,62 +185,151 @@
     </nav>
     <div class="sf-meta">
       <span class="sf-logo"><span class="d"></span>symm</span>
-      <span class="sf-m">info@symmbiotic.com &middot; (845) 393-9539</span>
+      <span class="sf-m"><a href="mailto:info@symmbiotic.com" style="color:inherit">info@symmbiotic.com</a> &middot; <a href="tel:+18453939539" style="color:inherit">(845) 393-9539</a></span>
       <span class="sf-m">&copy; 2026 Symm</span>
     </div>
   </div>
 </footer>
 
 <script>
-(function(){
-  var STATES=["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming","Other / outside the US"];
-  document.getElementById('stateSel').innerHTML='<option value="">Select (optional)&hellip;</option>'+STATES.map(function(s){return '<option>'+s+'</option>';}).join('');
-
-  var form=document.getElementById('contact'), errMsg=document.getElementById('errMsg');
-  form.querySelectorAll('.inp').forEach(function(el){el.addEventListener('input',function(){el.classList.remove('bad');});});
-
-  function validate(){
-    var ok=true, first=null;
-    form.querySelectorAll('input,select,textarea').forEach(function(el){
-      if(el.type==='checkbox')return;
-      if(el.hasAttribute('required')){
-        var good=el.value.trim()!=='' && !(el.type==='email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value));
-        el.classList.toggle('bad',!good); if(!good){ok=false; if(!first)first=el;}
-      }
-    });
-    var consent=form.querySelector('input[name=consent]');
-    var box=consent.closest('.chk'); box.style.borderColor=consent.checked?'':'#e8734f';
-    if(!consent.checked){ok=false; if(!first)first=consent;}
-    errMsg.classList.toggle('show',!ok);
-    if(!ok&&first&&first.focus)first.focus();
-    return ok;
-  }
-  function ref(){return 'SYMM-'+Date.now().toString(36).toUpperCase().slice(-6);}
-
-  document.getElementById('submitBtn').addEventListener('click',function(){
-    if(!validate())return;
-    var d={}; new FormData(form).forEach(function(v,k){d[k]=v;});
-    var r=ref();
-    /* Placeholder: a real deployment posts this to a backend / CRM and emails the rep team. */
-    try{localStorage.setItem('symm-contact-'+r,JSON.stringify(Object.assign({ref:r,at:new Date().toISOString()},d)));}catch(e){}
-    document.getElementById('resRef').textContent=r;
-    document.getElementById('resTitle').textContent='Thanks, '+(d.first||'there')+'. We’ll be in touch.';
-    var intent=(d.intent||'').toLowerCase();
-    var lede='A Symm rep will reach out within one business day to help with your request.';
-    if(intent.indexOf('order')>-1)lede='A Symm rep will reach out within one business day to confirm your program and get your order moving.';
-    else if(intent.indexOf('quote')>-1||intent.indexOf('pricing')>-1)lede='A Symm rep will reach out within one business day with pricing built around your crops and acreage.';
-    else if(intent.indexOf('trial')>-1)lede='A Symm rep will follow up about a grower trial for your operation. You can also apply directly on the trial page.';
-    document.getElementById('resLede').textContent=lede;
-    document.querySelector('.form-flow').classList.add('done');
-    document.querySelector('.aside').style.display='none';
-    document.getElementById('result').classList.add('show');
-    document.getElementById('form').scrollIntoView({behavior:'smooth',block:'start'});
-  });
-})();
-</script>
-<script>
 /* Nav acre pill reflects an order in progress. */
 (function(){try{var o=JSON.parse(localStorage.getItem('symm_order')||'null');var p=document.getElementById('navpill');if(o&&o.acres&&p){p.hidden=false;p.querySelector('.n').textContent=o.acres;}}catch(e){}})();
+</script>
+<script type="text/javascript">
+function ZFLead(){
+}
+ZFLead.utmPValObj = ZFLead.utmPValObj || {};
+
+ZFLead.utmPNameArr = new Array('utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid');
+
+ZFLead.prototype.zfutm_getLeadVal = function(pName){
+	var qStr = '';
+	try{
+		qStr = window.top.location.search.substring(1);
+	} catch (e){
+		qStr = '';
+	}
+	var pNameTemp = pName + '=';
+	var pValue = '';
+	if ( typeof qStr !== "undefined" && qStr !== null && qStr.length > 0 ){
+		var begin = qStr.indexOf(pNameTemp);
+		if ( begin != -1 ){
+			begin = begin + pNameTemp.length;
+			end = qStr.indexOf( '&', begin );
+			if ( end == -1 ){
+				end = qStr.length;
+			}
+			pValue = decodeURIComponent(qStr.substring( begin, end ));
+		}
+	}
+	if (pValue == undefined || pValue == ''){
+		pValue = this.zfutm_gC(pName);
+	}
+	return pValue;
+};
+
+ZFLead.prototype.zfutm_sC = function( paramName,path,domain,secure ){
+	var value = ZFLead.utmPValObj[paramName];
+	if ( typeof value !== "undefined" && value !== null ){
+		var cookieStr = paramName + "=" + encodeURIComponent( value );
+		var exdate=new Date();
+		exdate.setDate(exdate.getDate()+7);
+		cookieStr += "; expires=" + exdate.toGMTString();
+		cookieStr += "; path=/";
+		if ( domain ) {
+			cookieStr += "; domain=" + encodeURIComponent( domain );
+		}
+		if ( secure ) {
+			cookieStr += "; secure";
+		}
+		document.cookie = cookieStr;
+	}
+};
+
+ZFLead.prototype.zfutm_ini = function (){
+	for (var i = 0; i < ZFLead.utmPNameArr.length ; i ++){
+		var zf_pN = ZFLead.utmPNameArr[i];
+		var zf_pV = this.zfutm_getLeadVal(zf_pN);
+		if ( typeof zf_pV !== "undefined" && zf_pV !== null ) {
+			ZFLead.utmPValObj[ zf_pN ] = zf_pV;
+		}
+	}
+	for (var pkey in ZFLead.utmPValObj) {
+		this.zfutm_sC(pkey);
+	}
+};
+ZFLead.prototype.zfutm_gC = function( cookieName ){
+	var cookieArr = document.cookie.split('; ');
+	for ( var i = 0 ; i < cookieArr.length ; i ++ ){
+		var cookieVals = cookieArr[i].split('=');
+		if ( cookieVals[0] === cookieName && cookieVals[1] ) {
+			return decodeURIComponent(cookieVals[1]);
+		}
+	}
+};
+ZFLead.prototype.zfutm_gC_enc = function( cookieName ){
+	var cookieArr = document.cookie.split('; ');
+	for ( var i = 0 ; i < cookieArr.length ; i ++ ){
+		var cookieVals = cookieArr[i].split('=');
+		if ( cookieVals[0] === cookieName && cookieVals[1] ) {
+			return cookieVals[1];
+		}
+	}
+};
+ZFLead.prototype.zfutm_iframeSprt = function () {
+	var zf_frame = document.getElementsByTagName("iframe");
+	for(var i = 0; i < zf_frame.length; ++i){
+		if((zf_frame[i].src).indexOf('formperma') > 0 ){
+			var zf_src = zf_frame[i].src;
+			for( var prmIdx = 0 ; prmIdx < ZFLead.utmPNameArr.length ; prmIdx ++ ) {
+				var utmPm = ZFLead.utmPNameArr[ prmIdx ];
+				var utmPmregex = new RegExp("[?&]" + utmPm + "=");
+				if ( ! utmPmregex.test(zf_src) ) {
+					var utmVal = this.zfutm_gC_enc( ZFLead.utmPNameArr[ prmIdx ] );
+					if ( typeof utmVal !== "undefined" ) {
+						if(zf_src.indexOf('?') > 0){
+							zf_src = zf_src+'&'+utmPm+'='+utmVal;
+						}else{
+							zf_src = zf_src+'?'+utmPm+'='+utmVal;
+						}
+					}
+				}
+			}
+			if ( zf_frame[i].src.length < zf_src.length ) {
+				zf_frame[i].src = zf_src;
+			}
+		}
+	}
+};
+ZFLead.prototype.zfutm_DHtmlSprt = function () {
+	var zf_formsArr = document.forms;
+	for ( var frmInd = 0 ; frmInd < zf_formsArr.length ; frmInd ++ ) {
+		var zf_form_act = zf_formsArr[frmInd].action;
+		if ( zf_form_act && zf_form_act.indexOf('formperma') > 0 ){
+			for( var prmIdx = 0 ; prmIdx < ZFLead.utmPNameArr.length ; prmIdx ++ ) {
+				var utmPm = ZFLead.utmPNameArr[ prmIdx ];
+				var utmVal = this.zfutm_gC( ZFLead.utmPNameArr[ prmIdx ] );
+				if ( typeof utmVal !== "undefined" ) {
+					var fieldObj = zf_formsArr[frmInd][utmPm];
+					if ( fieldObj ) {
+						fieldObj.value = utmVal;
+					}
+				}
+			}
+		}
+	}
+};
+var zfutm_zfLead = new ZFLead();
+zfutm_zfLead.zfutm_ini();
+if( document.readyState == "complete" ){
+	zfutm_zfLead.zfutm_iframeSprt();
+	zfutm_zfLead.zfutm_DHtmlSprt();
+} else {
+	window.addEventListener('load', function (){
+		zfutm_zfLead.zfutm_iframeSprt();
+		zfutm_zfLead.zfutm_DHtmlSprt();
+	}, false);
+}
 </script>
 </body>
 </html>
