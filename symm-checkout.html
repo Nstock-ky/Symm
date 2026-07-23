@@ -51,6 +51,9 @@
   @media(max-width:860px){.layout{grid-template-columns:1fr;gap:22px}}
 
   .card{background:var(--surface);border:1px solid var(--hair);border-radius:18px;padding:26px 24px}
+  .zform-card{padding:20px}
+  .zform-note{color:var(--ink-2);font-size:13px;line-height:1.5;margin-bottom:14px}
+  #zform{width:100%;min-height:1180px;border:0;display:block;background:#fff;border-radius:12px}
   .card h2{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.01em;margin-bottom:4px}
   .card .cdesc{color:var(--ink-2);font-size:13.5px;margin-bottom:18px}
   .field{margin-bottom:14px}
@@ -122,6 +125,8 @@
   .sitefoot .sf-logo .d{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px 2px var(--lime)}
   .sitefoot .sf-m{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--ink-2);text-transform:none}
   @media(max-width:600px){.sitefoot .sf-meta{flex-direction:column;align-items:flex-start;gap:10px}}
+  .edit-order{display:inline-block;margin-top:14px;color:var(--lime);font-weight:600;font-size:13px;text-decoration:underline;text-underline-offset:3px}
+  .edit-order:hover{color:var(--lime-2)}
 </style>
 <script src="https://cdn.pagesense.io/js/cropdefense/80f36f911e5140229435a142c3521ace.js"></script>
 </head>
@@ -151,11 +156,18 @@
     <section class="head">
       <p class="kicker">Checkout</p>
       <h1>Complete your order.</h1>
-      <p>One program, both inputs, shipped together. Confirm your details and place the order. No payment is taken here.</p>
+      <p>One program, both inputs, shipped together. Review your order, complete your details, and your invoice is emailed to you. No card is entered here.</p>
     </section>
 
-    <form class="layout" id="orderForm" novalidate>
+    <div class="layout" id="orderLayout">
       <div>
+        <div class="card zform-card">
+          <div class="sec-label">Your details &amp; shipping</div>
+          <p class="zform-note">Complete the form below and your invoice will be emailed to you. Have a promo or advisor code? Enter it in the form.</p>
+          <iframe id="zform" title="Symm secure checkout" src="about:blank"></iframe>
+        </div>
+      </div>
+      <div class="legacy-hidden" hidden>
         <div class="card">
           <div class="sec-label">Your details</div>
           <div class="row2">
@@ -200,25 +212,19 @@
             <div class="vv" id="sumSub">$0</div>
           </div>
 
-          <div class="promo">
-            <input id="promo" placeholder="Promo / advisor code" spellcheck="false" autocomplete="off">
-            <button type="button" id="applyPromo">Apply</button>
-          </div>
-          <div class="promo-msg" id="promoMsg"></div>
-
           <div class="totals">
             <div class="r"><span>Subtotal</span><span id="tSub">$0</span></div>
             <div class="r disc" id="volRow" hidden><span id="volLabel">Volume discount</span><span id="tVol">-$0</span></div>
             <div class="r disc" id="discRow" hidden><span id="discLabel">Code</span><span id="tDisc">-$0</span></div>
             <div class="r grand"><span class="k">Estimated total</span><span class="v" id="tGrand">$0</span></div>
           </div>
+          <a class="edit-order" href="symm-calculator.html">Edit / Adjust My Order</a>
 
-          <button class="btn primary placeBtn" type="submit">Place order <span class="arw">&rarr;</span></button>
-          <div class="safenote"><b>No card is entered here.</b> Placing the order reserves your program and sends a secure payment link. An advisor confirms shipping timing for your acreage.</div>
+          <div class="safenote"><b>No card is entered here.</b> Complete the checkout form to receive your invoice by email. An advisor confirms shipping timing for your acreage.</div>
           <div class="attribution" id="attr" hidden></div>
         </div>
       </aside>
-    </form>
+    </div>
   </div>
 
   <!-- CONFIRMATION -->
@@ -309,46 +315,22 @@
   if(ref)bits.push('Referred by <b>'+ref+'</b>');
   if(bits.length){attrEl.hidden=false;attrEl.innerHTML=bits.join(' · ');}
 
-  /* prefill code from link */
-  if(code){document.getElementById('promo').value=code;}
+  var storedCode=code||'';
 
-  function applyCode(){
-    var v=(document.getElementById('promo').value||'').trim().toUpperCase();
-    var msg=document.getElementById('promoMsg');
-    if(!v){applied=null;msg.textContent='';msg.className='promo-msg';render();return;}
-    if(CODES[v]){
-      applied=Object.assign({code:v},CODES[v]);
-      var cp=codePct();
-      if(cp<=0){msg.textContent='Valid code · volume pricing starts at 100 acres';msg.className='promo-msg bad';}
-      else{msg.textContent='Code applied · '+applied.kind+' adds '+cp+'%';msg.className='promo-msg ok';}
-    }
-    else{applied=null;msg.textContent='That code was not recognized';msg.className='promo-msg bad';}
-    render();
-  }
-  document.getElementById('applyPromo').addEventListener('click',applyCode);
-  document.getElementById('promo').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();applyCode();}});
-  if(code)applyCode();
   render();
 
-  /* place order -> confirmation (no payment captured here) */
-  document.getElementById('orderForm').addEventListener('submit',function(e){
-    e.preventDefault();
-    var f=e.target;
-    if(!f.checkValidity()){f.reportValidity();return;}
-    var data=Object.fromEntries(new FormData(f).entries());
-    var refnum='SYM-'+Date.now().toString(36).toUpperCase().slice(-6);
-    var record={ref:refnum,acres:order.acres,rate:order.rate,subtotal:subtotal(),volumePct:volPct(),codePct:codePct(),discount:discount(),
-      total:subtotal()-discount(),promo:applied?applied.code:'',attribution:ref,contact:data};
-    /* placeholder store: the CRM/backend consumes this later */
-    try{var all=JSON.parse(localStorage.getItem('symm_orders')||'[]');all.push(record);localStorage.setItem('symm_orders',JSON.stringify(all));localStorage.removeItem('symm_order');}catch(err){}
-    document.getElementById('cRef').textContent=refnum;
-    document.getElementById('cAcres').textContent=order.acres+' acres';
-    document.getElementById('cTotal').textContent=fmt(record.total);
-    document.getElementById('checkout').style.display='none';
-    var c=document.getElementById('confirm');c.classList.add('show');
-    if(pill)pill.hidden=true;
-    window.scrollTo(0,0);
-  });
+  /* Embed the Zoho checkout form, prefilled with the order's acreage (+ any
+     referral/advisor code carried from the link). The customer enters their
+     contact & shipping there; on submit, Zoho Flow creates the invoice in
+     Zoho Books (recomputing volume/code pricing authoritatively), emails it
+     to the customer, and notifies sales@symmbiotic.com. */
+  var ZBASE='https://forms.zohopublic.com/cropdefense1/form/SymmCheckout/formperma/MLs4KdlpWZLP2sGA71KvakzyO3DIy44s8VrgA4_e2FU';
+  function loadForm(){
+    var u=ZBASE+'?zf_rszfm=1&SingleLine1='+encodeURIComponent(order.acres);
+    if(storedCode)u+='&SingleLine2='+encodeURIComponent(storedCode);
+    var f=document.getElementById('zform'); if(f)f.src=u;
+  }
+  loadForm();
 })();
 </script>
 <script type="text/javascript">
