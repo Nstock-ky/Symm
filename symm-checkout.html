@@ -328,6 +328,7 @@
   function loadForm(){
     var u=ZBASE+'?zf_rszfm=1&SingleLine1='+encodeURIComponent(order.acres);
     u+='&SingleLine4='+encodeURIComponent(volPct());
+    u+='&Number='+encodeURIComponent(order.acres)+'&Number1='+encodeURIComponent(volPct());
     if(storedCode)u+='&SingleLine2='+encodeURIComponent(storedCode);
     var f=document.getElementById('zform'); if(f)f.src=u;
   }
