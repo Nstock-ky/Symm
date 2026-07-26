@@ -270,7 +270,44 @@
       </div>
 
       <div class="form-card">
-        <iframe aria-label="Symm Trial Application" frameborder="0" style="height:1400px;width:100%;border:none;" src="https://forms.zohopublic.com/cropdefense1/form/SymmTrial/formperma/8hf5iDh9YFVKAO2yZqR-sJRjmV7zqbozDNPH1-1WXww"></iframe>
+        <div class="form-flow" id="formFlow">
+          <form id="trialForm" novalidate>
+            <div class="row2">
+              <label class="field"><span class="lab">First name <span class="req">*</span></span>
+                <input class="inp" type="text" name="Name_First" required autocomplete="given-name"></label>
+              <label class="field"><span class="lab">Last name <span class="req">*</span></span>
+                <input class="inp" type="text" name="Name_Last" required autocomplete="family-name"></label>
+            </div>
+            <div class="row2">
+              <label class="field"><span class="lab">Email <span class="req">*</span></span>
+                <input class="inp" type="email" name="Email" required autocomplete="email"></label>
+              <label class="field"><span class="lab">Phone</span>
+                <input class="inp" type="tel" name="PhoneNumber" autocomplete="tel"></label>
+            </div>
+            <div class="row2">
+              <label class="field"><span class="lab">Operation name</span>
+                <input class="inp" type="text" name="SingleLine" autocomplete="organization"></label>
+              <label class="field"><span class="lab">Primary crops</span>
+                <input class="inp" type="text" name="SingleLine1"></label>
+            </div>
+            <label class="field"><span class="lab">Total acreage</span>
+              <input class="inp" type="text" name="SingleLine2" inputmode="numeric"></label>
+            <label class="field"><span class="lab">Tell us about your goals</span>
+              <textarea class="inp" name="MultiLine" placeholder="Describe your farm, what you grow, and what you hope to learn from a trial."></textarea></label>
+            <input type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+            <div class="form-foot">
+              <button class="btn primary" type="submit" id="submitBtn">Apply for a trial <span class="arw">&rarr;</span></button>
+              <span class="err-msg" id="errMsg">Something went wrong. Please try again.</span>
+            </div>
+          </form>
+        </div>
+        <div class="result" id="result">
+          <div class="res-card">
+            <span class="res-badge"><span class="ck">&#10003;</span> Application received</span>
+            <h2>Thanks, we&rsquo;ve got it.</h2>
+            <p>A Symm Field Advisor will review your trial application and follow up shortly.</p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -350,6 +387,43 @@
 <script>
 /* Nav acre pill reflects an order in progress. */
 (function(){try{var o=JSON.parse(localStorage.getItem('symm_order')||'null');var p=document.getElementById('navpill');if(o&&o.acres&&p){p.hidden=false;p.querySelector('.n').textContent=o.acres;}}catch(e){}})();
+</script>
+<script>
+/* Native trial form -> Catalyst relay -> Zoho SymmTrial. See forms/FORM-MAPPING.md.
+   NOTE: relay is on Catalyst Development env; swap to the Production URL before public launch. */
+(function(){
+  var RELAY='https://project-rainfall-932827561.development.catalystserverless.com/server/formrelay/trial';
+  var form=document.getElementById('trialForm'), flow=document.getElementById('formFlow'),
+      result=document.getElementById('result'), errMsg=document.getElementById('errMsg'),
+      btn=document.getElementById('submitBtn');
+  if(!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errMsg.classList.remove('show');
+    var bad=false;
+    form.querySelectorAll('[required]').forEach(function(el){
+      var ok = el.type==='checkbox' ? el.checked : String(el.value||'').trim()!=='';
+      if(el.type==='email') ok = ok && /.+@.+\..+/.test(el.value);
+      el.classList.toggle('bad', !ok); if(!ok) bad=true;
+    });
+    if(bad){ errMsg.textContent='Please complete the required fields.'; errMsg.classList.add('show'); return; }
+    var data={};
+    new FormData(form).forEach(function(v,k){
+      if(k==='Checkbox'){ (data.Checkbox=data.Checkbox||[]).push(v); } else { data[k]=v; }
+    });
+    var orig=btn.innerHTML; btn.disabled=true; btn.textContent='Sending';
+    fetch(RELAY,{method:'POST',body:JSON.stringify(data)})
+      .then(function(r){ return r.json().catch(function(){return {};}).then(function(j){ return {ok:r.ok&&j.ok}; }); })
+      .then(function(res){
+        if(res.ok){ flow.classList.add('done'); result.classList.add('show'); result.scrollIntoView({behavior:'smooth',block:'center'}); }
+        else { throw new Error('relay'); }
+      })
+      .catch(function(){
+        errMsg.innerHTML='Something went wrong. Please try again, or email <a href="mailto:advisors@symmbiotic.com" style="color:inherit;text-decoration:underline">advisors@symmbiotic.com</a>.';
+        errMsg.classList.add('show'); btn.disabled=false; btn.innerHTML=orig;
+      });
+  });
+})();
 </script>
 <script type="text/javascript">
 function ZFLead(){

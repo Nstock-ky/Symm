@@ -163,8 +163,51 @@
       <div>
         <div class="card zform-card">
           <div class="sec-label">Your details &amp; shipping</div>
-          <p class="zform-note">Complete the form below and your invoice will be emailed to you. Have a promo or advisor code? Enter it in the form.</p>
-          <iframe id="zform" title="Symm secure checkout" src="about:blank"></iframe>
+          <p class="zform-note">Complete the form below. A Field Advisor confirms shipping and emails your final invoice. No card is entered here.</p>
+          <div class="form-flow" id="formFlow">
+            <form id="checkoutForm" novalidate>
+              <div class="row2">
+                <div class="field"><label>First name *</label><input name="Name_First" required autocomplete="given-name"></div>
+                <div class="field"><label>Last name *</label><input name="Name_Last" required autocomplete="family-name"></div>
+              </div>
+              <div class="row2">
+                <div class="field"><label>Email *</label><input type="email" name="Email" required autocomplete="email"></div>
+                <div class="field"><label>Phone</label><input type="tel" name="PhoneNumber" autocomplete="tel"></div>
+              </div>
+              <div class="sec-label">Shipping address</div>
+              <div class="field"><label>Street address</label><input name="Address_AddressLine1" autocomplete="address-line1"></div>
+              <div class="field"><label>Address line 2</label><input name="Address_AddressLine2" autocomplete="address-line2"></div>
+              <div class="row2">
+                <div class="field"><label>City</label><input name="Address_City" autocomplete="address-level2"></div>
+                <div class="field"><label>State / region</label><input name="Address_Region" autocomplete="address-level1"></div>
+              </div>
+              <div class="row2">
+                <div class="field"><label>ZIP / postal code</label><input name="Address_ZipCode" autocomplete="postal-code"></div>
+                <div class="field"><label>Country</label><input name="Address_Country" value="United States" autocomplete="country-name"></div>
+              </div>
+              <div class="sec-label">Order details</div>
+              <div class="row2">
+                <div class="field"><label>Primary crop</label><input name="SingleLine"></div>
+                <div class="field"><label>Total acreage</label><input name="SingleLine1" inputmode="numeric"></div>
+              </div>
+              <div class="field"><label>Promo or advisor code</label><input name="SingleLine2"></div>
+              <div class="field"><label>Notes for your advisor</label><textarea name="MultiLine"></textarea></div>
+              <input type="hidden" name="SingleLine3" value="Symm Program">
+              <input type="hidden" name="SingleLine4" value="">
+              <input type="hidden" name="Number" value="">
+              <input type="hidden" name="Number1" value="">
+              <input type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+              <div class="form-foot" style="display:flex;align-items:center;gap:16px;margin-top:18px;flex-wrap:wrap">
+                <button class="btn primary" type="submit" id="submitBtn">Submit order for invoice <span class="arw">&rarr;</span></button>
+                <span class="err-msg" id="errMsg" style="color:#f0a58a;font-size:13px;display:none"></span>
+              </div>
+            </form>
+          </div>
+          <div class="result" id="result" hidden style="text-align:center;padding:22px 4px">
+            <div class="sec-label" style="color:var(--lime);margin:0 0 8px">Order received</div>
+            <h2 style="font-family:var(--display);font-size:24px;margin:0 0 10px">Thanks, we&rsquo;ve got your order.</h2>
+            <p style="color:var(--ink-2);max-width:46ch;margin:0 auto;font-size:14px">A Symm Field Advisor will review your order, confirm shipping, and email your final invoice. No payment was taken here.</p>
+          </div>
         </div>
       </div>
       <div class="legacy-hidden" hidden>
@@ -324,15 +367,35 @@
      contact & shipping there; on submit, Zoho Flow creates the invoice in
      Zoho Books (recomputing volume/code pricing authoritatively), emails it
      to the customer, and notifies advisors@symmbiotic.com. */
-  var ZBASE='https://forms.zohopublic.com/cropdefense1/form/SymmCheckout/formperma/MLs4KdlpWZLP2sGA71KvakzyO3DIy44s8VrgA4_e2FU';
-  function loadForm(){
-    var u=ZBASE+'?zf_rszfm=1&SingleLine1='+encodeURIComponent(order.acres);
-    u+='&SingleLine4='+encodeURIComponent(volPct());
-    u+='&Number='+encodeURIComponent(order.acres)+'&Number1='+encodeURIComponent(volPct());
-    if(storedCode)u+='&SingleLine2='+encodeURIComponent(storedCode);
-    var f=document.getElementById('zform'); if(f)f.src=u;
+  /* Native checkout form -> Catalyst relay -> Zoho SymmCheckout -> Books estimate.
+     Prefill hidden + acreage fields from the order; a Field Advisor sends the final invoice.
+     NOTE: relay is on Catalyst Development env; swap to the Production URL before public launch. */
+  var RELAY='https://project-rainfall-932827561.development.catalystserverless.com/server/formrelay/checkout';
+  var cform=document.getElementById('checkoutForm');
+  if(cform){
+    cform.SingleLine1.value=order.acres;   /* Total acreage (visible) */
+    cform.SingleLine4.value=volPct();       /* Volume discount % */
+    cform.Number.value=order.acres;         /* Order Quantity -> Books Item quantity */
+    cform.Number1.value=volPct();           /* Discount Value */
+    if(storedCode)cform.SingleLine2.value=storedCode;
+    var flow=document.getElementById('formFlow'),result=document.getElementById('result'),
+        errMsg=document.getElementById('errMsg'),btn=document.getElementById('submitBtn');
+    cform.addEventListener('submit',function(e){
+      e.preventDefault(); errMsg.style.display='none';
+      var bad=false;
+      cform.querySelectorAll('[required]').forEach(function(el){
+        var ok=String(el.value||'').trim()!==''; if(el.type==='email')ok=ok&&/.+@.+\..+/.test(el.value);
+        el.style.borderColor=ok?'':'#e8734f'; if(!ok)bad=true;
+      });
+      if(bad){errMsg.textContent='Please complete the required fields.';errMsg.style.display='block';return;}
+      var data={}; new FormData(cform).forEach(function(v,k){data[k]=v;});
+      var orig=btn.innerHTML; btn.disabled=true; btn.textContent='Submitting';
+      fetch(RELAY,{method:'POST',body:JSON.stringify(data)})
+        .then(function(r){return r.json().catch(function(){return{};}).then(function(j){return{ok:r.ok&&j.ok};});})
+        .then(function(res){ if(res.ok){ flow.style.display='none'; result.hidden=false; result.scrollIntoView({behavior:'smooth',block:'center'}); } else { throw new Error(); } })
+        .catch(function(){ errMsg.innerHTML='Something went wrong. Please try again, or email <a href="mailto:advisors@symmbiotic.com" style="color:inherit">advisors@symmbiotic.com</a>.'; errMsg.style.display='block'; btn.disabled=false; btn.innerHTML=orig; });
+    });
   }
-  loadForm();
 })();
 </script>
 <script type="text/javascript">

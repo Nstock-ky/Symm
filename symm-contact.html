@@ -172,7 +172,52 @@
   <div class="wrap layout" id="form">
     <div class="form-flow">
       <div class="form-card">
-        <iframe aria-label="Symm Contact Form" frameborder="0" style="height:900px;width:100%;border:none;" src="https://forms.zohopublic.com/cropdefense1/form/SymmContact/formperma/1hrbP4thHbSxXEX3-FV7AlaGVgvzE0DqhXMBYhuHSJw"></iframe>
+        <div class="form-flow" id="formFlow">
+          <form id="contactForm" novalidate>
+            <div class="row2">
+              <label class="field"><span class="lab">First name <span class="req">*</span></span>
+                <input class="inp" type="text" name="Name_First" required autocomplete="given-name"></label>
+              <label class="field"><span class="lab">Last name <span class="req">*</span></span>
+                <input class="inp" type="text" name="Name_Last" required autocomplete="family-name"></label>
+            </div>
+            <div class="row2">
+              <label class="field"><span class="lab">Email <span class="req">*</span></span>
+                <input class="inp" type="email" name="Email" required autocomplete="email"></label>
+              <label class="field"><span class="lab">Phone</span>
+                <input class="inp" type="tel" name="PhoneNumber" autocomplete="tel"></label>
+            </div>
+            <div class="row2">
+              <label class="field"><span class="lab">Operation name</span>
+                <input class="inp" type="text" name="SingleLine" autocomplete="organization"></label>
+              <label class="field"><span class="lab">State</span>
+                <input class="inp" type="text" name="SingleLine1" autocomplete="address-level1"></label>
+            </div>
+            <div class="row2">
+              <label class="field"><span class="lab">Primary crops</span>
+                <input class="inp" type="text" name="SingleLine2"></label>
+              <label class="field"><span class="lab">Total acreage</span>
+                <input class="inp" type="text" name="SingleLine3" inputmode="numeric"></label>
+            </div>
+            <label class="field"><span class="lab">How can we help?</span>
+              <textarea class="inp" name="MultiLine" placeholder="Tell us about your operation and what you need: a program, a quote, an order, or a question."></textarea></label>
+            <label class="chk">
+              <input type="checkbox" name="Checkbox" value="Symm may contact me about my request" required>
+              <span class="ct">Symm may contact me about my request.</span>
+            </label>
+            <input type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+            <div class="form-foot">
+              <button class="btn primary" type="submit" id="submitBtn">Send message <span class="arw">&rarr;</span></button>
+              <span class="err-msg" id="errMsg">Something went wrong. Please try again.</span>
+            </div>
+          </form>
+        </div>
+        <div class="result" id="result">
+          <div class="res-card">
+            <span class="res-badge"><span class="ck">&#10003;</span> Message sent</span>
+            <h2>Thanks, we&rsquo;ve got it.</h2>
+            <p>A Symm Field Advisor will review your request and reach out shortly to build your program, put together a quote, or get your order started.</p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -217,6 +262,43 @@
 <script>
 /* Nav acre pill reflects an order in progress. */
 (function(){try{var o=JSON.parse(localStorage.getItem('symm_order')||'null');var p=document.getElementById('navpill');if(o&&o.acres&&p){p.hidden=false;p.querySelector('.n').textContent=o.acres;}}catch(e){}})();
+</script>
+<script>
+/* Native contact form -> Catalyst relay -> Zoho SymmContact. See forms/FORM-MAPPING.md.
+   NOTE: relay is on Catalyst Development env; swap to the Production URL before public launch. */
+(function(){
+  var RELAY='https://project-rainfall-932827561.development.catalystserverless.com/server/formrelay/contact';
+  var form=document.getElementById('contactForm'), flow=document.getElementById('formFlow'),
+      result=document.getElementById('result'), errMsg=document.getElementById('errMsg'),
+      btn=document.getElementById('submitBtn');
+  if(!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errMsg.classList.remove('show');
+    var bad=false;
+    form.querySelectorAll('[required]').forEach(function(el){
+      var ok = el.type==='checkbox' ? el.checked : String(el.value||'').trim()!=='';
+      if(el.type==='email') ok = ok && /.+@.+\..+/.test(el.value);
+      el.classList.toggle('bad', !ok); if(!ok) bad=true;
+    });
+    if(bad){ errMsg.textContent='Please complete the required fields.'; errMsg.classList.add('show'); return; }
+    var data={};
+    new FormData(form).forEach(function(v,k){
+      if(k==='Checkbox'){ (data.Checkbox=data.Checkbox||[]).push(v); } else { data[k]=v; }
+    });
+    var orig=btn.innerHTML; btn.disabled=true; btn.textContent='Sending';
+    fetch(RELAY,{method:'POST',body:JSON.stringify(data)})
+      .then(function(r){ return r.json().catch(function(){return {};}).then(function(j){ return {ok:r.ok&&j.ok}; }); })
+      .then(function(res){
+        if(res.ok){ flow.classList.add('done'); result.classList.add('show'); result.scrollIntoView({behavior:'smooth',block:'center'}); }
+        else { throw new Error('relay'); }
+      })
+      .catch(function(){
+        errMsg.innerHTML='Something went wrong. Please try again, or email <a href="mailto:advisors@symmbiotic.com" style="color:inherit;text-decoration:underline">advisors@symmbiotic.com</a>.';
+        errMsg.classList.add('show'); btn.disabled=false; btn.innerHTML=orig;
+      });
+  });
+})();
 </script>
 <script type="text/javascript">
 function ZFLead(){

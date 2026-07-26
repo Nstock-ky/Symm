@@ -1,0 +1,30 @@
+{
+  "defaults": {
+    "project": 1,
+    "env": 1
+  },
+  "actives": {
+    "project": 1,
+    "env": 1
+  },
+  "projects": [
+    {
+      "idx": 1,
+      "id": "93335000000014025",
+      "name": "Project-Rainfall",
+      "domain": {
+        "id": "10130258396",
+        "name": "project-rainfall-932827561.development"
+      },
+      "timezone": "Pacific/Pitcairn",
+      "env": [
+        {
+          "idx": 1,
+          "id": "932827561",
+          "name": "Development",
+          "type": 3
+        }
+      ]
+    }
+  ]
+}

@@ -1,2 +1,6 @@
 symm-product-images.html
 .claude/
+
+# Catalyst function dependencies (installed locally / on deploy)
+node_modules/
+catalyst/functions/*/node_modules/
