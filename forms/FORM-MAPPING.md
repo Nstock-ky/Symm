@@ -3,9 +3,10 @@
 **10DLC compliance (2026-08-11):** all three native forms now include an optional SMS/call
 consent checkbox and link to `symm-privacy.html`, per Zoho's [mandatory website requirements
 for 10DLC registration](https://help.zoho.com/portal/en/kb/zoho-voice/10dlc/articles/mandatory-website-requirements-for-10dlc-registration-compliance).
-Contact's Zoho form already had a `Checkbox` field so the new option just piggybacks on it;
-**Trial and Checkout still need a `Checkbox` field added in the Zoho form builder** or the
-consent selection won't be captured (the relay will silently send a field Zoho doesn't have).
+Contact's Zoho form already had a `Checkbox` field so the new option was added as a 2nd choice
+on it; Trial and Checkout got a new `Checkbox` field added in the Zoho form builder (label
+"Consent", single choice, link-name confirmed as `Checkbox` on the live published form). All
+three now capture consent end-to-end.
 
 **Why this file exists:** each site form now has THREE parts that must stay in sync. If you
 add/rename/remove a field, update **all three**:
@@ -60,7 +61,7 @@ customer email) if the field feeds it.
 | Primary Crops | `SingleLine1` | text | |
 | Total Acreage | `SingleLine2` | text | |
 | Goals and Notes | `MultiLine` | textarea | |
-| SMS/Call Consent | `Checkbox` | checkbox | "I consent to receive calls, emails, and text messages from Symm" — 10DLC compliance, optional. **TODO: add a `Checkbox` field to the SymmTrial Zoho form** (does not exist yet — native form now sends it, but Zoho form doesn't have a matching field) |
+| SMS/Call Consent | `Checkbox` | checkbox | "I consent to receive calls, emails, and text messages from Symm" — 10DLC compliance, optional |
 
 ---
 
@@ -85,7 +86,7 @@ customer email) if the field feeds it.
 | Volume Discount Percent | `SingleLine4` | text **(hidden)** | prefilled |
 | Order Quantity | `Number` | number **(hidden)** | = acres → Books **Item quantity** |
 | Discount Value | `Number1` | number **(hidden)** | = discount % (captured for sales) |
-| SMS/Call Consent | `Checkbox` | checkbox | "I consent to receive calls, emails, and text messages from Symm" — 10DLC compliance, optional. **TODO: add a `Checkbox` field to the SymmCheckout Zoho form** (does not exist yet — native form now sends it, but Zoho form doesn't have a matching field) |
+| SMS/Call Consent | `Checkbox` | checkbox | "I consent to receive calls, emails, and text messages from Symm" — 10DLC compliance, optional |
 
 **Checkout prefill (URL params set by `symm-checkout.html` loadForm):**
 `SingleLine1` (acres), `SingleLine4` (discount %), `Number` (acres), `Number1` (discount %),
