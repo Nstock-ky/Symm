@@ -63,6 +63,10 @@
   .field textarea{min-height:84px;resize:vertical}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   @media(max-width:480px){.row2{grid-template-columns:1fr}}
+  .chk{display:flex;gap:11px;align-items:flex-start;border:1px solid var(--hair);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color .15s;margin-bottom:14px}
+  .chk:hover{border-color:var(--ink-2)}
+  .chk input{margin-top:2px;width:17px;height:17px;accent-color:var(--lime);flex:none}
+  .chk .ct{font-size:13px;color:var(--ink-2);line-height:1.5}
   .sec-label{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);margin:22px 0 12px;padding-top:18px;border-top:1px solid var(--hair)}
   .sec-label:first-of-type{border-top:0;padding-top:0;margin-top:0}
 
@@ -192,6 +196,10 @@
               </div>
               <div class="field"><label>Promo or advisor code</label><input name="SingleLine2"></div>
               <div class="field"><label>Notes for your advisor</label><textarea name="MultiLine"></textarea></div>
+              <label class="chk">
+                <input type="checkbox" name="Checkbox" value="I consent to receive calls, emails, and text messages from Symm">
+                <span class="ct">By providing your telephone number, you consent to receive calls, emails, and text messages. Msg &amp; data rates may apply. Message frequency may vary. Reply STOP to opt out and HELP for help. View our <a href="symm-privacy.html" style="color:var(--lime)">Privacy Policy</a> for more information.</span>
+              </label>
               <input type="hidden" name="SingleLine3" value="Symm Program">
               <input type="hidden" name="SingleLine4" value="">
               <input type="hidden" name="Number" value="">
@@ -297,6 +305,7 @@
     <nav class="sf-links">
       <a href="symm-faq.html">FAQ</a>
       <a href="symm-application-instructions.html">Application instructions</a>
+      <a href="symm-privacy.html">Privacy Policy</a>
     </nav>
     <div class="sf-meta">
       <span class="sf-logo"><span class="d"></span>symm</span>
@@ -388,7 +397,9 @@
         el.style.borderColor=ok?'':'#e8734f'; if(!ok)bad=true;
       });
       if(bad){errMsg.textContent='Please complete the required fields.';errMsg.style.display='block';return;}
-      var data={}; new FormData(cform).forEach(function(v,k){data[k]=v;});
+      var data={}; new FormData(cform).forEach(function(v,k){
+        if(k==='Checkbox'){ (data.Checkbox=data.Checkbox||[]).push(v); } else { data[k]=v; }
+      });
       var orig=btn.innerHTML; btn.disabled=true; btn.textContent='Submitting';
       fetch(RELAY,{method:'POST',body:JSON.stringify(data)})
         .then(function(r){return r.json().catch(function(){return{};}).then(function(j){return{ok:r.ok&&j.ok};});})
