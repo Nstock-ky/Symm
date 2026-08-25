@@ -8,6 +8,26 @@ on it; Trial and Checkout got a new `Checkbox` field added in the Zoho form buil
 "Consent", single choice, link-name confirmed as `Checkbox` on the live published form). All
 three now capture consent end-to-end.
 
+## Email sender / recipient policy (set 2026-08-22, after DKIM)
+
+symmbiotic.com DKIM was verified in Zoho Forms (1024-bit). That lifts Zoho's rule restricting
+recipients to org users, so **email ALIASES like `advisors@` now work** as long as the From is a
+symmbiotic.com address. **All INTERNAL notifications** on Contact, Trial, Checkout and Yield
+Guarantee are now From `kyle@symmbiotic.com` → **advisors@ + aidan@ + natasha@ + kyle@**.
+
+Do NOT switch an internal notification's From back to `notifications@zohoforms.com`: advisors@ will
+start being rejected ("you can add only your organization's users as recipients").
+
+**Still on `notifications@zohoforms.com` (customer-facing, deliberately unchanged):**
+- Checkout → "Customer Confirmation" ("We received your Symm order request")
+- Yield Guarantee → applicant autoresponder ("We received your Symm Yield Guarantee application")
+
+These go to external customers, so switching their From to symmbiotic.com is a branding win but
+carries real deliverability risk to Gmail/Outlook if DKIM/SPF/DMARC are not fully aligned. Decide
+deliberately rather than by default. Zoho Books/Payments senders were NOT audited here.
+
+---
+
 **Why this file exists:** each site form now has THREE parts that must stay in sync. If you
 add/rename/remove a field, update **all three**:
 1. **Native form** — the HTML/CSS form on our page (our theme).
@@ -94,6 +114,101 @@ customer email) if the field feeds it.
 
 ---
 
+## 4. Yield Guarantee apply  (Zoho form: **SymmYieldGuarantee**)
+- formperma: `46W8wdfaky7eVBrNAWfBdFQ3VoFwS2MV02hlxJtdO0o`
+- Page: `symm-yield-guarantee.html` (ships **unlinked** from nav/footer until verified end-to-end).
+- Built 2026-08-22 as a Zoho **CRM Form** (Forms → New Form → CRM Forms), so the Zoho CRM
+  integration was created automatically and shows **Connected**. Module = Leads,
+  Layout = Standard (`7476249000000091055`), Org = symm (`928049781`).
+- Downstream: Forms→CRM Leads integration (auto) + notification to advisors@ + applicant
+  autoresponder (no pricing or terms in the autoresponder). **Emails still TODO.**
+
+**Link-names below are GROUND TRUTH**, read from the published form's DOM on 2026-08-22. Because
+this was created as a CRM Form, Zoho assigned names by its own field order, NOT the convention the
+other three forms follow. Notable surprises:
+- There is **no `Name` composite**. CRM has separate First/Last, so they are two `SingleLine` fields.
+- Primary Crops (a CRM multiselect) rendered as a **`Checkbox`** group, not `MultiSelect`.
+- Consent to Contact (a CRM boolean) rendered as **`DecisionBox`**, not `Checkbox`.
+- There are **four** dropdowns, and Role is `Dropdown3`, not `Dropdown`.
+
+| Apply-form field | Zoho link-name | Type | Req | → Zoho CRM Leads field |
+|---|---|---|---|---|
+| Operation / farm name | `SingleLine` | text | **Yes (Zoho-enforced)** | Company |
+| Last name | `SingleLine1` | text | **Yes (Zoho-enforced)** | Last Name |
+| First name | `SingleLine2` | text | form-only | First Name |
+| Email | `Email` | email | form-only | Email |
+| Phone | `PhoneNumber` | tel | form-only | Phone |
+| *(hidden)* Lead Source | `Dropdown` | select | — | Lead Source |
+| *(hidden)* Lead Status | `Dropdown1` | select | — | Lead Status |
+| State | `Dropdown2` | select | form-only | State |
+| Tell us about your operation | `MultiLine` | textarea | No | Description |
+| Role | `Dropdown3` | select | form-only | **Role** (custom picklist) |
+| Primary crops | `Checkbox` | checkbox group, 17 options | form-only (≥1) | **Primary Crops** (custom multiselect) |
+| Consent to be contacted | `DecisionBox` | boolean checkbox, value `true` | form-only | **Consent to Contact** (custom boolean) |
+| Approx. total acreage | `Number` | number | form-only | **Total Acreage** (custom number) |
+| Consent timestamp | `SingleLine3` | text **(hidden)** | — | **Consent Timestamp** (ISO string set by JS) |
+
+`Company` and `Last Name` are the only two Zoho marks mandatory, so the native form MUST always
+send `SingleLine` and `SingleLine1` or Zoho rejects the submission. Everything else is enforced
+client-side on our page only.
+
+**Fixed values are sent as hidden inputs from our page** (not set in the integration mapping),
+because both are real form fields on the Zoho form:
+- `Dropdown`  = `Yield Guarantee Apply Page` (confirmed present in the field's options)
+- `Dropdown1` = `Not Contacted` (confirmed present in the field's options)
+
+**State dropdown (`Dropdown2`) — FIXED 2026-08-22.** Zoho originally populated it with 3,954
+worldwide province options (Papua New Guinea provinces sorted first), which made the Zoho-hosted
+form unusable for a US grower. Replaced via field properties → Choices → Advanced → Import →
+Add Manually with "Replace existing choices" checked. Verified on the published form: exactly
+**51 options (50 states + DC)**, no duplicates, no leftovers.
+
+**VERIFIED END-TO-END 2026-08-22.** Posted a test payload to `/records` (HTTP 200) and confirmed the
+Lead reached CRM with every field intact: Company, First/Last Name, Email, Phone (auto-formatted),
+Lead Source, Lead Status, State, Role, Primary Crops (multi-value, `Corn; Small grains`), Total
+Acreage, Description, Consent Timestamp, and **Consent to Contact = checked**. Test leads and form
+entries were deleted afterwards (CRM Recycle Bin / Forms Trash, not purged).
+
+**`DecisionBox` value format:** send the STRING `"true"`, not a JSON boolean. Confirmed by
+intercepting the Zoho-hosted form's own XHR, which sends `"DecisionBox":"true"`. Our page uses
+`value="true"` on the checkbox so FormData produces the correct string. A JSON boolean `true` is
+also accepted by the form, but the string is what Zoho itself sends, so prefer it. When consent is
+unchecked the field is simply absent from the payload, which is correct.
+
+### Emails (both LIVE and enabled, 2026-08-22)
+
+**1. Internal notification.** From **`kyle@symmbiotic.com`**, subject
+"New Yield Guarantee Application - Symm", body carries every field as merge tokens.
+To: **aidan@ + natasha@ + kyle@ + advisors@ symmbiotic.com** (4 recipients).
+
+`advisors@` is an email ALIAS, not a Zoho org user. It works because symmbiotic.com DKIM was
+verified in Zoho Forms (1024-bit key, 2026-08-22): with a DKIM-verified custom-domain From, Zoho
+permits non-user aliases as recipients. Before DKIM it was hard-blocked two ways ("you can add only
+your organization's users as recipients" with the Zoho sender, and a DKIM gate that refused to save
+a symmbiotic.com From). **Do not switch this From back to `notifications@zohoforms.com`** or
+advisors@ will start being rejected again.
+
+**2. Applicant autoresponder.** From `notifications@zohoforms.com`, To `${zf:Email}`,
+subject "We received your Symm Yield Guarantee application". Body greets by first name
+(`${zf:SingleLine2}`), confirms receipt for their operation (`${zf:SingleLine}`), and says a Field
+Advisor will review and reach out. **Contains no pricing and no terms**, per the memo.
+
+**STILL TODO:** deploy the relay so the `/yieldguarantee` route exists in Catalyst
+(`cd catalyst && catalyst deploy`, needs interactive login), then link the page into nav/footer
+after a real end-to-end submission is confirmed.
+
+**Primary Crops options (must match the CRM picklist exactly, 17):** Tree nuts · Citrus · Pome and
+stone fruit · Berries · Grapes · Leafy greens and brassicas · Tomatoes and peppers · Cucurbits and
+melons · Onions and garlic · Potatoes and root vegetables · Corn · Soybeans and pulses · Small
+grains · Cotton · Hay and pasture · Hemp and hops · Other.
+Note: labels use "and", never `&`.
+
+**CRM-side notes:** the five custom Lead fields exist and are verified. `Required` is deliberately
+OFF at the CRM level (enforced on the form instead) so the dialer, batch imports, and manual entry
+are not blocked. See memory `yield-guarantee-apply-form` for the full rationale.
+
+---
+
 ## Relay → Zoho submission format (ground truth, captured 2026-07-26)
 
 The Catalyst relay forwards each submission as a **JSON POST**:
@@ -118,7 +233,8 @@ Body shape (keys = field link-names above):
 }
 ```
 - Composite fields (Name, Address) = nested objects; the inner keys are the FULL sub-names.
-- Checkbox = array of selected option label(s).
+- Checkbox / MultiSelect = array of selected option label(s). The relay arrays any field matching
+  `/^(Checkbox|MultiSelect)\d*$/`, so numbered variants (`Checkbox1`, `MultiSelect2`) work too.
 - Number fields = numeric.
 - A 200 response means the entry was created and all downstream automation (Books estimate,
   notifications, customer email) fires exactly as with the old iframe.

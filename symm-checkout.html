@@ -132,7 +132,7 @@
   .edit-order{display:inline-block;margin-top:14px;color:var(--lime);font-weight:600;font-size:13px;text-decoration:underline;text-underline-offset:3px}
   .edit-order:hover{color:var(--lime-2)}
 </style>
-<script src="https://cdn.pagesense.io/js/cropdefense/80f36f911e5140229435a142c3521ace.js"></script>
+<script src="https://cdn.pagesense.io/js/cropdefense/adba67c177414b2b808c1be84347b639.js"></script>
 </head>
 <body>
 
@@ -303,6 +303,7 @@
 <footer class="sitefoot">
   <div class="wrap">
     <nav class="sf-links">
+      <a href="symm-yield-guarantee.html">Symm Yield Guarantee</a>
       <a href="symm-faq.html">FAQ</a>
       <a href="symm-application-instructions.html">Application instructions</a>
       <a href="symm-privacy.html">Privacy Policy</a>
@@ -403,7 +404,7 @@
       var orig=btn.innerHTML; btn.disabled=true; btn.textContent='Submitting';
       fetch(RELAY,{method:'POST',body:JSON.stringify(data)})
         .then(function(r){return r.json().catch(function(){return{};}).then(function(j){return{ok:r.ok&&j.ok};});})
-        .then(function(res){ if(res.ok){ flow.style.display='none'; result.hidden=false; result.scrollIntoView({behavior:'smooth',block:'center'}); } else { throw new Error(); } })
+        .then(function(res){ if(res.ok){ try{localStorage.removeItem('symm_order');}catch(e){} location.replace('symm-thank-you.html?form=order'); return; } else { throw new Error(); } })
         .catch(function(){ errMsg.innerHTML='Something went wrong. Please try again, or email <a href="mailto:advisors@symmbiotic.com" style="color:inherit">advisors@symmbiotic.com</a>.'; errMsg.style.display='block'; btn.disabled=false; btn.innerHTML=orig; });
     });
   }

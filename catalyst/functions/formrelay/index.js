@@ -31,13 +31,19 @@ const ORG = 'cropdefense1';
 
 // Map the public form key -> Zoho form name + formperma id.
 const FORMS = {
-  contact:  { name: 'SymmContact',  perma: '1hrbP4thHbSxXEX3-FV7AlaGVgvzE0DqhXMBYhuHSJw' },
-  trial:    { name: 'SymmTrial',    perma: '8hf5iDh9YFVKAO2yZqR-sJRjmV7zqbozDNPH1-1WXww' },
-  checkout: { name: 'SymmCheckout', perma: 'MLs4KdlpWZLP2sGA71KvakzyO3DIy44s8VrgA4_e2FU' },
+  contact:        { name: 'SymmContact',        perma: '1hrbP4thHbSxXEX3-FV7AlaGVgvzE0DqhXMBYhuHSJw' },
+  trial:          { name: 'SymmTrial',          perma: '8hf5iDh9YFVKAO2yZqR-sJRjmV7zqbozDNPH1-1WXww' },
+  checkout:       { name: 'SymmCheckout',       perma: 'MLs4KdlpWZLP2sGA71KvakzyO3DIy44s8VrgA4_e2FU' },
+  yieldguarantee: { name: 'SymmYieldGuarantee', perma: '46W8wdfaky7eVBrNAWfBdFQ3VoFwS2MV02hlxJtdO0o' },
 };
 
 // Fields Zoho stores as numbers.
 const NUMERIC = new Set(['Number', 'Number1']);
+
+// Fields Zoho stores as arrays of selected option labels: any Checkbox/MultiSelect
+// field, including the numbered variants Zoho assigns when a form has several
+// (Checkbox1, MultiSelect2, ...).
+const ARRAY_FIELD = /^(Checkbox|MultiSelect)\d*$/;
 
 // Origins allowed to call the relay (the live site + local preview).
 const ALLOWED_ORIGINS = [
@@ -60,7 +66,7 @@ function buildPayload(body) {
   const out = {};
   for (const [k, v] of Object.entries(body || {})) {
     if (k === 'form' || k === 'hp' || v === undefined || v === null || v === '') continue;
-    if (k === 'Checkbox') { out.Checkbox = Array.isArray(v) ? v : [v]; continue; }
+    if (ARRAY_FIELD.test(k)) { out[k] = Array.isArray(v) ? v : [v]; continue; }
     const m = k.match(/^(Name|Address)_/);
     if (m) { const p = m[1]; (out[p] = out[p] || {})[k] = v; continue; }
     out[k] = NUMERIC.has(k) ? Number(v) : v;

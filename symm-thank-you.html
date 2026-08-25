@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You · Symm</title>
+<meta name="description" content="Your submission has been received. Symm will be in touch shortly.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#081A0E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23081A0E'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%2380CB58'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --lime:#A1D09A; --lime-2:#70C77E; --lime-3:#B9FF94; --lime-ink:#08240A; --cloud:#FFFFFF;
+    --bg:#011F00; --surface:#071802; --ink:#FFFFFF; --ink-2:#FAFFFA; --hair:rgba(255,255,255,.14);
+    --maxw:1000px;
+    --display:"Hanken Grotesk",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--lime);color:var(--lime-ink)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  @media(max-width:600px){.wrap{padding:0 24px}}
+  h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.05;letter-spacing:-.02em}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--lime);outline-offset:2px;border-radius:6px}
+  .mono{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+
+  .btn{font-weight:700;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;padding:13px 22px;border-radius:40px;border:1.5px solid transparent;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:transform .15s,background .2s,border-color .2s,color .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn .arw{transition:transform .18s}.btn:hover .arw{transform:translateX(4px)}
+  .btn.primary{background:var(--lime);border-color:var(--lime);color:var(--lime-ink)}
+  .btn.ghost{background:transparent;color:var(--ink);border-color:color-mix(in srgb,var(--ink) 40%,transparent)}
+  .btn.ghost:hover{border-color:var(--ink);background:color-mix(in srgb,var(--ink) 7%,transparent)}
+
+  header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(9px);border-bottom:1px solid var(--hair)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.04em;display:flex;align-items:center;gap:9px}
+  .logo .dot{width:11px;height:11px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px 2px var(--lime)}
+  .nav-links{display:flex;gap:24px;align-items:center;margin-left:auto}
+  .nav-links a.ml{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+  .nav-links a.ml:hover{color:var(--ink)}
+  @media(max-width:820px){.nav-links a.ml{display:none}}
+  .acrepill{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);border:1.5px solid var(--lime);border-radius:40px;padding:9px 14px;text-decoration:none}
+  .acrepill .dotc{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 7px 1px var(--lime)}
+  .acrepill .n{color:var(--lime);font-weight:700}
+  .acrepill[hidden]{display:none}
+  .nav-actions{display:flex;align-items:center;gap:12px}
+  .nav{column-gap:16px}
+  .navburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:42px;height:42px;background:transparent;border:1.5px solid var(--hair);border-radius:10px;cursor:pointer;padding:0;flex:none}
+  .navburger span{display:block;width:18px;height:2px;background:var(--ink);transition:.2s}
+  .navburger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .navburger[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .navburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  @media(max-width:820px){
+    .navburger{display:flex}
+    .nav-links{position:absolute;top:100%;left:0;right:0;margin:0;flex-direction:column;align-items:stretch;background:var(--bg);border-bottom:1px solid var(--hair);padding:0 24px;gap:0;max-height:0;overflow:hidden;transition:max-height .28s ease;z-index:60}
+    .nav-links.open{padding:8px 24px 16px;max-height:75vh}
+    .nav-links a.mono,.nav-links a.ml{display:block;padding:14px 2px;border-bottom:1px solid var(--hair);font-size:14px}
+    .nav-actions{margin-left:auto} .nav-actions .btn{padding:11px 15px;font-size:11px}
+    .nav:has(#navpill:not([hidden])){flex-wrap:wrap;height:auto;padding-top:10px;padding-bottom:10px;row-gap:12px}
+    .nav:has(#navpill:not([hidden])) .navburger{margin-left:auto}
+    .nav:has(#navpill:not([hidden])) .nav-actions{order:5;width:100%;margin-left:0;justify-content:flex-end}
+  }
+
+  /* Confirmation */
+  .ty{padding-top:64px;padding-bottom:80px}
+  .ty-badge{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);border:1px solid color-mix(in srgb,var(--lime) 40%,transparent);border-radius:40px;padding:7px 14px;margin-bottom:20px}
+  .ty-check{width:20px;height:20px;border-radius:50%;background:var(--lime);color:var(--lime-ink);display:grid;place-items:center;font-size:12px;font-weight:800}
+  .ty-card{max-width:640px;background:linear-gradient(160deg,color-mix(in srgb,var(--lime) 16%,var(--surface)),var(--surface));border:1px solid var(--hair);border-radius:20px;padding:40px 34px}
+  @media(max-width:600px){.ty{padding-top:40px;padding-bottom:56px}.ty-card{padding:28px 20px}}
+  .ty-card h1{font-size:clamp(28px,4.4vw,40px);margin-bottom:14px}
+  .ty-card .lede{color:var(--ink-2);font-size:16px;max-width:60ch}
+  .ty-next{list-style:none;counter-reset:n;margin:22px 0 8px}
+  .ty-next li{counter-increment:n;position:relative;padding:11px 0 11px 42px;border-top:1px solid var(--hair);color:var(--ink-2);font-size:14.5px}
+  .ty-next li:first-child{border-top:0}
+  .ty-next li::before{content:counter(n);position:absolute;left:0;top:9px;width:26px;height:26px;border-radius:50%;background:color-mix(in srgb,var(--lime) 16%,transparent);color:var(--lime);font-family:var(--display);font-weight:800;font-size:13px;display:grid;place-items:center}
+  .ty-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+  @media(max-width:420px){.ty-actions{flex-direction:column}.ty-actions .btn{width:100%;justify-content:center}}
+
+  footer{border-top:1px solid var(--hair);padding:30px 0 46px;margin-top:10px}
+  .sitefoot{border-top:1px solid var(--hair);padding:0}
+  .sitefoot .sf-links{display:flex;flex-wrap:wrap;gap:14px 26px;padding:24px 0}
+  .sitefoot .sf-links a{font-weight:700;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);text-decoration:none}
+  .sitefoot .sf-links a:hover{color:var(--lime-2)}
+  .sitefoot .sf-meta{display:flex;justify-content:space-between;align-items:center;gap:14px 20px;flex-wrap:wrap;padding:24px 0 40px;border-top:1px solid var(--hair)}
+  .sitefoot .sf-logo{font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.04em;display:flex;align-items:center;gap:9px;color:var(--ink)}
+  .sitefoot .sf-logo .d{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px 2px var(--lime)}
+  .sitefoot .sf-m{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--ink-2);text-transform:none}
+  @media(max-width:600px){.sitefoot .sf-meta{flex-direction:column;align-items:flex-start;gap:10px}}
+</style>
+<script src="https://cdn.pagesense.io/js/cropdefense/adba67c177414b2b808c1be84347b639.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="index.html"><span class="dot"></span>symm</a>
+    <nav class="nav-links" id="navlinks">
+      <a class="ml" href="symm-products.html">Program</a>
+      <a class="ml" href="symm-yield-guarantee.html">Guarantee</a>
+      <a class="ml" href="symm-calculator.html">Calculator</a>
+      <a class="ml" href="symm-trial.html">Trial</a>
+      <a class="ml" href="symm-about.html">About</a>
+      <a class="ml" href="symm-contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="acrepill" id="navpill" href="symm-checkout.html" hidden><span class="dotc"></span><span class="n">0</span>&nbsp;acres</a>
+      <a class="btn primary" href="symm-products.html#buy">Order <span class="arw">&rarr;</span></a>
+    </div>
+    <button class="navburger" id="navburger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+  <section class="ty wrap">
+    <div class="ty-card">
+      <span class="ty-badge"><span class="ty-check">&#10003;</span> Received</span>
+      <h1 id="tyHead">Thank you.</h1>
+      <p class="lede" id="tyLead">We&rsquo;ve received your submission and will be in touch soon.</p>
+      <ol class="ty-next" id="tySteps">
+        <li><b>Our team reviews</b> what you sent.</li>
+        <li><b>Someone reaches out</b> with next steps.</li>
+      </ol>
+      <div class="ty-actions">
+        <a class="btn primary" href="index.html">Back to home <span class="arw">&rarr;</span></a>
+        <a class="btn ghost" href="symm-products.html">View products</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="sitefoot">
+  <div class="wrap">
+    <nav class="sf-links">
+      <a href="symm-yield-guarantee.html">Symm Yield Guarantee</a>
+      <a href="symm-faq.html">FAQ</a>
+      <a href="symm-application-instructions.html">Application instructions</a>
+      <a href="symm-privacy.html">Privacy Policy</a>
+    </nav>
+    <div class="sf-meta">
+      <span class="sf-logo"><span class="d"></span>symm</span>
+      <span class="sf-m"><a href="mailto:info@symmbiotic.com" style="color:inherit">info@symmbiotic.com</a> &middot; <a href="tel:+18453939539" style="color:inherit">(845) 393-9539</a></span>
+      <span class="sf-m">&copy; 2026 Symm</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Nav acre pill reflects an order in progress. */
+(function(){try{var o=JSON.parse(localStorage.getItem('symm_order')||'null');var p=document.getElementById('navpill');if(o&&o.acres&&p){p.hidden=false;p.querySelector('.n').textContent=o.acres;}}catch(e){}})();
+</script>
+<script>
+/* Variant messaging based on ?form= */
+(function(){
+  var variants={
+    yg:{
+      head:'Application received.',
+      lead:'A Symm Field Advisor will review your operation and reach out with next steps.',
+      steps:['<b>Your application is reviewed</b> by a Symm Field Advisor.','<b>You get a call</b> to discuss eligibility for your acres.']
+    },
+    order:{
+      head:'Order request received.',
+      lead:'Your Field Advisor will verify the order and send a final invoice.',
+      steps:['<b>Your Field Advisor verifies</b> the order details.','<b>Shipping and any volume discount</b> are confirmed.','<b>You receive an invoice</b> once everything is set.']
+    },
+    contact:{
+      head:'Message received.',
+      lead:'Thanks for reaching out. Someone from Symm will get back to you soon.',
+      steps:['<b>Your message is routed</b> to the right person.','<b>Someone gets back to you</b> shortly.']
+    },
+    trial:{
+      head:'Trial request received.',
+      lead:'An advisor will be in touch about setting up your trial.',
+      steps:['<b>An advisor reviews</b> your request.','<b>You hear back</b> to set up the details.']
+    }
+  };
+  var key=new URLSearchParams(location.search).get('form');
+  var v=variants[key];
+  if(!v)return;
+  var head=document.getElementById('tyHead'), lead=document.getElementById('tyLead'), steps=document.getElementById('tySteps');
+  if(head) head.textContent=v.head;
+  if(lead) lead.textContent=v.lead;
+  if(steps) steps.innerHTML=v.steps.map(function(s){return '<li>'+s+'</li>';}).join('');
+})();
+</script>
+<script>
+(function(){
+  var b=document.getElementById('navburger'),n=document.getElementById('navlinks');
+  if(!b||!n)return;
+  b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});
+  n.addEventListener('click',function(e){if(e.target.closest('a')){n.classList.remove('open');b.setAttribute('aria-expanded','false');}});
+})();
+</script>
+</body>
+</html>

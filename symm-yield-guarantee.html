@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apply for a Trial · Symm</title>
-<meta name="description" content="Apply to run a Symm field trial on your own farm. A limited number of grower trials are accepted each season, with dedicated advisor support.">
+<title>Symm Yield Guarantee · Symm</title>
+<meta name="description" content="Symm stands behind qualified operations enrolled in the Symm Yield Guarantee. Apply to have your operation reviewed by a Symm Field Advisor.">
 <meta name="theme-color" content="#081A0E">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Apply for a Trial · Symm">
-<meta property="og:description" content="Apply to run a Symm field trial on your own farm.">
+<meta property="og:title" content="Symm Yield Guarantee · Symm">
+<meta property="og:description" content="Symm stands behind qualified operations enrolled in the Symm Yield Guarantee.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23081A0E'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%2380CB58'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,11 +92,6 @@
   .form-card{background:var(--surface);border:1px solid var(--hair);border-radius:18px;padding:30px 28px}
   @media(max-width:560px){.form-card{padding:24px 18px}}
 
-  .prog{display:flex;align-items:center;gap:12px;margin-bottom:26px}
-  .prog .bar{flex:1;height:5px;border-radius:4px;background:var(--hair);overflow:hidden}
-  .prog .bar i{display:block;height:100%;background:var(--lime);width:33%;transition:width .35s cubic-bezier(.2,.7,.2,1)}
-  .prog .lbl{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap}
-
   fieldset{border:0}
   .fs-title{font-family:var(--display);font-weight:700;font-size:19px;margin-bottom:4px}
   .fs-sub{color:var(--ink-2);font-size:13.5px;margin-bottom:20px}
@@ -134,9 +129,13 @@
   .chk .ct{font-size:14px}
   .chk .ct small{display:block;color:var(--ink-2);font-size:12px;margin-top:2px}
   .chk.on{border-color:var(--lime);background:color-mix(in srgb,var(--lime) 10%,transparent)}
-  .pillset{display:flex;flex-wrap:wrap;gap:9px}
-  .pillset .chk{border-radius:40px;padding:9px 15px}
-  .pillset .chk .ct{font-size:13.5px}
+
+  /* crops checkbox grid */
+  .crops-grid{display:grid;grid-template-columns:1fr;gap:10px}
+  @media(min-width:560px){.crops-grid{grid-template-columns:1fr 1fr}}
+  @media(min-width:860px){.crops-grid{grid-template-columns:1fr 1fr 1fr}}
+  .crops-grid .chk{padding:11px 13px}
+  .crops-grid .chk .ct{font-size:13.5px}
 
   .form-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:26px;padding-top:22px;border-top:1px solid var(--hair)}
   .err-msg{color:#f0a58a;font-size:13px;margin-top:14px;display:none}
@@ -152,9 +151,6 @@
   .res-check{width:20px;height:20px;border-radius:50%;background:var(--lime);color:var(--lime-ink);display:grid;place-items:center;font-size:12px;font-weight:800}
   .res-card h2{font-size:clamp(26px,3.6vw,38px);margin-bottom:12px}
   .res-card .lede{color:var(--ink-2);font-size:16px;max-width:60ch}
-  .refbox{display:inline-flex;flex-direction:column;gap:2px;margin:22px 0;border:1px solid var(--hair);border-radius:12px;padding:12px 18px;background:var(--bg)}
-  .refbox .rl{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
-  .refbox .rv{font-weight:700;font-family:var(--mono);font-size:18px;color:var(--lime);letter-spacing:.04em}
   .next{list-style:none;counter-reset:n;margin:6px 0 8px}
   .next li{counter-increment:n;position:relative;padding:11px 0 11px 42px;border-top:1px solid var(--hair);color:var(--ink-2);font-size:14.5px}
   .next li:first-child{border-top:0}
@@ -204,9 +200,9 @@
     <a class="logo" href="index.html"><span class="dot"></span>symm</a>
     <nav class="nav-links" id="navlinks">
       <a class="ml" href="symm-products.html">Program</a>
-      <a class="ml" href="symm-yield-guarantee.html">Guarantee</a>
+      <a class="ml here" href="symm-yield-guarantee.html">Guarantee</a>
       <a class="ml" href="symm-calculator.html">Calculator</a>
-      <a class="ml here" href="symm-trial.html">Trial</a>
+      <a class="ml" href="symm-trial.html">Trial</a>
       <a class="ml" href="symm-about.html">About</a>
       <a class="ml" href="symm-contact.html">Contact</a>
     </nav>
@@ -220,46 +216,36 @@
 
 <main>
   <section class="hero wrap">
-    <span class="tagline">First Field &middot; Limited each season</span>
-    <h1>Prove it on your own ground.</h1>
-    <p>Each season we partner with a select group of growers to run First Field trials, with a dedicated advisor from start to harvest. Approved farms follow the Symm protocol to measure yield and nitrogen use, on their own acres, against their own baseline. <a href="#apply" class="applylink">Apply below</a>.</p>
+    <span class="tagline">Symm Yield Guarantee &middot; Application-based</span>
+    <h1>Symm stands behind qualified operations.</h1>
+    <p>The Symm Yield Guarantee is our commitment to growers who run the Symm program as directed, on operations we&rsquo;ve reviewed and approved. It is application-based: every operation is reviewed individually by a Symm Field Advisor before enrollment, and full terms are shared once your application is approved. <a href="#apply" class="applylink">Apply below</a>.</p>
   </section>
 
   <section class="band wrap">
     <h2 class="mono">How it works</h2>
     <div class="steps">
-      <div class="step"><div class="no">01</div><h3>Apply</h3><p>Tell us about your operation. It takes a few minutes and helps us match you to the right trial.</p></div>
-      <div class="step"><div class="no">02</div><h3>Review</h3><p>Our team reviews every application against the season's trial criteria and confirms your fit.</p></div>
-      <div class="step"><div class="no">03</div><h3>Onboard</h3><p>Approved growers are paired with a dedicated advisor who walks you through everything, including any trial details, and receive the Symm protocol and trial plan.</p></div>
-      <div class="step"><div class="no">04</div><h3>Measure</h3><p>Run a simple side-by-side trial and document yield and nitrogen results across the season.</p></div>
+      <div class="step"><div class="no">01</div><h3>Apply</h3><p>Tell us about your operation. It takes a few minutes and helps our team understand your fit for the program.</p></div>
+      <div class="step"><div class="no">02</div><h3>Review</h3><p>A Symm Field Advisor reviews your application against the program&rsquo;s qualification criteria.</p></div>
+      <div class="step"><div class="no">03</div><h3>Discuss terms</h3><p>Qualified operations receive a call to walk through eligibility and the specifics of the guarantee for their acres.</p></div>
+      <div class="step"><div class="no">04</div><h3>Enroll</h3><p>Approved growers enroll and run the Symm program under the terms outlined for their operation.</p></div>
     </div>
   </section>
 
   <section class="fit wrap">
     <h2 class="mono">What we look for</h2>
     <div class="grid">
-      <div class="fc"><h3>An active operation</h3><p>You grow specialty or row crops and can commit acreage to a side-by-side trial this season or next.</p></div>
-      <div class="fc"><h3>A decision-maker</h3><p>You own or help run the operation and can authorize a trial on your fields.</p></div>
-      <div class="fc"><h3>A measurement mindset</h3><p>You are willing to follow the protocol and document yield and nitrogen data.</p></div>
-      <div class="fc"><h3>Representative ground</h3><p>Fields that reflect your real growing conditions, so results translate to the rest of your farm.</p></div>
+      <div class="fc"><h3>An active operation</h3><p>You run a working farm and can apply the Symm program to a defined set of acres this season.</p></div>
+      <div class="fc"><h3>A decision-maker</h3><p>You own or help manage the operation and can commit to following the program on your fields.</p></div>
+      <div class="fc"><h3>Program fit</h3><p>Your crops, geography, and scale line up with the operations our Field Advisors currently support.</p></div>
+      <div class="fc"><h3>A willingness to follow the protocol</h3><p>You&rsquo;re prepared to apply the Symm program as directed across the guaranteed acres.</p></div>
     </div>
   </section>
 
   <section class="fit wrap">
-    <h2 class="mono">What a First Field trial includes</h2>
-    <div class="grid">
-      <div class="fc"><h3>Part 1 and Part 2</h3><p>Your trial supply of both Symm inputs, resilience and nutrition, for the treated acres.</p></div>
-      <div class="fc"><h3>A dedicated advisor</h3><p>Guides your trial from planning through harvest, with the protocol and a plan built around your fields.</p></div>
-      <div class="fc"><h3>A profitability report</h3><p>After harvest, your results on your own acres, in dollars.</p></div>
-      <div class="fc"><h3>County exclusivity</h3><p>A limited number of First Field trials are accepted per county each season.</p></div>
-    </div>
-  </section>
-
-  <section class="fit wrap">
-    <h2 class="mono">What it costs</h2>
+    <h2 class="mono">What happens after you apply</h2>
     <div class="grid solo">
       <div class="fc costcard">
-        <p>Standard 10-acre trials cost <b>$500</b>. That&rsquo;s roughly <b>$1,000 below full price</b>. Each season we also fully sponsor a small number of trials, free to the farms we select.</p>
+        <p>A Symm Field Advisor reviews every application individually. Qualified operations hear back with next steps and a conversation about whether the guarantee is a fit for their acres. <b>Pricing and full program terms are shared directly with qualified applicants</b> and are not published on this site.</p>
       </div>
     </div>
   </section>
@@ -267,41 +253,123 @@
   <section class="apply wrap" id="apply">
     <div class="form-flow">
       <div class="apply-head">
-        <div><h2>Apply for a trial</h2><p>A limited number of grower trials are accepted each season.</p></div>
+        <div><h2>Apply for the Yield Guarantee</h2><p>Tell us about your operation. A Symm Field Advisor reviews every application.</p></div>
       </div>
 
       <div class="form-card">
         <div class="form-flow" id="formFlow">
-          <form id="trialForm" novalidate>
+          <form id="ygForm" novalidate>
             <div class="row2">
               <label class="field"><span class="lab">First name <span class="req">*</span></span>
-                <input class="inp" type="text" name="Name_First" required autocomplete="given-name"></label>
+                <input class="inp" type="text" name="SingleLine2" required autocomplete="given-name"></label>
               <label class="field"><span class="lab">Last name <span class="req">*</span></span>
-                <input class="inp" type="text" name="Name_Last" required autocomplete="family-name"></label>
+                <input class="inp" type="text" name="SingleLine1" required autocomplete="family-name"></label>
             </div>
+            <label class="field"><span class="lab">Operation / farm name <span class="req">*</span></span>
+              <input class="inp" type="text" name="SingleLine" required autocomplete="organization"></label>
+            <label class="field"><span class="lab">Role <span class="req">*</span></span>
+              <select class="inp" name="Dropdown3" required>
+                <option value=""></option>
+                <option value="Owner">Owner</option>
+                <option value="Manager">Manager</option>
+                <option value="Agronomist">Agronomist</option>
+                <option value="Other">Other</option>
+              </select></label>
             <div class="row2">
               <label class="field"><span class="lab">Email <span class="req">*</span></span>
                 <input class="inp" type="email" name="Email" required autocomplete="email"></label>
-              <label class="field"><span class="lab">Phone</span>
-                <input class="inp" type="tel" name="PhoneNumber" autocomplete="tel"></label>
+              <label class="field"><span class="lab">Phone <span class="req">*</span></span>
+                <input class="inp" type="tel" name="PhoneNumber" required autocomplete="tel"></label>
             </div>
-            <div class="row2">
-              <label class="field"><span class="lab">Operation name</span>
-                <input class="inp" type="text" name="SingleLine" autocomplete="organization"></label>
-              <label class="field"><span class="lab">Primary crops</span>
-                <input class="inp" type="text" name="SingleLine1"></label>
-            </div>
-            <label class="field"><span class="lab">Total acreage</span>
-              <input class="inp" type="text" name="SingleLine2" inputmode="numeric"></label>
-            <label class="field"><span class="lab">Tell us about your goals</span>
-              <textarea class="inp" name="MultiLine" placeholder="Describe your farm, what you grow, and what you hope to learn from a trial."></textarea></label>
+            <label class="field"><span class="lab">State <span class="req">*</span></span>
+              <select class="inp" name="Dropdown2" required>
+                <option value=""></option>
+                <option value="Alabama">Alabama</option>
+                <option value="Alaska">Alaska</option>
+                <option value="Arizona">Arizona</option>
+                <option value="Arkansas">Arkansas</option>
+                <option value="California">California</option>
+                <option value="Colorado">Colorado</option>
+                <option value="Connecticut">Connecticut</option>
+                <option value="Delaware">Delaware</option>
+                <option value="District of Columbia">District of Columbia</option>
+                <option value="Florida">Florida</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Hawaii">Hawaii</option>
+                <option value="Idaho">Idaho</option>
+                <option value="Illinois">Illinois</option>
+                <option value="Indiana">Indiana</option>
+                <option value="Iowa">Iowa</option>
+                <option value="Kansas">Kansas</option>
+                <option value="Kentucky">Kentucky</option>
+                <option value="Louisiana">Louisiana</option>
+                <option value="Maine">Maine</option>
+                <option value="Maryland">Maryland</option>
+                <option value="Massachusetts">Massachusetts</option>
+                <option value="Michigan">Michigan</option>
+                <option value="Minnesota">Minnesota</option>
+                <option value="Mississippi">Mississippi</option>
+                <option value="Missouri">Missouri</option>
+                <option value="Montana">Montana</option>
+                <option value="Nebraska">Nebraska</option>
+                <option value="Nevada">Nevada</option>
+                <option value="New Hampshire">New Hampshire</option>
+                <option value="New Jersey">New Jersey</option>
+                <option value="New Mexico">New Mexico</option>
+                <option value="New York">New York</option>
+                <option value="North Carolina">North Carolina</option>
+                <option value="North Dakota">North Dakota</option>
+                <option value="Ohio">Ohio</option>
+                <option value="Oklahoma">Oklahoma</option>
+                <option value="Oregon">Oregon</option>
+                <option value="Pennsylvania">Pennsylvania</option>
+                <option value="Rhode Island">Rhode Island</option>
+                <option value="South Carolina">South Carolina</option>
+                <option value="South Dakota">South Dakota</option>
+                <option value="Tennessee">Tennessee</option>
+                <option value="Texas">Texas</option>
+                <option value="Utah">Utah</option>
+                <option value="Vermont">Vermont</option>
+                <option value="Virginia">Virginia</option>
+                <option value="Washington">Washington</option>
+                <option value="West Virginia">West Virginia</option>
+                <option value="Wisconsin">Wisconsin</option>
+                <option value="Wyoming">Wyoming</option>
+              </select></label>
+            <label class="field"><span class="lab">Primary crops <span class="req">*</span></span>
+              <div class="crops-grid" id="cropsGrid">
+                <label class="chk"><input type="checkbox" name="Checkbox" value="Tree nuts"><span class="ct">Tree nuts</span></label>
+                <label class="chk"><input type="checkbox" name="Checkbox" value="Citrus"><span class="ct">Citrus</span></label>
+                <label class="chk"><input type="checkbox" name="Checkbox" value="Pome and stone fruit"><span class="ct">Pome and stone fruit</span></label>
+                <label class="chk"><input type="checkbox" name="Checkbox" value="Berries"><span class="ct">Berries</span></label>
+                <label class="chk"><input type="checkbox" name="Checkbox" value="Grapes"><span class="ct">Grapes</span></label>
+                <label class="chk"><input type="checkbox" name="Checkbox" value="Leafy greens and brassicas"><span class="ct">Leafy greens and brassicas</span></label>
+                <label class="chk"><input type="checkbox" name="Checkbox" value="Tomatoes and peppers"><span class="ct">Tomatoes and peppers</span></label>
+                <label class="chk"><input type="checkbox" name="Checkbox" value="Cucurbits and melons"><span class="ct">Cucurbits and melons</span></label>
+                <label class="chk"><input type="checkbox" name="Checkbox" value="Onions and garlic"><span class="ct">Onions and garlic</span></label>
+                <label class="chk"><input type="checkbox" name="Checkbox" value="Potatoes and root vegetables"><span class="ct">Potatoes and root vegetables</span></label>
+                <label class="chk"><input type="checkbox" name="Checkbox" value="Corn"><span class="ct">Corn</span></label>
+                <label class="chk"><input type="checkbox" name="Checkbox" value="Soybeans and pulses"><span class="ct">Soybeans and pulses</span></label>
+                <label class="chk"><input type="checkbox" name="Checkbox" value="Small grains"><span class="ct">Small grains</span></label>
+                <label class="chk"><input type="checkbox" name="Checkbox" value="Cotton"><span class="ct">Cotton</span></label>
+                <label class="chk"><input type="checkbox" name="Checkbox" value="Hay and pasture"><span class="ct">Hay and pasture</span></label>
+                <label class="chk"><input type="checkbox" name="Checkbox" value="Hemp and hops"><span class="ct">Hemp and hops</span></label>
+                <label class="chk"><input type="checkbox" name="Checkbox" value="Other"><span class="ct">Other</span></label>
+              </div></label>
+            <label class="field"><span class="lab">Approx. total acreage <span class="req">*</span></span>
+              <input class="inp" type="number" name="Number" min="0" step="any" inputmode="decimal" required></label>
+            <label class="field"><span class="lab">Tell us about your operation</span>
+              <textarea class="inp" name="MultiLine" placeholder="Describe your farm, what you grow, and where you're located."></textarea></label>
             <label class="chk">
-              <input type="checkbox" name="Checkbox" value="I consent to receive calls, emails, and text messages from Symm">
-              <span class="ct">By providing your telephone number, you consent to receive calls, emails, and text messages. Msg &amp; data rates may apply. Message frequency may vary. Reply STOP to opt out and HELP for help. View our <a href="symm-privacy.html" style="color:var(--lime)">Privacy Policy</a> for more information.</span>
+              <input type="checkbox" name="DecisionBox" value="true" required>
+              <span class="ct">I consent to receive calls, emails, and text messages from Symm. Msg &amp; data rates may apply. Message frequency may vary. Reply STOP to opt out and HELP for help. View our <a href="symm-privacy.html" style="color:var(--lime)">Privacy Policy</a> for more information.</span>
             </label>
+            <input type="hidden" name="SingleLine3">
+            <input type="hidden" name="Dropdown" value="Yield Guarantee Apply Page">
+            <input type="hidden" name="Dropdown1" value="Not Contacted">
             <input type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
             <div class="form-foot">
-              <button class="btn primary" type="submit" id="submitBtn">Apply for a trial <span class="arw">&rarr;</span></button>
+              <button class="btn primary" type="submit" id="submitBtn">Apply for the Yield Guarantee <span class="arw">&rarr;</span></button>
               <span class="err-msg" id="errMsg">Something went wrong. Please try again.</span>
             </div>
           </form>
@@ -310,7 +378,7 @@
           <div class="res-card">
             <span class="res-badge"><span class="ck">&#10003;</span> Application received</span>
             <h2>Thanks, we&rsquo;ve got it.</h2>
-            <p>A Symm Field Advisor will review your trial application and follow up shortly.</p>
+            <p class="lede">A Symm Field Advisor will review your operation and reach out with next steps.</p>
           </div>
         </div>
       </div>
@@ -396,11 +464,11 @@
 (function(){try{var o=JSON.parse(localStorage.getItem('symm_order')||'null');var p=document.getElementById('navpill');if(o&&o.acres&&p){p.hidden=false;p.querySelector('.n').textContent=o.acres;}}catch(e){}})();
 </script>
 <script>
-/* Native trial form -> Catalyst relay -> Zoho SymmTrial. See forms/FORM-MAPPING.md.
+/* Native Yield Guarantee form -> Catalyst relay -> Zoho. See forms/FORM-MAPPING.md.
    NOTE: relay is on Catalyst Development env; swap to the Production URL before public launch. */
 (function(){
-  var RELAY='https://project-rainfall-932827561.development.catalystserverless.com/server/formrelay/trial';
-  var form=document.getElementById('trialForm'), flow=document.getElementById('formFlow'),
+  var RELAY='https://project-rainfall-932827561.development.catalystserverless.com/server/formrelay/yieldguarantee';
+  var form=document.getElementById('ygForm'), flow=document.getElementById('formFlow'),
       result=document.getElementById('result'), errMsg=document.getElementById('errMsg'),
       btn=document.getElementById('submitBtn');
   if(!form) return;
@@ -413,16 +481,21 @@
       if(el.type==='email') ok = ok && /.+@.+\..+/.test(el.value);
       el.classList.toggle('bad', !ok); if(!ok) bad=true;
     });
-    if(bad){ errMsg.textContent='Please complete the required fields.'; errMsg.classList.add('show'); return; }
+    var cropsChecked = form.querySelectorAll('input[name="Checkbox"]:checked').length>0;
+    if(!cropsChecked) bad=true;
+    if(bad){ errMsg.textContent='Please complete the required fields, including at least one primary crop.'; errMsg.classList.add('show'); return; }
+    var consentTs = form.querySelector('input[name="SingleLine3"]');
+    if(consentTs) consentTs.value = new Date().toISOString();
     var data={};
     new FormData(form).forEach(function(v,k){
-      if(k==='Checkbox'){ (data.Checkbox=data.Checkbox||[]).push(v); } else { data[k]=v; }
+      if(k==='Checkbox'){ (data.Checkbox=data.Checkbox||[]).push(v); }
+      else { data[k]=v; }
     });
     var orig=btn.innerHTML; btn.disabled=true; btn.textContent='Sending';
     fetch(RELAY,{method:'POST',body:JSON.stringify(data)})
       .then(function(r){ return r.json().catch(function(){return {};}).then(function(j){ return {ok:r.ok&&j.ok}; }); })
       .then(function(res){
-        if(res.ok){ flow.classList.add('done'); result.classList.add('show'); result.scrollIntoView({behavior:'smooth',block:'center'}); }
+        if(res.ok){ location.replace('symm-thank-you.html?form=yg'); return; }
         else { throw new Error('relay'); }
       })
       .catch(function(){
