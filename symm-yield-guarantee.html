@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Symm Yield Guarantee · Symm</title>
 <meta name="description" content="Symm stands behind qualified operations enrolled in the Symm Yield Guarantee. Apply to have your operation reviewed by a Symm Field Advisor.">
-<meta name="theme-color" content="#081A0E">
+<meta name="theme-color" content="#E9F0DF">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Symm Yield Guarantee · Symm">
 <meta property="og:description" content="Symm stands behind qualified operations enrolled in the Symm Yield Guarantee.">
@@ -15,9 +15,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --lime:#A1D09A; --lime-2:#70C77E; --lime-3:#B9FF94; --lime-ink:#08240A; --cloud:#FFFFFF;
-    --bg:#011F00; --surface:#071802; --ink:#FFFFFF; --ink-2:#FAFFFA; --hair:rgba(255,255,255,.14);
-    --maxw:1000px;
+    /* Palette: Warm Sage light (approved 2026-08-16, brand guide v2.27) */
+    --lime:#A1D09A; --lime-2:#70C77E; --lime-3:#B9FF94; --lime-ink:#08240A; --lime-text:#356B3C; --cloud:#FFFFFF;
+    --bg:#E9F0DF; --surface:#FFFFFF; --ink:#0A2610; --ink-2:#38553F; --hair:#CFDBC4; --field-bg:#E4EDD8; --field-border:#6B8A5E;
+    --maxw:1200px;
     --display:"Hanken Grotesk",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -29,13 +30,13 @@
   @media(max-width:600px){.wrap{padding:0 24px}}
   h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.05;letter-spacing:-.02em}
   a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--lime);outline-offset:2px;border-radius:6px}
-  .kicker{font-family:var(--body);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);margin-bottom:12px}
+  .kicker{font-family:var(--body);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime-text);margin-bottom:12px}
   .mono{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
 
   .btn{font-weight:700;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;padding:13px 22px;border-radius:40px;border:1.5px solid transparent;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:transform .15s,background .2s,border-color .2s,color .2s}
   .btn:hover{transform:translateY(-2px)}
   .btn .arw{transition:transform .18s}.btn:hover .arw{transform:translateX(4px)}
-  .btn.primary{background:var(--lime);border-color:var(--lime);color:var(--lime-ink)}
+  .btn.primary{background:var(--lime);border-color:var(--lime-text);color:var(--lime-ink)}
   .btn.ghost{background:transparent;color:var(--ink);border-color:color-mix(in srgb,var(--ink) 40%,transparent)}
   .btn.ghost:hover{border-color:var(--ink);background:color-mix(in srgb,var(--ink) 7%,transparent)}
   .btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
@@ -50,15 +51,15 @@
   @media(max-width:820px){.nav-links a.ml{display:none}}
   .acrepill{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);border:1.5px solid var(--lime);border-radius:40px;padding:9px 14px;text-decoration:none}
   .acrepill .dotc{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 7px 1px var(--lime)}
-  .acrepill .n{color:var(--lime);font-weight:700}
+  .acrepill .n{color:var(--lime-text);font-weight:700}
   .acrepill[hidden]{display:none}
 
   .hero{padding-top:60px;padding-bottom:34px}
-  .hero .tagline{display:inline-block;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);margin-bottom:16px}
+  .hero .tagline{display:inline-block;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime-text);margin-bottom:16px}
   .hero h1{font-size:clamp(32px,5.4vw,58px)}
   .hero p{color:var(--ink-2);font-size:18px;max-width:62ch;margin-top:16px}
-  .applylink{color:var(--lime);text-decoration:none;font-weight:600}
-  .applylink:hover{color:var(--lime-2)}
+  .applylink{color:var(--lime-text);text-decoration:none;font-weight:600}
+  .applylink:hover{color:var(--lime-text)}
 
   .band{padding-top:22px;padding-bottom:8px}
   .band h2,.fit h2{font-size:15px;letter-spacing:.05em}
@@ -67,7 +68,7 @@
   @media(max-width:760px){.steps{grid-template-columns:1fr 1fr}}
   @media(max-width:460px){.steps{grid-template-columns:1fr}}
   .step{background:var(--surface);border:1px solid var(--hair);border-radius:14px;padding:20px 18px}
-  .step .no{font-weight:700;font-family:var(--mono);font-size:11px;color:var(--lime);letter-spacing:.08em}
+  .step .no{font-weight:700;font-family:var(--mono);font-size:11px;color:var(--lime-text);letter-spacing:.08em}
   .step h3{font-size:17px;margin:10px 0 6px}
   .step p{color:var(--ink-2);font-size:13.5px}
 
@@ -99,9 +100,9 @@
   @media(max-width:560px){.row2{grid-template-columns:1fr}}
   label.field{display:block;margin-bottom:16px}
   .lab{font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-bottom:7px;display:block}
-  .lab .req{color:var(--lime)}
-  .inp,select.inp,textarea.inp{width:100%;background:var(--bg);border:1.5px solid var(--hair);border-radius:10px;color:var(--ink);font-family:var(--body);font-size:15px;padding:12px 13px;transition:border-color .15s}
-  .inp:focus,select.inp:focus,textarea.inp:focus{border-color:var(--lime);outline:none}
+  .lab .req{color:var(--lime-text)}
+  .inp,select.inp,textarea.inp{width:100%;background:var(--field-bg);border:1.5px solid var(--field-border);box-shadow:inset 0 1px 2px rgba(10,38,16,.06);border-radius:10px;color:var(--ink);font-family:var(--body);font-size:15px;padding:12px 13px;transition:border-color .15s}
+  .inp:focus,select.inp:focus,textarea.inp:focus{border-color:var(--lime-text);outline:none}
   .inp::placeholder{color:color-mix(in srgb,var(--ink-2) 75%,transparent)}
   .inp.bad,select.inp.bad{border-color:#e8734f}
   .hint{font-size:12px;color:var(--ink-2);margin-top:6px}
@@ -111,13 +112,13 @@
   .combo-list.open{display:block}
   .combo-opt{padding:9px 12px;border-radius:8px;font-size:14px;cursor:pointer}
   .combo-opt:hover,.combo-opt.active{background:color-mix(in srgb,var(--lime) 16%,transparent)}
-  .combo-opt.sel-cur{color:var(--lime);font-weight:600}
+  .combo-opt.sel-cur{color:var(--lime-text);font-weight:600}
   .combo-empty{padding:9px 12px;color:var(--ink-2);font-size:13px}
   .selbox{position:relative}
   .sel-native{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;padding:0!important;border:0!important;margin:0;clip:rect(0 0 0 0)}
   .sel-btn{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;text-align:left}
   .sel-btn .chev{color:var(--ink-2);font-size:11px;flex:none;transition:transform .18s}
-  .selbox.open .sel-btn{border-color:var(--lime)}
+  .selbox.open .sel-btn{border-color:var(--lime-text)}
   .selbox.open .sel-btn .chev{transform:rotate(180deg)}
   .sel-btn.placeholder .sel-val{color:color-mix(in srgb,var(--ink-2) 80%,transparent)}
   .sel-native.bad ~ .sel-btn{border-color:#e8734f}
@@ -125,10 +126,10 @@
   .checks{display:grid;gap:10px}
   .chk{display:flex;gap:11px;align-items:flex-start;border:1.5px solid var(--hair);border-radius:11px;padding:13px 14px;cursor:pointer;transition:border-color .15s,background .15s}
   .chk:hover{border-color:var(--ink-2)}
-  .chk input{margin-top:2px;width:17px;height:17px;accent-color:var(--lime);flex:none}
+  .chk input{margin-top:2px;width:17px;height:17px;accent-color:var(--lime-text);flex:none}
   .chk .ct{font-size:14px}
   .chk .ct small{display:block;color:var(--ink-2);font-size:12px;margin-top:2px}
-  .chk.on{border-color:var(--lime);background:color-mix(in srgb,var(--lime) 10%,transparent)}
+  .chk.on{border-color:var(--lime-text);background:color-mix(in srgb,var(--lime) 10%,transparent)}
 
   /* crops checkbox grid */
   .crops-grid{display:grid;grid-template-columns:1fr;gap:10px}
@@ -147,14 +148,14 @@
   .apply.done .form-flow{display:none}
   .res-card{background:linear-gradient(160deg,color-mix(in srgb,var(--lime) 16%,var(--surface)),var(--surface));border:1px solid var(--hair);border-radius:20px;padding:40px 34px}
   @media(max-width:560px){.res-card{padding:30px 20px}}
-  .res-badge{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);border:1px solid color-mix(in srgb,var(--lime) 40%,transparent);border-radius:40px;padding:7px 14px;margin-bottom:20px}
+  .res-badge{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lime-text);border:1px solid color-mix(in srgb,var(--lime) 40%,transparent);border-radius:40px;padding:7px 14px;margin-bottom:20px}
   .res-check{width:20px;height:20px;border-radius:50%;background:var(--lime);color:var(--lime-ink);display:grid;place-items:center;font-size:12px;font-weight:800}
   .res-card h2{font-size:clamp(26px,3.6vw,38px);margin-bottom:12px}
   .res-card .lede{color:var(--ink-2);font-size:16px;max-width:60ch}
   .next{list-style:none;counter-reset:n;margin:6px 0 8px}
   .next li{counter-increment:n;position:relative;padding:11px 0 11px 42px;border-top:1px solid var(--hair);color:var(--ink-2);font-size:14.5px}
   .next li:first-child{border-top:0}
-  .next li::before{content:counter(n);position:absolute;left:0;top:9px;width:26px;height:26px;border-radius:50%;background:color-mix(in srgb,var(--lime) 16%,transparent);color:var(--lime);font-family:var(--display);font-weight:800;font-size:13px;display:grid;place-items:center}
+  .next li::before{content:counter(n);position:absolute;left:0;top:9px;width:26px;height:26px;border-radius:50%;background:color-mix(in srgb,var(--lime) 16%,transparent);color:var(--lime-text);font-family:var(--display);font-weight:800;font-size:13px;display:grid;place-items:center}
   .next li b{color:var(--ink);font-weight:600}
   .res-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
   .res-fine{color:var(--ink-2);font-size:12.5px;margin-top:20px;max-width:70ch;line-height:1.6}
@@ -164,8 +165,8 @@
   .foot .fmeta{font-size:13px;color:var(--ink-2)}
 .sitefoot{border-top:1px solid var(--hair);padding:0}
   .sitefoot .sf-links{display:flex;flex-wrap:wrap;gap:14px 26px;padding:24px 0}
-  .sitefoot .sf-links a{font-weight:700;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);text-decoration:none}
-  .sitefoot .sf-links a:hover{color:var(--lime-2)}
+  .sitefoot .sf-links a{font-weight:700;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime-text);text-decoration:none}
+  .sitefoot .sf-links a:hover{color:var(--lime-text)}
   .sitefoot .sf-meta{display:flex;justify-content:space-between;align-items:center;gap:14px 20px;flex-wrap:wrap;padding:24px 0 40px;border-top:1px solid var(--hair)}
   .sitefoot .sf-logo{font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.04em;display:flex;align-items:center;gap:9px;color:var(--ink)}
   .sitefoot .sf-logo .d{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px 2px var(--lime)}
@@ -362,7 +363,7 @@
               <textarea class="inp" name="MultiLine" placeholder="Describe your farm, what you grow, and where you're located."></textarea></label>
             <label class="chk">
               <input type="checkbox" name="DecisionBox" value="true" required>
-              <span class="ct">I consent to receive calls, emails, and text messages from Symm. Msg &amp; data rates may apply. Message frequency may vary. Reply STOP to opt out and HELP for help. View our <a href="symm-privacy.html" style="color:var(--lime)">Privacy Policy</a> for more information.</span>
+              <span class="ct">By clicking here you consent to receive customer care-related or one-on-one communication messages from Symmbiotic. Message frequency may vary. Standard Message and Data Rates may apply. Reply STOP to opt out. Reply Help for help. <a href="symm-privacy.html" style="color:var(--lime-text)">Privacy Policy</a> <a href="symm-terms.html" style="color:var(--lime-text)">Terms of Service</a></span>
             </label>
             <input type="hidden" name="SingleLine3">
             <input type="hidden" name="Dropdown" value="Yield Guarantee Apply Page">
@@ -394,6 +395,7 @@
       <a href="symm-faq.html">FAQ</a>
       <a href="symm-application-instructions.html">Application instructions</a>
       <a href="symm-privacy.html">Privacy Policy</a>
+      <a href="symm-terms.html">Terms of Service</a>
     </nav>
     <div class="sf-meta">
       <span class="sf-logo"><span class="d"></span>symm</span>

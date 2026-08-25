@@ -116,12 +116,12 @@ customer email) if the field feeds it.
 
 ## 4. Yield Guarantee apply  (Zoho form: **SymmYieldGuarantee**)
 - formperma: `46W8wdfaky7eVBrNAWfBdFQ3VoFwS2MV02hlxJtdO0o`
-- Page: `symm-yield-guarantee.html` (ships **unlinked** from nav/footer until verified end-to-end).
+- Page: `symm-yield-guarantee.html` (LIVE, linked from nav + footer sitewide plus a CTA on `index.html`).
 - Built 2026-08-22 as a Zoho **CRM Form** (Forms → New Form → CRM Forms), so the Zoho CRM
   integration was created automatically and shows **Connected**. Module = Leads,
   Layout = Standard (`7476249000000091055`), Org = symm (`928049781`).
 - Downstream: Forms→CRM Leads integration (auto) + notification to advisors@ + applicant
-  autoresponder (no pricing or terms in the autoresponder). **Emails still TODO.**
+  autoresponder (no pricing or terms in the autoresponder). Both emails are LIVE.
 
 **Link-names below are GROUND TRUTH**, read from the published form's DOM on 2026-08-22. Because
 this was created as a CRM Form, Zoho assigned names by its own field order, NOT the convention the
@@ -238,3 +238,28 @@ Body shape (keys = field link-names above):
 - Number fields = numeric.
 - A 200 response means the entry was created and all downstream automation (Books estimate,
   notifications, customer email) fires exactly as with the old iframe.
+
+## 10DLC / TCR consent wording (set 2026-08-24)
+
+Zoho/TCR require **exact** opt-in wording on every form that collects a phone number, plus
+mandatory verbiage in the Privacy Policy. Registered entity is **Source Technologies LLC**;
+registered **brand is Symmbiotic**, so the brand name in the consent line is "Symmbiotic".
+Registered use case is **customer care**, so the message type is "customer care-related or
+one-on-one communication messages". Do not describe a message type we do not send.
+
+The visible label on all four forms is now, verbatim:
+
+> By clicking here you consent to receive customer care-related or one-on-one communication
+> messages from Symmbiotic. Message frequency may vary. Standard Message and Data Rates may
+> apply. Reply STOP to opt out. Reply Help for help. [Privacy Policy] [Terms of Service]
+
+**IMPORTANT: the checkbox `value` was deliberately NOT changed.** It remains
+`I consent to receive calls, emails, and text messages from Symm`, because Zoho Forms validates
+a Checkbox submission against the options configured on the form. Sending a value that is not
+a configured option risks the consent not being recorded. TCR reviews the on-page label, not the
+posted value, so only the label was rewritten. If you ever want the stored value to match the
+new wording, add the new option in the Zoho form builder FIRST, then change the HTML.
+
+The Privacy Policy carries TCR's two mandatory paragraphs verbatim in section 03 (Calls and text
+messages). Do not reword them. A `symm-terms.html` page exists because TCR requires a Terms URL
+alongside the Privacy Policy URL in the consent line.
