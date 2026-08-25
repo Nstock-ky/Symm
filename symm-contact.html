@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact · Symm</title>
 <meta name="description" content="Talk to a Symm advisor to build your program, get a quote, or place an order. Tell us about your operation and we'll reach out.">
-<meta name="theme-color" content="#011F00">
+<meta name="theme-color" content="#E9F0DF">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Contact · Symm">
 <meta property="og:description" content="Talk to a Symm advisor to build your program or place an order.">
@@ -15,9 +15,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --lime:#A1D09A; --lime-2:#70C77E; --lime-3:#B9FF94; --lime-ink:#08240A; --cloud:#FFFFFF;
-    --bg:#011F00; --surface:#071802; --ink:#FFFFFF; --ink-2:#FAFFFA; --hair:rgba(255,255,255,.14);
-    --maxw:1000px;
+    --lime:#A1D09A; --lime-2:#70C77E; --lime-3:#B9FF94; --lime-ink:#08240A; --lime-text:#356B3C; --cloud:#FFFFFF; --cloud:#FFFFFF;
+    --bg:#E9F0DF; --surface:#FFFFFF; --ink:#0A2610; --ink-2:#38553F; --hair:#CFDBC4; --field-bg:#E4EDD8; --field-border:#6B8A5E;
+    --maxw:1200px;
     --display:"Hanken Grotesk",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -29,13 +29,13 @@
   @media(max-width:600px){.wrap{padding:0 24px}}
   h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.05;letter-spacing:-.02em}
   a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--lime);outline-offset:2px;border-radius:6px}
-  .kicker{font-family:var(--body);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);margin-bottom:12px}
+  .kicker{font-family:var(--body);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime-text);margin-bottom:12px}
   .mono{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
 
   .btn{font-weight:700;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;padding:14px 24px;border-radius:40px;border:1.5px solid transparent;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:transform .15s,background .2s,border-color .2s,color .2s}
   .btn:hover{transform:translateY(-2px)}
   .btn .arw{transition:transform .18s}.btn:hover .arw{transform:translateX(4px)}
-  .btn.primary{background:var(--lime);color:var(--lime-ink);border-color:var(--lime)}
+  .btn.primary{background:var(--lime);color:var(--lime-ink);border-color:var(--lime-text)}
   .btn.ghost{background:transparent;color:var(--ink);border-color:color-mix(in srgb,var(--ink) 40%,transparent)}
   .btn.ghost:hover{border-color:var(--ink);background:color-mix(in srgb,var(--ink) 7%,transparent)}
   .btn.big{padding:16px 30px;font-size:13px}
@@ -52,7 +52,7 @@
   .nav-links a.ml.here{color:var(--ink)}
   .acrepill{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);border:1.5px solid var(--lime);border-radius:40px;padding:9px 14px;text-decoration:none}
   .acrepill .dotc{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 7px 1px var(--lime)}
-  .acrepill .n{color:var(--lime);font-weight:700}
+  .acrepill .n{color:var(--lime-text);font-weight:700}
   .acrepill[hidden]{display:none}
 
   .intro{padding-top:60px;padding-bottom:34px}
@@ -68,16 +68,16 @@
   @media(max-width:560px){.row2{grid-template-columns:1fr}}
   label.field{display:block;margin-bottom:16px}
   .lab{font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-bottom:7px;display:block}
-  .lab .req{color:var(--lime)}
-  .inp,select.inp,textarea.inp{width:100%;background:var(--bg);border:1.5px solid var(--hair);border-radius:10px;color:var(--ink);font-family:var(--body);font-size:15px;padding:12px 13px;transition:border-color .15s}
-  .inp:focus,select.inp:focus,textarea.inp:focus{border-color:var(--lime);outline:none}
+  .lab .req{color:var(--lime-text)}
+  .inp,select.inp,textarea.inp{width:100%;background:var(--field-bg);border:1.5px solid var(--field-border);box-shadow:inset 0 1px 2px rgba(10,38,16,.06);border-radius:10px;color:var(--ink);font-family:var(--body);font-size:15px;padding:12px 13px;transition:border-color .15s}
+  .inp:focus,select.inp:focus,textarea.inp:focus{border-color:var(--lime-text);outline:none}
   .inp::placeholder,textarea.inp::placeholder{color:color-mix(in srgb,var(--ink-2) 60%,transparent)}
   .inp.bad,select.inp.bad{border-color:#e8734f}
   select.inp{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A1D09A' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:34px}
   textarea.inp{min-height:130px;resize:vertical}
   .chk{display:flex;gap:11px;align-items:flex-start;border:1.5px solid var(--hair);border-radius:11px;padding:13px 14px;cursor:pointer;transition:border-color .15s;margin-top:4px}
   .chk:hover{border-color:var(--ink-2)}
-  .chk input{margin-top:2px;width:17px;height:17px;accent-color:var(--lime);flex:none}
+  .chk input{margin-top:2px;width:17px;height:17px;accent-color:var(--lime-text);flex:none}
   .chk .ct{font-size:13.5px;color:var(--ink-2)}
   .form-foot{display:flex;align-items:center;gap:16px;margin-top:22px;flex-wrap:wrap}
   .err-msg{color:#f0a58a;font-size:13px;display:none}
@@ -86,25 +86,25 @@
   .aside .blk{border:1px solid var(--hair);border-radius:16px;padding:24px 22px;margin-bottom:16px;background:var(--surface)}
   .aside .blk h3{font-family:var(--display);font-weight:700;font-size:17px;margin-bottom:12px}
   .aside .blk p{color:var(--ink-2);font-size:14px;margin-bottom:6px}
-  .aside .blk a{color:var(--lime)}
+  .aside .blk a{color:var(--lime-text)}
   .aside .blk .big{font-family:var(--display);font-weight:700;font-size:20px;color:var(--ink)}
   .aside .steps{list-style:none;counter-reset:s}
   .aside .steps li{counter-increment:s;position:relative;padding:9px 0 9px 34px;color:var(--ink-2);font-size:14px;border-top:1px solid var(--hair)}
   .aside .steps li:first-child{border-top:0}
-  .aside .steps li::before{content:counter(s);position:absolute;left:0;top:8px;width:22px;height:22px;border-radius:50%;background:color-mix(in srgb,var(--lime) 18%,transparent);color:var(--lime);font-family:var(--display);font-weight:800;font-size:11px;display:grid;place-items:center}
+  .aside .steps li::before{content:counter(s);position:absolute;left:0;top:8px;width:22px;height:22px;border-radius:50%;background:color-mix(in srgb,var(--lime) 18%,transparent);color:var(--lime-text);font-family:var(--display);font-weight:800;font-size:11px;display:grid;place-items:center}
 
   /* result */
   .result{display:none}
   .result.show{display:block}
   .form-flow.done{display:none}
   .res-card{background:linear-gradient(150deg,color-mix(in srgb,var(--lime) 16%,var(--surface)),var(--surface));border:1px solid var(--hair);border-radius:20px;padding:44px 34px;max-width:640px}
-  .res-badge{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);border:1px solid color-mix(in srgb,var(--lime) 40%,transparent);border-radius:40px;padding:7px 14px;margin-bottom:20px}
+  .res-badge{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lime-text);border:1px solid color-mix(in srgb,var(--lime) 40%,transparent);border-radius:40px;padding:7px 14px;margin-bottom:20px}
   .res-badge .ck{width:20px;height:20px;border-radius:50%;background:var(--lime);color:var(--lime-ink);display:grid;place-items:center;font-size:12px;font-weight:800}
   .res-card h2{font-size:clamp(26px,3.6vw,38px);margin-bottom:12px}
   .res-card p{color:var(--ink-2);font-size:16px;max-width:52ch}
   .refbox{display:inline-flex;flex-direction:column;gap:2px;margin:22px 0;border:1px solid var(--hair);border-radius:12px;padding:12px 18px;background:var(--bg)}
   .refbox .rl{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
-  .refbox .rv{font-weight:700;font-family:var(--mono);font-size:18px;color:var(--lime)}
+  .refbox .rv{font-weight:700;font-family:var(--mono);font-size:18px;color:var(--lime-text)}
 
   footer{border-top:1px solid var(--hair);padding:30px 0 46px}
   .foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
@@ -112,8 +112,8 @@
   .foot .logo{font-size:18px}
 .sitefoot{border-top:1px solid var(--hair);padding:0}
   .sitefoot .sf-links{display:flex;flex-wrap:wrap;gap:14px 26px;padding:24px 0}
-  .sitefoot .sf-links a{font-weight:700;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);text-decoration:none}
-  .sitefoot .sf-links a:hover{color:var(--lime-2)}
+  .sitefoot .sf-links a{font-weight:700;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime-text);text-decoration:none}
+  .sitefoot .sf-links a:hover{color:var(--lime-text)}
   .sitefoot .sf-meta{display:flex;justify-content:space-between;align-items:center;gap:14px 20px;flex-wrap:wrap;padding:24px 0 40px;border-top:1px solid var(--hair)}
   .sitefoot .sf-logo{font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.04em;display:flex;align-items:center;gap:9px;color:var(--ink)}
   .sitefoot .sf-logo .d{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px 2px var(--lime)}
@@ -138,6 +138,32 @@
     .nav:has(#navpill:not([hidden])) .nav-actions{order:5;width:100%;margin-left:0;justify-content:flex-end}
   }
   @media(max-width:600px){.intro{text-align:center}.intro p{margin-left:auto;margin-right:auto}}
+  /* === Dashboard (header nav) normalization, identical across all pages === */
+  @media(min-width:821px){
+    header .nav{height:64px;column-gap:16px}
+    header .nav-links{gap:24px;align-items:center}
+    header .nav-links a.mono,header .nav-links a.ml{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    header .nav-actions{gap:12px;align-items:center}
+    header .nav-actions .btn{padding:12px 20px;font-size:12.5px}
+  }
+
+  /* ===== Legibility pass (Level B, larger readable type) ===== */
+  body{font-size:18px}
+  .mono{font-size:13px}
+  .kicker{font-size:13px}
+  .eyebrow{font-size:13px}
+  .sec-lead{font-size:18px}
+  .sec-head p{font-size:17.5px}
+  .sitefoot .sf-links a{font-size:13px}
+  .sitefoot .sf-m{font-size:13.5px}
+  .field .lab,.field label,.chk .ct,.lab{font-size:13.5px}
+  .fs-sub{font-size:15px}
+  .cover .sub{font-size:clamp(18px,2vw,21px)}
+  .toc a .t{font-size:16px}
+  .qa h3{font-size:20px}
+  .qa p,.qa li{font-size:17px}
+  .note{font-size:15px}
+  @media(min-width:821px){header .nav-links a.mono,header .nav-links a.ml{font-size:13px}}
 </style>
 <script src="https://cdn.pagesense.io/js/cropdefense/adba67c177414b2b808c1be84347b639.js"></script>
 </head>
@@ -147,16 +173,15 @@
   <div class="wrap nav">
     <a class="logo" href="index.html"><span class="dot"></span>symm</a>
     <nav class="nav-links" id="navlinks">
-      <a class="ml" href="symm-products.html">Program</a>
       <a class="ml" href="symm-yield-guarantee.html">Guarantee</a>
-      <a class="ml" href="symm-calculator.html">Calculator</a>
       <a class="ml" href="symm-trial.html">Trial</a>
+      <a class="ml" href="symm-calculator.html">Calculator</a>
       <a class="ml" href="symm-about.html">About</a>
       <a class="ml here" href="symm-contact.html">Contact</a>
     </nav>
     <div class="nav-actions">
       <a class="acrepill" id="navpill" href="symm-checkout.html" hidden><span class="dotc"></span><span class="n">0</span>&nbsp;acres</a>
-      <a class="btn primary" href="symm-products.html#buy">Order <span class="arw">&rarr;</span></a>
+      <a class="btn primary" href="index.html#buy">Order <span class="arw">&rarr;</span></a>
     </div>
     <button class="navburger" id="navburger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
@@ -167,7 +192,7 @@
     <p class="kicker">Contact a Field Advisor</p>
     <h1>Let&rsquo;s build your program.</h1>
     <p>Tell us about your operation and what you need. A Symm advisor will reach out to build your program, put together a free quote or get an order started.</p>
-    <p style="margin-top:14px"><a href="symm-faq.html" style="color:var(--lime);font-weight:600">Have a question first? Read the FAQ &rarr;</a></p>
+    <p style="margin-top:14px"><a href="symm-faq.html" style="color:var(--lime-text);font-weight:600">Have a question first? Read the FAQ &rarr;</a></p>
   </section>
 
   <div class="wrap layout" id="form">
@@ -207,7 +232,7 @@
             </label>
             <label class="chk">
               <input type="checkbox" name="Checkbox" value="I consent to receive calls, emails, and text messages from Symm">
-              <span class="ct">By providing your telephone number, you consent to receive calls, emails, and text messages. Msg &amp; data rates may apply. Message frequency may vary. Reply STOP to opt out and HELP for help. View our <a href="symm-privacy.html" style="color:var(--lime)">Privacy Policy</a> for more information.</span>
+              <span class="ct">By providing your telephone number, you consent to receive calls, emails, and text messages. Msg &amp; data rates may apply. Message frequency may vary. Reply STOP to opt out and HELP for help. View our <a href="symm-privacy.html" style="color:var(--lime-text)">Privacy Policy</a> for more information.</span>
             </label>
             <input type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
             <div class="form-foot">
@@ -256,7 +281,8 @@
       <a href="symm-yield-guarantee.html">Symm Yield Guarantee</a>
       <a href="symm-faq.html">FAQ</a>
       <a href="symm-application-instructions.html">Application instructions</a>
-      <a href="symm-privacy.html">Privacy Policy</a>
+      <a href="symm-field-trials-and-research.html">Research materials</a>
+          <a href="symm-privacy.html">Privacy Policy</a>
     </nav>
     <div class="sf-meta">
       <span class="sf-logo"><span class="d"></span>symm</span>

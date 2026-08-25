@@ -12,15 +12,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --lime:#A1D09A; --lime-2:#70C77E; --lime-3:#B9FF94; --lime-ink:#08240A;
-    --bg:#011F00; --surface:#071802; --ink:#FFFFFF; --ink-2:#FAFFFA; --hair:rgba(255,255,255,.14);
+    --lime:#A1D09A; --lime-2:#70C77E; --lime-3:#B9FF94; --lime-ink:#08240A; --lime-text:#A1D09A; --cloud:#FFFFFF;
+    --bg:#011F00; --surface:#071802; --ink:#FFFFFF; --ink-2:#C7D6C7; --hair:rgba(255,255,255,.14);
     --display:"Hanken Grotesk",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;line-height:1.6}
   a{color:inherit}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 40px}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 32px}
   @media(max-width:600px){.wrap{padding:0 24px}}
   .mono{font-weight:700;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase}
   section[id]{scroll-margin-top:78px}
@@ -35,22 +35,22 @@
   @media(max-width:820px){.nav-links a.mono{display:none}}
   .acrepill{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);border:1.5px solid var(--lime);border-radius:40px;padding:9px 14px;text-decoration:none}
   .acrepill .dotc{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 7px 1px var(--lime)}
-  .acrepill .n{color:var(--lime);font-weight:700}
+  .acrepill .n{color:var(--lime-text);font-weight:700}
   .acrepill[hidden]{display:none}
   .btn{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;padding:11px 20px;border-radius:40px;border:1.5px solid transparent;display:inline-flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none}
-  .btn.primary{background:var(--lime);border-color:var(--lime);color:var(--lime-ink)}
+  .btn.primary{background:var(--lime);border-color:var(--lime-text);color:var(--lime-ink)}
   .btn .arw{transition:transform .18s}.btn:hover .arw{transform:translateX(4px)}
   .nav-actions{display:flex;align-items:center;gap:12px}
 
   .cover{padding:84px 0 48px;border-bottom:1px solid var(--hair)}
-  .cover .eyebrow{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--lime);margin-bottom:22px}
+  .cover .eyebrow{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--lime-text);margin-bottom:22px}
   .cover h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,6.4vw,64px);letter-spacing:-.04em;line-height:1}
   .cover .sub{color:var(--ink-2);font-size:clamp(16px,2vw,18px);margin-top:20px;max-width:64ch}
   .cover .updated{color:var(--ink-2);font-size:13px;margin-top:16px}
 
   section.s{padding:44px 0;border-bottom:1px solid var(--hair)}
   .s-head{display:flex;align-items:baseline;gap:14px;margin-bottom:14px}
-  .s-head .num{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--lime)}
+  .s-head .num{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--lime-text)}
   .s-head h2{font-family:var(--display);font-weight:800;font-size:clamp(22px,3.2vw,28px);letter-spacing:-.03em;line-height:1.06}
 
   .s p{color:var(--ink-2);font-size:15.5px;max-width:76ch;margin-bottom:12px}
@@ -58,15 +58,15 @@
   .s ul{color:var(--ink-2);font-size:15.5px;max-width:76ch;margin:0 0 12px;padding-left:20px}
   .s li{margin-bottom:8px}
   .s b{color:var(--ink);font-weight:600}
-  .s a.lnk{color:var(--lime);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+  .s a.lnk{color:var(--lime-text);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 
   .callout{background:var(--surface);border:1px solid var(--hair);border-left:3px solid var(--lime);border-radius:12px;padding:16px 18px;margin-top:6px}
   .callout p{margin-bottom:0}
 
   .sitefoot{border-top:1px solid var(--hair);padding:0;margin-top:26px}
   .sitefoot .sf-links{display:flex;flex-wrap:wrap;gap:14px 26px;padding:24px 0}
-  .sitefoot .sf-links a{font-weight:700;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);text-decoration:none}
-  .sitefoot .sf-links a:hover{color:var(--lime-2)}
+  .sitefoot .sf-links a{font-weight:700;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime-text);text-decoration:none}
+  .sitefoot .sf-links a:hover{color:var(--lime-text)}
   .sitefoot .sf-meta{display:flex;justify-content:space-between;align-items:center;gap:14px 20px;flex-wrap:wrap;padding:24px 0 44px;border-top:1px solid var(--hair)}
   .sitefoot .sf-logo{font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.04em;display:flex;align-items:center;gap:9px;color:var(--ink)}
   .sitefoot .sf-logo .d{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px 2px var(--lime)}
@@ -89,6 +89,36 @@
     .nav:has(#navpill:not([hidden])) .nav-actions{order:5;width:100%;margin-left:0;justify-content:flex-end}
   }
   @media(max-width:600px){.cover{text-align:center}.cover .sub{margin-left:auto;margin-right:auto}}
+  /* === Dashboard (header nav) normalization, identical across all pages === */
+  @media(min-width:821px){
+    header .nav{height:64px;column-gap:16px}
+    header .nav-links{gap:24px;align-items:center}
+    header .nav-links a.mono,header .nav-links a.ml{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    header .nav-actions{gap:12px;align-items:center}
+    header .nav-actions .btn{padding:12px 20px;font-size:12.5px}
+  }
+
+  /* ===== Legibility pass (Level B, larger readable type) ===== */
+  body{font-size:18px}
+  .mono{font-size:13px}
+  .kicker{font-size:13px}
+  .eyebrow{font-size:13px}
+  .sec-lead{font-size:18px}
+  .sec-head p{font-size:17.5px}
+  .sitefoot .sf-links a{font-size:13px}
+  .sitefoot .sf-m{font-size:13.5px}
+  .field .lab,.field label,.chk .ct,.lab{font-size:13.5px}
+  .fs-sub{font-size:15px}
+  .cover .sub{font-size:clamp(18px,2vw,21px)}
+  .toc a .t{font-size:16px}
+  .qa h3{font-size:20px}
+  .qa p,.qa li{font-size:17px}
+  .note{font-size:15px}
+  @media(min-width:821px){header .nav-links a.mono,header .nav-links a.ml{font-size:13px}}
+
+  /* ===== Spacing normalization (consistent, tight) ===== */
+  section.cover{padding:72px 0 44px}
+  section.s{padding:48px 0}
 </style>
 <script src="https://cdn.pagesense.io/js/cropdefense/adba67c177414b2b808c1be84347b639.js"></script>
 </head>
@@ -98,16 +128,15 @@
   <div class="wrap nav">
     <a class="logo" href="index.html"><span class="dot"></span>symm</a>
     <nav class="nav-links" id="navlinks">
-      <a class="mono" href="symm-products.html">Program</a>
       <a class="mono" href="symm-yield-guarantee.html">Guarantee</a>
-      <a class="mono" href="symm-calculator.html">Calculator</a>
       <a class="mono" href="symm-trial.html">Trial</a>
+      <a class="mono" href="symm-calculator.html">Calculator</a>
       <a class="mono" href="symm-about.html">About</a>
       <a class="mono" href="symm-contact.html">Contact</a>
     </nav>
     <div class="nav-actions">
       <a class="acrepill" id="navpill" href="symm-checkout.html" hidden><span class="dotc"></span><span class="n">0</span>&nbsp;acres</a>
-      <a class="btn primary" href="symm-products.html#buy">Order <span class="arw">&rarr;</span></a>
+      <a class="btn primary" href="index.html#buy">Order <span class="arw">&rarr;</span></a>
     </div>
     <button class="navburger" id="navburger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
@@ -119,12 +148,12 @@
     <p class="eyebrow">Legal</p>
     <h1>Privacy Policy.</h1>
     <p class="sub">This policy explains what information Symm collects when you visit our site, apply for a trial, request a quote, or place an order, and how we use, share, and protect it.</p>
-    <p class="updated">Last updated August 24, 2026.</p>
+    <p class="updated">Last updated August 11, 2026.</p>
   </section>
 
   <section class="s" id="information-we-collect">
     <div class="s-head"><span class="num">01</span><h2>Information we collect</h2></div>
-    <p>When you fill out a form on our site (Contact, Trial application, Checkout, or a Yield Guarantee application) we collect the information you provide, which may include your name, email address, phone number, mailing address, farm or operation details, crop and acreage information, and any notes you share with us.</p>
+    <p>When you fill out a form on our site (Contact, Trial application, or Checkout), we collect the information you provide, which may include your name, email address, phone number, mailing address, farm or operation details, crop and acreage information, and any notes you share with us.</p>
     <p>We also automatically collect limited technical information, such as pages visited and referral source, to understand how our site is used.</p>
   </section>
 
@@ -146,7 +175,7 @@
 
   <section class="s" id="sharing">
     <div class="s-head"><span class="num">04</span><h2>How we share information</h2></div>
-    <p>We do not sell your personal information. We share information only with service providers who help us operate our business &mdash; such as form processing, order fulfillment, shipping, invoicing, and email delivery &mdash; and only as needed for them to perform those services on our behalf.</p>
+    <p>We do not sell your personal information. We share information only with service providers who help us operate our business, such as form processing, order fulfillment, shipping, invoicing, and email delivery, and only as needed for them to perform those services on our behalf.</p>
     <p>We may also disclose information if required to do so by law, or to protect the rights, property, or safety of Symm, our customers, or others.</p>
   </section>
 
@@ -160,25 +189,11 @@
     <ul>
       <li>Reply <b>STOP</b> to any text message from us to opt out of future texts.</li>
       <li>Email <a class="lnk" href="mailto:info@symmbiotic.com">info@symmbiotic.com</a> to ask us to update, correct, or delete your information, or to opt out of marketing communications.</li>
-      <li>Click <b>Deny</b> on our cookie banner to opt out of analytics cookies, or clear cookies in your browser at any time.</li>
     </ul>
-  </section>
-
-  <section class="s" id="cookies-analytics">
-    <div class="s-head"><span class="num">07</span><h2>Cookies, analytics &amp; session recording</h2></div>
-    <p>We use Zoho PageSense to understand how visitors use our site. It sets cookies in your browser when you arrive and collects pages viewed, referral source, approximate location derived from IP address, device and browser type, clicks, and scrolling.</p>
-    <p>We also use two features that record how pages are used rather than what you type:</p>
-    <ul>
-      <li><b>Heatmaps</b>, which aggregate where visitors click and how far they scroll on a page.</li>
-      <li><b>Session recording</b>, which replays page interactions such as mouse movement, clicks, and scrolling.</li>
-    </ul>
-    <div class="callout"><p><b>Form fields are masked in session recordings.</b> Anything you type into a form on this site, including your name, email address, phone number, address, and any notes, is hidden from the recording and shown only as asterisks. We do not use session recording to read the contents of your form entries.</p></div>
-    <p>Separately, when you arrive from an advertisement, search result, or campaign link, we store the campaign parameters from that link in a cookie for up to 7 days so we can tell which channel referred you. These cookies hold campaign labels, not personal information.</p>
-    <p>When you first visit, a banner tells you we use cookies and gives you an <b>Accept</b> and a <b>Deny</b> option. Analytics collection begins when the page loads and stops if you choose Deny, so if you prefer not to be included, select Deny or block cookies in your browser. Essential site function does not depend on these cookies.</p>
   </section>
 
   <section class="s" id="changes" style="border-bottom:0">
-    <div class="s-head"><span class="num">08</span><h2>Changes &amp; contact</h2></div>
+    <div class="s-head"><span class="num">07</span><h2>Changes &amp; contact</h2></div>
     <p>We may update this policy from time to time; the &ldquo;Last updated&rdquo; date above reflects the most recent revision. If you have questions about this policy or how we handle your information, contact us at <a class="lnk" href="mailto:info@symmbiotic.com">info@symmbiotic.com</a> or <a class="lnk" href="tel:+18453939539">(845) 393-9539</a>.</p>
   </section>
 
@@ -187,7 +202,8 @@
       <a href="symm-yield-guarantee.html">Symm Yield Guarantee</a>
       <a href="symm-faq.html">FAQ</a>
       <a href="symm-application-instructions.html">Application instructions</a>
-      <a href="symm-privacy.html">Privacy Policy</a>
+      <a href="symm-field-trials-and-research.html">Research materials</a>
+          <a href="symm-privacy.html">Privacy Policy</a>
     </nav>
     <div class="sf-meta">
       <span class="sf-logo"><span class="d"></span>symm</span>

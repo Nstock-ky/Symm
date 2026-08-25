@@ -12,15 +12,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --lime:#A1D09A; --lime-2:#70C77E; --lime-3:#B9FF94; --lime-ink:#08240A;
-    --bg:#011F00; --surface:#071802; --ink:#FFFFFF; --ink-2:#FAFFFA; --hair:rgba(255,255,255,.14);
+    --lime:#A1D09A; --lime-2:#70C77E; --lime-3:#B9FF94; --lime-ink:#08240A; --lime-text:#A1D09A; --cloud:#FFFFFF;
+    --bg:#011F00; --surface:#071802; --ink:#FFFFFF; --ink-2:#C7D6C7; --hair:rgba(255,255,255,.14);
     --display:"Hanken Grotesk",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;line-height:1.6}
   a{color:inherit}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 40px}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 32px}
   @media(max-width:600px){.wrap{padding:0 24px}}
   .mono{font-weight:700;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase}
   section[id]{scroll-margin-top:78px}
@@ -32,20 +32,20 @@
   .topnav .tag{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2)}
 
   .cover{padding:84px 0 52px;border-bottom:1px solid var(--hair)}
-  .cover .eyebrow{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--lime);margin-bottom:22px}
+  .cover .eyebrow{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--lime-text);margin-bottom:22px}
   .cover h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,6.4vw,68px);letter-spacing:-.04em;line-height:1}
   .cover .sub{color:var(--ink-2);font-size:clamp(16px,2vw,19px);margin-top:20px;max-width:64ch}
 
   section.s{padding:52px 0;border-bottom:1px solid var(--hair)}
   .s-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
-  .s-head .num{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--lime)}
+  .s-head .num{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--lime-text)}
   .s-head h2{font-family:var(--display);font-weight:800;font-size:clamp(24px,3.6vw,34px);letter-spacing:-.03em;line-height:1.06}
 
   .method{background:var(--surface);border:1px solid var(--hair);border-radius:16px;padding:24px 22px;margin-top:18px}
   .method h3{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.01em;margin-bottom:14px}
   .row{display:grid;grid-template-columns:120px 1fr;gap:6px 18px;padding:9px 0;border-top:1px solid var(--hair);font-size:15.5px}
   .row:first-of-type{border-top:0}
-  .row .lab{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--lime);padding-top:2px}
+  .row .lab{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--lime-text);padding-top:2px}
   .row .val{color:var(--ink-2);max-width:82ch}
   @media(max-width:560px){.row{grid-template-columns:1fr;gap:2px}}
 
@@ -63,7 +63,7 @@
 
   .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:16px}
   .lg{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--hair);border-radius:12px;padding:12px 14px}
-  .lg .k{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--lime);white-space:nowrap}
+  .lg .k{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--lime-text);white-space:nowrap}
   .lg .d{font-size:13px;color:var(--ink-2)}
   .lg.no .k{color:#E9B7A6}
 
@@ -72,12 +72,12 @@
 
   footer{padding:40px 0 70px}
   .foot-line{font-weight:700;font-family:var(--mono);font-size:13px;color:var(--ink-2);letter-spacing:.02em}
-  .backlink{display:inline-flex;gap:8px;font-weight:700;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--lime);margin-top:20px}
+  .backlink{display:inline-flex;gap:8px;font-weight:700;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--lime-text);margin-top:20px}
   .ctable{width:100%;border-collapse:collapse;font-size:13px}
   .ctable th,.ctable td{text-align:left;padding:9px 12px;border-top:1px solid var(--hair);vertical-align:top}
   .ctable thead th{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-2);background:var(--surface);border-top:0;white-space:nowrap}
   .cstat{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap;}
-  .cstat.cs-ok{color:var(--lime)} .cstat.cs-warn{color:#E0B15E} .cstat.cs-no{color:#E9B7A6}
+  .cstat.cs-ok{color:var(--lime-text)} .cstat.cs-warn{color:#E0B15E} .cstat.cs-no{color:#E9B7A6}
   .ct-title{font-family:var(--display);font-weight:700;font-size:18px;margin:30px 0 6px}
   .ct-intro{color:var(--ink-2);font-size:14px;max-width:72ch;margin-bottom:4px}
 header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
@@ -90,15 +90,15 @@ header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 8
   @media(max-width:820px){.nav-links a.mono{display:none}}
   .acrepill{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);border:1.5px solid var(--lime);border-radius:40px;padding:9px 14px;text-decoration:none}
   .acrepill .dotc{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 7px 1px var(--lime)}
-  .acrepill .n{color:var(--lime);font-weight:700}
+  .acrepill .n{color:var(--lime-text);font-weight:700}
   .acrepill[hidden]{display:none}
   .btn{font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;padding:11px 20px;border-radius:40px;border:1.5px solid transparent;display:inline-flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none}
-  .btn.primary{background:var(--lime);border-color:var(--lime);color:var(--lime-ink)}
+  .btn.primary{background:var(--lime);border-color:var(--lime-text);color:var(--lime-ink)}
   .btn .arw{transition:transform .18s}.btn:hover .arw{transform:translateX(4px)}
   .sitefoot{border-top:1px solid var(--hair);padding:0;margin-top:26px}
   .sitefoot .sf-links{display:flex;flex-wrap:wrap;gap:14px 26px;padding:24px 0}
-  .sitefoot .sf-links a{font-weight:700;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);text-decoration:none}
-  .sitefoot .sf-links a:hover{color:var(--lime-2)}
+  .sitefoot .sf-links a{font-weight:700;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime-text);text-decoration:none}
+  .sitefoot .sf-links a:hover{color:var(--lime-text)}
   .sitefoot .sf-meta{display:flex;justify-content:space-between;align-items:center;gap:14px 20px;flex-wrap:wrap;padding:24px 0 44px;border-top:1px solid var(--hair)}
   .sitefoot .sf-logo{font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.04em;display:flex;align-items:center;gap:9px;color:var(--ink)}
   .sitefoot .sf-logo .d{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px 2px var(--lime)}
@@ -123,6 +123,36 @@ header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 8
     .nav:has(#navpill:not([hidden])) .nav-actions{order:5;width:100%;margin-left:0;justify-content:flex-end}
   }
   @media(max-width:600px){.cover{text-align:center}.cover .sub{margin-left:auto;margin-right:auto}}
+  /* === Dashboard (header nav) normalization, identical across all pages === */
+  @media(min-width:821px){
+    header .nav{height:64px;column-gap:16px}
+    header .nav-links{gap:24px;align-items:center}
+    header .nav-links a.mono,header .nav-links a.ml{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    header .nav-actions{gap:12px;align-items:center}
+    header .nav-actions .btn{padding:12px 20px;font-size:12.5px}
+  }
+
+  /* ===== Legibility pass (Level B, larger readable type) ===== */
+  body{font-size:18px}
+  .mono{font-size:13px}
+  .kicker{font-size:13px}
+  .eyebrow{font-size:13px}
+  .sec-lead{font-size:18px}
+  .sec-head p{font-size:17.5px}
+  .sitefoot .sf-links a{font-size:13px}
+  .sitefoot .sf-m{font-size:13.5px}
+  .field .lab,.field label,.chk .ct,.lab{font-size:13.5px}
+  .fs-sub{font-size:15px}
+  .cover .sub{font-size:clamp(18px,2vw,21px)}
+  .toc a .t{font-size:16px}
+  .qa h3{font-size:20px}
+  .qa p,.qa li{font-size:17px}
+  .note{font-size:15px}
+  @media(min-width:821px){header .nav-links a.mono,header .nav-links a.ml{font-size:13px}}
+
+  /* ===== Spacing normalization (consistent, tight) ===== */
+  section.cover{padding:72px 0 44px}
+  section.s{padding:48px 0}
 </style>
 <script src="https://cdn.pagesense.io/js/cropdefense/adba67c177414b2b808c1be84347b639.js"></script>
 </head>
@@ -132,16 +162,15 @@ header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 8
   <div class="wrap nav">
     <a class="logo" href="index.html"><span class="dot"></span>symm</a>
     <nav class="nav-links" id="navlinks">
-      <a class="mono" href="symm-products.html">Program</a>
       <a class="mono" href="symm-yield-guarantee.html">Guarantee</a>
-      <a class="mono" href="symm-calculator.html">Calculator</a>
       <a class="mono" href="symm-trial.html">Trial</a>
+      <a class="mono" href="symm-calculator.html">Calculator</a>
       <a class="mono" href="symm-about.html">About</a>
       <a class="mono" href="symm-contact.html">Contact</a>
     </nav>
     <div class="nav-actions">
       <a class="acrepill" id="navpill" href="symm-checkout.html" hidden><span class="dotc"></span><span class="n">0</span>&nbsp;acres</a>
-      <a class="btn primary" href="symm-products.html#buy">Order <span class="arw">&rarr;</span></a>
+      <a class="btn primary" href="index.html#buy">Order <span class="arw">&rarr;</span></a>
     </div>
     <button class="navburger" id="navburger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
@@ -377,7 +406,8 @@ header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 8
       <a href="symm-yield-guarantee.html">Symm Yield Guarantee</a>
       <a href="symm-faq.html">FAQ</a>
       <a href="symm-application-instructions.html">Application instructions</a>
-      <a href="symm-privacy.html">Privacy Policy</a>
+      <a href="symm-field-trials-and-research.html">Research materials</a>
+          <a href="symm-privacy.html">Privacy Policy</a>
     </nav>
     <div class="sf-meta">
       <span class="sf-logo"><span class="d"></span>symm</span>
