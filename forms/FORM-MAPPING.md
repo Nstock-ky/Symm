@@ -260,6 +260,23 @@ a configured option risks the consent not being recorded. TCR reviews the on-pag
 posted value, so only the label was rewritten. If you ever want the stored value to match the
 new wording, add the new option in the Zoho form builder FIRST, then change the HTML.
 
+**This was attempted on 2026-08-25 and is NOT possible.** Zoho Forms hard-caps each choice-option
+string at **150 characters** (`maxlength="150"` on the option input in the choice editor). The TCR
+sentence is 230 characters, so Zoho silently truncates it mid-word at
+`...Message frequency may vary. Standa`. A truncated option is worse than no change: it is not the
+TCR wording, nothing on our site posts it, and it renders as a stray extra consent checkbox on the
+publicly reachable Zoho-hosted form URL. The options added during that attempt were removed again
+and all three forms verified back to their original sets.
+
+**Settled design, do not revisit:** the stored value is a short stable audit marker
+(`I consent to receive calls, emails, and text messages from Symm`); the TCR-required wording lives
+in the visible on-page label. These intentionally differ. TCR audits the opt-in screen the user
+sees, not the database string. All three HTML `value` attributes were verified on 2026-08-25 to
+match the live Zoho options exactly, so consent records correctly.
+
+Yield Guarantee needs no sync at all: its consent is a `DecisionBox` boolean storing `"true"`, so
+there is no option wording to keep aligned.
+
 The Privacy Policy carries TCR's two mandatory paragraphs verbatim in section 03 (Calls and text
 messages). Do not reword them. A `symm-terms.html` page exists because TCR requires a Terms URL
 alongside the Privacy Policy URL in the consent line.
