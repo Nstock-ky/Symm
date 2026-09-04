@@ -472,7 +472,7 @@
   main > section, main > .pm > section{padding-top:48px !important;padding-bottom:48px !important}
   .hero-st{padding-top:80px !important;padding-bottom:0 !important}
   .closer{padding-top:60px !important;padding-bottom:44px !important}
-  #program > .synergy{margin-top:0 !important;padding-top:0 !important;border-top:0 !important}
+  #program .synergy{margin-top:0 !important;padding-top:0 !important;border-top:0 !important}
   @media(max-width:600px){main > section, main > .pm > section{padding-top:40px !important;padding-bottom:40px !important}.hero-st{padding-top:54px !important}}
 </style>
 <script>
@@ -507,7 +507,6 @@
   <div class="wrap nav">
     <a class="logo" href="#top"><span class="dot"></span>symm</a>
     <nav class="nav-links" id="navlinks">
-      <a class="mono" href="symm-yield-guarantee.html">Guarantee</a>
       <a class="mono" href="symm-trial.html">Trial</a>
       <a class="mono" href="symm-calculator.html">Calculator</a>
       <a class="mono" href="symm-about.html">About</a>
@@ -764,15 +763,6 @@
   </section>
 </div>
 
-  <section class="section" id="yield-guarantee-cta">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Apply for the Symm Yield Guarantee.</h2>
-        <p>An application based program for qualifying farms, reviewed by a Field Advisor. Apply to find out if your operation qualifies.</p>
-      </div>
-      <a class="btn primary" href="symm-yield-guarantee.html">Apply for the Yield Guarantee <span class="arw">&rarr;</span></a>
-    </div>
-  </section>
 
 <section class="closer" id="contact">
     <div class="wrap">
@@ -790,7 +780,6 @@
       </div>
       <div class="sitefoot">
         <nav class="sf-links">
-          <a href="symm-yield-guarantee.html">Symm Yield Guarantee</a>
           <a href="symm-faq.html">FAQ</a>
           <a href="symm-application-instructions.html">Application instructions</a>
           <a href="symm-field-trials-and-research.html">Research materials</a>
@@ -1052,7 +1041,7 @@ if( document.readyState == "complete" ){
 /* Buy configurator (merged from Program page) */
 (function(){
   var RATE=150; /* $/acre, before discounts */
-  var VOL=[{min:5000,pct:20},{min:1000,pct:18},{min:500,pct:15},{min:100,pct:10}]; /* automatic volume discount by acreage; schedule is internal */
+  var VOL=[{min:1000,pct:18},{min:500,pct:15},{min:100,pct:10},{min:50,pct:5}]; /* automatic volume discount by acreage; schedule is internal */
   function volPct(a){for(var i=0;i<VOL.length;i++){if(a>=VOL[i].min)return VOL[i].pct;}return 0;}
   var acres=document.getElementById('acres'); if(!acres)return;
   var fmt=function(n){return '$'+Math.round(n).toLocaleString('en-US');};
@@ -1063,7 +1052,7 @@ if( document.readyState == "complete" ){
     var vp=volPct(a), sub=a*RATE, tot=Math.round(sub*(1-vp/100));
     document.getElementById('rate').textContent='$'+RATE+' / acre';
     document.getElementById('total').textContent=fmt(tot);
-    document.getElementById('voldisc').textContent = vp>0 ? ('Includes '+vp+'% volume discount') : 'Volume discounts start at 100 acres';
+    document.getElementById('voldisc').textContent = vp>0 ? ('Includes '+vp+'% volume discount') : 'Volume discounts start at 50 acres';
   }
   document.getElementById('minus').addEventListener('click',function(){acres.value=Math.max(1,(parseInt(acres.value,10)||0)-10);render();});
   document.getElementById('plus').addEventListener('click',function(){acres.value=(parseInt(acres.value,10)||0)+10;render();});

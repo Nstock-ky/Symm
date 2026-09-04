@@ -182,7 +182,6 @@
   <div class="wrap nav">
     <a class="logo" href="index.html"><span class="dot"></span>symm</a>
     <nav class="nav-links" id="navlinks">
-      <a class="mono" href="symm-yield-guarantee.html">Guarantee</a>
       <a class="mono" href="symm-trial.html">Trial</a>
       <a class="mono" href="symm-calculator.html">Calculator</a>
       <a class="mono" href="symm-about.html">About</a>
@@ -353,7 +352,6 @@
 <footer class="sitefoot">
   <div class="wrap">
     <nav class="sf-links">
-      <a href="symm-yield-guarantee.html">Symm Yield Guarantee</a>
       <a href="symm-faq.html">FAQ</a>
       <a href="symm-application-instructions.html">Application instructions</a>
       <a href="symm-field-trials-and-research.html">Research materials</a>
@@ -372,12 +370,13 @@
 (function(){
   var fmt=function(n){return '$'+Math.round(n).toLocaleString('en-US');};
   /* Pricing: base rate is real ($150/acre before discounts, carried in order.rate).
-     VOL = automatic volume discount by acreage, applied to every order (10/15/18/20 by tier).
+     VOL = automatic volume discount by acreage, applied to every order (5/10/15/18 by tier).
      CAP = 20% hard ceiling; advisor/partner codes can lift the total up to 20%, never beyond.
      Tiers auto-apply in the cart; the schedule is internal and not published.
-     100+ac: 10%. 500+: 15%. 1000+: 18%. 5000+: 20%. None under 100. */
+     50+ac: 5%. 100+: 10%. 500+: 15%. 1000+: 18%. None under 50.
+     Keep this comment in step with VOL below; the 5000+/20% tier was withdrawn 2026-08-31. */
   var CODES={ADVISOR:{pct:99,kind:'Advisor'},PARTNER:{pct:5,kind:'Partner'},HARVEST:{pct:5,kind:'Promo'}};
-  var VOL=[{min:5000,pct:20},{min:1000,pct:18},{min:500,pct:15},{min:100,pct:10}];
+  var VOL=[{min:1000,pct:18},{min:500,pct:15},{min:100,pct:10},{min:50,pct:5}];
   var CAP=[{min:100,pct:20}]; /* 20% hard ceiling from 100 acres up */
   function ladder(L,a){for(var i=0;i<L.length;i++){if(a>=L[i].min)return L[i].pct;}return 0;}
 
