@@ -143,6 +143,12 @@
   .res-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
   .stress-note{font-size:12.5px;color:var(--ink-2);margin-top:14px;line-height:1.5;padding:12px 14px;border:1px solid var(--hair);border-radius:10px;background:color-mix(in srgb,var(--bg) 40%,var(--surface))}
   .stress-note b{color:var(--ink);font-weight:600}
+  /* Estimate disclaimer. Deliberately NOT hidden in the print rules below: the saved
+     PDF is the artefact a grower is most likely to treat as a commitment. */
+  .est-disc{font-size:12.5px;color:var(--ink-2);margin-top:14px;line-height:1.55;padding:12px 14px;border:1px solid var(--hair);border-radius:10px;background:color-mix(in srgb,var(--bg) 40%,var(--surface))}
+  .est-disc b{color:var(--ink);font-weight:600}
+  .est-disc a{color:var(--lime-text)}
+  @media(max-width:600px){.est-disc{font-size:12px;padding:11px 12px}}
 
   /* Detail tables */
   .section2{border-top:1px solid var(--hair);padding-top:44px;padding-bottom:44px}
@@ -341,6 +347,7 @@
           <a class="btn ghost" href="symm-contact.html">Speak to a Field Advisor <span class="arw">&rarr;</span></a>
         </div>
         <p class="stress-note">Figures above use the typical range. Under drought or heat stress, the biological benefit is often greater, and yield gains can extend well beyond the typical range. Your advisor can review stress-year results for your crops and region.</p>
+        <p class="est-disc"><b>This is an estimate, not a guarantee.</b> The figures above are calculated from the numbers you entered and from ranges observed in field trials. Ranges are ranges: they are not a promise, projection, or guarantee of what any particular field will do. Actual results vary with soil, weather, crop variety, timing, and management practices. Nothing here is agronomic, financial, or legal advice for your operation. Please do not rely on this estimate as the sole basis for a purchasing decision. See our <a href="symm-terms.html">Terms of Service</a>.</p>
       </div>
     </div>
   </div>
@@ -378,7 +385,7 @@
       <div class="a"><span class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30 L16 20 L23 27 L34 12"/><path d="M26 12 H34 V20"/></svg></span><dt>Yield gain</dt><dd>Typical yield gains are 5 to 10%, with considerably greater gains under drought or heat stress. We apply the typical range to your crop value, so this estimate stays conservative.</dd></div>
       <div class="a"><span class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="13"/><path d="M20 26 V14 M15 19 L20 14 L25 19"/></svg></span><dt>Net increase</dt><dd>Yield value increase, less the program cost per acre. Return is the net increase divided by the program cost you entered.</dd></div>
     </dl>
-    <p class="fine">Estimates are based on the figures you provide. Actual results vary with soil, weather, crop variety, and management practices. Symm is two symbiotic microbial inputs that strengthen the root environment and improve nutrient-use efficiency.</p>
+    <p class="fine">Estimates are based on the figures you provide, and the yield range is drawn from field trials rather than from your specific field. A range is not a guarantee for any given field, and this calculator does not promise or project a result for your operation. Actual results vary with soil, weather, crop variety, timing, and management practices. Nothing on this page is agronomic, financial, or legal advice. Symm is two symbiotic microbial inputs that strengthen the root environment and improve nutrient-use efficiency.</p>
   </section>
 </main>
 
