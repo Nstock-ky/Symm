@@ -141,6 +141,7 @@
   .brk .r.net .k{color:var(--ink);font-weight:600}
   .brk .r.net .v{font-size:16px}
   .res-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  .print-hint{font-size:12px;color:var(--ink-2);margin:8px 0 0;line-height:1.5}
   .stress-note{font-size:12.5px;color:var(--ink-2);margin-top:14px;line-height:1.5;padding:12px 14px;border:1px solid var(--hair);border-radius:10px;background:color-mix(in srgb,var(--bg) 40%,var(--surface))}
   .stress-note b{color:var(--ink);font-weight:600}
   /* Estimate disclaimer. Deliberately NOT hidden in the print rules below: the saved
@@ -189,7 +190,12 @@
     @page{margin:14mm}
     html,body{background:#fff;color:#0d1b10;font-size:11.5px}
     :root{--ink:#0d1b10;--ink-2:#4b5b4f;--surface:#f4f7f1;--bg:#fff;--hair:#d8e2d4;--lime:#2f6b1f;--lime-ink:#fff}
-    header,.intro,.form-side,.addcrop,.crop-del,details.adv summary,.res-actions,.stress-note,footer .foot .btn,.no-print{display:none!important}
+    header,.intro,.form-side,.addcrop,.crop-del,details.adv summary,.res-actions,.print-hint,.stress-note,footer .foot .btn,.no-print,
+    footer.sitefoot,#zcb-banner,#zcb-info,[id^="zcb-"],.zcb-bar,.zcb-message-bar{display:none!important}
+    /* The cookie banner is injected at runtime and printed on a grower's report until 2026-09-10.
+       The footer nav links are dead on paper. Keep the wordmark and the contact line, drop the rest. */
+    .print-foot{display:block!important;margin-top:18px;padding-top:10px;border-top:1px solid var(--hair);
+      font-family:var(--mono);font-size:10px;letter-spacing:.05em;color:var(--ink-2);text-transform:uppercase}
     .layout{display:block;padding:0}
     .results{position:static}
     .rep-head{display:block;border-bottom:2px solid var(--lime);padding-bottom:12px;margin-bottom:18px}
@@ -343,11 +349,13 @@
         </div>
         <div class="res-actions no-print">
           <a class="btn primary" id="orderAcres" href="index.html#buy">Order these acres <span class="arw">&rarr;</span></a>
-          <button class="btn ghost" id="printBtn" type="button">Save as PDF / print</button>
+          <button class="btn ghost" id="printBtn" type="button">Save as PDF</button>
           <a class="btn ghost" href="symm-contact.html">Speak to a Field Advisor <span class="arw">&rarr;</span></a>
         </div>
+        <p class="print-hint">Opens your print dialog. Choose <b>Save as PDF</b> as the destination to get a file you can email.</p>
         <p class="stress-note">Figures above use the typical range. Under drought or heat stress, the biological benefit is often greater, and yield gains can extend well beyond the typical range. Your advisor can review stress-year results for your crops and region.</p>
         <p class="est-disc"><b>This is an estimate, not a guarantee.</b> The figures above are calculated from the numbers you entered and from ranges observed in field trials. Ranges are ranges: they are not a promise, projection, or guarantee of what any particular field will do. Actual results vary with soil, weather, crop variety, timing, and management practices. Nothing here is agronomic, financial, or legal advice for your operation. Please do not rely on this estimate as the sole basis for a purchasing decision. See our <a href="symm-terms.html">Terms of Service</a>.</p>
+        <p class="print-foot" style="display:none">symm &middot; info@symmbiotic.com &middot; (845) 393-9539 &middot; Source Technologies LLC, 149 Franklin St, Floor 4, New York, NY 10013</p>
       </div>
     </div>
   </div>
