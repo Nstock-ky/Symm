@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profitability Calculator · Symm</title>
+<title>Profitability Calculator ¬∑ Symm</title>
 <meta name="description" content="Estimate your farm's yield value increase with the Symm program, using your own crop, acreage, and input figures.">
 <meta name="theme-color" content="#E9F0DF">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Profitability Calculator · Symm">
+<meta property="og:title" content="Profitability Calculator ¬∑ Symm">
 <meta property="og:description" content="Calculate your farm's benefits from the Symm program.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23081A0E'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%2380CB58'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -113,7 +113,7 @@
   details.adv summary{cursor:pointer;font-family:var(--body);font-weight:600;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);list-style:none}
   details.adv summary::-webkit-details-marker{display:none}
   details.adv summary::before{content:"+ ";color:var(--lime-text)}
-  details.adv[open] summary::before{content:"– "}
+  details.adv[open] summary::before{content:"‚Äì "}
   details.adv .advbody{padding-top:14px}
 
   /* Results */
@@ -293,7 +293,7 @@
   <section class="intro wrap no-print">
     <p class="kicker">Customized Analysis</p>
     <h1>Calculate your farm&rsquo;s benefits.</h1>
-    <p>Enter your crops, acreage, and current input figures. Based on your exact metrics we estimate the yield value increase from the Symm program.</p>
+    <p>Enter your crops, acreage, yield and selling price. Based on your own figures we estimate the yield value increase from the Symm program.</p>
   </section>
 
   <div class="wrap layout">
@@ -361,7 +361,7 @@
         <p class="mono" style="margin-bottom:10px">Current metrics</p>
         <div class="tbl-wrap">
           <table>
-            <thead><tr><th>Crop</th><th class="num">Acres</th><th class="num">Fertilizer / acre</th><th class="num">Yield / acre</th><th class="num">Crop value / acre</th></tr></thead>
+            <thead><tr><th>Crop</th><th class="num">Acres</th><th class="num">Yield / acre</th><th class="num">Crop value / acre</th></tr></thead>
             <tbody id="curBody"></tbody>
           </table>
         </div>
@@ -370,7 +370,7 @@
         <p class="mono" style="margin-bottom:10px">Projected metrics with Symm</p>
         <div class="tbl-wrap">
           <table class="proj">
-            <thead><tr><th>Crop</th><th class="num">Acres</th><th class="num">Fertilizer / acre</th><th class="num">Yield / acre (range)</th><th class="num">Crop value / acre (range)</th></tr></thead>
+            <thead><tr><th>Crop</th><th class="num">Acres</th><th class="num">Yield / acre (range)</th><th class="num">Crop value / acre (range)</th></tr></thead>
             <tbody id="projBody"></tbody>
           </table>
         </div>
@@ -413,7 +413,7 @@
   /* ---- verified assumptions (locked) ---- */
   const YL=0.05, YH=0.10, YSTRESS=0.14, NL=0.30, NH=0.50;
 
-  const CROPS=["Almonds","Apples","Apricots","Avocado","Cherries","Citrus","Lemons","Peaches","Pistachios","Plums","Bananas","Blueberries","Raspberries","Strawberries","Artichokes","Asparagus","Broccoli","Carrots","Cauliflower","Celery","Eggplant","Garlic","Onions","Peppers","Potatoes","Sweet corn","Sweet potatoes","Tomatoes","Cabbage","Kale","Lettuce","Spinach","Cantaloupe","Cucumbers","Wine grapes","Pumpkins","Squash","Watermelon","Barley","Canola","Field corn","Cotton","Dry beans","Hemp","Peanuts","Rice","Sorghum","Soybeans","Sugar beets","Wheat"];
+  const CROPS=["Almonds","Apples","Apricots","Avocado","Cherries","Citrus","Lemons","Peaches","Pistachios","Plums","Bananas","Blueberries","Raspberries","Strawberries","Artichokes","Asparagus","Broccoli","Carrots","Cauliflower","Celery","Eggplant","Garlic","Onions","Peppers","Potatoes","Sweet corn","Sweet potatoes","Tomatoes","Cabbage","Kale","Lettuce","Spinach","Cantaloupe","Cucumbers","Wine grapes","Pumpkins","Squash","Watermelon","Barley","Canola","Field corn","Cotton","Dry beans","Hemp","Hops","Peanuts","Rice","Sorghum","Soybeans","Sugar beets","Wheat"];
   const UNITS=["lb","bu","cwt","ton","kg","MT","carton","box"];
   document.getElementById('cropList').innerHTML=CROPS.map(c=>'<option value="'+c+'">').join('');
 
@@ -454,7 +454,7 @@
   document.addEventListener('mousedown',e=>{if(!e.target.closest('.combo'))closeAllCombos();});
 
   function addRow(data){
-    data=data||{name:'',acres:'',yield:'',unit:'lb',price:'',fert:''};
+    data=data||{name:'',acres:'',yield:'',unit:'lb',price:''};
     const id=uid();
     const div=document.createElement('div');
     div.className='crop';div.dataset.id=id;
@@ -467,14 +467,13 @@
           '<button class="combo-arrow" type="button" tabindex="-1" aria-label="Show crop list">&#9662;</button>'+
           '<div class="combo-list" role="listbox"></div>'+
         '</div></label>'+
-      '<div class="grid3">'+
+      '<div class="grid2">'+
         '<label class="field"><span class="lab">Yield / acre</span><input class="inp k-yield" type="number" min="0" step="any" inputmode="decimal" placeholder="10000" value="'+data.yield+'"></label>'+
         '<label class="field"><span class="lab">Unit</span><select class="inp k-unit">'+unitOpts(data.unit)+'</select></label>'+
-        '<label class="field"><span class="lab">Acres</span><input class="inp k-acres" type="number" min="0" step="any" inputmode="decimal" placeholder="100" value="'+data.acres+'"></label>'+
       '</div>'+
       '<div class="grid2">'+
+        '<label class="field"><span class="lab">Acres</span><input class="inp k-acres" type="number" min="0" step="any" inputmode="decimal" placeholder="100" value="'+data.acres+'"></label>'+
         '<label class="field"><span class="lab">Selling price / unit</span><span class="prefix"><span class="sym">$</span><input class="inp k-price" type="number" min="0" step="any" inputmode="decimal" placeholder="2.96" value="'+data.price+'"></span></label>'+
-        '<label class="field"><span class="lab">Fertilizer / acre</span><span class="prefix"><span class="sym">$</span><input class="inp k-fert" type="number" min="0" step="any" inputmode="decimal" placeholder="400" value="'+data.fert+'"></span></label>'+
       '</div>';
     div.querySelector('.crop-del').onclick=()=>{if(cropsEl.children.length>1){div.remove();compute();}};
     const nameEl=div.querySelector('.k-name'),priceEl=div.querySelector('.k-price'),
@@ -517,8 +516,7 @@
       unit:div.querySelector('.k-unit').value,
       yield:num(div.querySelector('.k-yield')),
       acres:num(div.querySelector('.k-acres')),
-      price:num(div.querySelector('.k-price')),
-      fert:num(div.querySelector('.k-fert'))
+      price:num(div.querySelector('.k-price'))
     };
   }
 
@@ -528,25 +526,27 @@
   const rngNum=(a,b,u)=>numFmt(a)+'&ndash;'+numFmt(b)+' '+u;
 
   function compute(){
-    const nShare=0; /* INTERIM nitrogen suppression. The nitrogen-savings feature (input, display, copy) has been removed and the net formula below no longer contains a nitrogen term. This constant only zeroes the leftover per-acre plumbing. To reinstate nitrogen you must add the term back into the net formula deliberately; restoring an input or setting this non-zero alone must NOT be treated as re-enabling the feature, or dollars would re-enter the total with no on-screen explanation. */
+    /* No nitrogen or fertilizer term exists in this calculator, by design. The fertilizer
+       input, both fertilizer columns and all of the nitrogen plumbing were removed on
+       2026-09-10. We make no claim that the program reduces a grower's fertility spend, and
+       growers on the program should keep their fertility program running as normal. Do not
+       reintroduce a fertilizer input or a nitrogen term. */
     const pCost=num(document.getElementById('programCost'));
     const divs=[...cropsEl.children];
-    let tAcres=0,tYieldLo=0,tYieldHi=0,tNlo=0,tNhi=0,tStress=0;
+    let tAcres=0,tYieldLo=0,tYieldHi=0,tStress=0;
     const cur=[],proj=[];
     divs.forEach(div=>{
       const c=readRow(div);
       const value=c.yield*c.price;            // crop value per acre
       const yLo=value*YL, yHi=value*YH;        // yield value increase per acre
-      const nSpend=c.fert*nShare;
-      const nLo=nSpend*NL, nHi=nSpend*NH;       // inert: nSpend is 0 (nShare=0); not used in net or report, only the unchanged fertilizer column
       const acres=c.acres;
-      tAcres+=acres; tYieldLo+=yLo*acres; tYieldHi+=yHi*acres; tNlo+=nLo*acres; tNhi+=nHi*acres;
+      tAcres+=acres; tYieldLo+=yLo*acres; tYieldHi+=yHi*acres;
       tStress+=value*YSTRESS*acres;
       cur.push({c,value});
-      proj.push({c,value,yLo,yHi,nLo,nHi});
+      proj.push({c,value,yLo,yHi});
     });
 
-    const yieldLo=tYieldLo, yieldHi=tYieldHi, nLoT=tNlo, nHiT=tNhi;
+    const yieldLo=tYieldLo, yieldHi=tYieldHi;
     const costT=pCost*tAcres;
     const netLo=yieldLo-costT, netHi=yieldHi-costT; // net = yield value increase minus program cost (no nitrogen term)
 
@@ -561,32 +561,29 @@
 
     /* tables */
     const curBody=document.getElementById('curBody'), projBody=document.getElementById('projBody');
-    let cAcres=0,cValAc=0,cFertAc=0,rowsN=0;
-    let pFertLoSum=0,pFertHiSum=0;
+    let cAcres=0,cValAc=0,rowsN=0;
     curBody.innerHTML=''; projBody.innerHTML='';
     cur.forEach((x,i)=>{
-      const c=x.c; if(c.acres<=0&&c.yield<=0&&c.price<=0&&c.fert<=0&&!c.name) return;
+      const c=x.c; if(c.acres<=0&&c.yield<=0&&c.price<=0&&!c.name) return;
       rowsN++;
       const nm=c.name||('Crop '+(i+1));
       curBody.insertAdjacentHTML('beforeend',
-        '<tr><td class="cn">'+nm+'</td><td class="num">'+numFmt(c.acres)+'</td><td class="num">'+dollar(c.fert)+'</td><td class="num">'+numFmt(c.yield)+' '+c.unit+'</td><td class="num">'+dollar(x.value)+'</td></tr>');
+        '<tr><td class="cn">'+nm+'</td><td class="num">'+numFmt(c.acres)+'</td><td class="num">'+numFmt(c.yield)+' '+c.unit+'</td><td class="num">'+dollar(x.value)+'</td></tr>');
       const p=proj[i];
-      const fLo=c.fert-p.nHi, fHi=c.fert-p.nLo; // more N saved => lower fertilizer
       const yLoU=c.yield*(1+YL), yHiU=c.yield*(1+YH);
       const vLo=x.value+p.yLo, vHi=x.value+p.yHi;
-      pFertLoSum+=fLo*c.acres; pFertHiSum+=fHi*c.acres;
       projBody.insertAdjacentHTML('beforeend',
-        '<tr><td class="cn">'+nm+'</td><td class="num">'+numFmt(c.acres)+'</td><td class="num"><span class="rng">'+rng(fLo,fHi)+'</span></td>'+
+        '<tr><td class="cn">'+nm+'</td><td class="num">'+numFmt(c.acres)+'</td>'+
         '<td class="num"><span class="rng">'+rngNum(yLoU,yHiU,c.unit)+'</span></td><td class="num"><span class="rng">'+rng(vLo,vHi)+'</span></td></tr>');
     });
     if(rowsN>0){
       curBody.insertAdjacentHTML('beforeend',
-        '<tr class="total"><td>Total</td><td class="num">'+numFmt(tAcres)+'</td><td class="num">&ndash;</td><td class="num">&ndash;</td><td class="num">&ndash;</td></tr>');
+        '<tr class="total"><td>Total</td><td class="num">'+numFmt(tAcres)+'</td><td class="num">&ndash;</td><td class="num">&ndash;</td></tr>');
       projBody.insertAdjacentHTML('beforeend',
-        '<tr class="total"><td>Total</td><td class="num">'+numFmt(tAcres)+'</td><td class="num">&ndash;</td><td class="num">&ndash;</td><td class="num">&ndash;</td></tr>');
+        '<tr class="total"><td>Total</td><td class="num">'+numFmt(tAcres)+'</td><td class="num">&ndash;</td><td class="num">&ndash;</td></tr>');
     } else {
-      curBody.innerHTML='<tr><td colspan="5" style="color:var(--ink-2)">Enter a crop to see your figures.</td></tr>';
-      projBody.innerHTML='<tr><td colspan="5" style="color:var(--ink-2)">Enter a crop to see your projection.</td></tr>';
+      curBody.innerHTML='<tr><td colspan="4" style="color:var(--ink-2)">Enter a crop to see your figures.</td></tr>';
+      projBody.innerHTML='<tr><td colspan="4" style="color:var(--ink-2)">Enter a crop to see your projection.</td></tr>';
     }
 
     /* report header */
@@ -594,14 +591,14 @@
     const d=new Date();
     const ds=d.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
     document.getElementById('repTitle').textContent=fn;
-    document.getElementById('repMeta').textContent='Crop Profitability Report · Generated '+ds;
+    document.getElementById('repMeta').textContent='Crop Profitability Report ¬∑ Generated '+ds;
 
     /* Retain the latest calculation. PLACEHOLDER: writes locally so nothing is lost and the
        record is shaped for the CRM/backend to pick up. Server-side capture needs the backend. */
     try{
       localStorage.setItem('symm_calc', JSON.stringify({
         farm: fn, acres: tAcres,
-        crops: cur.map(function(x){return {name:x.c.name,acres:x.c.acres,yield:x.c.yield,unit:x.c.unit,price:x.c.price,fert:x.c.fert};}),
+        crops: cur.map(function(x){return {name:x.c.name,acres:x.c.acres,yield:x.c.yield,unit:x.c.unit,price:x.c.price};}),
         yieldLo: Math.round(yieldLo), yieldHi: Math.round(yieldHi),
         programCost: Math.round(costT),
         netLo: Math.round(Math.max(0,netLo)), netHi: Math.round(Math.max(0,netHi)),
@@ -616,7 +613,7 @@
   document.getElementById('printBtn').onclick=()=>window.print();
 
   // seed with the reference example so results are visible immediately
-  addRow({name:'Kale',acres:'100',yield:'12000',unit:'lb',price:'1.00',fert:'400'});
+  addRow({name:'Kale',acres:'100',yield:'12000',unit:'lb',price:'1.00'});
   compute();
 })();
 </script>
