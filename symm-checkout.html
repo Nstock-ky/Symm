@@ -371,13 +371,13 @@
   var fmt=function(n){return '$'+Math.round(n).toLocaleString('en-US');};
   /* Pricing: base rate is real ($150/acre before discounts, carried in order.rate).
      VOL = automatic volume discount by acreage, applied to every order (5/10/15/18 by tier).
-     CAP = 20% hard ceiling; advisor/partner codes can lift the total up to 20%, never beyond.
+     CAP = 20% hard ceiling on EVERY order; an advisor code adds 5 points on top of the automatic volume discount and is clamped so the total never passes 20%. So a code is worth the full 5 points below 500 acres, 5 at 500-999, and 2 at 1000+ where the automatic discount is already 18. Codes are one per advisor so the order is attributed before a human touches it.
      Tiers auto-apply in the cart; the schedule is internal and not published.
      50+ac: 5%. 100+: 10%. 500+: 15%. 1000+: 18%. None under 50.
      Keep this comment in step with VOL below; the 5000+/20% tier was withdrawn 2026-08-31. */
-  var CODES={ADVISOR:{pct:99,kind:'Advisor'},PARTNER:{pct:5,kind:'Partner'},HARVEST:{pct:5,kind:'Promo'}};
+  var CODES={STEFANO:{pct:5,kind:'Advisor'},KATIE:{pct:5,kind:'Advisor'},DANIEL:{pct:5,kind:'Advisor'},ASAYA:{pct:5,kind:'Advisor'},KYLE:{pct:5,kind:'Advisor'},AIDAN:{pct:5,kind:'Advisor'},NATASHA:{pct:5,kind:'Advisor'},ADVISOR:{pct:5,kind:'Advisor'},PARTNER:{pct:5,kind:'Partner'},HARVEST:{pct:5,kind:'Promo'}};
   var VOL=[{min:1000,pct:18},{min:500,pct:15},{min:100,pct:10},{min:50,pct:5}];
-  var CAP=[{min:100,pct:20}]; /* 20% hard ceiling from 100 acres up */
+  var CAP=[{min:1,pct:20}]; /* 20% hard ceiling on every order. Was min:100, which silently zeroed every code below 100 acres. Fixed 2026-09-14. */
   function ladder(L,a){for(var i=0;i<L.length;i++){if(a>=L[i].min)return L[i].pct;}return 0;}
 
   var order=null;
