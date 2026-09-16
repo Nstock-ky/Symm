@@ -243,7 +243,7 @@
                 <div class="field"><label>Primary crop</label><input name="SingleLine"></div>
                 <div class="field"><label>Total acreage</label><input name="SingleLine1" inputmode="numeric"></div>
               </div>
-              <div class="field"><label>Promo or advisor code</label><input name="SingleLine2"></div>
+              <div class="field"><label>Promo or advisor code</label><input name="SingleLine2" autocapitalize="characters" spellcheck="false"><span class="code-msg" id="codeMsg" style="display:none;font-size:12px;margin-top:6px"></span></div>
               <div class="field"><label>Notes for your advisor</label><textarea name="MultiLine"></textarea></div>
               <label class="chk">
                 <input type="checkbox" name="Checkbox" value="I consent to receive calls, emails, and text messages from Symm">
@@ -435,10 +435,34 @@
   var cform=document.getElementById('checkoutForm');
   if(cform){
     cform.SingleLine1.value=order.acres;   /* Total acreage (visible) */
-    cform.SingleLine4.value=volPct();       /* Volume discount % */
     cform.Number.value=order.acres;         /* Order Quantity -> Books Item quantity */
-    cform.Number1.value=volPct();           /* Discount Value */
     if(storedCode)cform.SingleLine2.value=storedCode;
+
+    /* Apply the code as it is typed. Without this the CODES table above is unreachable:
+       `applied` was never assigned, so codePct() was always 0, the discount row never
+       appeared, and the code field was a plain text box that changed nothing on a live
+       site. Found and fixed 2026-09-15.
+       Both hidden discount fields carry volume + code, and are kept IDENTICAL so the
+       estimate is correct whichever of the two the Forms->Books mapping reads. */
+    function syncDiscount(){
+      var total=volPct()+codePct();
+      cform.SingleLine4.value=total;        /* Volume discount % (now total, see note) */
+      cform.Number1.value=total;            /* Discount Value */
+    }
+    var codeMsg=document.getElementById('codeMsg');
+    function applyCode(raw){
+      var key=String(raw||'').trim().toUpperCase();
+      applied=CODES[key]||null;
+      if(codeMsg){
+        if(!key){codeMsg.style.display='none';}
+        else if(applied&&codePct()>0){codeMsg.style.display='block';codeMsg.style.color='var(--lime-text)';codeMsg.textContent=applied.kind+' code applied: '+codePct()+'% off.';}
+        else if(applied){codeMsg.style.display='block';codeMsg.style.color='var(--ink-2)';codeMsg.textContent='This order is already at the maximum discount, so the code adds nothing further.';}
+        else {codeMsg.style.display='block';codeMsg.style.color='#e8734f';codeMsg.textContent='We do not recognize that code. Check it with your Field Advisor.';}
+      }
+      render(); syncDiscount();
+    }
+    cform.SingleLine2.addEventListener('input',function(){applyCode(this.value);});
+    applyCode(cform.SingleLine2.value);     /* honour a code carried in from ?code= */
     var flow=document.getElementById('formFlow'),result=document.getElementById('result'),
         errMsg=document.getElementById('errMsg'),btn=document.getElementById('submitBtn');
     cform.addEventListener('submit',function(e){
