@@ -870,8 +870,11 @@
     const s=document.createElement('div'); s.className='crop-group';
     const h=document.createElement('div'); h.className='group-head'; h.innerHTML='<h3>'+cat+'</h3><span class="gc">'+list.length+'</span>'; s.appendChild(h);
     const g=document.createElement('div'); g.className='crop-grid';
-    list.forEach(([n])=>{ const a=document.createElement('a'); const slug=SUPPRESS.includes(n)?null:SHEETS[n];
-      if(slug){ a.className='cropcell'; a.href='data-sheets/'+slug+'.pdf'; a.target='_blank'; a.rel='noopener'; a.innerHTML='<span class="nm">'+n+'</span><span class="go">Data sheet →</span>'; }
+    // 2026-09-18: the per-crop PDF data sheets were retired and replaced by the single
+    // consolidated Field Trials and Research document. Every crop now points there.
+    list.forEach(([n])=>{ const a=document.createElement('a');
+      const inRecord = !SUPPRESS.includes(n) && SHEETS[n];
+      if(inRecord){ a.className='cropcell'; a.href='symm-field-trials-and-research.html'; a.innerHTML='<span class="nm">'+n+'</span><span class="go">See the trial data →</span>'; }
       else { a.className='cropcell nosheet'; a.href='symm-contact.html#form'; a.innerHTML='<span class="nm">'+n+'</span><span class="go">Ask an advisor →</span>'; }
       g.appendChild(a); });
     s.appendChild(g); groupsEl.appendChild(s); return list.length;
