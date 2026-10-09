@@ -351,7 +351,7 @@
         <div class="res-actions no-print">
           <a class="btn primary" id="orderAcres" href="index.html#buy">Order these acres <span class="arw">&rarr;</span></a>
           <button class="btn ghost" id="printBtn" type="button">Save as PDF</button>
-          <a class="btn ghost" href="symm-contact.html">Speak to a Field Advisor <span class="arw">&rarr;</span></a>
+          <a class="btn ghost" href="symm-contact.html">Book a 20 minute field review <span class="arw">&rarr;</span></a>
         </div>
         <p class="print-hint">Opens your print dialog. Choose <b>Save as PDF</b> as the destination to get a file you can email.</p>
         <p class="stress-note">Figures above use the typical range. Under drought or heat stress, the biological benefit is often greater, and yield gains can extend well beyond the typical range. Your advisor can review stress-year results for your crops and region.</p>
@@ -420,7 +420,7 @@
 <script>
 (function(){
   /* ---- verified assumptions (locked) ---- */
-  const YL=0.05, YH=0.10, YSTRESS=0.14, NL=0.30, NH=0.50;
+  const YL=0.05, YH=0.10;
 
   const CROPS=["Almonds","Apples","Apricots","Avocado","Cherries","Citrus","Lemons","Peaches","Pistachios","Plums","Bananas","Blueberries","Raspberries","Strawberries","Artichokes","Asparagus","Broccoli","Carrots","Cauliflower","Celery","Eggplant","Garlic","Onions","Peppers","Potatoes","Sweet corn","Sweet potatoes","Tomatoes","Cabbage","Kale","Lettuce","Spinach","Cantaloupe","Cucumbers","Wine grapes","Pumpkins","Squash","Watermelon","Barley","Canola","Field corn","Cotton","Dry beans","Hemp","Hops","Peanuts","Rice","Sorghum","Soybeans","Sugar beets","Wheat"];
   const UNITS=["lb","bu","cwt","ton","kg","MT","carton","box"];
@@ -542,7 +542,7 @@
        reintroduce a fertilizer input or a nitrogen term. */
     const pCost=num(document.getElementById('programCost'));
     const divs=[...cropsEl.children];
-    let tAcres=0,tYieldLo=0,tYieldHi=0,tStress=0;
+    let tAcres=0,tYieldLo=0,tYieldHi=0;
     const cur=[],proj=[];
     divs.forEach(div=>{
       const c=readRow(div);
@@ -550,7 +550,6 @@
       const yLo=value*YL, yHi=value*YH;        // yield value increase per acre
       const acres=c.acres;
       tAcres+=acres; tYieldLo+=yLo*acres; tYieldHi+=yHi*acres;
-      tStress+=value*YSTRESS*acres;
       cur.push({c,value});
       proj.push({c,value,yLo,yHi});
     });
