@@ -430,9 +430,16 @@
   }
 
   /* attribution display */
-  var attrEl=document.getElementById('attr'),bits=[];
-  if(ref)bits.push('Referred by <b>'+ref+'</b>');
-  if(bits.length){attrEl.hidden=false;attrEl.innerHTML=bits.join(' · ');}
+  /* The referrer arrives from ?ref= via localStorage, so it is untrusted input.
+     Render it as a text node inside a real <b>, never as markup. */
+  var attrEl=document.getElementById('attr');
+  if(ref){
+    attrEl.textContent='Referred by ';
+    var refB=document.createElement('b');
+    refB.textContent=ref;
+    attrEl.appendChild(refB);
+    attrEl.hidden=false;
+  }
 
   var storedCode=code||'';
 
