@@ -265,6 +265,18 @@
   .qa p,.qa li{font-size:17px}
   .note{font-size:15px}
   @media(min-width:821px){header .nav-links a.mono,header .nav-links a.ml{font-size:13px}}
+
+/* what this is worth */
+.worth{padding:clamp(34px,6vw,64px) 0}
+.worth h2{margin:0 0 14px}
+.worth-lede{font-size:clamp(16px,2.3vw,19px);line-height:1.55;max-width:62ch;margin:0 0 28px;opacity:.9}
+.worth-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(20px,3.5vw,42px)}
+.worth-col h3{font-size:clamp(17px,2.4vw,21px);margin:6px 0 10px;line-height:1.25}
+.worth-col p{line-height:1.6;margin:0 0 12px}
+.worth-num{font-family:"Space Mono",ui-monospace,monospace;font-size:13px;letter-spacing:.14em;opacity:.55;margin:0}
+.worth-check{margin-top:clamp(22px,3.5vw,34px);padding:clamp(16px,2.6vw,22px);border-radius:12px;background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.09)}
+.worth-check p{margin:0;line-height:1.6;max-width:78ch}
+@media (prefers-color-scheme:dark){.worth-check{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)}}
 </style>
 <script src="https://cdn.pagesense.io/js/cropdefense/adba67c177414b2b808c1be84347b639.js"></script>
 <style>
@@ -395,6 +407,31 @@
           </table>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- WHAT THIS IS WORTH -->
+  <section class="worth wrap">
+    <h2>What this is worth on your acres</h2>
+    <p class="worth-lede">Two things decide it, and they multiply together: what an acre is worth to you, and how hard a season your ground tends to hand the crop. Most of the answer sits in the first one, so start there.</p>
+    <div class="worth-grid">
+      <div class="worth-col">
+        <p class="worth-num">1</p>
+        <h3>What an acre is worth to you</h3>
+        <p>This is the first thing to check, and on a lot of ground it is the whole answer. A few percent of a high-value acre is real money. The same few percent of a low-value acre can come to less than the $150 an acre the program costs.</p>
+        <p>Count the value you keep, not the value you gross. If most of an extra bin goes straight back out in picking, packing, hauling and commission, the part that reaches you is smaller than the sticker suggests.</p>
+        <p>Where the acre does not carry it, we would rather tell you than sell you. There are crops where this does not pay in any season, and we would rather you heard that from us now than worked it out in November.</p>
+      </div>
+      <div class="worth-col">
+        <p class="worth-num">2</p>
+        <h3>How hard your ground is on the crop</h3>
+        <p>Symm works by helping the crop hold up under stress, so there is more for it to do where the ground asks more of the plant: fields that run dry in a normal year, that swing between wet and dry, that sit compacted or have been long in continuous production, or that carry salt or poor water quality.</p>
+        <p>Easy ground in a kind season gives it less to do, and the gain is smaller. On an acre worth enough, a smaller gain is still worth having. On an acre that is not, it will not be. That is the multiplication.</p>
+        <p>We cannot order you a hard year. We can help you pick the field that usually gets one.</p>
+      </div>
+    </div>
+    <div class="worth-check">
+      <p><strong>The check you can run yourself, in about a minute.</strong> Take what a good acre grosses you. Take out what you would spend picking, packing and hauling the extra. If a few percent of what is left covers $150, this is worth a look on that field. If it does not, no season is going to fix it. Either way, the number worth trusting is your own: leave check strips in one field, weigh them separately, and you will have your own answer for your own ground instead of ours.</p>
     </div>
   </section>
 
