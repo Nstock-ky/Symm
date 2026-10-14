@@ -243,7 +243,7 @@
                 <div class="field"><label>Primary crop</label><input name="SingleLine"></div>
                 <div class="field"><label>Total acreage</label><input name="SingleLine1" inputmode="numeric"></div>
               </div>
-              <div class="field"><label>Promo or advisor code</label><input name="SingleLine2" autocapitalize="characters" spellcheck="false"><span class="code-msg" id="codeMsg" style="display:none;font-size:12px;margin-top:6px"></span></div>
+              <div class="field"><label>Field Advisor reference (optional, does not change your price)</label><input name="SingleLine2" autocapitalize="characters" spellcheck="false"><span class="code-msg" id="codeMsg" style="display:none;font-size:12px;margin-top:6px"></span></div>
               <div class="field"><label>Notes for your advisor</label><textarea name="MultiLine"></textarea></div>
               <label class="chk">
                 <input type="checkbox" name="Checkbox" value="I consent to receive calls, emails, and text messages from Symm">
@@ -371,7 +371,15 @@
   var fmt=function(n){return '$'+Math.round(n).toLocaleString('en-US');};
   /* Pricing: base rate is real ($150/acre before discounts, carried in order.rate).
      VOL = automatic volume discount by acreage, applied to every order (5/10/15/18 by tier).
-     CAP = 20% hard ceiling on EVERY order; an advisor code adds 5 points on top of the automatic volume discount and is clamped so the total never passes 20%. So a code is worth the full 5 points below 500 acres, 5 at 500-999, and 2 at 1000+ where the automatic discount is already 18. Codes are one per advisor so the order is attributed before a human touches it.
+     CAP = 20% hard ceiling on EVERY order, which now only ever binds the volume ladder.
+     ADVISOR CODES NO LONGER DISCOUNT. Ruled twice internally, 2 and 7 October 2026,
+     retail included.
+     The ruling was never executed and the code was still stacking 5 points on top of the
+     volume ladder up to the 20% cap, which is how a thousand-acre order reached $120/acre.
+     Every code is now pct:0. The codes are DELIBERATELY KEPT, because they are how an order
+     is attributed to an advisor before a human touches it, and the ruling said the code had
+     to ship with its attribution replacement rather than before it. A code now attributes
+     and does not discount. DO NOT reintroduce a non-zero pct here without a written ruling.
      Tiers auto-apply in the cart; the schedule is internal and not published.
      50+ac: 5%. 100+: 10%. 500+: 15%. 1000+: 18%. None under 50.
      Keep this comment in step with VOL below; the 5000+/20% tier was withdrawn 2026-08-31. */
@@ -381,15 +389,17 @@
      from a guess. Scheme now: INITIALS + hyphen + season word + two-digit year. The season
      word rotates each season, so last season's codes stop working on their own and every
      order is attributable to a season as well as a person. */
+  /* Names deliberately NOT in this file. The initials are the only identifier that
+     reaches the page source; the mapping lives in the CRM. Flagged as N-061. */
   var CODES={
-    'SB-BASALT26':{pct:5,kind:'Advisor'},   /* Stefano Bonolis */
-    'KW-BASALT26':{pct:5,kind:'Advisor'},   /* Katie Welch */
-    'DD-BASALT26':{pct:5,kind:'Advisor'},   /* Daniel DeCesare */
-    'AY-BASALT26':{pct:5,kind:'Advisor'},   /* Asaya, no surname on file */
-    'KM-BASALT26':{pct:5,kind:'Advisor'},   /* Kyle Moloney */
-    'AP-BASALT26':{pct:5,kind:'Advisor'},   /* Aidan Price */
-    'NT-BASALT26':{pct:5,kind:'Advisor'},   /* Natasha Turner */
-    'PT-BASALT26':{pct:5,kind:'Partner'}    /* Partner, generic, issued case by case */
+    'SB-BASALT26':{pct:0,kind:'Advisor'},
+    'KW-BASALT26':{pct:0,kind:'Advisor'},
+    'DD-BASALT26':{pct:0,kind:'Advisor'},
+    'AY-BASALT26':{pct:0,kind:'Advisor'},
+    'KM-BASALT26':{pct:0,kind:'Advisor'},
+    'AP-BASALT26':{pct:0,kind:'Advisor'},
+    'NT-BASALT26':{pct:0,kind:'Advisor'},
+    'PT-BASALT26':{pct:0,kind:'Partner'}
   };
   var VOL=[{min:1000,pct:18},{min:500,pct:15},{min:100,pct:10},{min:50,pct:5}];
   var CAP=[{min:1,pct:20}]; /* 20% hard ceiling on every order. Was min:100, which silently zeroed every code below 100 acres. Fixed 2026-09-14. */
@@ -480,10 +490,13 @@
       for(var c in CODES){ if(c.replace(/[^A-Z0-9]/g,'')===typed){ key=c; break; } }
       applied=key?CODES[key]:null;
       if(codeMsg){
+        /* A code now ATTRIBUTES and does not discount, so no message here may mention a
+           price, a percentage or a discount ceiling. The old "already at the maximum
+           discount" line fired on every valid code once pct went to 0, including on a
+           ten-acre order at full list, which reads as though we had taken something away. */
         if(!typed){codeMsg.style.display='none';}
-        else if(applied&&codePct()>0){codeMsg.style.display='block';codeMsg.style.color='var(--lime-text)';codeMsg.textContent=applied.kind+' code applied: '+codePct()+'% off.';}
-        else if(applied){codeMsg.style.display='block';codeMsg.style.color='var(--ink-2)';codeMsg.textContent='This order is already at the maximum discount, so the code adds nothing further.';}
-        else {codeMsg.style.display='block';codeMsg.style.color='#e8734f';codeMsg.textContent='We do not recognize that code. Check it with your Field Advisor.';}
+        else if(applied){codeMsg.style.display='block';codeMsg.style.color='var(--lime-text)';codeMsg.textContent='Thank you. Your order will be credited to your Field Advisor. Your price is unchanged.';}
+        else {codeMsg.style.display='block';codeMsg.style.color='var(--ink-2)';codeMsg.textContent='We do not recognize that reference. Your price is the same either way.';}
       }
       render(); syncDiscount();
     }
