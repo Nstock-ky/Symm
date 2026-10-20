@@ -13,9 +13,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --lime:#A1D09A; --lime-2:#70C77E; --lime-3:#B9FF94; --lime-ink:#08240A; --lime-text:#A1D09A;
-    --bg:#011F00; --surface:#071802; --ink:#FFFFFF; --ink-2:#C7D6C7; --hair:rgba(255,255,255,.14);
-    --display:"Hanken Grotesk",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
+    /* Palette: Warm Sage light (approved 2026-08-16, brand guide v2.27).
+       Converted from the dark colorway 2026-10-19 on Aidan's instruction: the footer pages
+       were "too starkly different from our primary colorway" and now match the main pages. */
+    --lime:#A1D09A; --lime-2:#70C77E; --lime-3:#B9FF94; --lime-ink:#08240A; --lime-text:#356B3C; --cloud:#FFFFFF;
+    --bg:#E9F0DF; --surface:#FFFFFF; --ink:#0A2610; --ink-2:#38553F; --hair:#CFDBC4; --field-bg:#E4EDD8; --field-border:#6B8A5E;
+    --maxw:1200px;
+    --display:"Hanken Grotesk",system-ui,sans-serif;
+    --body:"Inter",system-ui,sans-serif;
+    --mono:"Space Mono",ui-monospace,monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -180,7 +186,7 @@ header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 8
   <section class="cover">
     <p class="eyebrow">The evidence</p>
     <h1>Field trials &amp; research.</h1>
-    <p class="sub">The Symm program is grounded in independent, peer-reviewed research on beneficial soil microbes, and is used across more than 50 crops for yield, resilience under stress, and nutrient-use efficiency.</p>
+    <p class="sub">The Symm program is grounded in independent, peer-reviewed research on beneficial soil microbes for yield, resilience under stress, and nutrient-use efficiency.</p>
   </section>
 
   <nav class="toc"><div class="toc-grid">
@@ -191,20 +197,8 @@ header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 8
     <a href="#quality"><span class="n">05</span><span class="t">Quality &amp; consistency</span></a>
   </div></nav>
 
-  <section class="s" id="foundation">
-    <div class="s-head"><span class="num">01</span><h2>Research foundation</h2></div>
-    <div class="qa">
-      <p>Symm is built on independent, peer-reviewed research into the symbiotic microbes that help plants withstand stress and use nutrients more efficiently. The program has two parts, applied together:</p>
-      <ul>
-        <li><b>Part 1</b> is a multi-isolate <i>Trichoderma harzianum</i> consortium that works inside the plant to support resilience.</li>
-        <li><b>Part 2</b> is a five-strain <i>Bacillus</i> consortium that works in the soil to improve nutrient availability.</li>
-      </ul>
-      <p>Both are naturally occurring and non-GMO. On top of that research base, the program is evaluated in replicated field trials across a wide range of crops and growing conditions.</p>
-    </div>
-  </section>
-
   <section class="s" id="resilience">
-    <div class="s-head"><span class="num">02</span><h2>Resilience under stress</h2></div>
+    <div class="s-head"><span class="num">01</span><h2>Resilience under stress</h2></div>
     <div class="qa">
       <p>The clearest gains show up under stress. The program has been evaluated against the abiotic stresses that most often cut yield:</p>
       <ul>
@@ -215,6 +209,31 @@ header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 8
         <li><b>Nutrient stress:</b> improves how efficiently the crop accesses the nutrition available to it.</li>
       </ul>
       <p>Across these trials, treated plants tend to hold vigor and root mass where untreated plants fall behind. The greater the environmental stress, the more pronounced the advantage tends to be.</p>
+    </div>
+  
+        <div class="qa" style="margin-top:22px;border-top:1px solid var(--hair);padding-top:18px">
+          <h3>One trial, at commercial scale</h3>
+          <p>On a 35-acre block of alfalfa in Arizona, with a university cooperator, a single application
+          was compared against an equivalent 35 acres left untreated. The difference between the two was
+          measured at every cutting through the season.</p>
+          <p>The gap tracked the temperature. It was widest in July and August, when temperatures reached
+          105&deg;F, and narrowest in the milder months. The April and August cuttings were statistically
+          significant.</p>
+          <p style="color:var(--ink-2)">We publish this as a single trial under severe heat on one crop,
+          not as a typical result. It is here because it shows the pattern plainly: what this program does
+          depends on the season a crop is having.</p>
+        </div>
+      </section>
+
+  <section class="s" id="foundation">
+    <div class="s-head"><span class="num">02</span><h2>Research foundation</h2></div>
+    <div class="qa">
+      <p>Symm is built on independent, peer-reviewed research into the symbiotic microbes that help plants withstand stress and use nutrients more efficiently. The program has two parts, applied together:</p>
+      <ul>
+        <li><b>Part 1</b> is a multi-isolate <i>Trichoderma harzianum</i> consortium that works inside the plant to support resilience.</li>
+        <li><b>Part 2</b> is a five-strain <i>Bacillus</i> consortium that works in the soil to improve nutrient availability.</li>
+      </ul>
+      <p>Both are naturally occurring and non-GMO. On top of that research base, the program is evaluated in replicated field trials across a wide range of crops and growing conditions.</p>
     </div>
   </section>
 
@@ -229,16 +248,10 @@ header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 8
     </div>
   </section>
 
-  <section class="s" id="crops">
-    <div class="s-head"><span class="num">04</span><h2>Across 50+ crops</h2></div>
-    <div class="qa">
-      <p>The program is used across more than 50 crops, from row crops to vegetables and perennials. You can browse the crop library and open each crop's field-data summary on the <a href="index.html#library" style="color:var(--lime-text)">home page</a>.</p>
-      <p>Data on additional crops is available on request. Contact your advisor for evidence specific to your operation.</p>
-    </div>
-  </section>
+  
 
   <section class="s" id="quality">
-    <div class="s-head"><span class="num">05</span><h2>Quality &amp; consistency</h2></div>
+    <div class="s-head"><span class="num">04</span><h2>Quality &amp; consistency</h2></div>
     <div class="qa">
       <p>Living inputs are only as good as what survives to the field, so consistency is part of the evidence:</p>
       <ul>

@@ -463,7 +463,7 @@
   /* Native checkout form -> Catalyst relay -> Zoho SymmCheckout -> Books estimate.
      Prefill hidden + acreage fields from the order; a Field Advisor sends the final invoice.
      NOTE: relay is on Catalyst Development env; swap to the Production URL before public launch. */
-  var RELAY='https://project-rainfall-932827561.development.catalystserverless.com/server/formrelay/checkout';
+  var RELAY='https://project-rainfall-932827561.catalystserverless.com/server/formrelay/checkout';
   var cform=document.getElementById('checkoutForm');
   if(cform){
     cform.SingleLine1.value=order.acres;   /* Total acreage (visible) */
