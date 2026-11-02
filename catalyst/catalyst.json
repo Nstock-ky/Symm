@@ -1,9 +1,0 @@
-{
-  "functions": {
-    "targets": [
-      "formrelay"
-    ],
-    "ignore": [],
-    "source": "functions"
-  }
-}

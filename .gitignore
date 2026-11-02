@@ -4,3 +4,7 @@ symm-product-images.html
 # Catalyst function dependencies (installed locally / on deploy)
 node_modules/
 catalyst/functions/*/node_modules/
+
+# Internal: never publish (Aidan approved removal 2026-11-01; files stay local for Catalyst CLI deploys)
+catalyst/
+forms/
