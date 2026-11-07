@@ -89,6 +89,7 @@
   .combo-opt.active{background:color-mix(in srgb,var(--lime) 16%,transparent)}
   .combo-opt.sel-cur{color:var(--lime-text);font-weight:600}
   .combo-empty{padding:9px 12px;color:var(--ink-2);font-size:13px}
+  .k-src{font-size:12px;line-height:1.5;color:var(--ink-2);margin:-4px 0 6px}
   /* custom select (matches crop dropdown) */
   .selbox{position:relative}
   .sel-native{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;padding:0!important;border:0!important;margin:0;clip:rect(0 0 0 0)}
@@ -191,7 +192,7 @@
     @page{margin:14mm}
     html,body{background:#fff;color:#0d1b10;font-size:11.5px}
     :root{--ink:#0d1b10;--ink-2:#4b5b4f;--surface:#f4f7f1;--bg:#fff;--hair:#d8e2d4;--lime:#2f6b1f;--lime-ink:#fff}
-    header,.intro,.form-side,.addcrop,.crop-del,details.adv summary,.res-actions,.print-hint,.stress-note,footer .foot .btn,.no-print,
+    header,.intro,.form-side,.addcrop,.crop-del,details.adv summary,.res-actions,.print-hint,footer .foot .btn,.no-print,
     footer.sitefoot,#zcb-banner,#zcb-info,[id^="zcb-"],.zcb-bar,.zcb-message-bar{display:none!important}
     /* The cookie banner is injected at runtime and printed on a grower's report until 2026-09-10.
        The footer nav links are dead on paper. Keep the wordmark and the contact line, drop the rest. */
@@ -331,9 +332,11 @@
     <div class="form-side">
       <div class="card">
         <h2>Your farm</h2>
-        <p class="sub">Used only to label your report.</p>
+        <p class="sub">Used to label your report and to set default figures for your state.</p>
         <label class="field"><span class="lab">Farm name</span>
           <input class="inp" id="farmName" type="text" placeholder="Your farm" autocomplete="off"></label>
+        <label class="field"><span class="lab">State</span>
+          <select class="inp" id="farmState"><option value="US" selected>US average</option><option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option></select></label>
       </div>
 
       <div class="card">
@@ -363,7 +366,7 @@
         <div class="stat-row">
           <div class="stat"><div class="n" id="perAcre">$0</div><div class="l">Per acre</div></div>
           <div class="stat"><div class="n" id="roi">0&times;</div><div class="l">Return on program cost</div></div>
-          <div class="stat"><div class="n" id="yieldPct">5&ndash;10%</div><div class="l">Typical yield gain</div></div>
+          <div class="stat"><div class="n" id="yieldPct">3.4%</div><div class="l">Average gain in field trials</div></div>
           <div class="stat"><div class="n" id="totAcres">0</div><div class="l">Total acreage</div></div>
         </div>
         <div class="brk" id="brk">
@@ -377,8 +380,8 @@
           <a class="btn ghost" href="symm-contact.html">Book a 20 minute field review <span class="arw">&rarr;</span></a>
         </div>
         <p class="print-hint">Opens your print dialog. Choose <b>Save as PDF</b> as the destination to get a file you can email.</p>
-        <p class="stress-note">Figures above use the typical range. Under drought or heat stress, the biological benefit is often greater, and yield gains can extend well beyond the typical range. Your advisor can review stress-year results for your crops and region.</p>
-        <p class="est-disc"><b>This is an estimate, not a guarantee.</b> The figures above are calculated from the numbers you entered and from ranges observed in field trials. Ranges are ranges: they are not a promise, projection, or guarantee of what any particular field will do. Actual results vary with soil, weather, crop variety, timing, and management practices. Nothing here is agronomic, financial, or legal advice for your operation. Please do not rely on this estimate as the sole basis for a purchasing decision. See our <a href="symm-terms.html">Terms of Service</a>.</p>
+        <p class="stress-note">Break-even gain for these crops: <b id="brkEven">–</b>. That is the yield gain that covers the program cost. Figures above use the 3.4% average gain from field trials, losses included. Your own result will depend on your crop, field and season. Your advisor can walk you through the trials behind this figure. Not counted above: Part 1&rsquo;s fungi were selected for drought and heat tolerance, and treated seed has germinated faster and more fully after drought.</p>
+        <p class="est-disc"><b>This is an estimate, not a guarantee.</b> The figures above are calculated from the numbers you entered and from the average observed in field trials. An average is not a promise, projection, or guarantee of what any particular field will do. Actual results vary with soil, weather, crop variety, timing, and management practices. Nothing here is agronomic, financial, or legal advice for your operation. Please do not rely on this estimate as the sole basis for a purchasing decision. See our <a href="symm-terms.html">Terms of Service</a>.</p>
         <p class="print-foot" style="display:none">symm &middot; info@symmbiotic.com &middot; Sales 929 282 7976 &middot; Source Technologies LLC, 149 Franklin St, Floor 4, New York, NY 10013</p>
       </div>
     </div>
@@ -387,7 +390,7 @@
   <!-- DETAIL TABLES -->
   <section class="section2 wrap">
     <h2>Current vs. projected</h2>
-    <p class="sub">Per-acre economics for each crop, based on the figures you entered. Projected ranges reflect a typical 5 to 10% yield gain.</p>
+    <p class="sub">Per-acre economics for each crop, based on the figures you entered. Projected figures apply the 3.4% average gain from field trials, losses included.</p>
     <div class="two-tables">
       <div>
         <p class="mono" style="margin-bottom:10px">Current metrics</p>
@@ -402,7 +405,7 @@
         <p class="mono" style="margin-bottom:10px">Projected metrics with Symm</p>
         <div class="tbl-wrap">
           <table class="proj">
-            <thead><tr><th>Crop</th><th class="num">Acres</th><th class="num">Yield / acre (range)</th><th class="num">Crop value / acre (range)</th></tr></thead>
+            <thead><tr><th>Crop</th><th class="num">Acres</th><th class="num">Yield / acre</th><th class="num">Crop value / acre</th></tr></thead>
             <tbody id="projBody"></tbody>
           </table>
         </div>
@@ -424,14 +427,14 @@
       </div>
       <div class="worth-col">
         <p class="worth-num">2</p>
-        <h3>How hard your ground is on the crop</h3>
-        <p>Symm works by helping the crop hold up under stress, so there is more for it to do where the ground asks more of the plant: fields that run dry in a normal year, that swing between wet and dry, that sit compacted or have been long in continuous production, or that carry salt or poor water quality.</p>
-        <p>Easy ground in a kind season gives it less to do, and the gain is smaller. On an acre worth enough, a smaller gain is still worth having. On an acre that is not, it will not be. That is the multiplication.</p>
-        <p>We cannot order you a hard year. We can help you pick the field that usually gets one.</p>
+        <h3>Built for tough seasons</h3>
+        <p>Part 1's fungi were selected from plants that thrive in hot, dry ground, and peer-reviewed research shows this kind of fungus helps seed and seedlings tolerate drought and heat.</p>
+        <p>In our own seedling studies, treated seed germinated faster and more completely, including after drought.</p>
+        <p>We count none of this in the 3.4% above, so any help in a hard season is on top of it.</p>
       </div>
     </div>
     <div class="worth-check">
-      <p><strong>The check you can run yourself, in about a minute.</strong> Take what a good acre grosses you. Take out what you would spend picking, packing and hauling the extra. If what you keep from a good acre is around $3,000 or more, a 5 percent lift covers the $150, and this is worth a look on that field. If it does not, no season is going to fix it. Either way, the number worth trusting is your own: leave check strips in one field, weigh them separately, and you will have your own answer for your own ground instead of ours.</p>
+      <p><strong>The check you can run yourself, in about a minute.</strong> Take what a good acre grosses you. Take out what you would spend picking, packing and hauling the extra. If what you keep from a good acre is around $4,400 or more, the 3.4% average covers the $150, and this is worth a look on that field. If it does not, no season is going to fix it. Either way, the number worth trusting is your own: leave check strips in one field, weigh them separately, and you will have your own answer for your own ground instead of ours.</p>
     </div>
   </section>
 
@@ -439,10 +442,10 @@
   <section class="assump wrap">
     <h2>How this is calculated</h2>
     <dl class="grid">
-      <div class="a"><span class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30 L16 20 L23 27 L34 12"/><path d="M26 12 H34 V20"/></svg></span><dt>Yield gain</dt><dd>Typical yield gains are 5 to 10%, with considerably greater gains under drought or heat stress. We apply the typical range to your crop value, so this estimate stays conservative.</dd></div>
+      <div class="a"><span class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30 L16 20 L23 27 L34 12"/><path d="M26 12 H34 V20"/></svg></span><dt>Yield gain</dt><dd>In 31 seed-treatment field trials of the program's microbes, in earlier formulations, from 2020 to 2025, the treated crop out-yielded the untreated check in 27. Across all 31, the average gain was 3.4%; results varied from trial to trial, including some losses. We apply that average to your crop value and subtract the program cost. The trials were on field crops, so for other crops this is an illustration, not a forecast.</dd></div>
       <div class="a"><span class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="13"/><path d="M20 26 V14 M15 19 L20 14 L25 19"/></svg></span><dt>Net increase</dt><dd>Yield value increase, less the program cost per acre. Return is the net increase divided by the program cost you entered.</dd></div>
     </dl>
-    <p class="fine">Estimates are based on the figures you provide, and the yield range is drawn from field trials rather than from your specific field. A range is not a guarantee for any given field, and this calculator does not promise or project a result for your operation. Actual results vary with soil, weather, crop variety, timing, and management practices. Nothing on this page is agronomic, financial, or legal advice. Symm is two symbiotic microbial inputs that strengthen the root environment and improve nutrient-use efficiency.</p>
+    <p class="fine">Estimates are based on the figures you provide, and the yield figure is drawn from field trials rather than from your specific field. An average is not a guarantee for any given field, and this calculator does not promise or project a result for your operation. Actual results vary with soil, weather, crop variety, timing, and management practices. Nothing on this page is agronomic, financial, or legal advice. Symm is two symbiotic microbial inputs that strengthen the root environment and improve nutrient-use efficiency.</p>
   </section>
 </main>
 
@@ -468,7 +471,10 @@
 <script>
 (function(){
   /* ---- verified assumptions (locked) ---- */
-  const YL=0.05, YH=0.10;
+  /* Average gain across 31 seed-treatment field trial sets, 2020 to 2025, losses included (+3.43%;
+     27 of 31 beat the untreated check). Re-derived 2026-11-06 from the trial dataset.
+     One average, not a range, so YL and YH are equal. */
+  const YL=0.034, YH=0.034;
 
   const CROPS=["Almonds","Apples","Apricots","Avocado","Cherries","Citrus","Lemons","Peaches","Pistachios","Plums","Bananas","Blueberries","Raspberries","Strawberries","Artichokes","Asparagus","Broccoli","Carrots","Cauliflower","Celery","Eggplant","Garlic","Onions","Peppers","Potatoes","Sweet corn","Sweet potatoes","Tomatoes","Cabbage","Kale","Lettuce","Spinach","Cantaloupe","Cucumbers","Wine grapes","Pumpkins","Squash","Watermelon","Barley","Canola","Field corn","Cotton","Dry beans","Hemp","Hops","Peanuts","Rice","Sorghum","Soybeans","Sugar beets","Wheat"];
   const UNITS=["lb","bu","cwt","ton","kg","MT","carton","box"];
@@ -494,6 +500,25 @@
     "rice":{u:"cwt",p:15,y:85},"sorghum":{u:"bu",p:4.5,y:70},"soybeans":{u:"bu",p:12,y:55},
     "sugar beets":{u:"ton",p:55,y:32},"wheat":{u:"bu",p:6.5,y:55}
   };
+
+  /* Live defaults: USDA NASS price received and yield per acre, national and by state, rebuilt
+     weekly by scripts/update_prices.py into data/crop-defaults.json. If the file or a crop is
+     missing, the built-in DEFAULTS above are used. */
+  let CD=null;
+  const stateEl=document.getElementById('farmState');
+  function nassFor(key){
+    if(!CD||!CD.crops||!CD.crops[key])return null;
+    const c=CD.crops[key],st=stateEl?stateEl.value:'US';
+    let rec=null,where='US average';
+    if(st!=='US'&&c.states&&c.states[st]){rec=c.states[st];where=stateEl.options[stateEl.selectedIndex].text;}
+    else if(c.national)rec=c.national;
+    return rec&&rec.price>0?{u:c.unit,p:rec.price,y:rec.yield,year:rec.year,where:where}:null;
+  }
+  function cdDate(){
+    const d=new Date((CD&&CD.generated||'')+'T12:00:00');
+    return isNaN(d)?'':d.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  }
+  function reapplyAll(){[...cropsEl.children].forEach(dv=>{if(dv._filled&&dv._applyDefaults)dv._applyDefaults();});compute();}
 
   const cropsEl=document.getElementById('crops');
   let rows=[];
@@ -531,7 +556,8 @@
       '<div class="grid2">'+
         '<label class="field"><span class="lab">Acres</span><input class="inp k-acres" type="number" min="0" step="any" inputmode="decimal" placeholder="100" value="'+data.acres+'"></label>'+
         '<label class="field"><span class="lab">Selling price / unit</span><span class="prefix"><span class="sym">$</span><input class="inp k-price" type="number" min="0" step="any" inputmode="decimal" placeholder="2.96" value="'+data.price+'"></span></label>'+
-      '</div>';
+      '</div>'+
+      '<p class="k-src" hidden></p>';
     div.querySelector('.crop-del').onclick=()=>{if(cropsEl.children.length>1){div.remove();compute();}};
     const nameEl=div.querySelector('.k-name'),priceEl=div.querySelector('.k-price'),
           yieldEl=div.querySelector('.k-yield'),unitEl=div.querySelector('.k-unit'),
@@ -540,13 +566,29 @@
     priceEl.addEventListener('input',()=>dirty.price=true);
     yieldEl.addEventListener('input',()=>dirty.yield=true);
     unitEl.addEventListener('input',()=>dirty.unit=true);
+    const srcEl=div.querySelector('.k-src');
+    let srcYield=false;
+    function srcCheck(){if(dirty.price&&(dirty.yield||!srcYield)){srcEl.hidden=true;return;}if(srcEl.dataset.base){srcEl.textContent=(dirty.price?'Default yield: ':(dirty.yield?'Default price: ':srcEl.dataset.lead))+srcEl.dataset.base;}}
+    priceEl.addEventListener('input',srcCheck);
+    yieldEl.addEventListener('input',srcCheck);
     function applyDefaults(){
-      const d=DEFAULTS[nameEl.value.trim().toLowerCase()];
+      const key=nameEl.value.trim().toLowerCase();
+      const b=DEFAULTS[key],n=nassFor(key);
+      /* use USDA figures only when the row's unit matches theirs */
+      const live=n&&(!dirty.unit||unitEl.value===n.u)?n:null;
+      const d=live?{u:live.u,p:live.p,y:live.y!=null?live.y:(b?b.y:null)}:b;
+      srcYield=!!(live&&live.y!=null);
+      if(live){
+        srcEl.dataset.lead=srcYield?'Default yield and price: ':'Default price: ';srcEl.dataset.base='USDA NASS, '+live.year+', '+live.where+'. Updated '+cdDate()+'. Enter your own figures for your farm.';srcEl.textContent=srcEl.dataset.lead+srcEl.dataset.base;
+        srcEl.hidden=false;srcCheck();
+      } else srcEl.hidden=true;
       if(!d)return;
+      div._filled=true;
       if(!dirty.price)priceEl.value=d.p;
-      if(!dirty.yield)yieldEl.value=d.y;
+      if(!dirty.yield&&d.y!=null)yieldEl.value=d.y;
       if(!dirty.unit){unitEl.value=d.u;unitEl.dispatchEvent(new Event('change',{bubbles:true}));}
     }
+    div._applyDefaults=applyDefaults;
     function renderList(showAll){
       const q=showAll?'':nameEl.value.trim().toLowerCase();
       const items=CROPS.filter(c=>!q||c.toLowerCase().indexOf(q)>-1);
@@ -583,7 +625,7 @@
   const dollar=n=>{const r=Math.round(n);return (r<0?'-$':'$')+Math.abs(r).toLocaleString('en-US');};
   const rng=(a,b)=>{if(Math.round(a)===Math.round(b))return dollar(a);/* an en dash between two negatives is unreadable, so use the word */const sep=(a<0||b<0)?' to ':'&ndash;';return dollar(a)+sep+dollar(b);};
   const numFmt=n=>{const r=Math.round(n*10)/10;return (Number.isInteger(r)?r:r.toFixed(1)).toLocaleString('en-US');};
-  const rngNum=(a,b,u)=>numFmt(a)+'&ndash;'+numFmt(b)+' '+u;
+  const rngNum=(a,b,u)=>(Math.round(a)===Math.round(b)?numFmt(a):numFmt(a)+'&ndash;'+numFmt(b))+' '+u;
 
   function compute(){
     /* No nitrogen or fertilizer term exists in this calculator, by design. The fertilizer
@@ -612,7 +654,10 @@
     document.getElementById('netBig').innerHTML=(tAcres>0)?rng(netLo,netHi):'$0';
     document.getElementById('perAcre').innerHTML=tAcres>0?rng(netLo/tAcres,netHi/tAcres):'$0';
     const roiLo=costT>0?netLo/costT:0, roiHi=costT>0?netHi/costT:0;
-    document.getElementById('roi').innerHTML=costT>0?(Math.round(roiLo)+'&ndash;'+Math.round(roiHi)+'&times;'):'0&times;';
+    document.getElementById('roi').innerHTML=costT>0?((Math.round(roiLo*10)===Math.round(roiHi*10)?(Math.round(roiLo*10)/10):(Math.round(roiLo)+'&ndash;'+Math.round(roiHi)))+'&times;'):'0&times;';
+    const totVal=cur.reduce((s,x)=>s+x.value*x.c.acres,0);
+    const be=document.getElementById('brkEven');
+    if(be) be.textContent=(totVal>0&&costT>0)?((costT/totVal*100).toFixed(1)+'%'):'–';
     document.getElementById('totAcres').textContent=numFmt(tAcres);
     document.getElementById('brkYield').innerHTML=rng(yieldLo,yieldHi);
     document.getElementById('brkCost').innerHTML=dollar(costT);
@@ -670,6 +715,9 @@
   document.getElementById('farmName').addEventListener('input',compute);
   document.getElementById('programCost').addEventListener('input',compute);
   document.getElementById('printBtn').onclick=()=>window.print();
+  if(stateEl)stateEl.addEventListener('change',reapplyAll);
+  fetch('data/crop-defaults.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null)
+    .then(j=>{if(j&&j.crops){CD=j;reapplyAll();}}).catch(()=>{});
 
   // seed with the reference example so results are visible immediately
   addRow({name:'Kale',acres:'100',yield:'12000',unit:'lb',price:'1.00'});

@@ -1,0 +1,2221 @@
+{
+ "crops": {
+  "almonds": {
+   "national": {
+    "price": 2.6,
+    "year": 2025,
+    "yield": 1940
+   },
+   "states": {
+    "CA": {
+     "price": 2.6,
+     "year": 2025,
+     "yield": 1940
+    }
+   },
+   "unit": "lb"
+  },
+  "apples": {
+   "national": {
+    "price": 0.263,
+    "year": 2025,
+    "yield": 37400
+   },
+   "states": {
+    "CA": {
+     "price": 0.261,
+     "year": 2025,
+     "yield": 18500
+    },
+    "MI": {
+     "price": 0.303,
+     "year": 2025,
+     "yield": 28800
+    },
+    "NY": {
+     "price": 0.236,
+     "year": 2025,
+     "yield": 32500
+    },
+    "OR": {
+     "price": 0.295,
+     "year": 2025,
+     "yield": 34700
+    },
+    "PA": {
+     "price": 0.24,
+     "year": 2025,
+     "yield": 27300
+    },
+    "VA": {
+     "price": 0.299,
+     "year": 2025,
+     "yield": 15500
+    },
+    "WA": {
+     "price": 0.263,
+     "year": 2025,
+     "yield": 44100
+    }
+   },
+   "unit": "lb"
+  },
+  "apricots": {
+   "national": {
+    "price": 0.71,
+    "year": 2025,
+    "yield": 13620
+   },
+   "states": {
+    "CA": {
+     "price": 0.69,
+     "year": 2025,
+     "yield": 13600
+    },
+    "WA": {
+     "price": 0.875,
+     "year": 2025,
+     "yield": 13700
+    }
+   },
+   "unit": "lb"
+  },
+  "artichokes": {
+   "national": {
+    "price": 1.33,
+    "year": 2025,
+    "yield": 15500
+   },
+   "states": {
+    "CA": {
+     "price": 1.33,
+     "year": 2025,
+     "yield": 15500
+    }
+   },
+   "unit": "lb"
+  },
+  "asparagus": {
+   "national": {
+    "price": 1.41,
+    "year": 2025,
+    "yield": 4050
+   },
+   "states": {
+    "CA": {
+     "price": 2.17,
+     "year": 2022,
+     "yield": 3400
+    },
+    "MI": {
+     "price": 1.19,
+     "year": 2025,
+     "yield": 3500
+    },
+    "NJ": {
+     "price": 3.1,
+     "year": 2025,
+     "yield": 3400
+    },
+    "WA": {
+     "price": 1.03,
+     "year": 2025,
+     "yield": 6800
+    }
+   },
+   "unit": "lb"
+  },
+  "avocado": {
+   "national": {
+    "price": 1.38,
+    "year": 2025,
+    "yield": 6900
+   },
+   "states": {
+    "CA": {
+     "price": 1.45,
+     "year": 2025,
+     "yield": 6940
+    },
+    "FL": {
+     "price": 0.56,
+     "year": 2025,
+     "yield": 7520
+    }
+   },
+   "unit": "lb"
+  },
+  "barley": {
+   "national": {
+    "price": 5.46,
+    "year": 2025,
+    "yield": 79.9
+   },
+   "states": {
+    "AK": {
+     "price": 8.15,
+     "year": 2025,
+     "yield": 47.0
+    },
+    "AZ": {
+     "price": 7.5,
+     "year": 2025,
+     "yield": 107
+    },
+    "CA": {
+     "price": 4.55,
+     "year": 2025,
+     "yield": 72.0
+    },
+    "CO": {
+     "price": 6.14,
+     "year": 2025,
+     "yield": 126
+    },
+    "DE": {
+     "price": 3.3,
+     "year": 2025,
+     "yield": 95.0
+    },
+    "ID": {
+     "price": 5.66,
+     "year": 2025,
+     "yield": 112
+    },
+    "KS": {
+     "price": 3.9,
+     "year": 2025,
+     "yield": 51.0
+    },
+    "MD": {
+     "price": 3.3,
+     "year": 2025,
+     "yield": 96.0
+    },
+    "ME": {
+     "price": 5.15,
+     "year": 2025,
+     "yield": 79.0
+    },
+    "MI": {
+     "price": 3.6,
+     "year": 2025,
+     "yield": 57.0
+    },
+    "MN": {
+     "price": 4.85,
+     "year": 2025,
+     "yield": 75.0
+    },
+    "MT": {
+     "price": 5.45,
+     "year": 2025,
+     "yield": 54.0
+    },
+    "NC": {
+     "price": 3.05,
+     "year": 2025,
+     "yield": 71.0
+    },
+    "ND": {
+     "price": 4.76,
+     "year": 2025,
+     "yield": 78.0
+    },
+    "NY": {
+     "price": 4.0,
+     "year": 2025,
+     "yield": 54.0
+    },
+    "OR": {
+     "price": 3.05,
+     "year": 2025,
+     "yield": 43.0
+    },
+    "PA": {
+     "price": 4.0,
+     "year": 2025,
+     "yield": 80.0
+    },
+    "SD": {
+     "price": 3.3,
+     "year": 2025,
+     "yield": 50.0
+    },
+    "UT": {
+     "price": 6.3,
+     "year": 2025,
+     "yield": 74.0
+    },
+    "VA": {
+     "price": 3.15,
+     "year": 2025,
+     "yield": 87.0
+    },
+    "WA": {
+     "price": 3.84,
+     "year": 2025,
+     "yield": 49.0
+    },
+    "WI": {
+     "price": 5.75,
+     "year": 2025,
+     "yield": 47.0
+    },
+    "WY": {
+     "price": 5.83,
+     "year": 2025,
+     "yield": 112
+    }
+   },
+   "unit": "bu"
+  },
+  "blueberries": {
+   "national": {
+    "price": 1.71,
+    "year": 2025,
+    "yield": 7340
+   },
+   "states": {
+    "CA": {
+     "price": 3.33,
+     "year": 2025,
+     "yield": 10900
+    },
+    "FL": {
+     "price": 3.62,
+     "year": 2025,
+     "yield": 3650
+    },
+    "GA": {
+     "price": 1.92,
+     "year": 2025,
+     "yield": 5100
+    },
+    "MI": {
+     "price": 1.7,
+     "year": 2025,
+     "yield": 4650
+    },
+    "NC": {
+     "price": 1.79,
+     "year": 2025,
+     "yield": 5750
+    },
+    "NJ": {
+     "price": 1.99,
+     "year": 2025,
+     "yield": 4450
+    },
+    "OR": {
+     "price": 1.17,
+     "year": 2025,
+     "yield": 12500
+    },
+    "WA": {
+     "price": 1.06,
+     "year": 2025,
+     "yield": 11300
+    }
+   },
+   "unit": "lb"
+  },
+  "broccoli": {
+   "national": {
+    "price": 0.692,
+    "year": 2025,
+    "yield": 11000
+   },
+   "states": {
+    "AZ": {
+     "price": 0.732,
+     "year": 2024,
+     "yield": 12000
+    },
+    "CA": {
+     "price": 0.806,
+     "year": 2024,
+     "yield": 14000
+    }
+   },
+   "unit": "lb"
+  },
+  "cabbage": {
+   "national": {
+    "price": 0.244,
+    "year": 2025,
+    "yield": 44440
+   },
+   "states": {
+    "AZ": {
+     "price": 0.266,
+     "year": 2025,
+     "yield": 59500
+    },
+    "CA": {
+     "price": 0.369,
+     "year": 2025,
+     "yield": 45500
+    },
+    "FL": {
+     "price": 0.214,
+     "year": 2025,
+     "yield": 43500
+    },
+    "GA": {
+     "price": 0.169,
+     "year": 2025,
+     "yield": 40500
+    },
+    "MI": {
+     "price": 0.16,
+     "year": 2025,
+     "yield": 43500
+    },
+    "NC": {
+     "price": 0.182,
+     "year": 2025,
+     "yield": 35500
+    },
+    "NY": {
+     "price": 0.197,
+     "year": 2025,
+     "yield": 43000
+    },
+    "TX": {
+     "price": 0.3,
+     "year": 2025,
+     "yield": 26000
+    },
+    "WI": {
+     "price": 0.168,
+     "year": 2025,
+     "yield": 64000
+    }
+   },
+   "unit": "lb"
+  },
+  "canola": {
+   "national": {
+    "price": 0.211,
+    "year": 2025,
+    "yield": 2017
+   },
+   "states": {
+    "ID": {
+     "price": 0.192,
+     "year": 2025,
+     "yield": 1800
+    },
+    "KS": {
+     "price": 0.181,
+     "year": 2022,
+     "yield": 690
+    },
+    "MN": {
+     "price": 0.314,
+     "year": 2022,
+     "yield": 2410
+    },
+    "MT": {
+     "price": 0.191,
+     "year": 2025,
+     "yield": 1220
+    },
+    "ND": {
+     "price": 0.212,
+     "year": 2025,
+     "yield": 2120
+    },
+    "OK": {
+     "price": 0.201,
+     "year": 2025,
+     "yield": 1050
+    },
+    "WA": {
+     "price": 0.208,
+     "year": 2025,
+     "yield": 1530
+    }
+   },
+   "unit": "lb"
+  },
+  "cantaloupe": {
+   "national": {
+    "price": 22.6,
+    "year": 2025,
+    "yield": 246
+   },
+   "states": {
+    "CA": {
+     "price": 22.0,
+     "year": 2025,
+     "yield": 250
+    },
+    "GA": {
+     "price": 24.5,
+     "year": 2022,
+     "yield": 290
+    },
+    "TX": {
+     "price": 28.3,
+     "year": 2024,
+     "yield": 100
+    }
+   },
+   "unit": "cwt"
+  },
+  "carrots": {
+   "states": {
+    "WA": {
+     "price": 0.53,
+     "year": 2022,
+     "yield": 74000
+    }
+   },
+   "unit": "lb"
+  },
+  "cauliflower": {
+   "national": {
+    "price": 0.646,
+    "year": 2025,
+    "yield": 18040
+   },
+   "states": {
+    "AZ": {
+     "price": 1.12,
+     "year": 2024,
+     "yield": 18500
+    },
+    "CA": {
+     "price": 0.619,
+     "year": 2024,
+     "yield": 20000
+    }
+   },
+   "unit": "lb"
+  },
+  "celery": {
+   "national": {
+    "price": 0.323,
+    "year": 2025,
+    "yield": 54000
+   },
+   "states": {
+    "CA": {
+     "price": 0.323,
+     "year": 2025,
+     "yield": 54000
+    }
+   },
+   "unit": "lb"
+  },
+  "cherries": {
+   "national": {
+    "price": 0.985,
+    "year": 2025,
+    "yield": 7800
+   },
+   "states": {
+    "CA": {
+     "price": 2.25,
+     "year": 2025,
+     "yield": 2600
+    },
+    "WA": {
+     "price": 0.83,
+     "year": 2025,
+     "yield": 13040
+    }
+   },
+   "unit": "lb"
+  },
+  "citrus": {
+   "states": {
+    "CA": {
+     "price": 0.141,
+     "year": 2026,
+     "yield": 29680
+    },
+    "TX": {
+     "price": 0.293,
+     "year": 2026,
+     "yield": 18190
+    }
+   },
+   "unit": "lb"
+  },
+  "cotton": {
+   "national": {
+    "price": 0.622,
+    "year": 2025,
+    "yield": 842
+   },
+   "states": {
+    "AL": {
+     "price": 0.578,
+     "year": 2025,
+     "yield": 948
+    },
+    "AR": {
+     "price": 0.625,
+     "year": 2025,
+     "yield": 1239
+    },
+    "AZ": {
+     "price": 0.875,
+     "year": 2022,
+     "yield": 1563
+    },
+    "FL": {
+     "price": 0.627,
+     "year": 2025,
+     "yield": 880
+    },
+    "GA": {
+     "price": 0.653,
+     "year": 2025,
+     "yield": 1033
+    },
+    "KS": {
+     "price": 0.562,
+     "year": 2025,
+     "yield": 966
+    },
+    "LA": {
+     "price": 0.673,
+     "year": 2025,
+     "yield": 1350
+    },
+    "MO": {
+     "price": 0.629,
+     "year": 2025,
+     "yield": 1084
+    },
+    "MS": {
+     "price": 0.622,
+     "year": 2025,
+     "yield": 1167
+    },
+    "NC": {
+     "price": 0.616,
+     "year": 2025,
+     "yield": 1115
+    },
+    "OK": {
+     "price": 0.611,
+     "year": 2025,
+     "yield": 912
+    },
+    "SC": {
+     "price": 0.633,
+     "year": 2025,
+     "yield": 992
+    },
+    "TN": {
+     "price": 0.607,
+     "year": 2025,
+     "yield": 889
+    },
+    "TX": {
+     "price": 0.598,
+     "year": 2025,
+     "yield": 628
+    },
+    "VA": {
+     "price": 0.632,
+     "year": 2025,
+     "yield": 1127
+    }
+   },
+   "unit": "lb"
+  },
+  "cucumbers": {
+   "national": {
+    "price": 0.182,
+    "year": 2025,
+    "yield": 17020
+   },
+   "states": {
+    "CA": {
+     "price": 0.284,
+     "year": 2025,
+     "yield": 17000
+    },
+    "FL": {
+     "price": 0.186,
+     "year": 2025,
+     "yield": 20500
+    },
+    "GA": {
+     "price": 0.21,
+     "year": 2025,
+     "yield": 22000
+    },
+    "MI": {
+     "price": 0.131,
+     "year": 2025,
+     "yield": 15000
+    },
+    "NC": {
+     "price": 0.205,
+     "year": 2025,
+     "yield": 19500
+    },
+    "TX": {
+     "price": 0.178,
+     "year": 2025,
+     "yield": 11500
+    },
+    "WI": {
+     "price": 0.23,
+     "year": 2025,
+     "yield": 15500
+    }
+   },
+   "unit": "lb"
+  },
+  "dry beans": {
+   "national": {
+    "price": 31.1,
+    "year": 2025,
+    "yield": 20.1
+   },
+   "states": {
+    "CA": {
+     "price": 90.5,
+     "year": 2023,
+     "yield": 21.5
+    },
+    "CO": {
+     "price": 35.3,
+     "year": 2025,
+     "yield": 17.0
+    },
+    "ID": {
+     "price": 33.9,
+     "year": 2025,
+     "yield": 28.6
+    },
+    "MI": {
+     "price": 33.2,
+     "year": 2025,
+     "yield": 23.5
+    },
+    "MN": {
+     "price": 35.8,
+     "year": 2025,
+     "yield": 20.6
+    },
+    "ND": {
+     "price": 27.1,
+     "year": 2025,
+     "yield": 16.5
+    },
+    "NE": {
+     "price": 29.0,
+     "year": 2025,
+     "yield": 25.2
+    },
+    "WA": {
+     "price": 44.9,
+     "year": 2025,
+     "yield": 26.5
+    },
+    "WY": {
+     "price": 49.0,
+     "year": 2023,
+     "yield": 22.5
+    }
+   },
+   "unit": "cwt"
+  },
+  "field corn": {
+   "national": {
+    "price": 4.16,
+    "year": 2025,
+    "yield": 186
+   },
+   "states": {
+    "AL": {
+     "price": 4.4,
+     "year": 2025,
+     "yield": 152
+    },
+    "AR": {
+     "price": 4.2,
+     "year": 2025,
+     "yield": 182
+    },
+    "AZ": {
+     "price": 6.2,
+     "year": 2025,
+     "yield": 198
+    },
+    "CA": {
+     "price": 4.7,
+     "year": 2025,
+     "yield": 173
+    },
+    "CO": {
+     "price": 4.4,
+     "year": 2025,
+     "yield": 133
+    },
+    "DE": {
+     "price": 4.4,
+     "year": 2025,
+     "yield": 191
+    },
+    "FL": {
+     "price": 4.9,
+     "year": 2025,
+     "yield": 155
+    },
+    "GA": {
+     "price": 4.9,
+     "year": 2025,
+     "yield": 187
+    },
+    "IA": {
+     "price": 4.1,
+     "year": 2025,
+     "yield": 210
+    },
+    "ID": {
+     "price": 5.55,
+     "year": 2025,
+     "yield": 209
+    },
+    "IL": {
+     "price": 4.15,
+     "year": 2025,
+     "yield": 214
+    },
+    "IN": {
+     "price": 4.3,
+     "year": 2025,
+     "yield": 204
+    },
+    "KS": {
+     "price": 4.0,
+     "year": 2025,
+     "yield": 145
+    },
+    "KY": {
+     "price": 4.55,
+     "year": 2025,
+     "yield": 167
+    },
+    "LA": {
+     "price": 4.15,
+     "year": 2025,
+     "yield": 193
+    },
+    "MD": {
+     "price": 4.4,
+     "year": 2025,
+     "yield": 171
+    },
+    "MI": {
+     "price": 3.9,
+     "year": 2025,
+     "yield": 178
+    },
+    "MN": {
+     "price": 3.95,
+     "year": 2025,
+     "yield": 201
+    },
+    "MO": {
+     "price": 4.15,
+     "year": 2025,
+     "yield": 185
+    },
+    "MS": {
+     "price": 4.15,
+     "year": 2025,
+     "yield": 180
+    },
+    "MT": {
+     "price": 3.65,
+     "year": 2025,
+     "yield": 132
+    },
+    "NC": {
+     "price": 4.75,
+     "year": 2025,
+     "yield": 144
+    },
+    "ND": {
+     "price": 3.8,
+     "year": 2025,
+     "yield": 158
+    },
+    "NE": {
+     "price": 4.1,
+     "year": 2025,
+     "yield": 194
+    },
+    "NJ": {
+     "price": 4.75,
+     "year": 2025,
+     "yield": 161
+    },
+    "NM": {
+     "price": 5.15,
+     "year": 2025,
+     "yield": 173
+    },
+    "NY": {
+     "price": 4.8,
+     "year": 2025,
+     "yield": 140
+    },
+    "OH": {
+     "price": 4.25,
+     "year": 2025,
+     "yield": 184
+    },
+    "OK": {
+     "price": 4.3,
+     "year": 2025,
+     "yield": 122
+    },
+    "OR": {
+     "price": 4.65,
+     "year": 2025,
+     "yield": 236
+    },
+    "PA": {
+     "price": 4.6,
+     "year": 2025,
+     "yield": 151
+    },
+    "SC": {
+     "price": 4.7,
+     "year": 2025,
+     "yield": 138
+    },
+    "SD": {
+     "price": 3.8,
+     "year": 2025,
+     "yield": 171
+    },
+    "TN": {
+     "price": 4.4,
+     "year": 2025,
+     "yield": 162
+    },
+    "TX": {
+     "price": 4.6,
+     "year": 2025,
+     "yield": 135
+    },
+    "UT": {
+     "price": 5.2,
+     "year": 2025,
+     "yield": 172
+    },
+    "VA": {
+     "price": 4.45,
+     "year": 2025,
+     "yield": 168
+    },
+    "WA": {
+     "price": 4.8,
+     "year": 2025,
+     "yield": 251
+    },
+    "WI": {
+     "price": 4.05,
+     "year": 2025,
+     "yield": 188
+    },
+    "WV": {
+     "price": 4.5,
+     "year": 2025,
+     "yield": 153
+    },
+    "WY": {
+     "price": 4.7,
+     "year": 2025,
+     "yield": 145
+    }
+   },
+   "unit": "bu"
+  },
+  "garlic": {
+   "national": {
+    "price": 0.702,
+    "year": 2025,
+    "yield": 14000
+   },
+   "states": {
+    "CA": {
+     "price": 0.702,
+     "year": 2025,
+     "yield": 14000
+    }
+   },
+   "unit": "lb"
+  },
+  "hops": {
+   "national": {
+    "price": 5.38,
+    "year": 2025,
+    "yield": 1996
+   },
+   "states": {
+    "ID": {
+     "price": 5.4,
+     "year": 2025,
+     "yield": 2281
+    },
+    "OR": {
+     "price": 5.9,
+     "year": 2025,
+     "yield": 1759
+    },
+    "WA": {
+     "price": 5.3,
+     "year": 2025,
+     "yield": 1990
+    }
+   },
+   "unit": "lb"
+  },
+  "lemons": {
+   "national": {
+    "price": 0.248,
+    "year": 2026,
+    "yield": 35360
+   },
+   "states": {
+    "AZ": {
+     "price": 0.217,
+     "year": 2026,
+     "yield": 16960
+    },
+    "CA": {
+     "price": 0.253,
+     "year": 2026,
+     "yield": 38000
+    },
+    "FL": {
+     "price": 0.134,
+     "year": 2026,
+     "yield": 16625
+    }
+   },
+   "unit": "lb"
+  },
+  "lettuce": {
+   "national": {
+    "price": 0.437,
+    "year": 2025,
+    "yield": 34330
+   },
+   "states": {
+    "AZ": {
+     "price": 0.417,
+     "year": 2025,
+     "yield": 38500
+    },
+    "CA": {
+     "price": 0.445,
+     "year": 2025,
+     "yield": 33000
+    }
+   },
+   "unit": "lb"
+  },
+  "onions": {
+   "national": {
+    "price": 0.196,
+    "year": 2025,
+    "yield": 59960
+   },
+   "states": {
+    "CA": {
+     "price": 0.173,
+     "year": 2025,
+     "yield": 54000
+    },
+    "CO": {
+     "price": 0.223,
+     "year": 2023,
+     "yield": 35000
+    },
+    "ID": {
+     "price": 0.185,
+     "year": 2025,
+     "yield": 80000
+    },
+    "NM": {
+     "price": 0.273,
+     "year": 2025,
+     "yield": 59000
+    },
+    "NY": {
+     "price": 0.191,
+     "year": 2025,
+     "yield": 34000
+    },
+    "OR": {
+     "price": 0.171,
+     "year": 2025,
+     "yield": 73300
+    },
+    "TX": {
+     "price": 0.315,
+     "year": 2025,
+     "yield": 28000
+    },
+    "WA": {
+     "price": 0.175,
+     "year": 2025,
+     "yield": 78500
+    }
+   },
+   "unit": "lb"
+  },
+  "peaches": {
+   "national": {
+    "price": 0.685,
+    "year": 2025,
+    "yield": 20000
+   },
+   "states": {
+    "CA": {
+     "price": 0.605,
+     "year": 2025,
+     "yield": 28600
+    },
+    "GA": {
+     "price": 0.835,
+     "year": 2025,
+     "yield": 10200
+    },
+    "MI": {
+     "price": 1.0,
+     "year": 2025,
+     "yield": 10600
+    },
+    "NJ": {
+     "price": 0.79,
+     "year": 2025,
+     "yield": 10400
+    },
+    "PA": {
+     "price": 0.9,
+     "year": 2025,
+     "yield": 10800
+    },
+    "SC": {
+     "price": 1.02,
+     "year": 2025,
+     "yield": 10400
+    },
+    "WA": {
+     "price": 0.825,
+     "year": 2023,
+     "yield": 10440
+    }
+   },
+   "unit": "lb"
+  },
+  "peanuts": {
+   "national": {
+    "price": 0.235,
+    "year": 2025,
+    "yield": 3746
+   },
+   "states": {
+    "AL": {
+     "price": 0.222,
+     "year": 2025,
+     "yield": 3400
+    },
+    "AR": {
+     "price": 0.215,
+     "year": 2025,
+     "yield": 5000
+    },
+    "FL": {
+     "price": 0.249,
+     "year": 2025,
+     "yield": 3790
+    },
+    "GA": {
+     "price": 0.224,
+     "year": 2025,
+     "yield": 4030
+    },
+    "MO": {
+     "price": 0.221,
+     "year": 2025,
+     "yield": 5230
+    },
+    "MS": {
+     "price": 0.235,
+     "year": 2025,
+     "yield": 4000
+    },
+    "NC": {
+     "price": 0.265,
+     "year": 2025,
+     "yield": 3780
+    },
+    "NM": {
+     "price": 0.406,
+     "year": 2023,
+     "yield": 2000
+    },
+    "OK": {
+     "price": 0.258,
+     "year": 2025,
+     "yield": 4300
+    },
+    "SC": {
+     "price": 0.234,
+     "year": 2025,
+     "yield": 3550
+    },
+    "TX": {
+     "price": 0.3,
+     "year": 2025,
+     "yield": 2490
+    },
+    "VA": {
+     "price": 0.266,
+     "year": 2025,
+     "yield": 4330
+    }
+   },
+   "unit": "lb"
+  },
+  "peppers": {
+   "national": {
+    "price": 0.457,
+    "year": 2025,
+    "yield": 32750
+   },
+   "states": {
+    "CA": {
+     "price": 0.501,
+     "year": 2025,
+     "yield": 39000
+    },
+    "FL": {
+     "price": 0.43,
+     "year": 2025,
+     "yield": 28000
+    },
+    "GA": {
+     "price": 0.359,
+     "year": 2025,
+     "yield": 33500
+    },
+    "MI": {
+     "price": 0.338,
+     "year": 2025,
+     "yield": 29000
+    },
+    "NC": {
+     "price": 0.402,
+     "year": 2025,
+     "yield": 20500
+    },
+    "NJ": {
+     "price": 0.557,
+     "year": 2025,
+     "yield": 38000
+    }
+   },
+   "unit": "lb"
+  },
+  "pistachios": {
+   "national": {
+    "price": 2.48,
+    "year": 2025,
+    "yield": 3030
+   },
+   "states": {
+    "CA": {
+     "price": 2.48,
+     "year": 2025,
+     "yield": 3030
+    }
+   },
+   "unit": "lb"
+  },
+  "plums": {
+   "national": {
+    "price": 1.02,
+    "year": 2025,
+    "yield": 17240
+   },
+   "states": {
+    "CA": {
+     "price": 1.02,
+     "year": 2025,
+     "yield": 17240
+    }
+   },
+   "unit": "lb"
+  },
+  "potatoes": {
+   "national": {
+    "price": 10.8,
+    "year": 2025,
+    "yield": 462
+   },
+   "states": {
+    "CA": {
+     "price": 27.9,
+     "year": 2025,
+     "yield": 425
+    },
+    "CO": {
+     "price": 7.74,
+     "year": 2025,
+     "yield": 420
+    },
+    "FL": {
+     "price": 23.2,
+     "year": 2025,
+     "yield": 280
+    },
+    "ID": {
+     "price": 8.1,
+     "year": 2025,
+     "yield": 445
+    },
+    "ME": {
+     "price": 14.8,
+     "year": 2025,
+     "yield": 330
+    },
+    "MI": {
+     "price": 14.3,
+     "year": 2025,
+     "yield": 420
+    },
+    "MN": {
+     "price": 12.9,
+     "year": 2025,
+     "yield": 435
+    },
+    "ND": {
+     "price": 12.2,
+     "year": 2025,
+     "yield": 350
+    },
+    "NE": {
+     "price": 14.2,
+     "year": 2025,
+     "yield": 485
+    },
+    "OR": {
+     "price": 10.1,
+     "year": 2025,
+     "yield": 635
+    },
+    "TX": {
+     "price": 14.7,
+     "year": 2025,
+     "yield": 425
+    },
+    "WA": {
+     "price": 9.06,
+     "year": 2025,
+     "yield": 630
+    },
+    "WI": {
+     "price": 16.0,
+     "year": 2025,
+     "yield": 435
+    }
+   },
+   "unit": "cwt"
+  },
+  "pumpkins": {
+   "national": {
+    "price": 0.179,
+    "year": 2025,
+    "yield": 21520
+   },
+   "states": {
+    "CA": {
+     "price": 0.16,
+     "year": 2025,
+     "yield": 33000
+    },
+    "IN": {
+     "price": 0.237,
+     "year": 2025,
+     "yield": 17500
+    },
+    "MI": {
+     "price": 0.198,
+     "year": 2025,
+     "yield": 20500
+    },
+    "NC": {
+     "price": 0.301,
+     "year": 2025,
+     "yield": 14500
+    },
+    "NY": {
+     "price": 0.207,
+     "year": 2025,
+     "yield": 10000
+    },
+    "OH": {
+     "price": 0.281,
+     "year": 2025,
+     "yield": 14000
+    },
+    "PA": {
+     "price": 0.269,
+     "year": 2025,
+     "yield": 19500
+    },
+    "VA": {
+     "price": 0.256,
+     "year": 2025,
+     "yield": 14500
+    }
+   },
+   "unit": "lb"
+  },
+  "raspberries": {
+   "national": {
+    "price": 2.44,
+    "year": 2025,
+    "yield": 11900
+   },
+   "states": {
+    "CA": {
+     "price": 3.3,
+     "year": 2025,
+     "yield": 16900
+    },
+    "OR": {
+     "price": 2.99,
+     "year": 2025,
+     "yield": 3280
+    },
+    "WA": {
+     "price": 1.25,
+     "year": 2025,
+     "yield": 9250
+    }
+   },
+   "unit": "lb"
+  },
+  "rice": {
+   "national": {
+    "price": 12.3,
+    "year": 2025,
+    "yield": 75.4
+   },
+   "states": {
+    "AR": {
+     "price": 9.35,
+     "year": 2025,
+     "yield": 74.8
+    },
+    "CA": {
+     "price": 19.4,
+     "year": 2025,
+     "yield": 84.5
+    },
+    "LA": {
+     "price": 10.9,
+     "year": 2025,
+     "yield": 66.6
+    },
+    "MO": {
+     "price": 8.45,
+     "year": 2025,
+     "yield": 76.3
+    },
+    "MS": {
+     "price": 9.55,
+     "year": 2025,
+     "yield": 74.3
+    },
+    "TX": {
+     "price": 11.5,
+     "year": 2025,
+     "yield": 77.3
+    }
+   },
+   "unit": "cwt"
+  },
+  "sorghum": {
+   "national": {
+    "price": 3.67,
+    "year": 2025,
+    "yield": 72.6
+   },
+   "states": {
+    "CO": {
+     "price": 3.39,
+     "year": 2025,
+     "yield": 52.0
+    },
+    "KS": {
+     "price": 3.37,
+     "year": 2025,
+     "yield": 90.0
+    },
+    "NE": {
+     "price": 3.37,
+     "year": 2025,
+     "yield": 87.0
+    },
+    "OK": {
+     "price": 3.4,
+     "year": 2025,
+     "yield": 58.0
+    },
+    "SD": {
+     "price": 3.14,
+     "year": 2025,
+     "yield": 80.0
+    },
+    "TX": {
+     "price": 3.99,
+     "year": 2025,
+     "yield": 53.0
+    }
+   },
+   "unit": "bu"
+  },
+  "soybeans": {
+   "national": {
+    "price": 10.5,
+    "year": 2025,
+    "yield": 53.0
+   },
+   "states": {
+    "AL": {
+     "price": 11.1,
+     "year": 2025,
+     "yield": 37.0
+    },
+    "AR": {
+     "price": 10.8,
+     "year": 2025,
+     "yield": 55.0
+    },
+    "DE": {
+     "price": 10.1,
+     "year": 2025,
+     "yield": 49.0
+    },
+    "GA": {
+     "price": 11.1,
+     "year": 2025,
+     "yield": 49.0
+    },
+    "IA": {
+     "price": 10.5,
+     "year": 2025,
+     "yield": 63.5
+    },
+    "IL": {
+     "price": 10.7,
+     "year": 2025,
+     "yield": 62.5
+    },
+    "IN": {
+     "price": 10.7,
+     "year": 2025,
+     "yield": 59.5
+    },
+    "KS": {
+     "price": 10.1,
+     "year": 2025,
+     "yield": 48.5
+    },
+    "KY": {
+     "price": 11.0,
+     "year": 2025,
+     "yield": 42.0
+    },
+    "LA": {
+     "price": 10.0,
+     "year": 2025,
+     "yield": 53.5
+    },
+    "MD": {
+     "price": 10.1,
+     "year": 2025,
+     "yield": 44.0
+    },
+    "MI": {
+     "price": 10.9,
+     "year": 2025,
+     "yield": 48.5
+    },
+    "MN": {
+     "price": 10.2,
+     "year": 2025,
+     "yield": 52.5
+    },
+    "MO": {
+     "price": 10.7,
+     "year": 2025,
+     "yield": 50.0
+    },
+    "MS": {
+     "price": 10.7,
+     "year": 2025,
+     "yield": 56.0
+    },
+    "NC": {
+     "price": 10.7,
+     "year": 2025,
+     "yield": 36.0
+    },
+    "ND": {
+     "price": 9.79,
+     "year": 2025,
+     "yield": 34.5
+    },
+    "NE": {
+     "price": 10.1,
+     "year": 2025,
+     "yield": 65.5
+    },
+    "NJ": {
+     "price": 10.1,
+     "year": 2025,
+     "yield": 39.0
+    },
+    "NY": {
+     "price": 11.3,
+     "year": 2025,
+     "yield": 40.0
+    },
+    "OH": {
+     "price": 11.0,
+     "year": 2025,
+     "yield": 53.0
+    },
+    "OK": {
+     "price": 10.3,
+     "year": 2025,
+     "yield": 29.0
+    },
+    "PA": {
+     "price": 10.9,
+     "year": 2025,
+     "yield": 44.0
+    },
+    "SC": {
+     "price": 10.8,
+     "year": 2025,
+     "yield": 31.0
+    },
+    "SD": {
+     "price": 9.8,
+     "year": 2025,
+     "yield": 47.0
+    },
+    "TN": {
+     "price": 10.7,
+     "year": 2025,
+     "yield": 42.0
+    },
+    "TX": {
+     "price": 9.65,
+     "year": 2025,
+     "yield": 32.0
+    },
+    "VA": {
+     "price": 10.7,
+     "year": 2025,
+     "yield": 38.0
+    },
+    "WI": {
+     "price": 10.0,
+     "year": 2025,
+     "yield": 56.0
+    }
+   },
+   "unit": "bu"
+  },
+  "spinach": {
+   "national": {
+    "price": 0.81,
+    "year": 2025,
+    "yield": 10160
+   },
+   "states": {
+    "AZ": {
+     "price": 0.839,
+     "year": 2023,
+     "yield": 15000
+    },
+    "CA": {
+     "price": 0.781,
+     "year": 2023,
+     "yield": 12500
+    },
+    "NJ": {
+     "price": 0.244,
+     "year": 2022,
+     "yield": 10500
+    },
+    "TX": {
+     "price": 0.663,
+     "year": 2022,
+     "yield": 11000
+    }
+   },
+   "unit": "lb"
+  },
+  "squash": {
+   "national": {
+    "price": 0.361,
+    "year": 2025,
+    "yield": 17170
+   },
+   "states": {
+    "CA": {
+     "price": 0.291,
+     "year": 2025,
+     "yield": 23500
+    },
+    "FL": {
+     "price": 0.521,
+     "year": 2025,
+     "yield": 15000
+    },
+    "GA": {
+     "price": 0.427,
+     "year": 2025,
+     "yield": 16500
+    },
+    "MI": {
+     "price": 0.283,
+     "year": 2025,
+     "yield": 21000
+    },
+    "NC": {
+     "price": 0.389,
+     "year": 2025,
+     "yield": 9000
+    },
+    "NJ": {
+     "price": 0.437,
+     "year": 2025,
+     "yield": 10000
+    },
+    "NY": {
+     "price": 0.376,
+     "year": 2025,
+     "yield": 15000
+    },
+    "OR": {
+     "price": 0.305,
+     "year": 2025,
+     "yield": 18500
+    }
+   },
+   "unit": "lb"
+  },
+  "strawberries": {
+   "national": {
+    "price": 1.41,
+    "year": 2025,
+    "yield": 50400
+   },
+   "states": {
+    "CA": {
+     "price": 1.33,
+     "year": 2025,
+     "yield": 61500
+    },
+    "FL": {
+     "price": 2.01,
+     "year": 2025,
+     "yield": 21000
+    }
+   },
+   "unit": "lb"
+  },
+  "sugar beets": {
+   "national": {
+    "price": 40.0,
+    "year": 2025,
+    "yield": 33.2
+   },
+   "states": {
+    "CA": {
+     "price": 74.5,
+     "year": 2024,
+     "yield": 47.8
+    },
+    "CO": {
+     "price": 60.2,
+     "year": 2024,
+     "yield": 32.1
+    },
+    "ID": {
+     "price": 53.7,
+     "year": 2024,
+     "yield": 40.0
+    },
+    "MI": {
+     "price": 57.0,
+     "year": 2024,
+     "yield": 30.7
+    },
+    "MN": {
+     "price": 77.6,
+     "year": 2024,
+     "yield": 29.5
+    },
+    "MT": {
+     "price": 60.2,
+     "year": 2024,
+     "yield": 32.3
+    },
+    "ND": {
+     "price": 83.5,
+     "year": 2024,
+     "yield": 31.5
+    },
+    "NE": {
+     "price": 60.2,
+     "year": 2024,
+     "yield": 30.5
+    },
+    "OR": {
+     "price": 53.7,
+     "year": 2024,
+     "yield": 40.6
+    },
+    "WA": {
+     "price": 53.7,
+     "year": 2024,
+     "yield": 49.7
+    },
+    "WY": {
+     "price": 64.7,
+     "year": 2024,
+     "yield": 30.3
+    }
+   },
+   "unit": "ton"
+  },
+  "sweet corn": {
+   "national": {
+    "price": 0.129,
+    "year": 2025,
+    "yield": 15810
+   },
+   "states": {
+    "CA": {
+     "price": 0.388,
+     "year": 2025,
+     "yield": 15000
+    },
+    "FL": {
+     "price": 0.335,
+     "year": 2025,
+     "yield": 14000
+    },
+    "GA": {
+     "price": 0.377,
+     "year": 2025,
+     "yield": 14000
+    },
+    "NY": {
+     "price": 0.168,
+     "year": 2025,
+     "yield": 10500
+    },
+    "OR": {
+     "price": 0.1,
+     "year": 2025,
+     "yield": 15000
+    }
+   },
+   "unit": "lb"
+  },
+  "sweet potatoes": {
+   "national": {
+    "price": 24.7,
+    "year": 2025,
+    "yield": 209
+   },
+   "states": {
+    "CA": {
+     "price": 38.4,
+     "year": 2025,
+     "yield": 335
+    },
+    "MS": {
+     "price": 23.1,
+     "year": 2025,
+     "yield": 145
+    },
+    "NC": {
+     "price": 20.9,
+     "year": 2025,
+     "yield": 205
+    }
+   },
+   "unit": "cwt"
+  },
+  "tomatoes": {
+   "national": {
+    "price": 0.543,
+    "year": 2025,
+    "yield": null
+   },
+   "states": {
+    "CA": {
+     "price": 0.609,
+     "year": 2024,
+     "yield": null
+    },
+    "FL": {
+     "price": 0.524,
+     "year": 2024,
+     "yield": null
+    }
+   },
+   "unit": "lb"
+  },
+  "watermelon": {
+   "national": {
+    "price": 19.3,
+    "year": 2025,
+    "yield": 391
+   },
+   "states": {
+    "AZ": {
+     "price": 30.2,
+     "year": 2023,
+     "yield": 415
+    },
+    "CA": {
+     "price": 17.4,
+     "year": 2025,
+     "yield": 520
+    },
+    "FL": {
+     "price": 23.7,
+     "year": 2025,
+     "yield": 380
+    },
+    "GA": {
+     "price": 17.4,
+     "year": 2025,
+     "yield": 430
+    },
+    "IN": {
+     "price": 20.2,
+     "year": 2025,
+     "yield": 430
+    },
+    "MD": {
+     "price": 19.4,
+     "year": 2025,
+     "yield": 400
+    },
+    "NC": {
+     "price": 13.6,
+     "year": 2025,
+     "yield": 380
+    },
+    "SC": {
+     "price": 15.6,
+     "year": 2025,
+     "yield": 380
+    },
+    "TX": {
+     "price": 22.9,
+     "year": 2025,
+     "yield": 260
+    }
+   },
+   "unit": "cwt"
+  },
+  "wheat": {
+   "national": {
+    "price": 5.06,
+    "year": 2025,
+    "yield": 53.3
+   },
+   "states": {
+    "AL": {
+     "price": 5.35,
+     "year": 2025,
+     "yield": 71.0
+    },
+    "AR": {
+     "price": 5.4,
+     "year": 2025,
+     "yield": 57.0
+    },
+    "AZ": {
+     "price": 7.98,
+     "year": 2025,
+     "yield": 117
+    },
+    "CA": {
+     "price": 6.08,
+     "year": 2025,
+     "yield": 90.4
+    },
+    "CO": {
+     "price": 4.5,
+     "year": 2025,
+     "yield": 38.0
+    },
+    "DE": {
+     "price": 4.7,
+     "year": 2025,
+     "yield": 86.0
+    },
+    "GA": {
+     "price": 4.9,
+     "year": 2025,
+     "yield": 66.0
+    },
+    "ID": {
+     "price": 5.45,
+     "year": 2025,
+     "yield": 93.5
+    },
+    "IL": {
+     "price": 5.11,
+     "year": 2025,
+     "yield": 88.0
+    },
+    "IN": {
+     "price": 5.38,
+     "year": 2025,
+     "yield": 89.0
+    },
+    "KS": {
+     "price": 4.65,
+     "year": 2025,
+     "yield": 51.0
+    },
+    "KY": {
+     "price": 5.6,
+     "year": 2025,
+     "yield": 81.0
+    },
+    "MD": {
+     "price": 4.7,
+     "year": 2025,
+     "yield": 79.0
+    },
+    "MI": {
+     "price": 5.14,
+     "year": 2025,
+     "yield": 90.0
+    },
+    "MN": {
+     "price": 5.33,
+     "year": 2025,
+     "yield": 69.0
+    },
+    "MO": {
+     "price": 5.31,
+     "year": 2025,
+     "yield": 80.0
+    },
+    "MS": {
+     "price": 5.4,
+     "year": 2025,
+     "yield": 60.0
+    },
+    "MT": {
+     "price": 5.06,
+     "year": 2025,
+     "yield": 36.8
+    },
+    "NC": {
+     "price": 5.09,
+     "year": 2025,
+     "yield": 60.0
+    },
+    "ND": {
+     "price": 5.39,
+     "year": 2025,
+     "yield": 52.8
+    },
+    "NE": {
+     "price": 4.5,
+     "year": 2025,
+     "yield": 47.0
+    },
+    "NJ": {
+     "price": 6.26,
+     "year": 2023,
+     "yield": 82.0
+    },
+    "NM": {
+     "price": 4.75,
+     "year": 2025,
+     "yield": 31.0
+    },
+    "NY": {
+     "price": 5.85,
+     "year": 2025,
+     "yield": 71.0
+    },
+    "OH": {
+     "price": 5.19,
+     "year": 2025,
+     "yield": 86.0
+    },
+    "OK": {
+     "price": 4.79,
+     "year": 2025,
+     "yield": 38.0
+    },
+    "OR": {
+     "price": 6.05,
+     "year": 2025,
+     "yield": 71.0
+    },
+    "PA": {
+     "price": 5.33,
+     "year": 2025,
+     "yield": 72.0
+    },
+    "SC": {
+     "price": 5.0,
+     "year": 2025,
+     "yield": 60.0
+    },
+    "SD": {
+     "price": 4.85,
+     "year": 2025,
+     "yield": 50.5
+    },
+    "TN": {
+     "price": 5.55,
+     "year": 2025,
+     "yield": 74.0
+    },
+    "TX": {
+     "price": 4.84,
+     "year": 2025,
+     "yield": 37.0
+    },
+    "UT": {
+     "price": 4.9,
+     "year": 2025,
+     "yield": 51.0
+    },
+    "VA": {
+     "price": 5.25,
+     "year": 2025,
+     "yield": 66.0
+    },
+    "WA": {
+     "price": 5.18,
+     "year": 2025,
+     "yield": 62.6
+    },
+    "WI": {
+     "price": 4.45,
+     "year": 2025,
+     "yield": 76.0
+    },
+    "WY": {
+     "price": 4.75,
+     "year": 2025,
+     "yield": 30.0
+    }
+   },
+   "unit": "bu"
+  },
+  "wine grapes": {
+   "states": {
+    "CA": {
+     "price": 1180,
+     "year": 2025,
+     "yield": 5.14
+    },
+    "WA": {
+     "price": 2150,
+     "year": 2025,
+     "yield": 2.17
+    }
+   },
+   "unit": "ton"
+  }
+ },
+ "generated": "2026-11-07",
+ "source": "USDA NASS Quick Stats (survey, annual price received and yield per acre)",
+ "source_file": "qs.crops_20261106.txt.gz",
+ "source_file_date": "2026-11-06",
+ "source_url": "https://www.nass.usda.gov/datasets",
+ "state_names": {
+  "AK": "Alaska",
+  "AL": "Alabama",
+  "AR": "Arkansas",
+  "AZ": "Arizona",
+  "CA": "California",
+  "CO": "Colorado",
+  "CT": "Connecticut",
+  "DE": "Delaware",
+  "FL": "Florida",
+  "GA": "Georgia",
+  "HI": "Hawaii",
+  "IA": "Iowa",
+  "ID": "Idaho",
+  "IL": "Illinois",
+  "IN": "Indiana",
+  "KS": "Kansas",
+  "KY": "Kentucky",
+  "LA": "Louisiana",
+  "MA": "Massachusetts",
+  "MD": "Maryland",
+  "ME": "Maine",
+  "MI": "Michigan",
+  "MN": "Minnesota",
+  "MO": "Missouri",
+  "MS": "Mississippi",
+  "MT": "Montana",
+  "NC": "North Carolina",
+  "ND": "North Dakota",
+  "NE": "Nebraska",
+  "NH": "New Hampshire",
+  "NJ": "New Jersey",
+  "NM": "New Mexico",
+  "NV": "Nevada",
+  "NY": "New York",
+  "OH": "Ohio",
+  "OK": "Oklahoma",
+  "OR": "Oregon",
+  "PA": "Pennsylvania",
+  "RI": "Rhode Island",
+  "SC": "South Carolina",
+  "SD": "South Dakota",
+  "TN": "Tennessee",
+  "TX": "Texas",
+  "UT": "Utah",
+  "VA": "Virginia",
+  "VT": "Vermont",
+  "WA": "Washington",
+  "WI": "Wisconsin",
+  "WV": "West Virginia",
+  "WY": "Wyoming"
+ }
+}
