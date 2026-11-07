@@ -94,7 +94,7 @@
   .selbox{position:relative}
   .sel-native{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;padding:0!important;border:0!important;margin:0;clip:rect(0 0 0 0)}
   .sel-btn{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;text-align:left}
-  .sel-btn .chev{color:var(--ink-2);font-size:11px;flex:none;transition:transform .18s}
+  .sel-btn .chev{color:var(--ink-2);font-size:12px;flex:none;transition:transform .18s}
   .selbox.open .sel-btn{border-color:var(--lime)}
   .selbox.open .sel-btn .chev{transform:rotate(180deg)}
   .sel-btn.placeholder .sel-val{color:color-mix(in srgb,var(--ink-2) 80%,transparent)}
@@ -105,7 +105,7 @@
   .crop-head .ct{font-weight:700;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lime-text)}
   .crop-del{background:transparent;border:0;color:var(--ink-2);cursor:pointer;font-size:18px;line-height:1;padding:4px;border-radius:6px}
   .crop-del:hover{color:var(--ink)}
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;align-items:end}
   .grid3{display:grid;grid-template-columns:1.3fr .8fr .9fr;gap:0 12px}
   @media(max-width:520px){.grid3{grid-template-columns:1fr 1fr}}
   .addcrop{width:100%;background:transparent;border:1.5px dashed var(--hair);border-radius:10px;color:var(--ink);font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;padding:12px;cursor:pointer;transition:.15s}
@@ -476,7 +476,7 @@
      One average, not a range, so YL and YH are equal. */
   const YL=0.034, YH=0.034;
 
-  const CROPS=["Almonds","Apples","Apricots","Avocado","Cherries","Citrus","Lemons","Peaches","Pistachios","Plums","Bananas","Blueberries","Raspberries","Strawberries","Artichokes","Asparagus","Broccoli","Carrots","Cauliflower","Celery","Eggplant","Garlic","Onions","Peppers","Potatoes","Sweet corn","Sweet potatoes","Tomatoes","Cabbage","Kale","Lettuce","Spinach","Cantaloupe","Cucumbers","Wine grapes","Pumpkins","Squash","Watermelon","Barley","Canola","Field corn","Cotton","Dry beans","Hemp","Hops","Peanuts","Rice","Sorghum","Soybeans","Sugar beets","Wheat"];
+  const CROPS=["Almonds","Apples","Apricots","Artichokes","Asparagus","Avocado","Bananas","Barley","Blueberries","Broccoli","Cabbage","Canola","Cantaloupe","Carrots","Cauliflower","Celery","Cherries","Citrus","Cotton","Cucumbers","Dry beans","Eggplant","Field corn","Garlic","Hemp","Hops","Kale","Lemons","Lettuce","Onions","Peaches","Peanuts","Peppers","Pistachios","Plums","Potatoes","Pumpkins","Raspberries","Rice","Sorghum","Soybeans","Spinach","Squash","Strawberries","Sugar beets","Sweet corn","Sweet potatoes","Tomatoes","Watermelon","Wheat","Wine grapes"];
   const UNITS=["lb","bu","cwt","ton","kg","MT","carton","box"];
   document.getElementById('cropList').innerHTML=CROPS.map(c=>'<option value="'+c+'">').join('');
 
