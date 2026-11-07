@@ -364,7 +364,7 @@
         <div class="big" id="netBig">$0</div>
         <div class="cap" id="netCap">after program cost, across your farm</div>
         <div class="stat-row">
-          <div class="stat"><div class="n" id="perAcre">$0</div><div class="l">Per acre</div></div>
+          <div class="stat"><div class="n" id="perAcre">$0</div><div class="l">Gain per acre, before program cost</div></div>
           <div class="stat"><div class="n" id="roi">0&times;</div><div class="l">Return on program cost</div></div>
           <div class="stat"><div class="n" id="yieldPct">3.4%</div><div class="l">Average gain in field trials</div></div>
           <div class="stat"><div class="n" id="totAcres">0</div><div class="l">Total acreage</div></div>
@@ -652,7 +652,7 @@
     const netLo=yieldLo-costT, netHi=yieldHi-costT; // net = yield value increase minus program cost (no nitrogen term)
 
     document.getElementById('netBig').innerHTML=(tAcres>0)?rng(netLo,netHi):'$0';
-    document.getElementById('perAcre').innerHTML=tAcres>0?rng(netLo/tAcres,netHi/tAcres):'$0';
+    document.getElementById('perAcre').innerHTML=tAcres>0?rng(yieldLo/tAcres,yieldHi/tAcres):'$0';
     const roiLo=costT>0?netLo/costT:0, roiHi=costT>0?netHi/costT:0;
     document.getElementById('roi').innerHTML=costT>0?((Math.round(roiLo*10)===Math.round(roiHi*10)?(Math.round(roiLo*10)/10):(Math.round(roiLo)+'&ndash;'+Math.round(roiHi)))+'&times;'):'0&times;';
     const totVal=cur.reduce((s,x)=>s+x.value*x.c.acres,0);
