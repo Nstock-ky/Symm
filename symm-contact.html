@@ -5,11 +5,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact · Symm</title>
-<meta name="description" content="Talk to a Symm advisor to build your program, get a quote, or place an order. Tell us about your operation and we'll reach out.">
+<meta name="description" content="Talk to a Symm advisor to build your program or get a quote. Tell us about your operation and we'll reach out.">
 <meta name="theme-color" content="#E9F0DF">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Contact · Symm">
-<meta property="og:description" content="Talk to a Symm advisor to build your program or place an order.">
+<meta property="og:description" content="Talk to a Symm advisor to build your program or get a quote.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23011F00'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23A1D09A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -225,7 +225,7 @@
                 <input class="inp" type="text" name="SingleLine3" inputmode="numeric"></label>
             </div>
             <label class="field"><span class="lab">How can we help?</span>
-              <textarea class="inp" name="MultiLine" placeholder="Tell us about your operation and what you need: a program, a quote, an order, or a question."></textarea></label>
+              <textarea class="inp" name="MultiLine" placeholder="Tell us about your operation and what you need: a program, a quote, or a question."></textarea></label>
             <label class="chk">
               <input type="checkbox" name="Checkbox" value="Symm may contact me about my request" required>
               <span class="ct">Symm may contact me about my request.</span>
@@ -305,6 +305,25 @@
       result=document.getElementById('result'), errMsg=document.getElementById('errMsg'),
       btn=document.getElementById('submitBtn');
   if(!form) return;
+  /* Carry the calculator's inputs into the form when the visitor arrives from it (?from=calc). */
+  try{
+    if(new URLSearchParams(location.search).get('from')==='calc'){
+      var c=JSON.parse(localStorage.getItem('symm_calc')||'null');
+      if(c){
+        var set=function(n,v){var el=form.elements[n];if(el&&v&&!el.value)el.value=v;};
+        if(c.farm&&c.farm!=='Your farm')set('SingleLine',c.farm);
+        set('SingleLine1',c.state);
+        var cs=(c.crops||[]).filter(function(x){return x.name;});
+        set('SingleLine2',cs.map(function(x){return x.name;}).join(', '));
+        if(c.acres)set('SingleLine3',String(Math.round(c.acres)));
+        var lines=['From the Symm calculator:'];
+        if(c.county)lines.push('County: '+c.county);
+        if(c.irrigation)lines.push('Irrigation: '+c.irrigation);
+        cs.forEach(function(x){lines.push(x.name+': '+Math.round(x.acres)+' acres, typical yield '+x.yield+' '+x.unit+'/acre');});
+        set('MultiLine',lines.join('\n'));
+      }
+    }
+  }catch(e){}
   form.addEventListener('submit', function(e){
     e.preventDefault();
     errMsg.classList.remove('show');
