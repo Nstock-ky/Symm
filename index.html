@@ -513,8 +513,8 @@
       <a class="mono" href="symm-contact.html">Contact</a>
     </nav>
     <div class="nav-actions">
-      <a class="acrepill" id="navpill" href="symm-checkout.html" hidden><span class="dotc"></span><span class="n">0</span>&nbsp;acres</a>
-      <a class="btn primary" href="#buy">Order <span class="arw">&rarr;</span></a>
+      <a class="acrepill" id="navpill" href="symm-contact.html" hidden><span class="dotc"></span><span class="n">0</span>&nbsp;acres</a>
+      <a class="btn primary" href="symm-contact.html">Contact <span class="arw">&rarr;</span></a>
     </div>
     <button class="navburger" id="navburger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
@@ -526,7 +526,7 @@
       <p class="kicker">Symbiotic microbes</p>
       <h1>Stronger crops, acre after acre.</h1>
       <p class="hero-st-sub">Two living microbial inputs that raise yield, bring fungi selected for drought and heat tolerance, and help the crop access more of the nutrients available to it.</p>
-      <div class="hero-st-actions"><a class="btn primary" href="#buy">Order the program <span class="arw">&rarr;</span></a><a class="btn ghost" href="symm-calculator.html">Estimate your benefit <span class="arw">&rarr;</span></a></div>
+      <div class="hero-st-actions"><a class="btn primary" href="symm-contact.html">Contact us <span class="arw">&rarr;</span></a><a class="btn ghost" href="symm-calculator.html">Estimate your benefit <span class="arw">&rarr;</span></a></div>
     </div>
     <div class="proofbar"><div class="wrap proofbar-in">
       <div class="pf"><span class="pn">27 of 31 trials</span><span class="pl">3.4% average gain in field-crop trials, losses included</span></div>
@@ -661,7 +661,7 @@
           </div>
         </div>
         <div class="together"><span class="txt">Always sold together as one program. <b>One protocol, two parts.</b></span></div>
-        <div class="cta-row" style="justify-content:center;margin-top:22px"><a class="btn primary" href="#buy">Order the program <span class="arw">&rarr;</span></a></div>
+        <div class="cta-row" style="justify-content:center;margin-top:22px"><a class="btn primary" href="symm-contact.html">Contact us <span class="arw">&rarr;</span></a></div>
       </div>
   </div></section>
 
@@ -748,7 +748,7 @@
               <span class="total"><span class="amt" id="total">$16,200</span><span class="cap">Estimated total</span></span>
             </div>
             <div class="voldisc" id="voldisc"></div>
-            <button class="btn primary buybtn" id="continueBtn" type="button">Continue to checkout <span class="arw">&rarr;</span></button>
+            <a class="btn primary buybtn" href="symm-contact.html">Contact us <span class="arw">&rarr;</span></a>
             <p class="fine">Advisors &amp; partners can add more with a code at checkout</p>
           </div>
         </div>
@@ -768,7 +768,7 @@
         <div class="main">
           <p class="kick">Now taking orders</p>
           <p class="bio">Biology you can count on.</p>
-          <div class="closer-actions"><a class="btn primary" href="#buy">Order the program <span class="arw">&rarr;</span></a><a class="btn ghost" href="symm-contact.html">Book a 20 minute field review <span class="arw">&rarr;</span></a></div>
+          <div class="closer-actions"><a class="btn primary" href="symm-contact.html">Contact us <span class="arw">&rarr;</span></a><a class="btn ghost" href="symm-contact.html">Book a 20 minute field review <span class="arw">&rarr;</span></a></div>
         </div>
         <aside class="trial-box">
           <span class="tb-label"><span class="pulse"></span> Limited trials also available each season</span>
@@ -1060,11 +1060,6 @@ if( document.readyState == "complete" ){
   acres.addEventListener('input',render);
   /* attribution: capture ?ref= / ?utm_source= / ?code= for the CRM and checkout */
   try{var p=new URLSearchParams(location.search);var ref=p.get('ref')||p.get('utm_source');if(ref)localStorage.setItem('symm_ref',ref);var code=p.get('code');if(code)localStorage.setItem('symm_code',code.toUpperCase());}catch(e){}
-  document.getElementById('continueBtn').addEventListener('click',function(){
-    var a=Math.max(1,parseInt(acres.value,10)||0);
-    try{localStorage.setItem('symm_order',JSON.stringify({acres:a,rate:RATE,subtotal:a*RATE}));}catch(e){}
-    location.href='symm-checkout.html';
-  });
   render();
 })();
 </script>
